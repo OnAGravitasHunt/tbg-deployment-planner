@@ -11,7 +11,6 @@
 <script>
 export default {
   name: 'ship',
-  // props: ['name', 'prefix', 'shipClass', 'registry', 'stats'],
   props: ['spec'],
   methods: {
     imgUrl () {
