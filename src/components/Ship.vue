@@ -1,6 +1,6 @@
 <template>
 <div class="ship">
-  <img :src='imgUrl()'/>
+  <img :src="imgUrl()" style="width: 300px"/>
   <p>{{prefix}} {{name}}</p>
   <p>
     <span v-for="(stat, i) of statOrder" :key="stat">{{stat}}{{stats[i]}}&nbsp;</span>
@@ -14,7 +14,7 @@ export default {
   props: ['name', 'prefix', 'shipClass', 'registry', 'stats'],
   methods: {
     imgUrl () {
-      return `../assets/${this.shipClass.toLowerCase()}.png`
+      return `/static/${this.shipClass.toLowerCase()}.png`
     }
   },
   data () {
