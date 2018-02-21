@@ -1,9 +1,9 @@
 <template>
 <div class="ship">
-  <img class="ship-image" :src="imgUrl()" style="width: 200px"/>
+  <img class="ship-image" :src="imgUrl()" style="height: 20px; margin: 0px auto;"/>
   <div>
-    {{prefix}} <em>{{name}}</em>, NCC-{{registry}}<br>
-    <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
+    {{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}<br>
+    <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{spec.stats[i]}}&nbsp;</span>
   </div>
 </div>
 </template>
@@ -11,10 +11,11 @@
 <script>
 export default {
   name: 'ship',
-  props: ['name', 'prefix', 'shipClass', 'registry', 'stats'],
+  // props: ['name', 'prefix', 'shipClass', 'registry', 'stats'],
+  props: ['spec'],
   methods: {
     imgUrl () {
-      return `/static/${this.shipClass.toLowerCase()}.png`
+      return `/static/${this.spec.shipClass.toLowerCase()}.png`
     }
   },
   data () {
@@ -34,11 +35,18 @@ h1, h2 {
   font-weight: bold;
 }
 .ship {
-  width: 220px;
+  width: 200px;
   border: 2px solid orange;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px auto;
   background-color: orange;
+  display: inline-block;
+  text-align: center;
+}
+#available-ships .ship {
+  margin: 2px auto;
+}
+.sector-drag .ship {
+  margin: 0 4px;
 }
 </style>

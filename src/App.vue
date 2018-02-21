@@ -1,13 +1,19 @@
 <template>
 <div id="app">
 
-  <div id="unassigned">
+  <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
-    <draggable v-model="ships">
-      <Ship name="Torch" prefix="USS" shipClass="Renaissance" registry="2617" :stats="[5,3,4,5,4,5]"></Ship>
-      <Ship name="Avandar" prefix="USS" shipClass="Excelsior" registry="2010" :stats="[8,7,5,7,7,6]"></Ship>
-      <Ship name="Lightning" prefix="USS" shipClass="Centaur" registry="2105" :stats="[4,5,3,4,4,3]"></Ship>
+    <draggable id='available-ships' :v-model="ships" :options="{group:'ships'}">
+      <Ship v-for="ship of ships" :key="ship.registry" :spec="ship"></Ship>
     </draggable>
+  </div>
+
+  <div id="sectors-wrapper">
+    <div class='sector' v-for="sector of sectors" :key="sector" :id="sector">
+      <h3>{{sector}}</h3>
+      <draggable class='sector-drag' :v-model="sector" :options="{group:'ships'}">
+      </draggable>
+    </div>
   </div>
 
 </div>
@@ -22,6 +28,16 @@ export default {
   components: {
     Ship,
     draggable
+  },
+  data () {
+    return {
+      ships: [
+        {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
+        {registry: 2010, name: 'Avandar', shipClass: 'Excelsior', prefix: 'USS', stats: [8, 7, 5, 7, 7, 6]},
+        {registry: 2105, name: 'Lightning', shipClass: 'Centaur', prefix: 'USS', stats: [4, 5, 3, 4, 4, 3]}
+      ],
+      sectors: ['Sol', 'Vulcan', 'Andoria', 'Tellar']
+    }
   }
 }
 </script>
@@ -39,7 +55,7 @@ body {
   /* margin-top: 60px; */
   width: 100%
 }
-#unassigned {
+#unassigned-wrapper {
   width: 20%;
   border-right: 2px solid black;
   height: 100%;
@@ -47,5 +63,21 @@ body {
   float: left;
   background-color: #ccc;
   margin: 0px;
+}
+#available-ships {
+  min-height: 200px;
+  padding-bottom: 100px;
+}
+#sectors-wrapper {
+  width: 80%;
+  float: right;
+}
+.sector {
+  min-height: 100px;
+  text-align: left;
+  padding-left: 30px;
+}
+.sector-drag {
+  min-height: inherit;
 }
 </style>
