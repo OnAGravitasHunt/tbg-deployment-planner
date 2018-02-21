@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Ship name="Torch" prefix="USS" shipClass="Renaissance" registry="2617" :stats="[5,3,4,5,4,5]"></Ship>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Ship from './components/Ship'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Ship
   }
 }
 </script>
