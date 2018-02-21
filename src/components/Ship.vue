@@ -1,10 +1,10 @@
 <template>
 <div class="ship">
-  <img :src="imgUrl()" style="width: 300px"/>
-  <p>{{prefix}} {{name}}</p>
-  <p>
-    <span v-for="(stat, i) of statOrder" :key="stat">{{stat}}{{stats[i]}}&nbsp;</span>
-  </p>
+  <img class="ship-image" :src="imgUrl()" style="width: 200px"/>
+  <div>
+    {{prefix}} <em>{{name}}</em>, NCC-{{registry}}<br>
+    <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
+  </div>
 </div>
 </template>
 
@@ -27,8 +27,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
+h1, h2 {
   font-weight: normal;
+}
+.stat-D {
+  font-weight: bold;
+}
+.ship {
+  width: 220px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
 }
 </style>

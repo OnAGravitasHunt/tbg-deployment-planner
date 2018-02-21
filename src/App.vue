@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <Ship name="Torch" prefix="USS" shipClass="Renaissance" registry="2617" :stats="[5,3,4,5,4,5]"></Ship>
+    <Ship name="Avandar" prefix="USS" shipClass="Excelsior" registry="2010" :stats="[8,7,5,7,7,6]"></Ship>
+    <Ship name="Lightning" prefix="USS" shipClass="Centaur" registry="2105" :stats="[4,5,3,4,4,3]"></Ship>
   </div>
 </template>
 
