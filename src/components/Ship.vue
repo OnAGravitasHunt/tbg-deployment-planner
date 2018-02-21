@@ -35,9 +35,10 @@ h1, h2 {
 }
 .ship {
   width: 220px;
-  border: 2px solid black;
+  border: 2px solid orange;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px;
+  margin: 10px auto;
+  background-color: orange;
 }
 </style>
