@@ -46,6 +46,6 @@ h1, h2 {
   margin: 2px auto;
 }
 .sector-drag .ship {
-  margin: 0 4px;
+  margin: 4px;
 }
 </style>

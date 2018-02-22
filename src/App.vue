@@ -55,7 +55,7 @@ body {
   width: 100%
 }
 #unassigned-wrapper {
-  width: 20%;
+  width: 250px;
   border-right: 2px solid black;
   height: 100%;
   position: absolute;
@@ -68,13 +68,14 @@ body {
   padding-bottom: 100px;
 }
 #sectors-wrapper {
-  width: 80%;
+  width: 100%;
   float: right;
 }
 .sector {
   min-height: 100px;
   text-align: left;
   padding-left: 30px;
+  margin-left: 250px;
 }
 .sector-drag {
   min-height: inherit;
