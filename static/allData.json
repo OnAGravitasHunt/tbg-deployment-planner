@@ -1,0 +1,8 @@
+{
+  "ships": [
+    {"registry": 2617, "name": "Renaissance", "shipClass": "Renaissance", "prefix": "USS", "stats": [5, 3, 4, 5, 4, 5]},
+    {"registry": 2010, "name": "Avandar", "shipClass": "Excelsior", "prefix": "USS", "stats": [8, 7, 5, 7, 7, 6]},
+    {"registry": 2105, "name": "Lightning", "shipClass": "Centaur", "prefix": "USS", "stats": [4, 5, 3, 4, 4, 3]}
+  ],
+  "sectors": ["Sol", "Vulcan", "Andoria", "Tellar"],
+}

@@ -2,8 +2,10 @@
 <div class="ship">
   <img class="ship-image" :src="imgUrl()" style="height: 20px; margin: 0px auto;"/>
   <div>
-    {{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}<br>
-    <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{spec.stats[i]}}&nbsp;</span>
+    <span>{{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}</span>
+    <span>
+      <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{spec.stats[i]}}&nbsp;</span>
+    </span>
   </div>
 </div>
 </template>
@@ -48,4 +50,5 @@ h1, h2 {
 .sector-drag .ship {
   margin: 4px;
 }
+
 </style>
