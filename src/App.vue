@@ -11,7 +11,7 @@
   <div id="sectors-wrapper">
     <div class='sector' v-for="sector of sectors" :key="sector.name" :id="sector.name">
       <h3>{{sector.name}} &ndash; D{{sector.def}}</h3>
-      <draggable class='sector-drag' :v-model="sector" :options="{group:'ships'}">
+      <draggable class='sector-drag' :v-model="sector.ships" :options="{group:'ships'}">
       </draggable>
     </div>
   </div>
@@ -37,10 +37,10 @@ export default {
         {registry: 2105, name: 'Lightning', shipClass: 'Centaur', prefix: 'USS', stats: [4, 5, 3, 4, 4, 3]}
       ],
       sectors: [
-        {name: 'Sol', def: 18},
-        {name: 'Vulcan', def: 10},
-        {name: 'Andor', def: 7},
-        {name: 'Tellar', def: 7}
+        {name: 'Sol', def: 18, ships: []},
+        {name: 'Vulcan', def: 10, ships: []},
+        {name: 'Andor', def: 7, ships: []},
+        {name: 'Tellar', def: 7, ships: []}
       ]
     }
   }
