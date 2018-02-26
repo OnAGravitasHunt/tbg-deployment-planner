@@ -73,6 +73,7 @@ body {
   float: left;
   background-color: #ccc;
   margin: 0px;
+  overflow-y: scroll;
 }
 #available-ships {
   min-height: 200px;
