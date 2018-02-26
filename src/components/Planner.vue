@@ -10,7 +10,7 @@
 
   <div id="sectors-wrapper">
     <div class='sector' v-for="sector of sectors" :key="sector.name" :id="sector.name">
-      <h3>{{sector.name}} &ndash; D{{sector.def}}</h3>
+      <h3>{{sector.name}} &ndash; D{{sectorDef(sector)}}/{{sector.def}}</h3>
       <draggable class='sector-drag' v-model="sector.ships" :options="{group:'ships'}">
         <Ship v-for="ship of sector.ships" :key="ship.registry" :spec="ship"></Ship>
       </draggable>
@@ -43,6 +43,11 @@ export default {
         {name: 'Andor', def: 7, ships: []},
         {name: 'Tellar', def: 7, ships: []}
       ]
+    }
+  },
+  methods: {
+    sectorDef (sector) {
+      return sector.ships.reduce((acc, curr) => acc + curr.stats[5], 0)
     }
   }
 }
