@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'ship',
+  name: 'Ship',
   props: ['spec'],
   methods: {
     imgUrl () {

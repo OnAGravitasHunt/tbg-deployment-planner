@@ -3,10 +3,8 @@
 
   <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
-    {{ships.length}}
     <draggable id='available-ships' v-model="ships" :options="{group:'ships'}">
-      <!-- <Ship v-for="ship of ships" :key="ship.registry" :spec="ship"></Ship> -->
-      <li v-for="ship of ships" :key="ship.registry" >{{ship.name}}</li>
+      <Ship v-for="ship of ships" :key="ship.registry" :spec="ship"></Ship>
     </draggable>
   </div>
 
@@ -14,7 +12,7 @@
     <div class='sector' v-for="sector of sectors" :key="sector.name" :id="sector.name">
       <h3>{{sector.name}} &ndash; D{{sector.def}}</h3>
       <draggable class='sector-drag' v-model="sector.ships" :options="{group:'ships'}">
-        <li v-for="ship of sector.ships" :key="ship.registry" >{{ship.name}}</li>
+        <Ship v-for="ship of sector.ships" :key="ship.registry" :spec="ship"></Ship>
       </draggable>
     </div>
   </div>
@@ -23,13 +21,13 @@
 </template>
 
 <script>
-import ship from './Ship'
+import Ship from './Ship'
 import draggable from 'vuedraggable'
 
 export default {
   name: 'planner',
   components: {
-    ship,
+    Ship,
     draggable
   },
   data () {
