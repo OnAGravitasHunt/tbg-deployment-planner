@@ -4,17 +4,17 @@
   <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
     {{ships.length}}
-    <draggable id='available-ships' :v-model="ships" :options="{group:'ships'}">
+    <draggable id='available-ships' v-model="ships" :options="{group:'ships'}">
       <!-- <Ship v-for="ship of ships" :key="ship.registry" :spec="ship"></Ship> -->
-      <span v-for="ship of ships" :key="ship.registry" >{{ship.name}}</span>
+      <li v-for="ship of ships" :key="ship.registry" >{{ship.name}}</li>
     </draggable>
   </div>
 
   <div id="sectors-wrapper">
     <div class='sector' v-for="sector of sectors" :key="sector.name" :id="sector.name">
       <h3>{{sector.name}} &ndash; D{{sector.def}}</h3>
-      <draggable class='sector-drag' :v-model="sector.ships" :options="{group:'ships'}">
-        <span v-for="ship of sector.ships" :key="ship.registry" >{{ship.name}}</span>
+      <draggable class='sector-drag' v-model="sector.ships" :options="{group:'ships'}">
+        <li v-for="ship of sector.ships" :key="ship.registry" >{{ship.name}}</li>
       </draggable>
     </div>
   </div>
