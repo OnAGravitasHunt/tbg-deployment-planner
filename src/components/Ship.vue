@@ -37,18 +37,35 @@ h1, h2 {
 }
 .ship {
   width: 200px;
-  border: 2px solid orange;
-  border-radius: 5px;
+  border: 2px solid #99f;
+  border-radius: 0px;
   padding: 10px;
-  background-color: orange;
+  background-color: #99f;
+  color: black;
   display: inline-block;
   text-align: center;
 }
 #available-ships .ship {
   margin: 2px auto;
 }
+#available-ships .ship:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#available-ships .ship:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 .sector-drag .ship {
   margin: 4px;
+}
+.sector-drag .ship:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.sector-drag .ship:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 </style>

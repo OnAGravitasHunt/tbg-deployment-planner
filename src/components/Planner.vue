@@ -37,7 +37,7 @@ export default {
         {registry: 2603, name: 'Epiphany', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
         {registry: 2604, name: 'Enlightenment', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
         {registry: 2605, name: 'Insight', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2604, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]}
+        {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]}
       ],
       sectors: [
         {name: 'Sol', def: 18, ships: []},
@@ -65,7 +65,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width: 100%
+  width: 100%;
 }
 #unassigned-wrapper {
   width: 250px;
@@ -84,6 +84,8 @@ body {
 #sectors-wrapper {
   width: 100%;
   float: right;
+  background-color: black;
+  color: #ccc;
 }
 .sector {
   min-height: 100px;
