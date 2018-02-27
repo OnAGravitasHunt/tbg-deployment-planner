@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       ships: [
-        {registry: 2602, name: 'Reason', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser' stats: [5, 3, 4, 5, 4, 5]},
+        {registry: 2602, name: 'Reason', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
         {registry: 2603, name: 'Epiphany', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
         {registry: 2604, name: 'Enlightenment', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
         {registry: 2605, name: 'Insight', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
@@ -43,7 +43,9 @@ export default {
         {name: 'Sol', def: 18, ships: []},
         {name: 'Vulcan', def: 10, ships: []},
         {name: 'Andor', def: 7, ships: []},
-        {name: 'Tellar', def: 7, ships: []}
+        {name: 'Tellar', def: 7, ships: []},
+        {name: 'Amarkia', def: 7, ships: []},
+        {name: 'Ferasa', def: 7, ships: []}
       ]
     }
   },
@@ -71,7 +73,7 @@ body {
   width: 250px;
   border-right: 2px solid black;
   height: 100%;
-  position: absolute;
+  position: fixed;
   float: left;
   background-color: #ccc;
   margin: 0px;

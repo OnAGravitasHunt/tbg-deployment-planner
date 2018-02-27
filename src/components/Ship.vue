@@ -1,6 +1,6 @@
 <template>
-<div :class="'ship' {{spec.scale}}">
-  <img class="ship-image" :src="imgUrl()" style="height: 20px; margin: 0px auto;"/>
+<div :class="'ship ' + spec.scale">
+  <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/>
   <div>
     <span>{{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}</span>
     <span>
@@ -37,13 +37,24 @@ h1, h2 {
 }
 .ship {
   width: 200px;
-  border: 2px solid #99f;
+  border: 2px solid;
   border-radius: 0px;
   padding: 10px;
-  background-color: #99f;
   color: black;
   display: inline-block;
   text-align: center;
+}
+.frigate {
+  border-color: #c9c;
+  background-color: #c9c;
+}
+.cruiser {
+  border-color: #99f;
+  background-color: #99f;
+}
+.explorer {
+  border-color: #fc9;
+  background-color: #fc9;
 }
 #available-ships .ship {
   margin: 2px auto;
