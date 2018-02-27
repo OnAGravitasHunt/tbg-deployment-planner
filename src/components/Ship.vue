@@ -1,5 +1,5 @@
 <template>
-<div class="ship">
+<div :class="'ship' {{spec.scale}}">
   <img class="ship-image" :src="imgUrl()" style="height: 20px; margin: 0px auto;"/>
   <div>
     <span>{{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}</span>
@@ -14,7 +14,7 @@
 export default {
   name: 'Ship',
   props: ['spec'],
-  methods: {
+  computed: {
     imgUrl () {
       return `/static/${this.spec.shipClass.toLowerCase()}.png`
     }

@@ -33,11 +33,11 @@ export default {
   data () {
     return {
       ships: [
-        {registry: 2602, name: 'Reason', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2603, name: 'Epiphany', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2604, name: 'Enlightenment', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2605, name: 'Insight', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', stats: [5, 3, 4, 5, 4, 5]}
+        {registry: 2602, name: 'Reason', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser' stats: [5, 3, 4, 5, 4, 5]},
+        {registry: 2603, name: 'Epiphany', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
+        {registry: 2604, name: 'Enlightenment', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
+        {registry: 2605, name: 'Insight', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
+        {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]}
       ],
       sectors: [
         {name: 'Sol', def: 18, ships: []},
