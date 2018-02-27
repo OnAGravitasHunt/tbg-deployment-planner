@@ -9,12 +9,7 @@
   </div>
 
   <div id="sectors-wrapper">
-    <div class='sector' v-for="sector of sectors" :key="sector.name" :id="sector.name">
-      <h3>{{sector.name}} &ndash; D{{sectorDef(sector)}}/{{sector.def}}</h3>
-      <draggable class='sector-drag' v-model="sector.ships" :options="{group:'ships'}">
-        <Ship v-for="ship of sector.ships" :key="ship.registry" :spec="ship"></Ship>
-      </draggable>
-    </div>
+    <Sector v-for="sector of sectors" v-bind="sector" :key="sector.name" :id="sector.name"></Sector>
   </div>
 
 </div>
@@ -22,12 +17,14 @@
 
 <script>
 import Ship from './Ship'
+import Sector from './Sector'
 import draggable from 'vuedraggable'
 
 export default {
   name: 'planner',
   components: {
     Ship,
+    Sector,
     draggable
   },
   data () {
@@ -47,11 +44,6 @@ export default {
         {name: 'Amarkia', def: 7, ships: []},
         {name: 'Ferasa', def: 7, ships: []}
       ]
-    }
-  },
-  methods: {
-    sectorDef (sector) {
-      return sector.ships.reduce((acc, curr) => acc + curr.stats[5], 0)
     }
   }
 }
@@ -88,14 +80,5 @@ body {
   float: right;
   background-color: black;
   color: #ccc;
-}
-.sector {
-  min-height: 100px;
-  text-align: left;
-  padding-left: 30px;
-  margin-left: 250px;
-}
-.sector-drag {
-  min-height: inherit;
 }
 </style>

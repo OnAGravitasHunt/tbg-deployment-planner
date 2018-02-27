@@ -1,5 +1,5 @@
 <template>
-<div :class="'ship ' + spec.scale">
+<div :class="'ship ' + spec.scale" :id="'ncc-' + spec.registry">
   <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/>
   <div>
     <span>{{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}</span>
