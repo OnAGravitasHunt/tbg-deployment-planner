@@ -2,7 +2,7 @@
 <div class='sector' :id="'sector-' + name">
   <h3>{{name}} &ndash; D{{sectorDef}}/{{def}}</h3>
   <draggable class='sector-drag' v-model="currentShips" :options="{group:'ships'}">
-    <Ship v-for="ship of currentShips" :key="ship.registry" :spec="ship"></Ship>
+    <Ship v-for="ship of currentShips" :key="ship.registry" v-bind="ship"></Ship>
   </draggable>
 </div>
 </template>

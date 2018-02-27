@@ -1,10 +1,10 @@
 <template>
-<div :class="'ship ' + spec.scale" :id="'ncc-' + spec.registry">
+<div :class="'ship ' + scale" :id="'ncc-' + registry">
   <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/>
   <div>
-    <span>{{spec.prefix}} <em>{{spec.name}}</em>, NCC-{{spec.registry}}</span>
+    <span>{{prefix}} <em>{{name}}</em>, NCC-{{registry}}</span>
     <span>
-      <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{spec.stats[i]}}&nbsp;</span>
+      <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
     </span>
   </div>
 </div>
@@ -13,10 +13,11 @@
 <script>
 export default {
   name: 'Ship',
-  props: ['spec'],
+  props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'stats'],
+  // {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]}
   computed: {
     imgUrl () {
-      return `/static/${this.spec.shipClass.toLowerCase()}.png`
+      return `/static/${this.shipClass.toLowerCase()}.png`
     }
   },
   data () {

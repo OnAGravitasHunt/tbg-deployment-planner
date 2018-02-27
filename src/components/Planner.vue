@@ -4,7 +4,7 @@
   <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
     <draggable id='available-ships' v-model="ships" :options="{group:'ships'}">
-      <Ship v-for="ship of ships" :key="ship.registry" :spec="ship"></Ship>
+      <Ship v-for="ship of ships" :key="ship.registry" v-bind="ship"></Ship>
     </draggable>
   </div>
 
