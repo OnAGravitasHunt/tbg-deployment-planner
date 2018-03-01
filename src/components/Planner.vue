@@ -19,7 +19,7 @@
 import Ship from './Ship'
 import Sector from './Sector'
 import draggable from 'vuedraggable'
-import allData from '/static/allData.json'
+import allData from '../assets/allData.json'
 
 export default {
   name: 'planner',
@@ -29,24 +29,9 @@ export default {
     draggable
   },
   data () {
-    // let ships = allData.ships
-    // let sectors = allData.sectors
     return {
-      ships: [
-        {registry: 2602, name: 'Reason', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2603, name: 'Epiphany', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2604, name: 'Enlightenment', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2605, name: 'Insight', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
-        {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]}
-      ],
-      sectors: [
-        {name: 'Sol', def: 18, ships: []},
-        {name: 'Vulcan', def: 10, ships: []},
-        {name: 'Andor', def: 7, ships: []},
-        {name: 'Tellar', def: 7, ships: []},
-        {name: 'Amarkia', def: 7, ships: []},
-        {name: 'Ferasa', def: 7, ships: []}
-      ]
+      ships: allData.ships,
+      sectors: allData.sectors
     }
   }
 }
