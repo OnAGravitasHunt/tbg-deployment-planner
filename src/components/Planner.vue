@@ -19,6 +19,7 @@
 import Ship from './Ship'
 import Sector from './Sector'
 import draggable from 'vuedraggable'
+import allData from '/static/allData.json'
 
 export default {
   name: 'planner',
@@ -28,6 +29,8 @@ export default {
     draggable
   },
   data () {
+    // let ships = allData.ships
+    // let sectors = allData.sectors
     return {
       ships: [
         {registry: 2602, name: 'Reason', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]},
