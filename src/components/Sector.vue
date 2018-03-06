@@ -13,7 +13,7 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'Sector',
-  props: ['name', 'def', 'ships', 'index'],
+  props: ['name', 'def', 'index'],
   components: {
     Ship,
     draggable
