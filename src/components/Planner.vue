@@ -3,13 +3,13 @@
 
   <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
-    <draggable id='available-ships' v-model="ships" :options="{group:'ships'}">
+    <draggable id='available-ships' v-model="ships" :options="{group:'ships'}" :move="onMove">
       <Ship v-for="ship of ships" :key="ship.registry" v-bind="ship"></Ship>
     </draggable>
   </div>
 
   <div id="sectors-wrapper">
-    <Sector v-for="sector of sectors" v-bind="sector" :key="sector.name" :id="sector.name"></Sector>
+    <Sector v-for="(sector, index) of sectors" v-bind="sector" :index="index" :key="sector.name" :id="sector.name"></Sector>
   </div>
 
 </div>
@@ -19,7 +19,7 @@
 import Ship from './Ship'
 import Sector from './Sector'
 import draggable from 'vuedraggable'
-import allData from '../assets/allData.json'
+// import allData from '../assets/allData.json'
 
 export default {
   name: 'planner',
@@ -30,8 +30,14 @@ export default {
   },
   data () {
     return {
-      ships: allData.ships,
-      sectors: allData.sectors
+      ships: this.$store.state.ships,
+      sectors: this.$store.state.sectors
+    }
+  },
+  methods: {
+    onMove (targ, orig) {
+      console.log(targ)
+      // console.log(orig)
     }
   }
 }

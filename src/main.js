@@ -2,12 +2,27 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import Vuex from 'vuex'
+import allData from './assets/allData.json'
 
 Vue.config.productionTip = false
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    ships: allData.ships,
+    sectors: allData.sectors
+  },
+  getters: {
+    ships: state => state.ships,
+    sectors: state => state.sectors
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -1,7 +1,7 @@
 <template>
 <div class='sector' :id="'sector-' + name">
   <h3>{{name}} &ndash; D{{sectorDef}}/{{def}}</h3>
-  <draggable class='sector-drag' v-model="currentShips" :options="{group:'ships'}">
+  <draggable class='sector-drag' :id="'s-drag-' + index" v-model="currentShips" :options="{group:'ships'}" :move="onMove">
     <Ship v-for="ship of currentShips" :key="ship.registry" v-bind="ship"></Ship>
   </draggable>
 </div>
@@ -13,7 +13,7 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'Sector',
-  props: ['name', 'def', 'ships'],
+  props: ['name', 'def', 'ships', 'index'],
   components: {
     Ship,
     draggable
@@ -26,6 +26,12 @@ export default {
   computed: {
     sectorDef () {
       return this.currentShips.reduce((acc, curr) => acc + curr.stats[5], 0)
+    }
+  },
+  methods: {
+    onMove (targ, orig) {
+      console.log(targ)
+      // console.log(orig)
     }
   }
 }
