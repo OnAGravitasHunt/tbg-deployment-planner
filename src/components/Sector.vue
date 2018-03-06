@@ -18,14 +18,9 @@ export default {
     Ship,
     draggable
   },
-  data () {
-    return {
-      currentShips: this.ships
-    }
-  },
   computed: {
     sectorDef () {
-      return this.currentShips.reduce((acc, curr) => acc + curr.stats[5], 0)
+      return this.sectorShips.reduce((acc, curr) => acc + curr.stats[5], 0)
     },
     sectorShips: {
       get () {

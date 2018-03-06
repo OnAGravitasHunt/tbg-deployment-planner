@@ -3,8 +3,8 @@
 
   <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
-    <draggable id='available-ships' v-model="availShips" :options="{group:'ships'}">
-      <Ship v-for="ship of availShips" :key="ship.registry" v-bind="ship"></Ship>
+    <draggable id='available-ships' v-model="availableShips" :options="{group:'ships'}">
+      <Ship v-for="ship of availableShips" :key="ship.registry" v-bind="ship"></Ship>
     </draggable>
   </div>
 
@@ -30,12 +30,11 @@ export default {
   },
   data () {
     return {
-      ships: this.$store.state.ships,
       sectors: this.$store.state.sectors
     }
   },
   computed: {
-    availShips: {
+    availableShips: {
       get () {
         return this.$store.state.ships
       },
