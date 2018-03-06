@@ -16,6 +16,14 @@ const store = new Vuex.Store({
   getters: {
     ships: state => state.ships,
     sectors: state => state.sectors
+  },
+  mutations: {
+    updateAvail (state, value) {
+      state.ships = value
+    },
+    updateSector (state, payload) {
+      state.sectors[payload.sectorIndex].ships = payload.shipList
+    }
   }
 })
 

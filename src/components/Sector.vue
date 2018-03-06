@@ -1,8 +1,8 @@
 <template>
 <div class='sector' :id="'sector-' + name">
   <h3>{{name}} &ndash; D{{sectorDef}}/{{def}}</h3>
-  <draggable class='sector-drag' :id="'s-drag-' + index" v-model="currentShips" :options="{group:'ships'}" :move="onMove">
-    <Ship v-for="ship of currentShips" :key="ship.registry" v-bind="ship"></Ship>
+  <draggable class='sector-drag' :id="'s-drag-' + index" v-model="sectorShips" :options="{group:'ships'}">
+    <Ship v-for="ship of sectorShips" :key="ship.registry" v-bind="ship"></Ship>
   </draggable>
 </div>
 </template>
@@ -26,12 +26,15 @@ export default {
   computed: {
     sectorDef () {
       return this.currentShips.reduce((acc, curr) => acc + curr.stats[5], 0)
-    }
-  },
-  methods: {
-    onMove (targ, orig) {
-      console.log(targ)
-      // console.log(orig)
+    },
+    sectorShips: {
+      get () {
+        return this.$store.state.sectors[this.index].ships
+      },
+      set (value) {
+        let payload = {sectorIndex: this.index, shipList: value}
+        this.$store.commit('updateSector', payload)
+      }
     }
   }
 }

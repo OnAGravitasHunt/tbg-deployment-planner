@@ -3,8 +3,8 @@
 
   <div id="unassigned-wrapper">
     <h2>Available Starships</h2>
-    <draggable id='available-ships' v-model="ships" :options="{group:'ships'}" :move="onMove">
-      <Ship v-for="ship of ships" :key="ship.registry" v-bind="ship"></Ship>
+    <draggable id='available-ships' v-model="availShips" :options="{group:'ships'}">
+      <Ship v-for="ship of availShips" :key="ship.registry" v-bind="ship"></Ship>
     </draggable>
   </div>
 
@@ -34,10 +34,14 @@ export default {
       sectors: this.$store.state.sectors
     }
   },
-  methods: {
-    onMove (targ, orig) {
-      console.log(targ)
-      // console.log(orig)
+  computed: {
+    availShips: {
+      get () {
+        return this.$store.state.ships
+      },
+      set (value) {
+        this.$store.commit('updateAvail', value)
+      }
     }
   }
 }
