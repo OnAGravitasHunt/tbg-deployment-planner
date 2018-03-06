@@ -23,6 +23,10 @@ const store = new Vuex.Store({
     },
     updateSector (state, payload) {
       state.sectors[payload.sectorIndex].ships = payload.shipList
+    },
+    restoreSave (state, save) {
+      state.ships = save.ships
+      state.sectors = save.sectors
     }
   }
 })

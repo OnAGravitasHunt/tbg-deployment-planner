@@ -47,9 +47,6 @@ export default {
 </script>
 
 <style>
-body {
-  margin: 0;
-}
 #planner {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -57,6 +54,7 @@ body {
   text-align: center;
   color: #2c3e50;
   width: 100%;
+  /* margin-top: 30px; */
 }
 #unassigned-wrapper {
   width: 250px;
@@ -65,7 +63,7 @@ body {
   position: fixed;
   float: left;
   background-color: #ccc;
-  margin: 0px;
+  margin-top: 50px;
   overflow-y: scroll;
 }
 #available-ships {
@@ -77,5 +75,6 @@ body {
   float: right;
   background-color: black;
   color: #ccc;
+  margin-top: 50px;
 }
 </style>

@@ -46,12 +46,12 @@ h1, h2 {
   text-align: center;
 }
 .frigate {
-  border-color: #c9c;
-  background-color: #c9c;
+  border-color: #99c;
+  background-color: #99c;
 }
 .cruiser {
-  border-color: #99f;
-  background-color: #99f;
+  border-color: #c66;
+  background-color: #c66;
 }
 .explorer {
   border-color: #fc9;
