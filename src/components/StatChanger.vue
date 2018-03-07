@@ -2,26 +2,38 @@
   <div class='stat-changer'>
     <table class='stat-table'>
       <tr class='stat-name-row'>
-        <th v-for="statName of statOrder" :key="statName">
+        <th></th>
+        <th v-for="statName of statOrder" :key="'stat-name-' + statName">
           {{statName}}
         </th>
       </tr>
 
       <tr class='up-row'>
-        <td v-for="statName of statOrder" :key="statName">
+        <th></th>
+        <td v-for="(statName, index) of statOrder" :key="'up-' + statName" @click="() => { bStatChange(index, 1) }">
           &#9650;
         </td>
       </tr>
 
       <tr class='stat-row'>
-        <td v-for="statName of statOrder" :key="statName">
-          <input class='align stat-value' placeholder='0'>
+        <th>Bonus</th>
+        <td v-for="(stat, index) of bonusStats" :key="'bonus-' + statOrder[index]">
+          <!-- <input v-model="stats[index]" class='align stat-value' placeholder='0'> -->
+          {{stat}}
         </td>
       </tr>
 
       <tr class='down-row'>
-        <td v-for="statName of statOrder" :key="statName">
+        <th></th>
+        <td v-for="(statName, index) of statOrder" :key="'down-' + statName" @click="() => { bStatChange(index, -1) }">
           &#9660;
+        </td>
+      </tr>
+
+      <tr class='down-row'>
+        <th>Total</th>
+        <td v-for="(stat, index) of this.stats" :key="'stat-' + statOrder[index]">
+          {{stat}}
         </td>
       </tr>
     </table>
@@ -31,13 +43,24 @@
 <script>
 export default {
   name: 'StatChanger',
+  props: ['baseStats', 'veterancy'],
   data () {
     return {
-      // statName: 'C',
+      bonusStats: [0, 0, 0, 0, 0, 0],
+      vetStats: [1, 1, 1, 1, 1, 0],
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
     }
   },
-  computed: {}
+  computed: {
+    stats () {
+      return this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+    }
+  },
+  methods: {
+    bStatChange (i, diff) {
+      this.bonusStats.splice(i, 1, this.bonusStats[i] + diff)
+    }
+  }
 }
 </script>
 
@@ -47,7 +70,6 @@ export default {
   margin-top: 10px;
   width: 20px;
   padding: 0px auto;
-  /* align-items: center; */
   display: block;
 }
 
@@ -74,20 +96,29 @@ th, td {
   border-right: 1px solid #ccc;
 }
 
-.up-row td {
+.up-row td,
+.up-row th {
   border-top: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
 
-.stat-row td {
+.stat-row td,
+.stat-row th {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
 
-.down-row td {
+.down-row td,
+.down-row th {
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+}
+
+.up-row td,
+.down-row td {
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 </style>

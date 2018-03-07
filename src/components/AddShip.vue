@@ -19,11 +19,11 @@
                 <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
               </select>
               <input v-model="name" placeholder='Starship name'>
-              <span>NCC-</span><input v-model="registry" placeholder='Starship registry'>
+              <span>NCC-</span><input class='registry-input' v-model="registry" placeholder='Registry'>
             </li>
             <li>
               <span>Ship Class: </span>
-              <select v-model="selectedClass">
+              <select v-model="selectedClassName">
                 <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
               </select>
             </li>
@@ -34,8 +34,8 @@
               </select>
             </li>
             <li>
-              <span>Stat bonuses: </span>
-              <StatChanger></StatChanger>
+              <span>Other stat bonuses: </span>
+              <StatChanger :baseStats="selectedClassObject.stats" :veterancy="veterancies.indexOf(selectedVet)"></StatChanger>
             </li>
           </ul>
         </div>
@@ -69,7 +69,7 @@ export default {
       name: '',
       registry: '',
       shipClasses: shipDataFields.shipClasses,
-      selectedClass: 'Ambassador',
+      selectedClassName: 'Ambassador',
       veterancies: shipDataFields.veterancies,
       selectedVet: 'Green'
     }
@@ -82,6 +82,9 @@ export default {
       set (value) {
         this.$store.commit('updateShowAddShip', value)
       }
+    },
+    selectedClassObject () {
+      return this.shipClasses.find(item => item.name === this.selectedClassName)
     }
   }
 }
@@ -122,7 +125,6 @@ export default {
 
 .modal-header {
   margin-top: 0;
-  /* color: #42b983; */
 }
 
 .modal-body {
@@ -176,11 +178,17 @@ button {
   padding: 0px;
   color: #ccc;
   display: inline-block;
-  /* text-align: center; */
   margin: 5px 10px;
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  /* width: 50px; */
+}
+.registry-input {
+  width: 60px;
 }
 </style>
