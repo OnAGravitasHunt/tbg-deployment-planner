@@ -12,7 +12,7 @@ const store = new Vuex.Store({
   state: {
     ships: allData.ships,
     sectors: allData.sectors,
-    showModal: false
+    showAddShip: false
   },
   getters: {
     ships: state => state.ships,
@@ -29,8 +29,8 @@ const store = new Vuex.Store({
       state.ships = save.ships
       state.sectors = save.sectors
     },
-    updateModalShow (state, value) {
-      state.showModal = value
+    updateShowAddShip (state, value) {
+      state.showAddShip = value
     }
   }
 })

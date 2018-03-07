@@ -6,20 +6,32 @@
         <!--  -->
         <div class="modal-header">
           <slot name="header">
-            <h3>Add new ship</h3>
+            <h3>Add New Ship</h3>
           </slot>
         </div>
         <!--  -->
         <div class="modal-body">
-          <slot name="body">
-            default body
-          </slot>
+          <ul style="list-style-type:none;">
+            <li>
+              <!-- <span>Name: </span> -->
+              <select v-model="selectedPrefix">
+                <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
+              </select>
+              <input v-model="name" placeholder='Ship name'>
+            </li>
+            <li>
+              <span>Ship Class: </span>
+              <select v-model="selectedClass">
+                <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
+              </select>
+            </li>
+          </ul>
         </div>
         <!--  -->
         <div class="modal-footer">
           <slot name="footer">
-            default footer
-            <button class="modal-default-button" @click="$emit('close')">OK</button>
+            <button class="modal-default-button" @click="showAddShipModal = false">Cancel</button>
+            <button class="modal-default-button" @click="showAddShipModal = false">Add Ship</button>
           </slot>
         </div>
         <!--  -->
@@ -30,11 +42,29 @@
 </template>
 
 <script>
+import shipDataFields from '../assets/shipDataFields.json'
+
 export default {
   name: 'AddShip',
-  computed: {},
   data () {
-    return {}
+    return {
+      prefixes: shipDataFields.prefixes,
+      selectedPrefix: 'USS',
+      name: '',
+      shipClasses: shipDataFields.shipClasses,
+      selectedClass: 'Ambassador',
+      veterancies: shipDataFields.veterancies
+    }
+  },
+  computed: {
+    showAddShipModal: {
+      get () {
+        return this.$store.state.addShipShow
+      },
+      set (value) {
+        this.$store.commit('updateShowAddShip', value)
+      }
+    }
   }
 }
 </script>
@@ -79,6 +109,6 @@ export default {
 }
 
 .modal-default-button {
-  float: right;
+  /* float: right; */
 }
 </style>

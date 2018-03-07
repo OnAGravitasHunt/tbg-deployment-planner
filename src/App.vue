@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AddShip v-if="showModal" @close="showModal = false"></AddShip>
+    <AddShip v-if="showAddShipModal"></AddShip>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
   </div>
@@ -19,12 +19,12 @@ export default {
     AddShip
   },
   computed: {
-    showModal: {
+    showAddShipModal: {
       get () {
-        return this.$store.state.showModal
+        return this.$store.state.showAddShip
       },
       set (value) {
-        this.$store.commit('updateModalShow', value)
+        this.$store.commit('updateShowAddShip', value)
       }
     }
   }

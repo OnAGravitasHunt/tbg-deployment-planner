@@ -2,7 +2,7 @@
 <div id="saveload">
   <button v-on:click="saveState">{{saveMessage}}</button>
   <button v-on:click="loadState">{{loadMessage}}</button>
-  <button v-on:click="showModal = true">Add Ship</button>
+  <button v-on:click="showAddShipModal = true">Add Ship</button>
 </div>
 </template>
 
@@ -30,12 +30,12 @@ export default {
     }
   },
   computed: {
-    showModal: {
+    showAddShipModal: {
       get () {
-        return this.$store.state.showModal
+        return this.$store.state.showAddShip
       },
       set (value) {
-        this.$store.commit('updateModalShow', value)
+        this.$store.commit('updateShowAddShip', value)
       }
     }
   }

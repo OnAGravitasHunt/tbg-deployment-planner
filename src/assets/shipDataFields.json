@@ -66,5 +66,5 @@
     }
   ],
   "prefixes": ["USS"],
-  "veterancy": ["Green", "Blooded", "Veteran", "Elite"]
+  "veterancies": ["Green", "Blooded", "Veteran", "Elite"]
 }
