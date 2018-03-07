@@ -2,6 +2,7 @@
 <div id="saveload">
   <button v-on:click="saveState">{{saveMessage}}</button>
   <button v-on:click="loadState">{{loadMessage}}</button>
+  <button v-on:click="showModal = true">Add Ship</button>
 </div>
 </template>
 
@@ -26,6 +27,16 @@ export default {
       this.$store.commit('restoreSave', JSON.parse(localStorage.getItem(DEPLOYMENT_KEY)))
       this.loadMessage = 'Loaded!'
       setTimeout(() => { this.loadMessage = 'Load' }, 1000)
+    }
+  },
+  computed: {
+    showModal: {
+      get () {
+        return this.$store.state.showModal
+      },
+      set (value) {
+        this.$store.commit('updateModalShow', value)
+      }
     }
   }
 }

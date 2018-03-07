@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <AddShip v-if="showModal" @close="showModal = false"></AddShip>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
   </div>
@@ -8,12 +9,24 @@
 <script>
 import Planner from './components/Planner'
 import SaveLoad from './components/SaveLoad'
+import AddShip from './components/AddShip'
 
 export default {
   name: 'app',
   components: {
     Planner,
-    SaveLoad
+    SaveLoad,
+    AddShip
+  },
+  computed: {
+    showModal: {
+      get () {
+        return this.$store.state.showModal
+      },
+      set (value) {
+        this.$store.commit('updateModalShow', value)
+      }
+    }
   }
 }
 </script>
