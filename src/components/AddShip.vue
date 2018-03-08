@@ -15,15 +15,15 @@
           <ul class='add-ship-fields'>
             <li>
               <!-- <span>Name: </span> -->
-              <select v-model="selectedPrefix">
+              <select v-model="currentShip.prefix">
                 <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
               </select>
-              <input v-model="name" placeholder='Starship name'>
-              <span>NCC-</span><input class='registry-input' v-model="registry" placeholder='Registry'>
+              <input v-model="currentShip.name" placeholder='Starship name'>
+              <span>NCC-</span><input class='registry-input' v-model="currentShip.registry" placeholder='Registry'>
             </li>
             <li>
               <span>Ship Class: </span>
-              <select v-model="selectedClassName">
+              <select v-model="currentShip.shipClass">
                 <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
               </select>
             </li>
@@ -34,17 +34,14 @@
               </select>
             </li>
             <li>
-              <span>Other stat bonuses: </span>
-              <StatChanger :baseStats="selectedClassObject.stats" :veterancy="veterancies.indexOf(selectedVet)"></StatChanger>
+              <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(selectedVet)"></StatChanger>
             </li>
           </ul>
         </div>
         <!--  -->
         <div class='modal-footer'>
-          <slot name='footer'>
-            <button class='modal-default-button' @click="showAddShipModal = false">Cancel</button>
-            <button class='modal-default-button' @click="showAddShipModal = false">Add Ship</button>
-          </slot>
+          <button class='modal-default-button' @click="showAddShipModal = false">Cancel</button>
+          <button class='modal-default-button' @click="showAddShipModal = false">Add Ship</button>
         </div>
         <!--  -->
       </div>
@@ -65,11 +62,7 @@ export default {
   data () {
     return {
       prefixes: shipDataFields.prefixes,
-      selectedPrefix: 'USS',
-      name: '',
-      registry: '',
       shipClasses: shipDataFields.shipClasses,
-      selectedClassName: 'Ambassador',
       veterancies: shipDataFields.veterancies,
       selectedVet: 'Green'
     }
@@ -83,8 +76,16 @@ export default {
         this.$store.commit('updateShowAddShip', value)
       }
     },
-    selectedClassObject () {
-      return this.shipClasses.find(item => item.name === this.selectedClassName)
+    currentShip: {
+      get () {
+        return this.$store.state.newShip
+      },
+      set (ship) {
+        this.$store.commit('updateNewShip', ship)
+      }
+    },
+    currentShipClassObject () {
+      return this.shipClasses.find(el => el.name === this.currentShip.shipClass)
     }
   }
 }

@@ -10,27 +10,46 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    ships: allData.ships,
-    sectors: allData.sectors,
-    showAddShip: false
+    deployment: {
+      ships: allData.ships,
+      sectors: allData.sectors
+    },
+    showAddShip: false,
+    newShip: {
+      registry: '',
+      name: '',
+      shipClass: '',
+      prefix: 'USS',
+      scale: '',
+      stats: [0, 0, 0, 0, 0, 0]
+    }
   },
   getters: {
-    ships: state => state.ships,
-    sectors: state => state.sectors
+    ships: state => state.deployment.ships,
+    sectors: state => state.deployment.sectors
   },
   mutations: {
     updateAvail (state, value) {
-      state.ships = value
+      state.deployment.ships = value
     },
     updateSector (state, payload) {
-      state.sectors[payload.sectorIndex].ships = payload.shipList
+      state.deployment.sectors[payload.sectorIndex].ships = payload.shipList
     },
     restoreSave (state, save) {
-      state.ships = save.ships
-      state.sectors = save.sectors
+      state.deployment.ships = save.ships
+      state.deployment.sectors = save.sectors
     },
     updateShowAddShip (state, value) {
+      if (value === true) {
+        state.newShip.shipClass = 'Ambassador'
+      }
       state.showAddShip = value
+    },
+    updateNewShipName (state, shipName) {
+      state.newShip = ship
+    },
+    updateNewShipStats (state, shipStats) {
+      state.newShip.stats = shipStats
     }
   }
 })

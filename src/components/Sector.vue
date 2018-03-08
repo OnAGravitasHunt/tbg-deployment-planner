@@ -24,7 +24,7 @@ export default {
     },
     sectorShips: {
       get () {
-        return this.$store.state.sectors[this.index].ships
+        return this.$store.state.deployment.sectors[this.index].ships
       },
       set (value) {
         let payload = {sectorIndex: this.index, shipList: value}

@@ -30,13 +30,13 @@ export default {
   },
   data () {
     return {
-      sectors: this.$store.state.sectors
+      sectors: this.$store.state.deployment.sectors
     }
   },
   computed: {
     availableShips: {
       get () {
-        return this.$store.state.ships
+        return this.$store.state.deployment.ships
       },
       set (value) {
         this.$store.commit('updateAvail', value)

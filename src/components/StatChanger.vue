@@ -9,6 +9,20 @@
       </tr>
 
       <tr class='up-row'>
+        <th>Base stats</th>
+        <td v-for="(stat, index) of baseStats" :key="'base-' + statOrder[index]">
+          {{stat}}
+        </td>
+      </tr>
+
+      <tr class='up-row'>
+        <th>Veterancy stats</th>
+        <td v-for="(stat, index) of vetStats" :key="'vet-' + statOrder[index]">
+          {{stat * veterancy}}
+        </td>
+      </tr>
+
+      <tr class='up-row'>
         <th></th>
         <td v-for="(statName, index) of statOrder" :key="'up-' + statName" @click="() => { bStatChange(index, 1) }">
           &#9650;
@@ -16,7 +30,7 @@
       </tr>
 
       <tr class='stat-row'>
-        <th>Bonus</th>
+        <th>Bonus stats</th>
         <td v-for="(stat, index) of bonusStats" :key="'bonus-' + statOrder[index]">
           <!-- <input v-model="stats[index]" class='align stat-value' placeholder='0'> -->
           {{stat}}
@@ -31,7 +45,7 @@
       </tr>
 
       <tr class='down-row'>
-        <th>Total</th>
+        <th>Total stats</th>
         <td v-for="(stat, index) of this.stats" :key="'stat-' + statOrder[index]">
           {{stat}}
         </td>
@@ -43,17 +57,24 @@
 <script>
 export default {
   name: 'StatChanger',
-  props: ['baseStats', 'veterancy'],
+  props: ['classStats', 'veterancy'],
   data () {
     return {
+      baseStats: this.classStats,
       bonusStats: [0, 0, 0, 0, 0, 0],
       vetStats: [1, 1, 1, 1, 1, 0],
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
     }
   },
   computed: {
-    stats () {
-      return this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+    stats: {
+      get () {
+        return this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+      },
+      set () {
+        let newStats = this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+        this.$store.commit('updateNewShipStats', newStats)
+      }
     }
   },
   methods: {
@@ -83,10 +104,11 @@ export default {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 th, td {
-  width: 40px;
+  min-width: 30px;
   text-align: center;
 }
 
@@ -120,5 +142,9 @@ th, td {
 .down-row td {
   -moz-user-select: none;
   -webkit-user-select: none;
+}
+
+th:first-child {
+  min-width: 150px;
 }
 </style>
