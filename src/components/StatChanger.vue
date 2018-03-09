@@ -46,7 +46,7 @@
 
       <tr class='down-row'>
         <th>Total stats</th>
-        <td v-for="(stat, index) of this.stats" :key="'stat-' + statOrder[index]">
+        <td v-for="(stat, index) of stats" :key="'stat-' + statOrder[index]">
           {{stat}}
         </td>
       </tr>
@@ -60,21 +60,19 @@ export default {
   props: ['classStats', 'veterancy'],
   data () {
     return {
-      baseStats: this.classStats,
       bonusStats: [0, 0, 0, 0, 0, 0],
       vetStats: [1, 1, 1, 1, 1, 0],
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
     }
   },
   computed: {
-    stats: {
-      get () {
-        return this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
-      },
-      set () {
-        let newStats = this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
-        this.$store.commit('updateNewShipStats', newStats)
-      }
+    stats () {
+      let newStats = this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+      this.$store.commit('updateNewShipField', {field: 'stats', value: newStats})
+      return newStats
+    },
+    baseStats () {
+      return this.classStats
     }
   },
   methods: {

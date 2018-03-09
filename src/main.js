@@ -21,7 +21,7 @@ const store = new Vuex.Store({
       shipClass: '',
       prefix: 'USS',
       scale: '',
-      stats: [0, 0, 0, 0, 0, 0]
+      stats: ''
     }
   },
   getters: {
@@ -29,27 +29,34 @@ const store = new Vuex.Store({
     sectors: state => state.deployment.sectors
   },
   mutations: {
-    updateAvail (state, value) {
+    updateAvail (state, value) { // update list of unassigned ships
       state.deployment.ships = value
     },
-    updateSector (state, payload) {
+    updateSector (state, payload) { // update list of ships in sector
       state.deployment.sectors[payload.sectorIndex].ships = payload.shipList
     },
-    restoreSave (state, save) {
+    restoreSave (state, save) { // restore save from localstorage
       state.deployment.ships = save.ships
       state.deployment.sectors = save.sectors
     },
-    updateShowAddShip (state, value) {
-      if (value === true) {
-        state.newShip.shipClass = 'Ambassador'
+    updateShowAddShip (state, value) { // update addShip modal visibility
+      if (value === true) { // blank out any existing ship
+        state.newShip = {
+          registry: '',
+          name: '',
+          shipClass: '',
+          prefix: 'USS',
+          scale: '',
+          stats: ''
+        }
       }
       state.showAddShip = value
     },
-    updateNewShipName (state, shipName) {
-      state.newShip = ship
+    updateNewShipField (state, {field, value}) { // update field of newShip
+      state.newShip[field] = value
     },
-    updateNewShipStats (state, shipStats) {
-      state.newShip.stats = shipStats
+    createNewShip (state) {
+      state.deployment.ships.push(Object.assign({}, state.newShip))
     }
   }
 })

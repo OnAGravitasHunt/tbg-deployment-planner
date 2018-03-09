@@ -15,15 +15,16 @@
           <ul class='add-ship-fields'>
             <li>
               <!-- <span>Name: </span> -->
-              <select v-model="currentShip.prefix">
+              <select v-model="currentShipPrefix">
                 <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
               </select>
-              <input v-model="currentShip.name" placeholder='Starship name'>
-              <span>NCC-</span><input class='registry-input' v-model="currentShip.registry" placeholder='Registry'>
+              <input v-model="currentShipName" placeholder='Starship name'>
+              <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
             </li>
             <li>
               <span>Ship Class: </span>
-              <select v-model="currentShip.shipClass">
+              <select v-model="currentShipClass">
+                <option disabled value="">Select starship class</option>
                 <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
               </select>
             </li>
@@ -40,8 +41,8 @@
         </div>
         <!--  -->
         <div class='modal-footer'>
-          <button class='modal-default-button' @click="showAddShipModal = false">Cancel</button>
-          <button class='modal-default-button' @click="showAddShipModal = false">Add Ship</button>
+          <button class='modal-default-button' @click="showAddShipModal = false">Close</button>
+          <button class='modal-default-button' @click="commitNewShip">{{addMessage}}</button>
         </div>
         <!--  -->
       </div>
@@ -61,10 +62,19 @@ export default {
   },
   data () {
     return {
+      addMessage: 'Add Ship',
       prefixes: shipDataFields.prefixes,
       shipClasses: shipDataFields.shipClasses,
       veterancies: shipDataFields.veterancies,
       selectedVet: 'Green'
+    }
+  },
+  methods: {
+    commitNewShip () {
+      this.$store.commit('createNewShip')
+      this.addMessage = 'Added'
+      this.$store.commit('updateShowAddShip', true)
+      setTimeout(() => { this.addMessage = 'Add Ship' }, 1000)
     }
   },
   computed: {
@@ -76,16 +86,46 @@ export default {
         this.$store.commit('updateShowAddShip', value)
       }
     },
-    currentShip: {
+    currentShipPrefix: {
       get () {
-        return this.$store.state.newShip
+        return this.$store.state.newShip.prefix
       },
-      set (ship) {
-        this.$store.commit('updateNewShip', ship)
+      set (prefix) {
+        this.$store.commit('updateNewShipField', {field: 'prefix', value: prefix})
+      }
+    },
+    currentShipName: {
+      get () {
+        return this.$store.state.newShip.name
+      },
+      set (shipName) {
+        this.$store.commit('updateNewShipField', {field: 'name', value: shipName})
+      }
+    },
+    currentShipRegistry: {
+      get () {
+        return this.$store.state.newShip.registry
+      },
+      set (registry) {
+        this.$store.commit('updateNewShipField', {field: 'registry', value: registry})
+      }
+    },
+    currentShipClass: {
+      get () {
+        return this.$store.state.newShip.shipClass
+      },
+      set (shipClass) {
+        this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
       }
     },
     currentShipClassObject () {
-      return this.shipClasses.find(el => el.name === this.currentShip.shipClass)
+      let classObject = this.shipClasses.find(el => el.name === this.currentShipClass)
+      if (typeof (classObject) === 'undefined') {
+        return {stats: [0, 0, 0, 0, 0, 0]}
+      } else {
+        this.$store.commit('updateNewShipField', {field: 'scale', value: classObject.scale})
+        return classObject
+      }
     }
   }
 }
