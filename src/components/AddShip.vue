@@ -71,10 +71,12 @@ export default {
   },
   methods: {
     commitNewShip () {
-      this.$store.commit('createNewShip')
-      this.addMessage = 'Added'
-      this.$store.commit('updateShowAddShip', true)
-      setTimeout(() => { this.addMessage = 'Add Ship' }, 1000)
+      if (this.currentShipName.length * this.currentShipRegistry.length * this.currentShipClass.length) {
+        this.$store.commit('createNewShip')
+        this.addMessage = 'Added'
+        this.$store.commit('updateShowAddShip', true)
+        setTimeout(() => { this.addMessage = 'Add Ship' }, 1000)
+      }
     }
   },
   computed: {

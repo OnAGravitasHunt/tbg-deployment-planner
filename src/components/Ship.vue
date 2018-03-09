@@ -1,6 +1,7 @@
 <template>
 <div :class="'ship ' + scale" :id="'ncc-' + registry">
   <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/>
+  <span class='edit-icon'>&#9998;</span>
   <div>
     <span>{{prefix}} <em>{{name}}</em>, NCC-{{registry}}</span>
     <span>
@@ -79,5 +80,9 @@ h1, h2 {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-
+.edit-icon {
+  float: right;
+  display: inline-block;
+  transform: rotateZ(70deg);
+}
 </style>
