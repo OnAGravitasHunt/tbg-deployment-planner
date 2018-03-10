@@ -1,8 +1,8 @@
 <template>
 <div id="saveload">
-  <button v-on:click="saveState">{{saveMessage}}</button>
-  <button v-on:click="loadState">{{loadMessage}}</button>
-  <button v-on:click="showAddShipModal = true">Add Ship</button>
+  <button class='storage-button' @click="saveState">{{saveMessage}}</button>
+  <button class='storage-button' @click="loadState">{{loadMessage}}</button>
+  <button class='storage-button' @click="showAddShipModal = true">Add Ship</button>
 </div>
 </template>
 
@@ -51,20 +51,22 @@ export default {
   margin-top: 0;
 }
 button {
-  background-color: #f90;
+  background-color: #06a;
   color: white;
   height: 40px;
   width: 100px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 0px;
-  color: black;
   display: inline-block;
   /* text-align: center; */
-  margin: 5px 10px;
+  margin: 5px 5px;
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+button:first-child {
+  margin-left: 20px;
 }
 </style>
