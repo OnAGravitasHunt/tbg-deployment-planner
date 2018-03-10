@@ -2,14 +2,15 @@
 <div :class="'ship ' + scale" :id="'ncc-' + registry">
   <!-- <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/> -->
   <div class='ship-data'>
-    <p class='ship-data-item'>{{prefix}} <em>{{name}}</em></p>
     <p class='ship-data-item'>NCC-{{registry}}</p>
-    <span class='ship-data-item'>
+    <p class='ship-data-item'>{{prefix}} <em>{{name}}</em></p>
+    <p class='ship-data-item'>
       <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
-    </span>
+    </p>
   </div>
   <div class='ship-operations'>
-    <span class='edit-icon'>&#9998;</span>
+    <span class='icon info-icon'>&#9432;</span>
+    <span class='icon edit-icon'>&#9998;</span>
   </div>
 </div>
 </template>
@@ -34,77 +35,81 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 .stat-D {
   font-weight: bold;
 }
 .ship {
+  font-family: 'Avenir';
+  font-size: 15px;
   width: 200px;
-  height: 100px;
-  border: 2px solid;
+  height: 60px;
   border-radius: 0px;
   padding: 10px;
-  color: black;
-  display: inline-block;
+  color: #222;
+  display: inline-flex;
+  flex-flow: row wrap;
   text-align: center;
   cursor: grab;
 }
 .ship-data {
-  width: 80%;
-  height: 80px;
-  display: inline-block;
-  margin: 0;
+  width: 170px;
+  height: 60px;
+  display: inline-flex;
+  flex-flow: row wrap;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 0.5px; */
+  margin: 0px;
 }
 .ship-operations {
-  width: 20%;
-  height: 80px;
-  display: inline-block;
+  width: 20px;
+  height: 60px;
+  display: inline-flex;
+  flex-flow: row wrap;
 }
 .frigate {
-  border-color: #99c;
   background-color: #99c;
 }
 .cruiser {
-  border-color: #c66;
   background-color: #c66;
 }
 .explorer {
-  border-color: #fc9;
-  background-color: #fc9;
+  /* background-color: #fc9; */
+  background-color: #c60;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  float: right;
+  display: inline-block;
+  cursor: pointer;
+}
+.edit-icon {
+  transform: rotateZ(70deg);
+}
+.ship-data-item {
+  width: 170px;
+  margin: 0px;
 }
 #available-ships .ship {
   margin: 2px auto;
 }
 #available-ships .ship:first-child {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
 }
 #available-ships .ship:last-child {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 .sector-drag .ship {
   margin: 4px;
 }
 .sector-drag .ship:first-child {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
 }
 .sector-drag .ship:last-child {
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-.edit-icon {
-  width: 20px;
-  height: 20px;
-  float: right;
-  display: inline-block;
-  transform: rotateZ(70deg);
-  cursor: pointer;
-}
-.ship-data-item {
-  margin: 0;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 </style>
