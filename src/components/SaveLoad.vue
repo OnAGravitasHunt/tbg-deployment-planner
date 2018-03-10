@@ -10,7 +10,7 @@
 const DEPLOYMENT_KEY = 'deployment'
 
 export default {
-  name: 'saveload',
+  name: 'SaveLoad',
   data () {
     return {
       saveMessage: 'Save',
