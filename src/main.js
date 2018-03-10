@@ -22,6 +22,11 @@ const store = new Vuex.Store({
       prefix: 'USS',
       scale: '',
       stats: ''
+    },
+    filterCriteria: {
+      shipClass: '',
+      scale: '',
+      minDef: 0
     }
   },
   getters: {
@@ -29,9 +34,7 @@ const store = new Vuex.Store({
     sectors: state => state.deployment.sectors
   },
   mutations: {
-    updateAvail (state, value) { // update list of unassigned ships
-      state.deployment.ships = value
-    },
+    // Save/Load
     updateSector (state, payload) { // update list of ships in sector
       state.deployment.sectors[payload.sectorIndex].ships = payload.shipList
     },
@@ -39,8 +42,13 @@ const store = new Vuex.Store({
       state.deployment.ships = save.ships
       state.deployment.sectors = save.sectors
     },
+    // Deployment
+    updateAvail (state, value) { // update list of unassigned ships
+      state.deployment.ships = value
+    },
+    // Ship creation
     updateShowAddShip (state, value) { // update addShip modal visibility
-      if (value === true) { // blank out any existing ship
+      if (value === true) { // blank out any existing ship if opening
         state.newShip = {
           registry: '',
           name: '',
