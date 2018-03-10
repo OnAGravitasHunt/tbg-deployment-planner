@@ -1,12 +1,15 @@
 <template>
 <div :class="'ship ' + scale" :id="'ncc-' + registry">
-  <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/>
-  <span class='edit-icon'>&#9998;</span>
-  <div>
-    <span>{{prefix}} <em>{{name}}</em>, NCC-{{registry}}</span>
-    <span>
+  <!-- <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/> -->
+  <div class='ship-data'>
+    <p class='ship-data-item'>{{prefix}} <em>{{name}}</em></p>
+    <p class='ship-data-item'>NCC-{{registry}}</p>
+    <span class='ship-data-item'>
       <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
     </span>
+  </div>
+  <div class='ship-operations'>
+    <span class='edit-icon'>&#9998;</span>
   </div>
 </div>
 </template>
@@ -39,12 +42,25 @@ h1, h2 {
 }
 .ship {
   width: 200px;
+  height: 100px;
   border: 2px solid;
   border-radius: 0px;
   padding: 10px;
   color: black;
   display: inline-block;
   text-align: center;
+  cursor: grab;
+}
+.ship-data {
+  width: 80%;
+  height: 80px;
+  display: inline-block;
+  margin: 0;
+}
+.ship-operations {
+  width: 20%;
+  height: 80px;
+  display: inline-block;
 }
 .frigate {
   border-color: #99c;
@@ -81,8 +97,14 @@ h1, h2 {
   border-bottom-right-radius: 15px;
 }
 .edit-icon {
+  width: 20px;
+  height: 20px;
   float: right;
   display: inline-block;
   transform: rotateZ(70deg);
+  cursor: pointer;
+}
+.ship-data-item {
+  margin: 0;
 }
 </style>
