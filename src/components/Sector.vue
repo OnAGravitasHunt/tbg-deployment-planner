@@ -27,8 +27,7 @@ export default {
         return this.$store.state.deployment.sectors[this.index].ships
       },
       set (value) {
-        let payload = {sectorIndex: this.index, shipList: value}
-        this.$store.commit('updateSector', payload)
+        this.$store.commit('updateSector', {sectorIndex: this.index, shipList: value})
       }
     }
   }

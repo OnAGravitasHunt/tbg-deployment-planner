@@ -23,9 +23,16 @@ const store = new Vuex.Store({
       scale: '',
       stats: ''
     },
-    filterCriteria: {
-      shipClass: '',
-      scale: '',
+    filterCategories: {
+      shipClass: {
+        renaissance: true,
+        kepler: true
+      },
+      scale: {
+        frigate: true,
+        cruiser: true,
+        explorer: true
+      },
       minDef: 0
     }
   },
@@ -35,9 +42,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     // Save/Load
-    updateSector (state, payload) { // update list of ships in sector
-      state.deployment.sectors[payload.sectorIndex].ships = payload.shipList
-    },
     restoreSave (state, save) { // restore save from localstorage
       state.deployment.ships = save.ships
       state.deployment.sectors = save.sectors
@@ -45,6 +49,13 @@ const store = new Vuex.Store({
     // Deployment
     updateAvail (state, value) { // update list of unassigned ships
       state.deployment.ships = value
+    },
+    updateSector (state, payload) { // update list of ships in sector
+      state.deployment.sectors[payload.sectorIndex].ships = payload.shipList
+    },
+    // List filtering
+    updateFilter (state, {category, criterion, value}) { // update filter criterion
+      state.filterCategories[category][criterion] = value
     },
     // Ship creation
     updateShowAddShip (state, value) { // update addShip modal visibility
