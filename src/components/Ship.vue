@@ -1,5 +1,5 @@
 <template>
-<div :class="'ship ' + scale" :id="'ncc-' + registry">
+<div :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
   <!-- <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/> -->
   <div class='ship-data'>
     <p class='ship-data-item'>NCC-{{registry}}</p>
@@ -23,6 +23,9 @@ export default {
   computed: {
     imgUrl () {
       return `/static/${this.shipClass.toLowerCase()}.png`
+    },
+    filterShow () {
+      return this.$store.state.filterCategories.shipClass[this.shipClass] && this.$store.state.filterCategories.scale[this.scale]
     }
   },
   data () {
@@ -93,14 +96,14 @@ export default {
 #available-ships .ship {
   margin: 2px auto;
 }
-#available-ships .ship:first-child {
+/* #available-ships .ship:first-child {
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 }
 #available-ships .ship:last-child {
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-}
+} */
 .sector-drag .ship {
   margin: 4px;
 }
@@ -111,5 +114,8 @@ export default {
 .sector-drag .ship:last-child {
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
+}
+.vis-false {
+  visibility: collapse;
 }
 </style>

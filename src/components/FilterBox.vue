@@ -16,14 +16,6 @@ export default {
     }
   },
   computed: {
-    availableShips: {
-      get () {
-        return this.$store.state.deployment.ships
-      },
-      set (value) {
-        this.$store.commit('updateAvail', value)
-      }
-    },
     categoryKey () {
       if (this.category === 'class') {
         return 'shipClass'
@@ -33,7 +25,6 @@ export default {
     },
     filterValue: {
       get () {
-        // console.log(this.$store.state.)
         return this.$store.state.filterCategories[this.categoryKey][this.criterion]
       },
       set (value) {

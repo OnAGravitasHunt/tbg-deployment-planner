@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import Vuex from 'vuex'
 import allData from './assets/allData.json'
+import shipDataFields from './assets/shipDataFields.json'
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
@@ -24,10 +25,7 @@ const store = new Vuex.Store({
       stats: ''
     },
     filterCategories: {
-      shipClass: {
-        renaissance: true,
-        kepler: true
-      },
+      shipClass: shipDataFields.shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
       scale: {
         frigate: true,
         cruiser: true,
