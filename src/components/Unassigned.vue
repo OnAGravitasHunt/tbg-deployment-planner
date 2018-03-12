@@ -2,13 +2,15 @@
 <div id='nav-left-wrapper'>
   <h2>Filter Criteria</h2>
 
-  <h3>Filter by Class</h3>
-  <div id='filter-wrapper-class' class='filter-wrapper'>
+  <!-- <h3>Filter by Class</h3> -->
+  <label for='show-class-filter'><input type='checkbox' id='show-class-filter' v-model="classFilterShow">Filter by Class</label>
+  <div id='filter-wrapper-class' :class="`filter-wrapper filter-show-${classFilterShow}`">
     <FilterBox v-for="shipClass of shipClasses" :key="shipClass" category='class' :criterion="shipClass"></FilterBox>
   </div>
 
-  <h3>Filter by Scale</h3>
-  <div id='filter-wrapper-scale' class='filter-wrapper'>
+  <!-- <h3>Filter by Scale</h3> -->
+  <label for='show-scale-filter'><input type='checkbox' id='show-scale-filter' v-model="scaleFilterShow">Filter by Scale</label>
+  <div id='filter-wrapper-scale' :class="`filter-wrapper filter-show-${scaleFilterShow}`">
     <FilterBox v-for="scale of shipScales" :key="scale" category='scale' :criterion="scale"></FilterBox>
   </div>
 
@@ -37,7 +39,9 @@ export default {
   data () {
     return {
       shipClasses: shipDataFields.shipClasses.map((el) => el.name),
-      shipScales: ['frigate', 'cruiser', 'explorer']
+      shipScales: ['frigate', 'cruiser', 'explorer'],
+      classFilterShow: true,
+      scaleFilterShow: true
     }
   },
   computed: {
@@ -61,6 +65,7 @@ export default {
 <style scoped>
 h2 {
   margin: 10px auto;
+  flex-shrink: 0;
 }
 h3 {
   margin: 0 auto 10px auto;
@@ -73,11 +78,15 @@ h3 {
   float: left;
   background-color: #ccc;
   margin-top: 50px;
-  overflow-y: hidden;
+  /* overflow-y: scroll; */
+  display: flex;
+  flex-flow: column;
 }
 #unassigned-wrapper {
-  height: 45%;
+  /* height: 45%; */
+  width: 100%;
   overflow-y: scroll;
+  flex-shrink: 1;
 }
 #available-ships {
   min-height: 200px;
@@ -85,11 +94,32 @@ h3 {
 }
 .filter-wrapper {
   height: 210px;
+  width: 100%;
   overflow-y: scroll;
   display: flex;
   flex-flow: row wrap;
+  flex-shrink: 0;
 }
-#filter-wrapper-scale {
+#filter-wrapper-scale.filter-show-true {
   height: 60px;
+}
+.filter-show-false {
+  visibility: collapse;
+  height: 10px;
+}
+label {
+  font-size: 19px;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+input {
+  margin: 0;
+  visibility: collapse;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
 }
 </style>
