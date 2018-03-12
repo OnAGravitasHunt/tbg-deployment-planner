@@ -1,5 +1,25 @@
 {
   "ships": [{
+      "registry": "2010",
+      "name": "Avandar",
+      "shipClass": "Excelsior-A",
+      "prefix": "USS",
+      "scale": "explorer",
+      "classStats": [7, 6, 4, 6, 6, 6],
+      "veterancy": 1,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
+    },
+    {
+      "registry": "2001",
+      "name": "Excalibur",
+      "shipClass": "Excelsior-A",
+      "prefix": "USS",
+      "scale": "explorer",
+      "classStats": [7, 6, 4, 6, 6, 6],
+      "veterancy": 0,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
+    },
+    {
       "registry": "2602",
       "name": "Reason",
       "shipClass": "Renaissance",
@@ -20,32 +40,32 @@
       "bonusStats": [0, 0, 0, 0, 0, 0]
     },
     {
-      "registry": "2604",
-      "name": "Enlightenment",
-      "shipClass": "Renaissance",
+      "registry": "1742",
+      "name": "Hood",
+      "shipClass": "Constitution-B",
       "prefix": "USS",
       "scale": "cruiser",
-      "classStats": [5, 3, 4, 5, 4, 5],
-      "veterancy": 0,
+      "classStats": [5, 3, 3, 4, 3, 5],
+      "veterancy": 1,
       "bonusStats": [0, 0, 0, 0, 0, 0]
     },
     {
-      "registry": "2605",
-      "name": "Insight",
-      "shipClass": "Renaissance",
+      "registry": "2105",
+      "name": "Lightning",
+      "shipClass": "Centaur-A",
       "prefix": "USS",
-      "scale": "cruiser",
-      "classStats": [5, 3, 4, 5, 4, 5],
-      "veterancy": 0,
-      "bonusStats": [0, 0, 0, 0, 0, 0]
+      "scale": "frigate",
+      "classStats": [3, 3, 2, 3, 3, 3],
+      "veterancy": 1,
+      "bonusStats": [0, 1, 0, 0, 0, 0]
     },
     {
-      "registry": "2617",
-      "name": "Torch",
-      "shipClass": "Renaissance",
+      "registry": "4101",
+      "name": "Kepler",
+      "shipClass": "Kepler",
       "prefix": "USS",
-      "scale": "cruiser",
-      "classStats": [5, 3, 4, 5, 4, 5],
+      "scale": "frigate",
+      "classStats": [2, 7, 2, 4, 5, 5],
       "veterancy": 0,
       "bonusStats": [0, 0, 0, 0, 0, 0]
     }
