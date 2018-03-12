@@ -50,8 +50,5 @@ export default {
 }
 .sector-drag {
   height: inherit;
-  /* height: 100px; */
-  /* width: 100%; */
-  /* overflow-x: scroll; */
 }
 </style>

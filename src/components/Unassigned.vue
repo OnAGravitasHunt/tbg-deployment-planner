@@ -40,8 +40,8 @@ export default {
     return {
       shipClasses: shipDataFields.shipClasses.map((el) => el.name),
       shipScales: ['frigate', 'cruiser', 'explorer'],
-      classFilterShow: true,
-      scaleFilterShow: true
+      classFilterShow: false,
+      scaleFilterShow: false
     }
   },
   computed: {

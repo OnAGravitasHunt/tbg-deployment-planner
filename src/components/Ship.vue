@@ -19,7 +19,6 @@
 export default {
   name: 'Ship',
   props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'classStats', 'veterancy', 'bonusStats'],
-  // {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]}
   computed: {
     imgUrl () {
       return `/static/${this.shipClass.toLowerCase()}.png`
@@ -63,8 +62,6 @@ export default {
   height: 60px;
   display: inline-flex;
   flex-flow: row wrap;
-  /* text-transform: uppercase; */
-  /* letter-spacing: 0.5px; */
   margin: 0px;
 }
 .ship-operations {
@@ -80,7 +77,6 @@ export default {
   background-color: #c66;
 }
 .explorer {
-  /* background-color: #fc9; */
   background-color: #c60;
 }
 .icon {
