@@ -1,15 +1,15 @@
 <template>
 <div id='nav-left-wrapper'>
   <h2>Filter Criteria</h2>
+
+  <h3>Filter by Class</h3>
   <div id='filter-wrapper-class' class='filter-wrapper'>
-    <h3>Filter by Class</h3>
     <FilterBox v-for="shipClass of shipClasses" :key="shipClass" category='class' :criterion="shipClass"></FilterBox>
-    <!-- <FilterBox category='class' criterion='Kepler'></FilterBox> -->
   </div>
+
+  <h3>Filter by Scale</h3>
   <div id='filter-wrapper-scale' class='filter-wrapper'>
-    <h3>Filter by Scale</h3>
     <FilterBox v-for="scale of shipScales" :key="scale" category='scale' :criterion="scale"></FilterBox>
-    <!-- <FilterBox category='class' criterion='Kepler'></FilterBox> -->
   </div>
 
   <h2>Available Starships</h2>
@@ -84,11 +84,12 @@ h3 {
   padding-bottom: 100px;
 }
 .filter-wrapper {
-  /* margin: 10px auto; */
-  height: 20%;
+  height: 210px;
   overflow-y: scroll;
+  display: flex;
+  flex-flow: row wrap;
 }
 #filter-wrapper-scale {
-  height: 15%;
+  height: 60px;
 }
 </style>
