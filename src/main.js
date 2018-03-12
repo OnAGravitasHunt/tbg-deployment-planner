@@ -16,6 +16,8 @@ const store = new Vuex.Store({
       sectors: allData.sectors
     },
     showAddShip: false,
+    showEditShip: false,
+    editTargetParent: '',
     newShip: {
       registry: '',
       name: '',
@@ -57,7 +59,7 @@ const store = new Vuex.Store({
     updateFilter (state, {category, criterion, value}) { // update filter criterion
       state.filterCategories[category][criterion] = value
     },
-    // Ship creation
+    // Ship editing/creation
     updateShowAddShip (state, value) { // update addShip modal visibility
       if (value === true) { // blank out any existing ship if opening
         state.newShip = {
@@ -73,11 +75,42 @@ const store = new Vuex.Store({
       }
       state.showAddShip = value
     },
+    updateShowEditShip (state, value) { // update addShip modal visibility
+      state.showEditShip = value
+    },
     updateNewShipField (state, {field, value}) { // update field of newShip
       state.newShip[field] = value
     },
+    updateNewShipAllFields (state, shipObj) {
+      // console.log('updating')
+      Object.assign(state.newShip, shipObj)
+    },
     createNewShip (state) {
       state.deployment.ships.push(Object.assign({}, state.newShip))
+    },
+    commitShipChanges (state) {
+      let targetArr, target
+      if (state.editTargetParent === 'available-ships') {
+        targetArr = state.deployment.ships
+      } else {
+        targetArr = state.deployment.sectors[Number(this.editTargetParent.split('-').pop())].ships
+      }
+      target = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
+      Object.assign(targetArr[target], state.newShip)
+      state.showEditShip = false
+      state.newShip = {
+        registry: '',
+        name: '',
+        shipClass: '',
+        prefix: 'USS',
+        scale: '',
+        classStats: [0, 0, 0, 0, 0, 0],
+        veterancy: 0,
+        bonusStats: [0, 0, 0, 0, 0, 0]
+      }
+    },
+    setEditTargetParent (state, t) {
+      state.editTargetParent = t
     }
   }
 })

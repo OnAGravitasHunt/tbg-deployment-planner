@@ -10,7 +10,7 @@
   </div>
   <div class='ship-operations'>
     <span class='icon info-icon'>&#9432;</span>
-    <span class='icon edit-icon'>&#9998;</span>
+    <span class='icon edit-icon' @click="editShip">&#9998;</span>
   </div>
 </div>
 </template>
@@ -28,12 +28,33 @@ export default {
     },
     stats () {
       return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+    },
+    shipObj () {
+      return {
+        registry: this.registry,
+        name: this.name,
+        shipClass: this.shipClass,
+        prefix: this.prefix,
+        scale: this.scale,
+        classStats: this.classStats,
+        veterancy: this.veterancy,
+        bonusStats: this.bonusStats
+      }
     }
   },
   data () {
+    // console.log(this.$parent.$attrs.id)
     return {
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
       vetStats: [1, 1, 1, 1, 1, 0]
+    }
+  },
+  methods: {
+    editShip () {
+      // console.log(this.$parent.$attrs.id)
+      this.$store.commit('setEditTargetParent', this.$parent.$attrs.id)
+      this.$store.commit('updateNewShipAllFields', this.shipObj)
+      this.$store.commit('updateShowEditShip', true)
     }
   }
 }
