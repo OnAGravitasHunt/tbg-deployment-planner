@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  z-index: 5;
+}
 #saveload {
   width: 100%;
   height: 50px;

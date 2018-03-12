@@ -92,6 +92,7 @@ export default {
 }
 .edit-icon {
   transform: rotateZ(70deg);
+  z-index: 0;
 }
 .ship-data-item {
   width: 170px;

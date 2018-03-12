@@ -1,9 +1,11 @@
 <template>
 <div class='sector' :id="'sector-' + name">
   <h3>{{name}} &ndash; D{{sectorDef}}/{{def}}</h3>
-  <draggable class='sector-drag' :id="'s-drag-' + index" v-model="sectorShips" :options="{group:'ships'}">
-    <Ship v-for="ship of sectorShips" :key="ship.registry" v-bind="ship"></Ship>
-  </draggable>
+  <div class='sector-drag-wrapper'>
+    <draggable class='sector-drag' :id="'s-drag-' + index" v-model="sectorShips" :options="{group:'ships'}">
+      <Ship v-for="ship of sectorShips" :key="ship.registry" v-bind="ship"></Ship>
+    </draggable>
+  </div>
 </div>
 </template>
 
@@ -38,10 +40,18 @@ export default {
 .sector {
   min-height: 100px;
   text-align: left;
-  padding-left: 30px;
+  padding: 0 30px;
   margin-left: 250px;
 }
+.sector-drag-wrapper {
+  height: 100px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
 .sector-drag {
-  min-height: inherit;
+  height: inherit;
+  /* height: 100px; */
+  /* width: 100%; */
+  /* overflow-x: scroll; */
 }
 </style>
