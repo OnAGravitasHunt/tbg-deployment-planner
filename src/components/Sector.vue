@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     sectorDef () {
-      return this.sectorShips.reduce((acc, curr) => acc + curr.stats[5], 0)
+      return this.sectorShips.reduce((acc, curr) => acc + curr.classStats[5] + curr.bonusStats[5], 0)
     },
     sectorShips: {
       get () {

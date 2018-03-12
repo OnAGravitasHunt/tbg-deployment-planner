@@ -5,7 +5,9 @@
       "shipClass": "Renaissance",
       "prefix": "USS",
       "scale": "cruiser",
-      "stats": [5, 3, 4, 5, 4, 5]
+      "classStats": [5, 3, 4, 5, 4, 5],
+      "veterancy": 0,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
     },
     {
       "registry": "2603",
@@ -13,7 +15,9 @@
       "shipClass": "Renaissance",
       "prefix": "USS",
       "scale": "cruiser",
-      "stats": [5, 3, 4, 5, 4, 5]
+      "classStats": [5, 3, 4, 5, 4, 5],
+      "veterancy": 0,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
     },
     {
       "registry": "2604",
@@ -21,7 +25,9 @@
       "shipClass": "Renaissance",
       "prefix": "USS",
       "scale": "cruiser",
-      "stats": [5, 3, 4, 5, 4, 5]
+      "classStats": [5, 3, 4, 5, 4, 5],
+      "veterancy": 0,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
     },
     {
       "registry": "2605",
@@ -29,7 +35,9 @@
       "shipClass": "Renaissance",
       "prefix": "USS",
       "scale": "cruiser",
-      "stats": [5, 3, 4, 5, 4, 5]
+      "classStats": [5, 3, 4, 5, 4, 5],
+      "veterancy": 0,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
     },
     {
       "registry": "2617",
@@ -37,7 +45,9 @@
       "shipClass": "Renaissance",
       "prefix": "USS",
       "scale": "cruiser",
-      "stats": [5, 3, 4, 5, 4, 5]
+      "classStats": [5, 3, 4, 5, 4, 5],
+      "veterancy": 0,
+      "bonusStats": [0, 0, 0, 0, 0, 0]
     }
   ],
   "sectors": [{

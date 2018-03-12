@@ -22,7 +22,9 @@ const store = new Vuex.Store({
       shipClass: '',
       prefix: 'USS',
       scale: '',
-      stats: ''
+      classStats: [0, 0, 0, 0, 0, 0],
+      veterancy: 0,
+      bonusStats: [0, 0, 0, 0, 0, 0]
     },
     filterCategories: {
       shipClass: shipDataFields.shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
@@ -64,7 +66,9 @@ const store = new Vuex.Store({
           shipClass: '',
           prefix: 'USS',
           scale: '',
-          stats: ''
+          classStats: [0, 0, 0, 0, 0, 0],
+          veterancy: 0,
+          bonusStats: [0, 0, 0, 0, 0, 0]
         }
       }
       state.showAddShip = value

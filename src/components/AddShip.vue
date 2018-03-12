@@ -30,12 +30,12 @@
             </li>
             <li>
               <span>Veterancy: </span>
-              <select v-model="selectedVet">
-                <option v-for="vet of veterancies" :key="vet">{{vet}}</option>
+              <select v-model="currentShipVet">
+                <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
               </select>
             </li>
             <li>
-              <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(selectedVet)"></StatChanger>
+              <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
             </li>
           </ul>
         </div>
@@ -65,8 +65,7 @@ export default {
       addMessage: 'Add Ship',
       prefixes: shipDataFields.prefixes,
       shipClasses: shipDataFields.shipClasses,
-      veterancies: shipDataFields.veterancies,
-      selectedVet: 'Green'
+      veterancies: shipDataFields.veterancies
     }
   },
   methods: {
@@ -118,6 +117,18 @@ export default {
       },
       set (shipClass) {
         this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
+        this.$store.commit('updateNewShipField', {field: 'classStats', value: this.currentShipClassObject.stats})
+      }
+    },
+    currentShipClassStats () {
+      return this.$store.state.newShip.classStats
+    },
+    currentShipVet: {
+      get () {
+        return this.$store.state.newShip.veterancy
+      },
+      set (vet) {
+        this.$store.commit('updateNewShipField', {field: 'veterancy', value: vet})
       }
     },
     currentShipClassObject () {

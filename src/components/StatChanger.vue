@@ -10,7 +10,7 @@
 
       <tr class='up-row'>
         <th>Base stats</th>
-        <td v-for="(stat, index) of baseStats" :key="'base-' + statOrder[index]">
+        <td v-for="(stat, index) of classStats" :key="'base-' + statOrder[index]">
           {{stat}}
         </td>
       </tr>
@@ -57,22 +57,36 @@
 <script>
 export default {
   name: 'StatChanger',
-  props: ['classStats', 'veterancy'],
+  // props: ['classStats'],
   data () {
     return {
-      bonusStats: [0, 0, 0, 0, 0, 0],
+      // bonusStats: [0, 0, 0, 0, 0, 0],
       vetStats: [1, 1, 1, 1, 1, 0],
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
     }
   },
   computed: {
     stats () {
-      let newStats = this.baseStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
-      this.$store.commit('updateNewShipField', {field: 'stats', value: newStats})
-      return newStats
+      return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
+      // this.$store.commit('updateNewShipField', {field: 'stats', value: newStats})
+      // return newStats
     },
-    baseStats () {
-      return this.classStats
+    // classStats () {
+    //   return this.classStats
+    // },
+    bonusStats: {
+      get () {
+        return this.$store.state.newShip.bonusStats
+      },
+      set (newStats) {
+        this.$store.commit('updateNewShipField', {field: 'bonusStats', value: newStats})
+      }
+    },
+    veterancy () {
+      return this.$store.state.newShip.veterancy
+    },
+    classStats () {
+      return this.$store.state.newShip.classStats
     }
   },
   methods: {

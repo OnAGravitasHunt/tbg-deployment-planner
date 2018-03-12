@@ -18,7 +18,7 @@
 <script>
 export default {
   name: 'Ship',
-  props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'stats'],
+  props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'classStats', 'veterancy', 'bonusStats'],
   // {registry: 2617, name: 'Torch', shipClass: 'Renaissance', prefix: 'USS', scale: 'cruiser', stats: [5, 3, 4, 5, 4, 5]}
   computed: {
     imgUrl () {
@@ -26,11 +26,15 @@ export default {
     },
     filterShow () {
       return this.$store.state.filterCategories.shipClass[this.shipClass] && this.$store.state.filterCategories.scale[this.scale]
+    },
+    stats () {
+      return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
     }
   },
   data () {
     return {
-      statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
+      statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
+      vetStats: [1, 1, 1, 1, 1, 0]
     }
   }
 }
@@ -115,7 +119,7 @@ export default {
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }
-.vis-false {
+#available-ships .vis-false {
   visibility: collapse;
 }
 </style>
