@@ -6,7 +6,7 @@
         <!--  -->
         <div class='modal-header'>
           <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Edit New Starship</div>
+          <div class='lcars-bar lcars-bar-main'>Edit Starship</div>
           <div class='lcars-bar lcars-bar-right'></div>
 
         </div>
