@@ -117,6 +117,6 @@ export default {
   border-bottom-right-radius: 40px;
 }
 #available-ships .vis-false {
-  visibility: collapse;
+  display: none;
 }
 </style>
