@@ -52,8 +52,11 @@ const store = new Vuex.Store({
     updateAvail (state, value) { // update list of unassigned ships
       state.deployment.ships = value
     },
-    updateSector (state, payload) { // update list of ships in sector
-      state.deployment.sectors[payload.sectorIndex].ships = payload.shipList
+    updateSector (state, {sectorIndex, shipList}) { // update list of ships in sector
+      state.deployment.sectors[sectorIndex].ships = shipList
+    },
+    updateAvailAppend (state, value) { // update list of unassigned ships
+      state.deployment.ships.push(value)
     },
     // List filtering
     updateFilter (state, {category, criterion, value}) { // update filter criterion

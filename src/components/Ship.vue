@@ -1,5 +1,5 @@
 <template>
-<div :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
+<div @dblclick='unassignShip' :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
   <!-- <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/> -->
   <div class='ship-data'>
     <!-- <p class='ship-data-item'>NCC-{{registry}}</p> -->
@@ -64,6 +64,14 @@ export default {
       this.$store.commit('setEditTargetParent', this.$parent.$attrs.id)
       this.$store.commit('updateNewShipAllFields', this.shipObj)
       this.$store.commit('updateShowEditShip', true)
+    },
+    unassignShip (event) {
+      if (this.$parent.$attrs.id !== 'available-ships') {
+        let i = Number(this.$parent.$attrs.id.split('-').pop())
+        let newSector = this.$store.state.deployment.sectors[i].ships.filter(el => el.registry !== this.registry)
+        this.$store.commit('updateSector', {sectorIndex: i, shipList: newSector})
+        this.$store.commit('updateAvailAppend', this.shipObj)
+      }
     }
   }
 }
