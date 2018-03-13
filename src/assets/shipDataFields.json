@@ -70,6 +70,22 @@
       "stats": [2, 3, 1, 3, 2, 2]
     }
   ],
+  "memberShipClasses": [{
+      "name": "Riala-A",
+      "scale": "explorer",
+      "stats": [8, 5, 6, 9, 5, 6]
+    },
+    {
+      "name": "Perciar",
+      "scale": "cruiser",
+      "stats": [3, 2, 3, 2, 1, 3]
+    },
+    {
+      "name": "Hebrinda-A",
+      "scale": "cruiser",
+      "stats": [5, 2, 3, 5, 3, 4]
+    }
+  ],
   "prefixes": ["USS"],
   "veterancies": ["Green", "Blooded", "Veteran", "Elite"]
 }
