@@ -60,9 +60,9 @@ button {
   width: 100px;
   border: none;
   border-radius: 20px;
+  outline: none;
   padding: 0px;
   display: inline-block;
-  /* text-align: center; */
   margin: 5px 5px;
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -2,8 +2,9 @@
 <div :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
   <!-- <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/> -->
   <div class='ship-data'>
-    <p class='ship-data-item'>NCC-{{registry}}</p>
+    <!-- <p class='ship-data-item'>NCC-{{registry}}</p> -->
     <p class='ship-data-item'>{{prefix}} <em>{{name}}</em></p>
+    <p class='ship-data-item' v-html="displayClassName"></p>
     <p class='ship-data-item'>
       <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
     </p>
@@ -39,6 +40,14 @@ export default {
         classStats: this.classStats,
         veterancy: this.veterancy,
         bonusStats: this.bonusStats
+      }
+    },
+    displayClassName () {
+      let bits = this.shipClass.split('-')
+      if (bits.length === 1) {
+        return `<em>${bits[0]}</em>`
+      } else {
+        return `<em>${bits[0]}</em>-${bits[1]}`
       }
     }
   },
@@ -138,6 +147,9 @@ export default {
   border-bottom-right-radius: 40px;
 }
 #available-ships .vis-false {
+  display: none;
+}
+.stat-C, .stat-H, .stat-L {
   display: none;
 }
 </style>

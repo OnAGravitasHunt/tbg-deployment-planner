@@ -59,6 +59,10 @@ const store = new Vuex.Store({
     updateFilter (state, {category, criterion, value}) { // update filter criterion
       state.filterCategories[category][criterion] = value
     },
+    updateFilterAll (state, {category, value}) { // update all filter criteria in a category
+      // console.log(state.filterCategories[category])
+      Object.keys(state.filterCategories[category]).forEach(v => { state.filterCategories[category][v] = value })
+    },
     // Ship editing/creation
     updateShowAddShip (state, value) { // update addShip modal visibility
       if (value === true) { // blank out any existing ship if opening

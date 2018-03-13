@@ -42,8 +42,10 @@ export default {
   text-align: left;
   padding: 0 30px;
   margin-left: 250px;
+  border-bottom: 2px solid white;
 }
 .sector-drag-wrapper {
+  border-top: 1px solid #ccc;
   height: 100px;
   overflow-x: scroll;
   white-space: nowrap;

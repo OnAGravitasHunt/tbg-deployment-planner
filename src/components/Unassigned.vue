@@ -5,12 +5,14 @@
   <!-- <h3>Filter by Class</h3> -->
   <label for='show-class-filter'><input type='checkbox' id='show-class-filter' v-model="classFilterShow">Filter by Class</label>
   <div id='filter-wrapper-class' :class="`filter-wrapper filter-show-${classFilterShow}`">
+    <button class='allnone' @click="selectAllClasses">Select {{classAll}}</button>
     <FilterBox v-for="shipClass of shipClasses" :key="shipClass" category='class' :criterion="shipClass"></FilterBox>
   </div>
 
   <!-- <h3>Filter by Scale</h3> -->
   <label for='show-scale-filter'><input type='checkbox' id='show-scale-filter' v-model="scaleFilterShow">Filter by Scale</label>
   <div id='filter-wrapper-scale' :class="`filter-wrapper filter-show-${scaleFilterShow}`">
+    <button class='allnone' @click="selectAllScales">Select {{scaleAll}}</button>
     <FilterBox v-for="scale of shipScales" :key="scale" category='scale' :criterion="scale"></FilterBox>
   </div>
 
@@ -41,7 +43,9 @@ export default {
       shipClasses: shipDataFields.shipClasses.map((el) => el.name),
       shipScales: ['frigate', 'cruiser', 'explorer'],
       classFilterShow: false,
-      scaleFilterShow: false
+      scaleFilterShow: false,
+      classAllSelected: true,
+      scaleAllSelected: true
     }
   },
   computed: {
@@ -52,11 +56,22 @@ export default {
       set (value) {
         this.$store.commit('updateAvail', value)
       }
+    },
+    classAll () {
+      return this.classAllSelected ? 'none' : 'all'
+    },
+    scaleAll () {
+      return this.scaleAllSelected ? 'none' : 'all'
     }
   },
   methods: {
-    setFilterCriterion (field, value) {
-      this.$store.state.commit('update')
+    selectAllClasses () {
+      this.classAllSelected = !this.classAllSelected
+      this.$store.commit('updateFilterAll', {category: 'shipClass', value: this.classAllSelected})
+    },
+    selectAllScales () {
+      this.scaleAllSelected = !this.scaleAllSelected
+      this.$store.commit('updateFilterAll', {category: 'scale', value: this.scaleAllSelected})
     }
   }
 }
@@ -83,7 +98,6 @@ h3 {
   flex-flow: column;
 }
 #unassigned-wrapper {
-  /* height: 45%; */
   width: 100%;
   overflow-y: scroll;
   flex-shrink: 1;
@@ -93,7 +107,7 @@ h3 {
   padding-bottom: 100px;
 }
 .filter-wrapper {
-  height: 210px;
+  /* height: 210px; */
   width: 100%;
   overflow-y: scroll;
   display: flex;
@@ -101,11 +115,26 @@ h3 {
   flex-shrink: 0;
 }
 #filter-wrapper-scale.filter-show-true {
-  height: 60px;
+  /* height: 60px; */
 }
 .filter-show-false {
   visibility: collapse;
   height: 10px;
+}
+.allnone {
+  height: 22px;
+  font-size: 14px;
+  width: 100%;
+  margin: 2px;
+  padding: 0;
+  border-radius: 11px;
+  border: none;
+  outline: none;
+  background-color: #c90;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
 label {
   font-size: 19px;

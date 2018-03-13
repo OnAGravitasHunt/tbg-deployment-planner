@@ -40,9 +40,9 @@ export default {
   margin: 1px 2.5px;
   width: 48%;
   /* border: 1px solid black; */
-  border-radius: 13px;
+  border-radius: 12px;
   box-sizing: border-box;
-  height: 26px;
+  height: 24px;
 }
 .filter-true {
   background-color: #9c9;
