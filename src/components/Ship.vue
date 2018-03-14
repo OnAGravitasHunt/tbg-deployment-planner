@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'Ship',
-  props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'classStats', 'veterancy', 'bonusStats'],
+  props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'classStats', 'veterancy', 'bonusStats', 'mobile'],
   computed: {
     imgUrl () {
       return `/static/${this.shipClass.toLowerCase()}.png`
@@ -82,6 +82,9 @@ export default {
 .stat-D {
   font-weight: bold;
 }
+.stat-C, .stat-H, .stat-L {
+  display: none;
+}
 .ship {
   font-family: 'Avenir';
   font-size: 15px;
@@ -117,6 +120,30 @@ export default {
 .explorer {
   background-color: #c60;
 }
+.station {
+  background: repeating-linear-gradient(
+    45deg,
+    #89f,
+    #89f 20px,
+    #77f 20px,
+    #77f 40px
+  );
+}
+.station > .ship-data {
+  background-color: #89f;
+  /* width: 130px; */
+  /* margin: 0 20px; */
+  border-radius: 30px;
+}
+.station > .ship-operations {
+  background-color: #89f;
+  /* width: 130px; */
+  /* margin: 0 20px; */
+  border-radius: 30px;
+}
+.station em {
+  font-style: normal;
+}
 .icon {
   width: 20px;
   height: 20px;
@@ -129,7 +156,7 @@ export default {
   z-index: 0;
 }
 .ship-data-item {
-  width: 170px;
+  width: 100%;
   margin: 0px;
 }
 #available-ships .ship {
@@ -155,9 +182,6 @@ export default {
   border-bottom-right-radius: 40px;
 }
 #available-ships .vis-false {
-  display: none;
-}
-.stat-C, .stat-H, .stat-L {
   display: none;
 }
 </style>

@@ -26,7 +26,8 @@ const store = new Vuex.Store({
       scale: '',
       classStats: [0, 0, 0, 0, 0, 0],
       veterancy: 0,
-      bonusStats: [0, 0, 0, 0, 0, 0]
+      bonusStats: [0, 0, 0, 0, 0, 0],
+      mobile: true
     },
     filterCategories: {
       shipClass: shipDataFields.shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
@@ -48,6 +49,7 @@ const store = new Vuex.Store({
       state.deployment.ships = save.ships
       state.deployment.sectors = save.sectors
     },
+    //
     // Deployment
     updateAvail (state, value) { // update list of unassigned ships
       state.deployment.ships = value
@@ -58,6 +60,7 @@ const store = new Vuex.Store({
     updateAvailAppend (state, value) { // update list of unassigned ships
       state.deployment.ships.push(value)
     },
+    //
     // List filtering
     updateFilter (state, {category, criterion, value}) { // update filter criterion
       state.filterCategories[category][criterion] = value
@@ -66,6 +69,20 @@ const store = new Vuex.Store({
       // console.log(state.filterCategories[category])
       Object.keys(state.filterCategories[category]).forEach(v => { state.filterCategories[category][v] = value })
     },
+    //
+    // List sorting
+    sortSector (state, sectorIndex) {
+      this.state.deployment.sectors[0].ships.sort(function (a, b) {
+        if (a.scale === 'station') {
+          return -1
+        } else if (b.scale === 'station') {
+          return 1
+        } else {
+          return 0
+        }
+      })
+    },
+    //
     // Ship editing/creation
     updateShowAddShip (state, value) { // update addShip modal visibility
       if (value === true) { // blank out any existing ship if opening
@@ -77,7 +94,8 @@ const store = new Vuex.Store({
           scale: '',
           classStats: [0, 0, 0, 0, 0, 0],
           veterancy: 0,
-          bonusStats: [0, 0, 0, 0, 0, 0]
+          bonusStats: [0, 0, 0, 0, 0, 0],
+          mobile: true
         }
       }
       state.showAddShip = value
@@ -89,7 +107,6 @@ const store = new Vuex.Store({
       state.newShip[field] = value
     },
     updateNewShipAllFields (state, shipObj) {
-      // console.log('updating')
       Object.assign(state.newShip, shipObj)
     },
     createNewShip (state) {

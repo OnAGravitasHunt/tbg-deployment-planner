@@ -2,7 +2,13 @@
 <div class='sector' :id="'sector-' + name">
   <h3>{{name}} &ndash; D{{sectorDef}}/{{def}}</h3>
   <div class='sector-drag-wrapper'>
-    <draggable class='sector-drag' :id="'s-drag-' + index" v-model="sectorShips" :options="{group:'ships'}">
+    <draggable class='sector-drag'
+        :id="'s-drag-' + index"
+        v-model="sectorShips"
+        :options="{group:'ships'}"
+        :move="onMove"
+        @change="onUpdate"
+        >
       <Ship v-for="ship of sectorShips" :key="ship.registry" v-bind="ship"></Ship>
     </draggable>
   </div>
@@ -31,6 +37,15 @@ export default {
       set (value) {
         this.$store.commit('updateSector', {sectorIndex: this.index, shipList: value})
       }
+    }
+  },
+  methods: {
+    onMove (evt) {
+      return evt.draggedContext.element.mobile
+    },
+    onUpdate () {
+      console.log('updating')
+      this.$store.commit('sortSector', this.index)
     }
   }
 }

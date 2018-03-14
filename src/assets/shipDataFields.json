@@ -1,5 +1,6 @@
 {
-  "shipClasses": [{
+  "shipClasses": [
+    {
       "name": "Ambassador",
       "scale": "explorer",
       "stats": [8, 9, 7, 9, 9, 8]
@@ -70,7 +71,8 @@
       "stats": [2, 3, 1, 3, 2, 2]
     }
   ],
-  "memberShipClasses": [{
+  "memberShipClasses": [
+    {
       "name": "Riala-A",
       "scale": "explorer",
       "stats": [8, 5, 6, 9, 5, 6]
@@ -84,6 +86,23 @@
       "name": "Hebrinda-A",
       "scale": "cruiser",
       "stats": [5, 2, 3, 5, 3, 4]
+    }
+  ],
+  "installations": [
+    {
+      "name": "Starbase I",
+      "scale": "station",
+      "stats": [10, 6, 18, 18, 6, 5]
+    },
+    {
+      "name": "Outpost I",
+      "scale": "station",
+      "stats": [6, 0, 12, 12, 0, 0]
+    },
+    {
+      "name": "Station I",
+      "scale": "station",
+      "stats": [2, 0, 6, 4, 0, 0]
     }
   ],
   "prefixes": ["USS"],
