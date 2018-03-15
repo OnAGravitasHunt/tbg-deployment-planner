@@ -10,7 +10,7 @@
     </p>
   </div>
   <div class='ship-operations'>
-    <span class='icon info-icon'>&#9432;</span>
+    <span class='icon info-icon' @click="displayMoreInfo">&#9432;</span>
     <span class='icon edit-icon' @click="editShip">&#9998;</span>
   </div>
 </div>
@@ -52,7 +52,6 @@ export default {
     }
   },
   data () {
-    // console.log(this.$parent.$attrs.id)
     return {
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
       vetStats: [1, 1, 1, 1, 1, 0]
@@ -60,10 +59,13 @@ export default {
   },
   methods: {
     editShip () {
-      // console.log(this.$parent.$attrs.id)
       this.$store.commit('setEditTargetParent', this.$parent.$attrs.id)
       this.$store.commit('updateNewShipAllFields', this.shipObj)
       this.$store.commit('updateShowEditShip', true)
+    },
+    displayMoreInfo () {
+      this.$store.commit('updateNewShipAllFields', this.shipObj)
+      this.$store.commit('updateShowShipInfo', true)
     },
     unassignShip (event) {
       if (this.$parent.$attrs.id !== 'available-ships') {

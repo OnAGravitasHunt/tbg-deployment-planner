@@ -17,6 +17,7 @@ const store = new Vuex.Store({
     },
     showAddShip: false,
     showEditShip: false,
+    showShipInfo: false,
     editTargetParent: '',
     newShip: {
       registry: '',
@@ -135,6 +136,11 @@ const store = new Vuex.Store({
     },
     setEditTargetParent (state, t) {
       state.editTargetParent = t
+    },
+    //
+    // Other mutations
+    updateShowShipInfo (state, value) { // show/hide ship info modal
+      state.showShipInfo = value
     }
   }
 })
