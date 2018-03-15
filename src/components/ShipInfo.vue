@@ -8,20 +8,21 @@
           <div class='lcars-bar lcars-bar-left'></div>
           <div class='lcars-bar lcars-bar-main'>Starship Details</div>
           <div class='lcars-bar lcars-bar-right'></div>
-
         </div>
         <!--  -->
         <div class='modal-body'>
-          <ul class='ship-info-fields'>
-            <li>NCC-{{currentShip.registry}}</li>
-            <li>{{currentShip.prefix}} <em>{{currentShip.name}}</em></li>
-            <li>{{currentShip.shipClass}}-class {{currentShip.scale}}</li>
-          </ul>
+          <div class='ship-data'>
+            <!-- <p class='ship-data-item'>NCC-{{currentShip.registry}}</p> -->
+            <p class='ship-data-item' v-html = "displayShipName"></p>
+            <p class='ship-data-item' v-html="displayClassName"></p>
+            <p class='ship-data-item'>
+              <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{shipStats[i]}}&nbsp;</span>
+            </p>
+          </div>
         </div>
         <!--  -->
         <div class='modal-footer'>
           <button class='modal-default-button' @click="showShipInfoModal = false">Close</button>
-          <!-- <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button> -->
         </div>
         <!--  -->
       </div>
@@ -37,20 +38,9 @@ export default {
   name: 'ShipInfo',
   data () {
     return {
-      // saveMessage: 'Save',
-      // prefixes: shipDataFields.prefixes,
-      // shipClasses: shipDataFields.shipClasses,
-      veterancies: shipDataFields.veterancies
-    }
-  },
-  methods: {
-    commitChanges () {
-      if (this.currentShipName.length * this.currentShipRegistry.length * this.currentShipClass.length) {
-        this.$store.commit('commitShipChanges')
-        this.saveMessage = 'Saved'
-        // this.$store.commit('updateShowAddShip', true)
-        setTimeout(() => { this.saveMessage = 'Save' }, 1000)
-      }
+      statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
+      veterancies: shipDataFields.veterancies,
+      vetStats: [1, 1, 1, 1, 1, 0]
     }
   },
   computed: {
@@ -64,57 +54,31 @@ export default {
     },
     currentShip () {
       return this.$store.state.newShip
-    }
-    /*
-    currentShipPrefix: {
-      get () {
-        return this.$store.state.newShip.prefix
-      },
-      set (prefix) {
-        this.$store.commit('updateNewShipField', {field: 'prefix', value: prefix})
-      }
     },
-    currentShipName: {
-      get () {
-        return this.$store.state.newShip.name
-      },
-      set (shipName) {
-        this.$store.commit('updateNewShipField', {field: 'name', value: shipName})
-      }
-    },
-    currentShipRegistry: {
-      get () {
-        return this.$store.state.newShip.registry
-      },
-      set (registry) {
-        this.$store.commit('updateNewShipField', {field: 'registry', value: registry})
-      }
-    },
-    currentShipClass: {
-      get () {
-        return this.$store.state.newShip.shipClass
-      },
-      set (shipClass) {
-        this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
-        this.$store.commit('updateNewShipField', {field: 'classStats', value: this.currentShipClassObject.stats})
-      }
-    },
-    currentShipClassStats () {
-      return this.$store.state.newShip.classStats
-    },
-    currentShipVet () {
-      return this.$store.state.newShip.veterancy
-    },
-    currentShipClassObject () {
-      let classObject = this.shipClasses.find(el => el.name === this.currentShipClass)
-      if (typeof (classObject) === 'undefined') {
-        return {stats: [0, 0, 0, 0, 0, 0]}
+    displayShipName () {
+      if (this.currentShip.scale === 'station') {
+        return this.currentShip.name
       } else {
-        this.$store.commit('updateNewShipField', {field: 'scale', value: classObject.scale})
-        return classObject
+        return `${this.currentShip.prefix} <em>${this.currentShip.name}</em>, NCC-${this.currentShip.registry}`
       }
+    },
+    displayClassName () {
+      if (this.currentShip.scale === 'station') {
+        return this.currentShip.shipClass
+      } else {
+        let splitName = this.currentShip.shipClass.split('-')
+        let dispName = ''
+        if (splitName.length === 1) {
+          dispName = `<em>${splitName[0]}</em>`
+        } else {
+          dispName = `<em>${splitName[0]}</em>-${splitName[1]}`
+        }
+        return dispName + '-class ' + this.currentShip.scale
+      }
+    },
+    shipStats () {
+      return this.currentShip.classStats.map((stat, i) => stat + this.currentShip.bonusStats[i] + this.currentShip.veterancy * this.vetStats[i])
     }
-    */
   }
 }
 </script>
