@@ -1,6 +1,7 @@
 # ship-deployment
 
 A deployment planner for TBG. Currently only proof-of-concept.
+Early version on GitHub Pages [here](https://onagravitashunt.github.io/tbg-deployment-planner/).
 
 ## Build Setup
 
