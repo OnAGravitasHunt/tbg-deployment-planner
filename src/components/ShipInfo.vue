@@ -73,7 +73,7 @@ export default {
         } else {
           dispName = `<em>${splitName[0]}</em>-${splitName[1]}`
         }
-        return dispName + '-class ' + this.currentShip.scale
+        return `${this.veterancies[this.currentShip.veterancy]} ${dispName}-class ${this.currentShip.scale}`
       }
     },
     shipStats () {
