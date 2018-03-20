@@ -1,7 +1,7 @@
 <template>
 <div class='sector' :id="'sector-' + name">
   <div class='sector-header'>
-    <span class='sector-name' @click="toggleShow">{{name}}</span>
+    <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
     <span class='sector-info'>D{{sectorDef}}/{{def}}</span>
     <span class='sector-info'>S{{sectorSci}}</span>
     <span class='sector-info'>P{{sectorPre}}</span>
@@ -53,6 +53,9 @@ export default {
       set (value) {
         this.$store.commit('updateSector', {sectorIndex: this.index, shipList: value})
       }
+    },
+    toggleIcon () {
+      return this.sectorShow ? '\u25BC' : '\u25B6'
     }
   },
   methods: {

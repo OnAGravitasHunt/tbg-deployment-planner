@@ -77,4 +77,7 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
+button:focus {
+  outline:0;
+}
 </style>
