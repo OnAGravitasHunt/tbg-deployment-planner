@@ -6,18 +6,35 @@
         <!--  -->
         <div class='modal-header'>
           <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Starship Details</div>
+          <div class='lcars-bar lcars-bar-name'>{{currentShip.prefix}} {{currentShip.name}}</div>
+          <div class='lcars-bar lcars-bar-reg'>NCC-{{currentShip.registry}}</div>
           <div class='lcars-bar lcars-bar-right'></div>
         </div>
         <!--  -->
         <div class='modal-body'>
           <div class='ship-data'>
-            <!-- <p class='ship-data-item'>NCC-{{currentShip.registry}}</p> -->
-            <p class='ship-data-item' v-html = "displayShipName"></p>
+            <div class='image-placeholder'>[Image here]</div>
+            <table class='stat-table'>
+              <tr class='stat-name-row'>
+                <th v-for="statName of statOrder" :key="'stat-name-' + statName">
+                  {{statName}}
+                </th>
+              </tr>
+
+              <tr class='stat-row'>
+                <td v-for="(stat, index) of shipStats" :key="'stat-' + statOrder[index]">
+                  {{stat}}
+                </td>
+              </tr>
+            </table>
+            <p class='ship-data-item'>{{veterancy}}</p>
+          </div>
+          <div class='ship-data'>
             <p class='ship-data-item' v-html="displayClassName"></p>
-            <p class='ship-data-item'>
-              <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{shipStats[i]}}&nbsp;</span>
-            </p>
+            <p class='ship-data-item'>Launched: [LAUNCH DATE]</p>
+            <p class='ship-data-item'>Captain: [CAPTAIN]</p>
+            <p class='ship-data-item'>Assignment: [SECTOR]</p>
+            <p class='ship-data-item'>Status: Active/Under Refit etc.</p>
           </div>
         </div>
         <!--  -->
@@ -73,11 +90,14 @@ export default {
         } else {
           dispName = `<em>${splitName[0]}</em>-${splitName[1]}`
         }
-        return `${this.veterancies[this.currentShip.veterancy]} ${dispName}-class ${this.currentShip.scale}`
+        return `${dispName}-class ${this.currentShip.scale}`
       }
     },
     shipStats () {
       return this.currentShip.classStats.map((stat, i) => stat + this.currentShip.bonusStats[i] + this.currentShip.veterancy * this.vetStats[i])
+    },
+    veterancy () {
+      return this.currentShip.veterancy ? `(${this.veterancies[this.currentShip.veterancy]})` : ''
     }
   }
 }
@@ -104,7 +124,6 @@ export default {
 
 .modal-container {
   width: 500px;
-  /* height: 400px; */
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #222;
@@ -120,15 +139,6 @@ export default {
   margin-top: 0;
 }
 
-.modal-body {
-  margin: 20px 0;
-}
-
-.add-ship-fields {
-  list-style-type:none;
-  padding-left: 10px;
-}
-
 li {
   margin: 10px 0px;
 }
@@ -139,6 +149,10 @@ li {
   margin: 0px;
   display: inline-block;
   vertical-align: top;
+  font-size: 20px;
+  color: #ccc;
+  line-height: 40px;
+  text-transform: uppercase;
 }
 
 .lcars-bar-left {
@@ -146,19 +160,46 @@ li {
   border-radius: 20px 0px 0px 20px;
 }
 
-.lcars-bar-main {
-  width: 400px;
-  font-size: 20px;
-  color: #ccc;
+.lcars-bar-name {
+  width: 270px;
   border-radius: 0;
   padding: 0px 10px;
-  line-height: 40px;
-  text-transform: uppercase;
+}
+
+.lcars-bar-reg {
+  width: 110px;
+  border-radius: 0;
+  padding: 0px 10px;
 }
 
 .lcars-bar-right {
   width: 30px;
   border-radius: 0px 20px 20px 0px;
+}
+
+.modal-body {
+  margin: 20px 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.ship-data {
+  width: 228px;
+  padding: 0px 10px;
+  display: inline-block;
+}
+
+.ship-data:first-child {
+  border-right: 1px solid white;
+}
+
+.image-placeholder {
+  box-sizing: border-box;
+  width: 228px;
+  height: 100px;
+  background-color: #ddd;
+  color: black;
+  padding: 10px;
 }
 
 button {
@@ -167,7 +208,7 @@ button {
   height: 40px;
   width: 100px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   padding: 0px;
   color: #ccc;
   display: inline-block;
@@ -178,10 +219,27 @@ button {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input {
-  /* width: 50px; */
+table {
+  margin: 10px 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
-.registry-input {
-  width: 60px;
+
+th, td {
+  min-width: 35px;
+  text-align: center;
+}
+
+.stat-name-row th {
+  border: 1px solid #ccc;
+  border: 1px solid #ccc;
+  border: 1px solid #ccc;
+}
+
+.stat-row td {
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 </style>
