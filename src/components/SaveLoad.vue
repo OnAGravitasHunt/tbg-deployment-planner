@@ -5,9 +5,10 @@
   <button class='storage-button' @click="showAddShipModal = true">Add Ship</button>
   <div class='timeline'>
     <!-- <button class='timeline-button fast'>&#x25c4;&#x25c4;</button> -->
-    <button class='timeline-button' @click="() => changeTick(-1)">&#x25c4;</button>
+    <button class='timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</button>
     <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
-    <button class='timeline-button' @click="() => changeTick(1)">&#x25ba;</button>
+    <button class='timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</button>
+    <button class='timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</button>
     <!-- <button class='timeline-button fast'>&#x25ba;&#x25ba;</button> -->
   </div>
 </div>
@@ -41,6 +42,9 @@ export default {
     },
     changeTick (delta) {
       this.$store.commit('changeTick', delta)
+    },
+    copyForwards () {
+      this.$store.commit('copyForwards')
     }
   },
   computed: {

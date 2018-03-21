@@ -158,6 +158,16 @@ const store = new Vuex.Store({
       }
       state.currentTick = newTick
     },
+    copyForwards (state) {
+      let current = JSON.parse(JSON.stringify(state.timeline[state.currentTick]))
+      if (state.currentTick === state.timeline.length - 1) {
+        current.dateLabel = `Tick ${state.currentTick + 1}`
+        state.timeline.push(current)
+      } else {
+        current.dateLabel = state.timeline[state.currentTick + 1].dateLabel
+        state.timeline[state.currentTick + 1] = current
+      }
+    },
     //
     // Other mutations
     updateShowShipInfo (state, value) { // show/hide ship info modal
