@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-      sectors: this.$store.state.deployment.sectors
+      sectors: this.$store.getters.sectors
     }
   }
 }

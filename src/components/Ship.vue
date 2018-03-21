@@ -70,7 +70,7 @@ export default {
     unassignShip (event) {
       if (this.$parent.$attrs.id !== 'available-ships') {
         let i = Number(this.$parent.$attrs.id.split('-').pop())
-        let newSector = this.$store.state.deployment.sectors[i].ships.filter(el => el.registry !== this.registry)
+        let newSector = this.$store.getters.sectors[i].ships.filter(el => el.registry !== this.registry)
         this.$store.commit('updateSector', {sectorIndex: i, shipList: newSector})
         this.$store.commit('updateAvailAppend', this.shipObj)
       }

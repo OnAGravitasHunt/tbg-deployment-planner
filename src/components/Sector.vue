@@ -48,7 +48,7 @@ export default {
     },
     sectorShips: {
       get () {
-        return this.$store.state.deployment.sectors[this.index].ships
+        return this.$store.getters.sectors[this.index].ships
       },
       set (value) {
         this.$store.commit('updateSector', {sectorIndex: this.index, shipList: value})

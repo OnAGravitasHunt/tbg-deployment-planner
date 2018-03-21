@@ -51,7 +51,7 @@ export default {
   computed: {
     availableShips: {
       get () {
-        return this.$store.state.deployment.ships
+        return this.$store.getters.ships
       },
       set (value) {
         this.$store.commit('updateAvail', value)

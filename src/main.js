@@ -11,9 +11,11 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    timeline: allData.timeline,
+    currentTick: 0,
     deployment: {
-      ships: allData.ships,
-      sectors: allData.sectors
+      ships: [],
+      sectors: []
     },
     showAddShip: false,
     showEditShip: false,
@@ -41,25 +43,25 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    ships: state => state.deployment.ships,
-    sectors: state => state.deployment.sectors
+    ships: state => state.timeline[state.currentTick].ships,
+    sectors: state => state.timeline[state.currentTick].sectors
   },
   mutations: {
     // Save/Load
     restoreSave (state, save) { // restore save from localstorage
-      state.deployment.ships = save.ships
-      state.deployment.sectors = save.sectors
+      state.timeline = save.timeline
+      // state.deployment.sectors = save.sectors
     },
     //
     // Deployment
     updateAvail (state, value) { // update list of unassigned ships
-      state.deployment.ships = value
+      state.timeline[state.currentTick].ships = value
     },
     updateSector (state, {sectorIndex, shipList}) { // update list of ships in sector
-      state.deployment.sectors[sectorIndex].ships = shipList
+      state.timeline[state.currentTick].sectors[sectorIndex].ships = shipList
     },
     updateAvailAppend (state, value) { // update list of unassigned ships
-      state.deployment.ships.push(value)
+      state.timeline[state.currentTick].ships.push(value)
     },
     //
     // List filtering
@@ -73,7 +75,7 @@ const store = new Vuex.Store({
     //
     // List sorting
     sortSector (state, sectorIndex) {
-      this.state.deployment.sectors[0].ships.sort(function (a, b) {
+      this.state.timeline[state.currentTick].sectors[0].ships.sort(function (a, b) {
         if (a.scale === 'station') {
           return -1
         } else if (b.scale === 'station') {
@@ -111,14 +113,14 @@ const store = new Vuex.Store({
       Object.assign(state.newShip, shipObj)
     },
     createNewShip (state) {
-      state.deployment.ships.push(Object.assign({}, state.newShip))
+      state.timeline[state.currentTick].ships.push(Object.assign({}, state.newShip))
     },
     commitShipChanges (state) {
       let targetArr, target
       if (state.editTargetParent === 'available-ships') {
-        targetArr = state.deployment.ships
+        targetArr = state.timeline[state.currentTick].ships
       } else {
-        targetArr = state.deployment.sectors[Number(this.editTargetParent.split('-').pop())].ships
+        targetArr = state.timeline[state.currentTick].sectors[Number(this.editTargetParent.split('-').pop())].ships
       }
       target = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
       Object.assign(targetArr[target], state.newShip)
