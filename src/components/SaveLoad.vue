@@ -26,7 +26,11 @@ export default {
   },
   methods: {
     saveState () {
-      localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(this.$store.state.timeline))
+      let save = {
+        timeline: this.$store.state.timeline,
+        currentTick: this.$store.state.currentTick
+      }
+      localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(save))
       this.saveMessage = 'Saved!'
       setTimeout(() => { this.saveMessage = 'Save' }, 1000)
     },

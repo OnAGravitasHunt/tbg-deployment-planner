@@ -63,7 +63,6 @@ export default {
       return evt.draggedContext.element.mobile
     },
     onUpdate () {
-      console.log('updating')
       this.$store.commit('sortSector', this.index)
     },
     toggleShow () {

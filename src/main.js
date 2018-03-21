@@ -47,7 +47,7 @@ const store = new Vuex.Store({
     // Save/Load
     restoreSave (state, save) { // restore save from localstorage
       state.timeline = save.timeline
-      // state.deployment.sectors = save.sectors
+      state.currentTick = save.currentTick
     },
     //
     // Deployment
