@@ -13,10 +13,6 @@ const store = new Vuex.Store({
   state: {
     timeline: allData.timeline,
     currentTick: 0,
-    deployment: {
-      ships: [],
-      sectors: []
-    },
     showAddShip: false,
     showEditShip: false,
     showShipInfo: false,
@@ -44,7 +40,8 @@ const store = new Vuex.Store({
   },
   getters: {
     ships: state => state.timeline[state.currentTick].ships,
-    sectors: state => state.timeline[state.currentTick].sectors
+    sectors: state => state.timeline[state.currentTick].sectors,
+    dateLabel: state => state.timeline[state.currentTick].dateLabel
   },
   mutations: {
     // Save/Load
@@ -138,6 +135,11 @@ const store = new Vuex.Store({
     },
     setEditTargetParent (state, t) {
       state.editTargetParent = t
+    },
+    //
+    // Timeline
+    setDateLabel (state, date) {
+      state.timeline[state.currentTick].dateLabel = date
     },
     //
     // Other mutations

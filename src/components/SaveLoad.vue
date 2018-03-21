@@ -3,6 +3,13 @@
   <button class='storage-button' @click="saveState">{{saveMessage}}</button>
   <button class='storage-button' @click="loadState">{{loadMessage}}</button>
   <button class='storage-button' @click="showAddShipModal = true">Add Ship</button>
+  <div class='timeline'>
+    <button class='timeline-button fast'>&#x25c4;&#x25c4;</button>
+    <button class='timeline-button'>&#x25c4;</button>
+    <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
+    <button class='timeline-button'>&#x25ba;</button>
+    <button class='timeline-button fast'>&#x25ba;&#x25ba;</button>
+  </div>
 </div>
 </template>
 
@@ -37,6 +44,14 @@ export default {
       set (value) {
         this.$store.commit('updateShowAddShip', value)
       }
+    },
+    dateLabel: {
+      get () {
+        return this.$store.getters.dateLabel
+      },
+      set (value) {
+        this.$store.commit('setDateLabel', value)
+      }
     }
   }
 }
@@ -54,22 +69,62 @@ export default {
   margin-top: 0;
 }
 button {
-  background-color: #06a;
-  color: white;
   height: 40px;
-  width: 100px;
   border: none;
-  border-radius: 20px;
   outline: none;
   padding: 0px;
-  display: inline-block;
-  margin: 5px 5px;
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+.storage-button {
+  background-color: #06a;
+  color: white;
+  width: 100px;
+  border-radius: 20px;
+  margin: 5px 5px;
 }
 button:first-child {
   margin-left: 20px;
+}
+.timeline {
+  margin-left: 80px;
+  height: 50px;
+  /* width: 300px; */
+  /* background-color: green; */
+  display: inline-block;
+  vertical-align: top;
+}
+.timeline-button {
+  padding: 0 5px;
+  margin: 5px -0px;
+  background-color: #06a;
+  color: white;
+  vertical-align: top;
+  font-size: 22px;
+}
+.timeline-button:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.timeline-button:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+input {
+  height: 40px;
+  border: none;
+  margin: 5px 0px;
+  outline: none;
+  padding: 0px;
+  font-size: 16px;
+  text-align: center;
+}
+.fast {
+  letter-spacing: -10px;
+  padding-right: 15px;
+  /* padding-right: 10px; */
 }
 </style>

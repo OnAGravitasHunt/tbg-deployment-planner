@@ -1,10 +1,7 @@
 {
   "timeline" : [
     {
-      "date": {
-        "year": 2321,
-        "quarter": 1
-      },
+      "dateLabel": "2321 Q1",
       "ships": [
         {
           "registry": "2010",
