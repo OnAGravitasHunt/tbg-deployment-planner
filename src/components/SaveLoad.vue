@@ -4,11 +4,11 @@
   <button class='storage-button' @click="loadState">{{loadMessage}}</button>
   <button class='storage-button' @click="showAddShipModal = true">Add Ship</button>
   <div class='timeline'>
-    <button class='timeline-button fast'>&#x25c4;&#x25c4;</button>
-    <button class='timeline-button'>&#x25c4;</button>
+    <!-- <button class='timeline-button fast'>&#x25c4;&#x25c4;</button> -->
+    <button class='timeline-button' @click="() => changeTick(-1)">&#x25c4;</button>
     <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
-    <button class='timeline-button'>&#x25ba;</button>
-    <button class='timeline-button fast'>&#x25ba;&#x25ba;</button>
+    <button class='timeline-button' @click="() => changeTick(1)">&#x25ba;</button>
+    <!-- <button class='timeline-button fast'>&#x25ba;&#x25ba;</button> -->
   </div>
 </div>
 </template>
@@ -38,6 +38,9 @@ export default {
       this.$store.commit('restoreSave', JSON.parse(localStorage.getItem(DEPLOYMENT_KEY)))
       this.loadMessage = 'Loaded!'
       setTimeout(() => { this.loadMessage = 'Load' }, 1000)
+    },
+    changeTick (delta) {
+      this.$store.commit('changeTick', delta)
     }
   },
   computed: {

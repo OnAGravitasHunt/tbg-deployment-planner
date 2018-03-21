@@ -141,6 +141,23 @@ const store = new Vuex.Store({
     setDateLabel (state, date) {
       state.timeline[state.currentTick].dateLabel = date
     },
+    changeTick (state, delta) {
+      let newTick = state.currentTick + delta
+      if (newTick < 0) {
+        newTick = 0
+      } else if (newTick >= state.timeline.length) {
+        let last = JSON.parse(JSON.stringify(state.timeline[state.timeline.length - 1]))
+        let i = state.currentTick + 1
+        while (newTick >= state.timeline.length) {
+          last.dateLabel = `Tick ${i}`
+          state.timeline.push(last)
+        }
+        newTick = state.currentTick + delta
+      } else {
+        newTick = state.currentTick + delta
+      }
+      state.currentTick = newTick
+    },
     //
     // Other mutations
     updateShowShipInfo (state, value) { // show/hide ship info modal
