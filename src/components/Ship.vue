@@ -1,8 +1,6 @@
 <template>
 <div @dblclick='unassignShip' :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
-  <!-- <img class="ship-image" :src="imgUrl" style="height: 20px; margin: 0px auto;"/> -->
   <div class='ship-data'>
-    <!-- <p class='ship-data-item'>NCC-{{registry}}</p> -->
     <p class='ship-data-item'>{{prefix}} <em>{{name}}</em></p>
     <p class='ship-data-item' v-html="displayClassName"></p>
     <p class='ship-data-item'>
@@ -84,9 +82,9 @@ export default {
 .stat-D {
   font-weight: bold;
 }
-.stat-C, .stat-H, .stat-L {
+/*.stat-C, .stat-H, .stat-L {
   display: none;
-}
+}*/
 .ship {
   font-family: 'Avenir';
   font-size: 15px;
@@ -123,25 +121,7 @@ export default {
   background-color: #c60;
 }
 .station {
-  background: repeating-linear-gradient(
-    45deg,
-    #89f,
-    #89f 20px,
-    #77f 20px,
-    #77f 40px
-  );
-}
-.station > .ship-data {
-  background-color: #89f;
-  /* width: 130px; */
-  /* margin: 0 20px; */
-  border-radius: 30px;
-}
-.station > .ship-operations {
-  background-color: #89f;
-  /* width: 130px; */
-  /* margin: 0 20px; */
-  border-radius: 30px;
+  background-color: #6c6;
 }
 .station em {
   font-style: normal;

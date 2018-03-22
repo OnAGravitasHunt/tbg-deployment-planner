@@ -96,32 +96,62 @@
               "bonusStats": [0, 0, 0, 0, 0, 0],
               "mobile": false
             }
-          ]
+          ],
+          "type": "core",
+          "theatre": "tailward",
+          "supporters": ["Licori Border Zone"]
         },
         {
           "name": "Vulcan",
           "def": 10,
-          "ships": []
+          "ships": [],
+          "type": "core",
+          "theatre": "tailward",
+          "supporters": ["Romulan Border Zone"]
+        },
+        {
+          "name": "Rigel",
+          "def": 9,
+          "ships": [],
+          "type": "core",
+          "theatre": "tailward",
+          "supporters": ["Licori Border Zone", "Horizon Border Zone"]
         },
         {
           "name": "Andor",
           "def": 7,
-          "ships": []
+          "ships": [],
+          "type": "core",
+          "theatre": "tailward",
+          "supporters": ["Romulan Border Zone"]
         },
         {
-          "name": "Tellar",
-          "def": 7,
-          "ships": []
+          "name": "Klingon Border Zone",
+          "def": 9,
+          "ships": [],
+          "type": "border",
+          "theatre": "tailward"
         },
         {
-          "name": "Amarkia",
-          "def": 7,
-          "ships": []
+          "name": "Romulan Border Zone",
+          "def": 12,
+          "ships": [],
+          "type": "border",
+          "theatre": "tailward"
         },
         {
-          "name": "Ferasa",
-          "def": 7,
-          "ships": []
+          "name": "Licori Border Zone",
+          "def": 9,
+          "ships": [],
+          "type": "border",
+          "theatre": "tailward"
+        },
+        {
+          "name": "Horizon Border Zone",
+          "def": 9,
+          "ships": [],
+          "type": "border",
+          "theatre": "tailward"
         }
       ]
     }
