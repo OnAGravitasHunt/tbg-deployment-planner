@@ -5,6 +5,7 @@
     <span class='sector-info'>D{{sectorDef}}/{{def}}</span>
     <span class='sector-info'>S{{sectorSci}}</span>
     <span class='sector-info'>P{{sectorPre}}</span>
+    <button class='sector-edit' @click="editSector">Edit Sector</button>
   </div>
   <div :class="`sector-drag-wrapper sector-show-${sectorShow}`">
     <draggable class='sector-drag'
@@ -26,7 +27,7 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'Sector',
-  props: ['name', 'def', 'index'],
+  props: ['name', 'def', 'type', 'theatre', 'supporters', 'index'],
   components: {
     Ship,
     draggable
@@ -56,6 +57,15 @@ export default {
     },
     toggleIcon () {
       return this.sectorShow ? '\u25BC' : '\u25B6'
+    },
+    sectorInfoObj () {
+      return {
+        name: this.name,
+        defense: this.def,
+        type: this.type,
+        theatre: this.theatre,
+        supporters: this.supporters
+      }
     }
   },
   methods: {
@@ -67,6 +77,13 @@ export default {
     },
     toggleShow () {
       this.sectorShow = !this.sectorShow
+    },
+    editSector () {
+      // console.log(this.sectorInfoObj)
+      // console.log(this)
+      this.$store.commit('setSelectedSectorIndex', this.index)
+      this.$store.commit('updateSelectedSectorAllFields', this.sectorInfoObj)
+      this.$store.commit('updateShowEditSector', true)
     }
   }
 }
@@ -98,6 +115,21 @@ export default {
 }
 .sector-info {
   margin-left: 20px;
+}
+.sector-edit {
+  float: right;
+  background-color: #c99;
+  height: 24px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  padding: 0 10px;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* display: inline-block; */
 }
 .sector-show-false {
   display: none;

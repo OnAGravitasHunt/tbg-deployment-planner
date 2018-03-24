@@ -16,7 +16,8 @@ const store = new Vuex.Store({
     showAddShip: false,
     showEditShip: false,
     showShipInfo: false,
-    editTargetParent: '',
+    showEditSector: false,
+    editShipTargetParent: '',
     newShip: {
       registry: '',
       name: '',
@@ -27,6 +28,14 @@ const store = new Vuex.Store({
       veterancy: 0,
       bonusStats: [0, 0, 0, 0, 0, 0],
       mobile: true
+    },
+    selectedSectorIndex: '',
+    selectedSector: {
+      name: 'Sol',
+      defense: 18,
+      type: 'core',
+      theatre: 'tailward',
+      supporters: []
     },
     filterCategories: {
       shipClass: shipDataFields.shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
@@ -72,7 +81,7 @@ const store = new Vuex.Store({
     //
     // List sorting
     sortSector (state, sectorIndex) {
-      this.state.timeline[state.currentTick].sectors[0].ships.sort(function (a, b) {
+      state.timeline[state.currentTick].sectors[0].ships.sort(function (a, b) {
         if (a.scale === 'station') {
           return -1
         } else if (b.scale === 'station') {
@@ -114,10 +123,10 @@ const store = new Vuex.Store({
     },
     commitShipChanges (state) {
       let targetArr, target
-      if (state.editTargetParent === 'available-ships') {
+      if (state.editShipTargetParent === 'available-ships') {
         targetArr = state.timeline[state.currentTick].ships
       } else {
-        targetArr = state.timeline[state.currentTick].sectors[Number(this.editTargetParent.split('-').pop())].ships
+        targetArr = state.timeline[state.currentTick].sectors[Number(this.editShipTargetParent.split('-').pop())].ships
       }
       target = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
       Object.assign(targetArr[target], state.newShip)
@@ -133,8 +142,8 @@ const store = new Vuex.Store({
         bonusStats: [0, 0, 0, 0, 0, 0]
       }
     },
-    setEditTargetParent (state, t) {
-      state.editTargetParent = t
+    setEditShipTargetParent (state, t) {
+      state.editShipTargetParent = t
     },
     //
     // Timeline
@@ -167,6 +176,23 @@ const store = new Vuex.Store({
         current.dateLabel = state.timeline[state.currentTick + 1].dateLabel
         state.timeline[state.currentTick + 1] = current
       }
+    },
+    //
+    // Add/edit sectors
+    updateShowEditSector (state, value) { // show/hide ship info modal
+      state.showEditSector = value
+    },
+    setSelectedSectorIndex (state, value) {
+      state.selectedSectorIndex = value
+    },
+    updateSelectedSectorField (state, {field, value}) { // update field of newShip
+      state.selectedSector[field] = value
+    },
+    updateSelectedSectorAllFields (state, sectorObj) { // update field of newShip
+      Object.assign(state.selectedSector, sectorObj)
+    },
+    commitSectorChanges (state) {
+      Object.assign(state.timeline[state.currentTick].sectors[state.selectedSectorIndex], state.selectedSector)
     },
     //
     // Other mutations

@@ -3,6 +3,7 @@
     <AddShip v-if="showAddShipModal"></AddShip>
     <EditShip v-if="showEditShipModal"></EditShip>
     <ShipInfo v-if="showShipInfoModal"></ShipInfo>
+    <EditSector v-if="showEditSectorModal"></EditSector>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
   </div>
@@ -14,6 +15,7 @@ import SaveLoad from './components/SaveLoad'
 import AddShip from './components/AddShip'
 import EditShip from './components/EditShip'
 import ShipInfo from './components/ShipInfo'
+import EditSector from './components/EditSector'
 
 export default {
   name: 'app',
@@ -22,7 +24,8 @@ export default {
     SaveLoad,
     AddShip,
     EditShip,
-    ShipInfo
+    ShipInfo,
+    EditSector
   },
   computed: {
     showAddShipModal: {
@@ -47,6 +50,14 @@ export default {
       },
       set (value) {
         this.$store.commit('updateShowShipInfo', value)
+      }
+    },
+    showEditSectorModal: {
+      get () {
+        return this.$store.state.showEditSector
+      },
+      set (value) {
+        this.$store.commit('updateShowEditSector', value)
       }
     }
   }

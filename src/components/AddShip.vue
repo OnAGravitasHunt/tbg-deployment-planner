@@ -8,13 +8,11 @@
           <div class='lcars-bar lcars-bar-left'></div>
           <div class='lcars-bar lcars-bar-main'>Add New Starship</div>
           <div class='lcars-bar lcars-bar-right'></div>
-
         </div>
         <!--  -->
         <div class='modal-body'>
           <ul class='add-ship-fields'>
             <li>
-              <!-- <span>Name: </span> -->
               <select v-model="currentShipPrefix">
                 <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
               </select>

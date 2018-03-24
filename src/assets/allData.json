@@ -130,28 +130,32 @@
           "def": 9,
           "ships": [],
           "type": "border",
-          "theatre": "tailward"
+          "theatre": "tailward",
+          "supporters": []
         },
         {
           "name": "Romulan Border Zone",
           "def": 12,
           "ships": [],
           "type": "border",
-          "theatre": "tailward"
+          "theatre": "tailward",
+          "supporters": []
         },
         {
           "name": "Licori Border Zone",
           "def": 9,
           "ships": [],
           "type": "border",
-          "theatre": "tailward"
+          "theatre": "tailward",
+          "supporters": []
         },
         {
           "name": "Horizon Border Zone",
           "def": 9,
           "ships": [],
           "type": "border",
-          "theatre": "tailward"
+          "theatre": "tailward",
+          "supporters": []
         }
       ]
     }
