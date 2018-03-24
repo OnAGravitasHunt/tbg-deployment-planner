@@ -16,6 +16,7 @@ const store = new Vuex.Store({
     showAddShip: false,
     showEditShip: false,
     showShipInfo: false,
+    showAddSector: false,
     showEditSector: false,
     editShipTargetParent: '',
     newShip: {
@@ -31,10 +32,10 @@ const store = new Vuex.Store({
     },
     selectedSectorIndex: '',
     selectedSector: {
-      name: 'Sol',
-      defense: 18,
-      type: 'core',
-      theatre: 'tailward',
+      name: '',
+      defense: '',
+      type: '',
+      theatre: '',
       supporters: []
     },
     filterCategories: {
@@ -179,6 +180,9 @@ const store = new Vuex.Store({
     },
     //
     // Add/edit sectors
+    updateShowAddSector (state, value) { // show/hide ship info modal
+      state.showAddSector = value
+    },
     updateShowEditSector (state, value) { // show/hide ship info modal
       state.showEditSector = value
     },
@@ -193,6 +197,15 @@ const store = new Vuex.Store({
     },
     commitSectorChanges (state) {
       Object.assign(state.timeline[state.currentTick].sectors[state.selectedSectorIndex], state.selectedSector)
+    },
+    addNewSector (state) {
+      let newSector = Object.assign({}, state.selectedSector)
+      newSector.ships = []
+      state.timeline[state.currentTick].sectors.push(newSector)
+    },
+    deleteSector (state) {
+      let deleted = state.timeline[state.currentTick].sectors.splice(state.selectedSectorIndex, 1)[0]
+      state.timeline[state.currentTick].ships = state.timeline[state.currentTick].ships.concat(deleted.ships)
     },
     //
     // Other mutations

@@ -2,7 +2,7 @@
 <div class='sector' :id="'sector-' + name">
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
-    <span class='sector-info'>D{{sectorDef}}/{{def}}</span>
+    <span class='sector-info'>D{{sectorDef}}/{{defense}}</span>
     <span class='sector-info'>S{{sectorSci}}</span>
     <span class='sector-info'>P{{sectorPre}}</span>
     <button class='sector-edit' @click="editSector">Edit Sector</button>
@@ -27,7 +27,7 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'Sector',
-  props: ['name', 'def', 'type', 'theatre', 'supporters', 'index'],
+  props: ['name', 'defense', 'type', 'theatre', 'supporters', 'index'],
   components: {
     Ship,
     draggable

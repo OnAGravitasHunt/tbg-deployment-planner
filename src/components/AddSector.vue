@@ -6,7 +6,7 @@
         <!--  -->
         <div class='modal-header'>
           <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Edit Sector</div>
+          <div class='lcars-bar lcars-bar-main'>Add New Sector</div>
           <div class='lcars-bar lcars-bar-right'></div>
         </div>
         <!--  -->
@@ -41,9 +41,8 @@
         </div>
         <!--  -->
         <div class='modal-footer'>
-          <button class='modal-default-button' @click="showEditSectorModal = false">Close</button>
+          <button class='modal-default-button' @click="showAddSectorModal = false">Close</button>
           <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
-          <button class='modal-default-button' @click="deleteSector">DELETE</button>
         </div>
         <!--  -->
       </div>
@@ -56,7 +55,7 @@
 import sectorDataFields from '../assets/sectorDataFields.json'
 
 export default {
-  name: 'EditSector',
+  name: 'AddSector',
   components: {},
   data () {
     return {
@@ -67,19 +66,16 @@ export default {
   },
   methods: {
     commitChanges () {
-      this.$store.commit('commitSectorChanges')
-    },
-    deleteSector () {
-      this.$store.commit('deleteSector')
+      this.$store.commit('addNewSector')
     }
   },
   computed: {
-    showEditSectorModal: {
+    showAddSectorModal: {
       get () {
-        return this.$store.state.showEditSector
+        return this.$store.state.showAddSector
       },
       set (value) {
-        this.$store.commit('updateShowEditSector', value)
+        this.$store.commit('updateShowAddSector', value)
       }
     },
     currentSectorName: {

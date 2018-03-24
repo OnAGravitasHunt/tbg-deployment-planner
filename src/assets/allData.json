@@ -83,7 +83,7 @@
       ],
       "sectors": [{
           "name": "Sol",
-          "def": 18,
+          "defense": 18,
           "ships": [
             {
               "registry": "S001",
@@ -97,64 +97,64 @@
               "mobile": false
             }
           ],
-          "type": "core",
-          "theatre": "tailward",
+          "type": "Core",
+          "theatre": "Tailward",
           "supporters": ["Licori Border Zone"]
         },
         {
           "name": "Vulcan",
-          "def": 10,
+          "defense": 10,
           "ships": [],
-          "type": "core",
-          "theatre": "tailward",
+          "type": "Core",
+          "theatre": "Tailward",
           "supporters": ["Romulan Border Zone"]
         },
         {
           "name": "Rigel",
-          "def": 9,
+          "defense": 9,
           "ships": [],
-          "type": "core",
-          "theatre": "tailward",
+          "type": "Core",
+          "theatre": "Tailward",
           "supporters": ["Licori Border Zone", "Horizon Border Zone"]
         },
         {
           "name": "Andor",
-          "def": 7,
+          "defense": 7,
           "ships": [],
-          "type": "core",
-          "theatre": "tailward",
+          "type": "Core",
+          "theatre": "Tailward",
           "supporters": ["Romulan Border Zone"]
         },
         {
           "name": "Klingon Border Zone",
-          "def": 9,
+          "defense": 9,
           "ships": [],
-          "type": "border",
-          "theatre": "tailward",
+          "type": "Border",
+          "theatre": "Tailward",
           "supporters": []
         },
         {
           "name": "Romulan Border Zone",
-          "def": 12,
+          "defense": 12,
           "ships": [],
-          "type": "border",
-          "theatre": "tailward",
+          "type": "Border",
+          "theatre": "Tailward",
           "supporters": []
         },
         {
           "name": "Licori Border Zone",
-          "def": 9,
+          "defense": 9,
           "ships": [],
-          "type": "border",
-          "theatre": "tailward",
+          "type": "Border",
+          "theatre": "Tailward",
           "supporters": []
         },
         {
           "name": "Horizon Border Zone",
-          "def": 9,
+          "defense": 9,
           "ships": [],
-          "type": "border",
-          "theatre": "tailward",
+          "type": "Border",
+          "theatre": "Tailward",
           "supporters": []
         }
       ]

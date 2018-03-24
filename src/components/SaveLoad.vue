@@ -3,6 +3,7 @@
   <button class='storage-button' @click="saveState">{{saveMessage}}</button>
   <button class='storage-button' @click="loadState">{{loadMessage}}</button>
   <button class='storage-button' @click="showAddShipModal = true">Add Ship</button>
+  <button class='storage-button' @click="showAddSectorModal = true">Add Sector</button>
   <div class='timeline'>
     <!-- <button class='timeline-button fast'>&#x25c4;&#x25c4;</button> -->
     <button class='timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</button>
@@ -54,6 +55,14 @@ export default {
       },
       set (value) {
         this.$store.commit('updateShowAddShip', value)
+      }
+    },
+    showAddSectorModal: {
+      get () {
+        return this.$store.state.showAddSector
+      },
+      set (value) {
+        this.$store.commit('updateShowAddSector', value)
       }
     },
     dateLabel: {
