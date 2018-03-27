@@ -72,7 +72,7 @@ export default {
   methods: {
     commitChanges () {
       if (this.currentShipName.length * this.currentShipRegistry.length * this.currentShipClass.length) {
-        this.$store.commit('commitShipChanges')
+        this.$store.dispatch('commitShipChanges')
         this.saveMessage = 'Saved'
         // this.$store.commit('updateShowAddShip', true)
         setTimeout(() => { this.saveMessage = 'Save' }, 1000)
@@ -82,7 +82,7 @@ export default {
   computed: {
     showEditShipModal: {
       get () {
-        return this.$store.state.showEditShip
+        return this.$store.state.shipEditing.showEditShip
       },
       set (value) {
         this.$store.commit('updateShowEditShip', value)
@@ -90,7 +90,7 @@ export default {
     },
     currentShipPrefix: {
       get () {
-        return this.$store.state.newShip.prefix
+        return this.$store.state.shipEditing.newShip.prefix
       },
       set (prefix) {
         this.$store.commit('updateNewShipField', {field: 'prefix', value: prefix})
@@ -98,7 +98,7 @@ export default {
     },
     currentShipName: {
       get () {
-        return this.$store.state.newShip.name
+        return this.$store.state.shipEditing.newShip.name
       },
       set (shipName) {
         this.$store.commit('updateNewShipField', {field: 'name', value: shipName})
@@ -106,7 +106,7 @@ export default {
     },
     currentShipRegistry: {
       get () {
-        return this.$store.state.newShip.registry
+        return this.$store.state.shipEditing.newShip.registry
       },
       set (registry) {
         this.$store.commit('updateNewShipField', {field: 'registry', value: registry})
@@ -114,7 +114,7 @@ export default {
     },
     currentShipClass: {
       get () {
-        return this.$store.state.newShip.shipClass
+        return this.$store.state.shipEditing.newShip.shipClass
       },
       set (shipClass) {
         this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
@@ -122,11 +122,11 @@ export default {
       }
     },
     currentShipClassStats () {
-      return this.$store.state.newShip.classStats
+      return this.$store.state.shipEditing.newShip.classStats
     },
     currentShipVet: {
       get () {
-        return this.$store.state.newShip.veterancy
+        return this.$store.state.shipEditing.newShip.veterancy
       },
       set (vet) {
         this.$store.commit('updateNewShipField', {field: 'veterancy', value: vet})

@@ -70,7 +70,7 @@ export default {
       }
     },
     currentShip () {
-      return this.$store.state.newShip
+      return this.$store.state.shipEditing.newShip
     },
     displayShipName () {
       if (this.currentShip.scale === 'station') {

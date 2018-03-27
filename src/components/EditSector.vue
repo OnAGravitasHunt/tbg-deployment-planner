@@ -84,7 +84,7 @@ export default {
     },
     currentSectorName: {
       get () {
-        return this.$store.state.selectedSector.name
+        return this.$store.state.sectorEditing.selectedSector.name
       },
       set (sectorName) {
         this.$store.commit('updateSelectedSectorField', {field: 'name', value: sectorName})
@@ -92,7 +92,7 @@ export default {
     },
     currentSectorType: {
       get () {
-        return this.$store.state.selectedSector.type
+        return this.$store.state.sectorEditing.selectedSector.type
       },
       set (sectorType) {
         this.$store.commit('updateSelectedSectorField', {field: 'type', value: sectorType})
@@ -100,7 +100,7 @@ export default {
     },
     currentSectorTheatre: {
       get () {
-        return this.$store.state.selectedSector.theatre
+        return this.$store.state.sectorEditing.selectedSector.theatre
       },
       set (theatreName) {
         this.$store.commit('updateSelectedSectorField', {field: 'theatre', value: theatreName})
@@ -108,7 +108,7 @@ export default {
     },
     currentSectorDef: {
       get () {
-        return this.$store.state.selectedSector.defense
+        return this.$store.state.sectorEditing.selectedSector.defense
       },
       set (defense) {
         this.$store.commit('updateSelectedSectorField', {field: 'defense', value: defense})

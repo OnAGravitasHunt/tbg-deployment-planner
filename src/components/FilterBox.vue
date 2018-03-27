@@ -25,7 +25,7 @@ export default {
     },
     filterValue: {
       get () {
-        return this.$store.state.filterCategories[this.categoryKey][this.criterion]
+        return this.$store.state.filtering.filterCategories[this.categoryKey][this.criterion]
       },
       set (value) {
         this.$store.commit('updateFilter', {category: this.categoryKey, criterion: this.criterion, value: value})

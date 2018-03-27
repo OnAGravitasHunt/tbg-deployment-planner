@@ -23,7 +23,7 @@ export default {
       return `/static/${this.shipClass.toLowerCase()}.png`
     },
     filterShow () {
-      return this.$store.state.filterCategories.shipClass[this.shipClass] && this.$store.state.filterCategories.scale[this.scale]
+      return this.$store.state.filtering.filterCategories.shipClass[this.shipClass] && this.$store.state.filtering.filterCategories.scale[this.scale]
     },
     stats () {
       return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])

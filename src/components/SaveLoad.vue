@@ -29,8 +29,8 @@ export default {
   methods: {
     saveState () {
       let save = {
-        timeline: this.$store.state.timeline,
-        currentTick: this.$store.state.currentTick
+        timeline: this.$store.state.deployment.timeline,
+        currentTick: this.$store.state.deployment.currentTick
       }
       localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(save))
       this.saveMessage = 'Saved!'
@@ -51,7 +51,7 @@ export default {
   computed: {
     showAddShipModal: {
       get () {
-        return this.$store.state.showAddShip
+        return this.$store.state.deployment.showAddShip
       },
       set (value) {
         this.$store.commit('updateShowAddShip', value)
@@ -59,7 +59,7 @@ export default {
     },
     showAddSectorModal: {
       get () {
-        return this.$store.state.showAddSector
+        return this.$store.state.deployment.showAddSector
       },
       set (value) {
         this.$store.commit('updateShowAddSector', value)

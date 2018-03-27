@@ -57,10 +57,8 @@
 <script>
 export default {
   name: 'StatChanger',
-  // props: ['classStats'],
   data () {
     return {
-      // bonusStats: [0, 0, 0, 0, 0, 0],
       vetStats: [1, 1, 1, 1, 1, 0],
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
     }
@@ -68,25 +66,20 @@ export default {
   computed: {
     stats () {
       return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
-      // this.$store.commit('updateNewShipField', {field: 'stats', value: newStats})
-      // return newStats
     },
-    // classStats () {
-    //   return this.classStats
-    // },
     bonusStats: {
       get () {
-        return this.$store.state.newShip.bonusStats
+        return this.$store.state.shipEditing.newShip.bonusStats
       },
       set (newStats) {
         this.$store.commit('updateNewShipField', {field: 'bonusStats', value: newStats})
       }
     },
     veterancy () {
-      return this.$store.state.newShip.veterancy
+      return this.$store.state.shipEditing.newShip.veterancy
     },
     classStats () {
-      return this.$store.state.newShip.classStats
+      return this.$store.state.shipEditing.newShip.classStats
     }
   },
   methods: {
