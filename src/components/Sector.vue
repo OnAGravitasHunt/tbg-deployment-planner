@@ -2,10 +2,16 @@
 <div :class="`sector ${sectorTypeCSS}`" :id="'sector-' + name">
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
-    <span class='sector-info'>D{{sectorDef}}/{{defense}}</span>
-    <span class='sector-info'>S{{sectorSci}}</span>
-    <span class='sector-info'>P{{sectorPre}}</span>
+    <span class='sector-info'>D{{sectorStats[5]}}/{{defense}}</span>
+    <span class='sector-info'>C{{sectorStats[0]}}</span>
+    <span class='sector-info'>S{{sectorStats[1]}}</span>
+    <span class='sector-info'>P{{sectorStats[4]}}</span>
     <button class='sector-edit' @click="editSector">Edit Sector</button>
+  </div>
+  <div :class="`ship-summary sector-show-${!sectorShow}`">
+    <span v-for="shipClass of Object.keys(shipSummary)" :key="shipClass" class='sector-info'>
+      {{shipSummary[shipClass]}} {{shipClass}}
+    </span>
   </div>
   <div :class="`sector-drag-wrapper sector-show-${sectorShow}`">
     <draggable class='sector-drag'
@@ -38,14 +44,13 @@ export default {
     }
   },
   computed: {
-    sectorDef () {
-      return this.sectorShips.reduce((acc, curr) => acc + curr.classStats[5] + curr.bonusStats[5], 0)
-    },
-    sectorSci () {
-      return this.sectorShips.reduce((acc, curr) => acc + curr.classStats[1] + curr.veterancy + curr.bonusStats[1], 0)
-    },
-    sectorPre () {
-      return this.sectorShips.reduce((acc, curr) => acc + curr.classStats[4] + curr.veterancy + curr.bonusStats[4], 0)
+    sectorStats () {
+      let stats = []
+      for (var i = 0; i < 5; i++) {
+        stats[i] = this.sectorShips.reduce((acc, curr) => acc + curr.classStats[i] + curr.veterancy + curr.bonusStats[i], 0)
+      }
+      stats[5] = this.sectorShips.reduce((acc, curr) => acc + curr.classStats[5] + curr.bonusStats[5], 0)
+      return stats
     },
     sectorShips: {
       get () {
@@ -68,9 +73,16 @@ export default {
       }
     },
     sectorTypeCSS () {
-      // console.log(this.type)
-      // console.log(this.type.toLowerCase())
       return this.type.replace(' ', '-').toLowerCase()
+    },
+    shipSummary () {
+      let ships = this.sectorShips.map(ship => ship.shipClass)
+      let summ = {}
+      for (let className of ships) {
+        summ[className] = summ[className] ? summ[className] + 1 : 1
+      }
+      console.log()
+      return summ
     }
   },
   methods: {
@@ -84,11 +96,17 @@ export default {
       this.sectorShow = !this.sectorShow
     },
     editSector () {
-      // console.log(this.sectorInfoObj)
-      // console.log(this)
       this.$store.commit('setSelectedSectorIndex', this.index)
       this.$store.commit('updateSelectedSectorAllFields', this.sectorInfoObj)
       this.$store.commit('updateShowEditSector', true)
+    },
+    displayClassName (className) {
+      let bits = className.split('-')
+      if (bits.length === 1) {
+        return `<em>${bits[0]}</em>`
+      } else {
+        return `<em>${bits[0]}</em>-${bits[1]}`
+      }
     }
   }
 }
@@ -96,15 +114,25 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .sector {
-  /* min-height: 100px; */
   text-align: left;
   padding: 0 30px;
   margin-left: 250px;
   border-bottom: 2px solid white;
 }
+.core .sector-header {
+
+}
+.task-force {
+  background-color: #888;
+  color: black;
+}
+.task-force .sector-drag-wrapper {
+  border-top: 1px solid #333;
+}
 .sector-drag-wrapper {
+  margin-top: 10px;
   border-top: 1px solid #ccc;
-  height: 100px;
+  height: 110px;
   overflow-x: scroll;
   white-space: nowrap;
 }
@@ -112,11 +140,13 @@ export default {
   height: inherit;
 }
 .sector-header {
-  padding: 10px 0;
+  padding: 10px 0 0 0;
 }
 .sector-name {
+  display: inline-block;
   font-size: 20px;
   font-weight: bold;
+  min-width: 150px;
 }
 .sector-info {
   margin-left: 20px;
@@ -139,5 +169,8 @@ export default {
 .sector-show-false {
   display: none;
   visibility: collapse;
+}
+.ship-summary {
+  padding-bottom: 10px;
 }
 </style>

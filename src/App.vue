@@ -98,6 +98,7 @@ html, body {
   margin: 0;
   height: 100%;
   overflow: hidden;
+  background-color: black;
 }
 button:focus {
   outline:0;
