@@ -52,7 +52,7 @@ export default {
         return this.$store.getters.sectors[this.index].ships
       },
       set (value) {
-        this.$store.commit('updateSector', {sectorIndex: this.index, shipList: value})
+        this.$store.commit('updateSectorField', {sectorIndex: this.index, field: 'ships', value: value})
       }
     },
     toggleIcon () {
@@ -61,7 +61,7 @@ export default {
     sectorInfoObj () {
       return {
         name: this.name,
-        defense: this.def,
+        defense: this.defense,
         type: this.type,
         theatre: this.theatre,
         supporters: this.supporters

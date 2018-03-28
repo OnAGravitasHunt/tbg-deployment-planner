@@ -27,8 +27,11 @@ const actions = {
       targetArr[index] = Object.assign(targetArr[index], state.newShip)
       commit('updateAvail', targetArr, {root: 'true'})
     } else {
-      targetArr = rootGetters.sectors[Number(this.editShipTargetParent.split('-').pop())].ships
+      let sectorIndex = Number(this.editShipTargetParent.split('-').pop())
+      targetArr = rootGetters.sectors[sectorIndex].ships
       index = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
+      targetArr[index] = Object.assign(targetArr[index], state.newShip)
+      commit('updateSectorField', {sectorIndex: sectorIndex, field: 'ships', value: targetArr}, {root: 'true'})
     }
     state.showEditShip = false
     state.newShip = {
@@ -57,6 +60,18 @@ const mutations = {
   // set index of parent of ship under edit
   setEditShipTargetParent (state, t) {
     state.editShipTargetParent = t
+  },
+  clearNewShip (state) {
+    state.newShip = {
+      registry: '',
+      name: '',
+      shipClass: '',
+      prefix: 'USS',
+      scale: '',
+      classStats: [0, 0, 0, 0, 0, 0],
+      veterancy: 0,
+      bonusStats: [0, 0, 0, 0, 0, 0]
+    }
   }
 }
 

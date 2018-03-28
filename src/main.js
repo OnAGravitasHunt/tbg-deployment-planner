@@ -2,10 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-// import Vuex from 'vuex'
 import store from './store'
-// import allData from './assets/allData.json'
-// import shipDataFields from './assets/shipDataFields.json'
 
 Vue.config.productionTip = false
 

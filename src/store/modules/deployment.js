@@ -22,8 +22,16 @@ const mutations = {
     state.timeline[state.currentTick].ships = value
   },
   // update list of ships in sector
-  updateSector (state, {sectorIndex, shipList}) {
-    state.timeline[state.currentTick].sectors[sectorIndex].ships = shipList
+  updateSectorField (state, {sectorIndex, field, value}) {
+    state.timeline[state.currentTick].sectors[sectorIndex][field] = value
+  },
+  updateSectorAllFields (state, {sectorIndex, sector}) {
+    Object.assign(state.timeline[state.currentTick].sectors[sectorIndex], sector)
+  },
+  // mutation to remove sector
+  deleteSector (state, index) {
+    let deletedShips = state.timeline[state.currentTick].sectors.splice(index, 1)[0].ships
+    state.timeline[state.currentTick].ships = state.timeline[state.currentTick].ships.concat(deletedShips)
   },
   // update list of unassigned ships
   updateAvailAppend (state, value) {

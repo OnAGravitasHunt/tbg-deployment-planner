@@ -67,10 +67,11 @@ export default {
   },
   methods: {
     commitChanges () {
-      this.$store.commit('commitSectorChanges')
+      this.$store.dispatch('commitSectorChanges')
+      this.showEditSectorModal = false
     },
     deleteSector () {
-      this.$store.commit('deleteSector')
+      this.$store.dispatch('removeSector')
     }
   },
   computed: {
@@ -111,7 +112,7 @@ export default {
         return this.$store.state.sectorEditing.selectedSector.defense
       },
       set (defense) {
-        this.$store.commit('updateSelectedSectorField', {field: 'defense', value: defense})
+        this.$store.commit('updateSelectedSectorField', {field: 'defense', value: Number(defense)})
       }
     }
   }

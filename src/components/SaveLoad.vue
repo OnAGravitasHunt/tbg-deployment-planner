@@ -2,8 +2,8 @@
 <div id="saveload">
   <button class='storage-button' @click="saveState">{{saveMessage}}</button>
   <button class='storage-button' @click="loadState">{{loadMessage}}</button>
-  <button class='storage-button' @click="showAddShipModal = true">Add Ship</button>
-  <button class='storage-button' @click="showAddSectorModal = true">Add Sector</button>
+  <button class='storage-button' @click="addShip">Add Ship</button>
+  <button class='storage-button' @click="addSector">Add Sector</button>
   <div class='timeline'>
     <!-- <button class='timeline-button fast'>&#x25c4;&#x25c4;</button> -->
     <button class='timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</button>
@@ -46,25 +46,17 @@ export default {
     },
     copyForwards () {
       this.$store.commit('copyForwards')
+    },
+    addSector () {
+      this.$store.commit('clearSelectedSector')
+      this.$store.commit('updateShowAddSector', true)
+    },
+    addShip () {
+      this.$store.commit('clearNewShip')
+      this.$store.commit('updateShowAddShip', true)
     }
   },
   computed: {
-    showAddShipModal: {
-      get () {
-        return this.$store.state.deployment.showAddShip
-      },
-      set (value) {
-        this.$store.commit('updateShowAddShip', value)
-      }
-    },
-    showAddSectorModal: {
-      get () {
-        return this.$store.state.deployment.showAddSector
-      },
-      set (value) {
-        this.$store.commit('updateShowAddSector', value)
-      }
-    },
     dateLabel: {
       get () {
         return this.$store.getters.dateLabel
