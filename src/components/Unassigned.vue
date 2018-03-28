@@ -101,6 +101,7 @@ h3 {
   width: 100%;
   overflow-y: scroll;
   flex-shrink: 1;
+  margin-bottom: 50px;
 }
 #available-ships {
   min-height: 200px;
