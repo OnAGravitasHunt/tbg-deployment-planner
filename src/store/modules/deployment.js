@@ -28,6 +28,10 @@ const mutations = {
   updateSectorAllFields (state, {sectorIndex, sector}) {
     Object.assign(state.timeline[state.currentTick].sectors[sectorIndex], sector)
   },
+  // mutation to add sector
+  addNewSector (state, sector) {
+    state.timeline[state.currentTick].sectors.push(sector)
+  },
   // mutation to remove sector
   deleteSector (state, index) {
     let deletedShips = state.timeline[state.currentTick].sectors.splice(index, 1)[0].ships

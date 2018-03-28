@@ -1,5 +1,5 @@
 <template>
-<div class='sector' :id="'sector-' + name">
+<div :class="`sector ${sectorTypeCSS}`" :id="'sector-' + name">
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
     <span class='sector-info'>D{{sectorDef}}/{{defense}}</span>
@@ -66,6 +66,11 @@ export default {
         theatre: this.theatre,
         supporters: this.supporters
       }
+    },
+    sectorTypeCSS () {
+      // console.log(this.type)
+      // console.log(this.type.toLowerCase())
+      return this.type.replace(' ', '-').toLowerCase()
     }
   },
   methods: {

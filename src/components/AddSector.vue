@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     commitChanges () {
-      this.$store.commit('addNewSector')
+      this.$store.dispatch('createNewSector')
     }
   },
   computed: {
