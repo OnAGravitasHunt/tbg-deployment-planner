@@ -87,7 +87,7 @@ h3 {
 }
 #nav-left-wrapper {
   width: 250px;
-  /* border-right: 2px solid black; */
+  border-right: 2px solid #ccc;
   height: 100%;
   position: fixed;
   float: left;

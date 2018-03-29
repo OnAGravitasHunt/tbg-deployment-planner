@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      sectorShow: true
+      sectorShow: false
     }
   },
   computed: {
@@ -120,13 +120,16 @@ export default {
   text-align: left;
   padding: 0 0px;
   margin-left: 250px;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #ccc;
 }
 .sector-header {
   padding: 10px 0 10px 50px;
 }
 .theatre .sector-header {
-  padding-left: 30px;
+  padding-left: 10px;
+}
+.theatre .sector-header,
+.theatre .ship-summary {
   background-color: #8c8;
   color: black;
 }
@@ -158,7 +161,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* display: inline-block; */
 }
 .sector-show-false {
   display: none;
@@ -175,6 +177,10 @@ export default {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+}
+.theatre .sector-drag-wrapper,
+.task-force .sector-drag-wrapper {
+  border-top: 0px;
 }
 .sector-drag {
   height: inherit;

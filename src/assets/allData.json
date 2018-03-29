@@ -81,7 +81,16 @@
           "mobile": true
         }
       ],
-      "sectors": [{
+      "sectors": [
+        {
+          "name": "Tailward Theatre",
+          "defense": 0,
+          "ships": [],
+          "type": "Theatre",
+          "theatre": "Tailward",
+          "supporters": []
+        },
+        {
           "name": "Sol",
           "defense": 18,
           "ships": [
@@ -154,6 +163,14 @@
           "defense": 9,
           "ships": [],
           "type": "Border",
+          "theatre": "Tailward",
+          "supporters": []
+        },
+        {
+          "name": "Task Force Beyond",
+          "defense": 0,
+          "ships": [],
+          "type": "Task Force",
           "theatre": "Tailward",
           "supporters": []
         }
