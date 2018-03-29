@@ -42,8 +42,7 @@ const mutations = {
     state.timeline[state.currentTick].ships.push(value)
   },
   //
-  // List sorting (only Sol for now)
-  // Places starbases first
+  // List sorting - places starbases first
   sortSector (state, sectorIndex) {
     state.timeline[state.currentTick].sectors[sectorIndex].ships.sort(function (a, b) {
       if (a.scale === 'station') {
@@ -86,6 +85,22 @@ const mutations = {
     } else {
       current.dateLabel = state.timeline[state.currentTick + 1].dateLabel
       state.timeline[state.currentTick + 1] = current
+    }
+  },
+  insertNewTick (state) {
+    let current = JSON.parse(JSON.stringify(state.timeline[state.currentTick]))
+    if (state.currentTick === state.timeline.length - 1) {
+      current.dateLabel = `Tick ${state.currentTick + 1}`
+      state.timeline.push(current)
+    } else {
+      current.dateLabel = state.timeline[state.currentTick].dateLabel + '+1'
+      state.timeline.splice(state.currentTick + 1, 0, current)
+      state.timeline[state.currentTick + 1] = current
+    }
+  },
+  deleteTick (state) {
+    if (state.timeline.length > 1) {
+      state.timeline.splice(state.currentTick, 1)
     }
   }
 }

@@ -8,6 +8,7 @@
     <!-- <button class='timeline-button fast'>&#x25c4;&#x25c4;</button> -->
     <button class='timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</button>
     <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
+    <button class='timeline-button' title='Insert new tick' @click="() => insertNewTick()">+</button>
     <button class='timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</button>
     <button class='timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</button>
     <!-- <button class='timeline-button fast'>&#x25ba;&#x25ba;</button> -->
@@ -46,6 +47,9 @@ export default {
     },
     copyForwards () {
       this.$store.commit('copyForwards')
+    },
+    insertNewTick () {
+      this.$store.commit('insertNewTick')
     },
     addSector () {
       this.$store.commit('clearSelectedSector')
