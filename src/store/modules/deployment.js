@@ -65,10 +65,18 @@ const mutations = {
       newTick = 0
     } else if (newTick >= state.timeline.length) {
       let last = JSON.parse(JSON.stringify(state.timeline[state.timeline.length - 1]))
-      let i = state.currentTick + 1
+      let i = 1
       while (newTick >= state.timeline.length) {
-        last.dateLabel = `Tick ${i}`
+        // last.dateLabel = `Tick ${i}`
+        let label = last.dateLabel.split('+')
+        console.log(label)
+        if (label.length < 2) {
+          last.dateLabel = last.dateLabel + '+' + i
+        } else {
+          last.dateLabel = label[0] + '+' + (Number(label[1]) + i)
+        }
         state.timeline.push(last)
+        i++
       }
       newTick = state.currentTick + delta
     } else {
@@ -80,23 +88,34 @@ const mutations = {
   copyForwards (state) {
     let current = JSON.parse(JSON.stringify(state.timeline[state.currentTick]))
     if (state.currentTick === state.timeline.length - 1) {
-      current.dateLabel = `Tick ${state.currentTick + 1}`
+      let label = current.dateLabel.split('+')
+      if (label.length < 2) {
+        current.dateLabel = current.dateLabel + '+1'
+      } else {
+        current.dateLabel = label[0] + '+' + (Number(label[1]) + 1)
+      }
       state.timeline.push(current)
     } else {
       current.dateLabel = state.timeline[state.currentTick + 1].dateLabel
       state.timeline[state.currentTick + 1] = current
     }
+    state.currentTick++
   },
   insertNewTick (state) {
     let current = JSON.parse(JSON.stringify(state.timeline[state.currentTick]))
+    let label = current.dateLabel.split('+')
+    if (label.length < 2) {
+      current.dateLabel = current.dateLabel + '+1'
+    } else {
+      current.dateLabel = label[0] + '+' + (Number(label[1]) + 1)
+    }
     if (state.currentTick === state.timeline.length - 1) {
-      current.dateLabel = `Tick ${state.currentTick + 1}`
       state.timeline.push(current)
     } else {
-      current.dateLabel = state.timeline[state.currentTick].dateLabel + '+1'
       state.timeline.splice(state.currentTick + 1, 0, current)
       state.timeline[state.currentTick + 1] = current
     }
+    state.currentTick++
   },
   deleteTick (state) {
     if (state.timeline.length > 1) {

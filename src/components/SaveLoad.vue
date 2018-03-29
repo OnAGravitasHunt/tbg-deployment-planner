@@ -1,18 +1,23 @@
 <template>
 <div id="saveload">
-  <button class='storage-button' @click="saveState">{{saveMessage}}</button>
-  <button class='storage-button' @click="loadState">{{loadMessage}}</button>
-  <button class='storage-button' @click="addShip">Add Ship</button>
-  <button class='storage-button' @click="addSector">Add Sector</button>
+  <div class='button storage-button' @click="saveState">{{saveMessage}}</div>
+  <div class='button storage-button' @click="loadState">{{loadMessage}}</div>
+  <div class='button storage-button' @click="addShip">Add Ship</div>
+  <div class='button storage-button' @click="addSector">Add Sector</div>
   <div class='timeline'>
-    <!-- <button class='timeline-button fast'>&#x25c4;&#x25c4;</button> -->
-    <button class='timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</button>
+    <div class='button timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</div>
+    <div class='button timeline-button delete-button' title='Previous tick' @click="() => changeTick(-1)">&otimes;</div>
     <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
-    <button class='timeline-button' title='Insert new tick' @click="() => insertNewTick()">+</button>
-    <button class='timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</button>
-    <button class='timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</button>
-    <!-- <button class='timeline-button fast'>&#x25ba;&#x25ba;</button> -->
+    <div class='button timeline-button' title='Insert new tick' style='line-height: 25px;' @click="() => insertNewTick()"><sub>]</sub><sup>&darr;</sup><sub>[</sub></div>
+    <div class='button timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</div>
+    <div class='button timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</div>
   </div>
+  <div class='timeline-info'>Currently at {{currentTick + 1}} of {{timelineLength}}</div>
+  <div class='button storage-button short-button' @click="download">&#x21E9;</div>
+  <div class='button storage-button short-button' @click="$refs.load_file_input.click()">&#x21E7;</div>
+  <!--  -->
+  <a ref="save_file_a" style="display:none"></a>
+  <input style="display:none" type="file" ref="load_file_input" @change="upload" value="Load file"/>
 </div>
 </template>
 
@@ -58,6 +63,32 @@ export default {
     addShip () {
       this.$store.commit('clearNewShip')
       this.$store.commit('updateShowAddShip', true)
+    },
+    download () {
+      let timestamp = new Date()
+      timestamp.setMilliseconds(0)
+      const filename = `deployment-${timestamp.toISOString()}.json`
+      const data = JSON.stringify(this.$store.state.deployment.timeline)
+
+      let element = this.$refs.save_file_a
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + data)
+      element.setAttribute('download', filename)
+      element.click()
+    },
+    upload () {
+      let loadFile = this.$refs.load_file_input.files[0]
+      let reader = new FileReader()
+      let self = this
+      reader.onload = function (event) {
+        if (reader.readyState === FileReader.DONE) {
+          let save = {
+            timeline: JSON.parse(reader.result),
+            currentTick: 0
+          }
+          self.$store.commit('restoreSave', save)
+        }
+      }
+      reader.readAsText(loadFile)
     }
   },
   computed: {
@@ -68,6 +99,12 @@ export default {
       set (value) {
         this.$store.commit('setDateLabel', value)
       }
+    },
+    currentTick () {
+      return this.$store.state.deployment.currentTick
+    },
+    timelineLength () {
+      return this.$store.state.deployment.timeline.length
     }
   }
 }
@@ -84,8 +121,11 @@ export default {
   position: fixed;
   margin-top: 0;
 }
-button {
+.button {
+  text-align: center;
+  vertical-align: top;
   height: 40px;
+  line-height: 40px;
   border: none;
   outline: none;
   padding: 0px;
@@ -100,16 +140,18 @@ button {
   color: white;
   width: 100px;
   border-radius: 20px;
-  margin: 5px 5px;
+  margin: 5px 2px;
 }
-button:first-child {
+.short-button {
+  width: 60px;
+  margin: 5px 0;
+}
+.button:first-child {
   margin-left: 20px;
 }
 .timeline {
   margin-left: 80px;
   height: 50px;
-  /* width: 300px; */
-  /* background-color: green; */
   display: inline-block;
   vertical-align: top;
 }
@@ -118,8 +160,11 @@ button:first-child {
   margin: 5px -0px;
   background-color: #06a;
   color: white;
-  vertical-align: top;
+  /* vertical-align: top; */
   font-size: 22px;
+}
+.delete-button {
+  background-color: #c44;
 }
 .timeline-button:first-child {
   border-top-left-radius: 20px;
@@ -142,5 +187,19 @@ input {
   letter-spacing: -10px;
   padding-right: 15px;
   /* padding-right: 10px; */
+}
+.timeline-info {
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 16px;
+  line-height: 40px;
+  vertical-align: top;
+  display: inline-block;
+  /* background-color: #06a; */
+  color: white;
+  border-radius: 20px;
+  margin: 5px 5px;
 }
 </style>
