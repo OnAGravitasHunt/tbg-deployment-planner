@@ -45,7 +45,7 @@ const mutations = {
   // List sorting (only Sol for now)
   // Places starbases first
   sortSector (state, sectorIndex) {
-    state.timeline[state.currentTick].sectors[0].ships.sort(function (a, b) {
+    state.timeline[state.currentTick].sectors[sectorIndex].ships.sort(function (a, b) {
       if (a.scale === 'station') {
         return -1
       } else if (b.scale === 'station') {
