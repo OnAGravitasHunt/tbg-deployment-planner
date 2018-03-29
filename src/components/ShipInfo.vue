@@ -161,13 +161,13 @@ li {
 }
 
 .lcars-bar-name {
-  width: 270px;
+  width: 250px;
   border-radius: 0;
   padding: 0px 10px;
 }
 
 .lcars-bar-reg {
-  width: 110px;
+  width: 130px;
   border-radius: 0;
   padding: 0px 10px;
 }

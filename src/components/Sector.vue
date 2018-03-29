@@ -64,7 +64,7 @@ export default {
       }
     },
     toggleIcon () {
-      return this.sectorShow ? '\u25BC' : '\u25B6'
+      return this.sectorShow ? '\u25BC' : '\u25BA'
     },
     sectorInfoObj () {
       return {
