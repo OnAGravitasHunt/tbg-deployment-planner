@@ -87,7 +87,7 @@ h3 {
 }
 #nav-left-wrapper {
   width: 250px;
-  border-right: 2px solid black;
+  /* border-right: 2px solid black; */
   height: 100%;
   position: fixed;
   float: left;
@@ -103,6 +103,24 @@ h3 {
   flex-shrink: 1;
   margin-bottom: 50px;
 }
+/* height */
+#unassigned-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+#unassigned-wrapper::-webkit-scrollbar-track {
+  width: 8px;
+  border-radius: 4px;
+}
+/* Handle */
+#unassigned-wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+/* Handle on hover */
+#unassigned-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
 #available-ships {
   min-height: 200px;
   padding-bottom: 100px;
@@ -110,7 +128,7 @@ h3 {
 .filter-wrapper {
   /* height: 210px; */
   width: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   display: flex;
   flex-flow: row wrap;
   flex-shrink: 0;

@@ -67,6 +67,7 @@ export default {
   methods: {
     commitChanges () {
       this.$store.dispatch('createNewSector')
+      this.showAddSectorModal = false
     }
   },
   computed: {

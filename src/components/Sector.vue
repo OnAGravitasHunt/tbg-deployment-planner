@@ -2,7 +2,7 @@
 <div :class="`sector ${sectorTypeCSS}`" :id="'sector-' + name">
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
-    <span class='sector-info'>D{{sectorStats[5]}}/{{defense}}</span>
+    <span class='sector-info'>D{{sectorStats[5]}}{{defDisp}}</span>
     <span class='sector-info'>C{{sectorStats[0]}}</span>
     <span class='sector-info'>S{{sectorStats[1]}}</span>
     <span class='sector-info'>P{{sectorStats[4]}}</span>
@@ -44,6 +44,9 @@ export default {
     }
   },
   computed: {
+    defDisp () {
+      return this.defense === '0' ? '' : `/${this.defense}`
+    },
     sectorStats () {
       let stats = []
       for (var i = 0; i < 5; i++) {
@@ -115,32 +118,22 @@ export default {
 <style scoped>
 .sector {
   text-align: left;
-  padding: 0 30px;
+  padding: 0 0px;
   margin-left: 250px;
   border-bottom: 2px solid white;
 }
-.core .sector-header {
-
+.sector-header {
+  padding: 10px 0 10px 50px;
 }
-.task-force {
-  background-color: #888;
+.theatre .sector-header {
+  padding-left: 30px;
+  background-color: #8c8;
   color: black;
 }
-.task-force .sector-drag-wrapper {
-  border-top: 1px solid #333;
-}
-.sector-drag-wrapper {
-  margin-top: 10px;
-  border-top: 1px solid #ccc;
-  height: 110px;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
-.sector-drag {
-  height: inherit;
-}
-.sector-header {
-  padding: 10px 0 0 0;
+.task-force .sector-header,
+.task-force .ship-summary {
+  background-color: #888;
+  color: black;
 }
 .sector-name {
   display: inline-block;
@@ -152,6 +145,7 @@ export default {
   margin-left: 20px;
 }
 .sector-edit {
+  margin-right: 10px;
   float: right;
   background-color: #c99;
   height: 24px;
@@ -171,6 +165,37 @@ export default {
   visibility: collapse;
 }
 .ship-summary {
-  padding-bottom: 10px;
+  padding: 0 0 10px 80px;
+}
+.sector-drag-wrapper {
+  margin-left: 50px;
+  margin-bottom: 5px;
+  border-top: 1px solid #ccc;
+  height: 98px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.sector-drag {
+  height: inherit;
+}
+
+/* height */
+::-webkit-scrollbar {
+    height: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  height: 8px;
+  border-radius: 4px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
 }
 </style>
