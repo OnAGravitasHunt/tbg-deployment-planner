@@ -6,7 +6,7 @@
   <div class='button storage-button' @click="addSector">Add Sector</div>
   <div class='timeline'>
     <div class='button timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</div>
-    <div class='button timeline-button delete-button' title='Previous tick' @click="() => deleteTick()">&otimes;</div>
+    <div class='button timeline-button delete-button' title='Delete tick' @click="() => deleteTick()">&otimes;</div>
     <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
     <div class='button timeline-button' title='Insert new tick' style='line-height: 25px;' @click="() => insertNewTick()"><sub>]</sub><sup>&darr;</sup><sub>[</sub></div>
     <div class='button timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</div>
