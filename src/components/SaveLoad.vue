@@ -6,15 +6,15 @@
   <div class='button storage-button' @click="addSector">Add Sector</div>
   <div class='timeline'>
     <div class='button timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</div>
-    <div class='button timeline-button delete-button' title='Previous tick' @click="() => changeTick(-1)">&otimes;</div>
+    <div class='button timeline-button delete-button' title='Previous tick' @click="() => deleteTick()">&otimes;</div>
     <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
     <div class='button timeline-button' title='Insert new tick' style='line-height: 25px;' @click="() => insertNewTick()"><sub>]</sub><sup>&darr;</sup><sub>[</sub></div>
     <div class='button timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</div>
     <div class='button timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</div>
   </div>
   <div class='timeline-info'>Currently at {{currentTick + 1}} of {{timelineLength}}</div>
-  <div class='button storage-button short-button' @click="download">&#x21E9;</div>
-  <div class='button storage-button short-button' @click="$refs.load_file_input.click()">&#x21E7;</div>
+  <div class='button storage-button short-button' title='Download state file' @click="download">&#x21E9;</div>
+  <div class='button storage-button short-button' title='Upload state file' @click="$refs.load_file_input.click()">&#x21E7;</div>
   <!--  -->
   <a ref="save_file_a" style="display:none"></a>
   <input style="display:none" type="file" ref="load_file_input" @change="upload" value="Load file"/>
@@ -55,6 +55,9 @@ export default {
     },
     insertNewTick () {
       this.$store.commit('insertNewTick')
+    },
+    deleteTick () {
+      this.$store.commit('deleteTick')
     },
     addSector () {
       this.$store.commit('clearSelectedSector')

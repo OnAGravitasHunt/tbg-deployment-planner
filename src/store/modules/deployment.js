@@ -69,7 +69,6 @@ const mutations = {
       while (newTick >= state.timeline.length) {
         // last.dateLabel = `Tick ${i}`
         let label = last.dateLabel.split('+')
-        console.log(label)
         if (label.length < 2) {
           last.dateLabel = last.dateLabel + '+' + i
         } else {
@@ -119,7 +118,12 @@ const mutations = {
   },
   deleteTick (state) {
     if (state.timeline.length > 1) {
-      state.timeline.splice(state.currentTick, 1)
+      if (state.currentTick === state.timeline.length - 1) {
+        state.currentTick -= 1
+        state.timeline.splice(state.currentTick + 1, 1)
+      } else {
+        state.timeline.splice(state.currentTick, 1)
+      }
     }
   }
 }
