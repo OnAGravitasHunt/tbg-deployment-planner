@@ -1,52 +1,44 @@
 <template>
-<transition name='modal'>
-  <div class='modal-mask'>
-    <div class='modal-wrapper'>
-      <div class='modal-container'>
-        <!--  -->
-        <div class='modal-header'>
-          <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Add New Starship</div>
-          <div class='lcars-bar lcars-bar-right'></div>
-        </div>
-        <!--  -->
-        <div class='modal-body'>
-          <ul class='add-ship-fields'>
-            <li>
-              <select v-model="currentShipPrefix">
-                <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
-              </select>
-              <input v-model="currentShipName" placeholder='Starship name'>
-              <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
-            </li>
-            <li>
-              <span>Ship Class: </span>
-              <select v-model="currentShipClass">
-                <option disabled value="">Select starship class</option>
-                <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
-              </select>
-            </li>
-            <li>
-              <span>Veterancy: </span>
-              <select v-model="currentShipVet">
-                <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
-              </select>
-            </li>
-            <li>
-              <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
-            </li>
-          </ul>
-        </div>
-        <!--  -->
-        <div class='modal-footer'>
-          <button class='modal-default-button' @click="showAddShipModal = false">Close</button>
-          <button class='modal-default-button' @click="commitNewShip">{{addMessage}}</button>
-        </div>
-        <!--  -->
-      </div>
+  <div class='modal-content'>
+    <div class='modal-header'>
+      <div class='lcars-bar lcars-bar-left'></div>
+      <div class='lcars-bar lcars-bar-main'>Add New Starship</div>
+      <div class='lcars-bar lcars-bar-right'></div>
+    </div>
+    <!--  -->
+    <div class='modal-body'>
+      <ul class='add-ship-fields'>
+        <li>
+          <select v-model="currentShipPrefix">
+            <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
+          </select>
+          <input v-model="currentShipName" placeholder='Starship name'>
+          <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
+        </li>
+        <li>
+          <span>Ship Class: </span>
+          <select v-model="currentShipClass">
+            <option disabled value="">Select starship class</option>
+            <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Veterancy: </span>
+          <select v-model="currentShipVet">
+            <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
+          </select>
+        </li>
+        <li>
+          <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class='modal-footer'>
+      <button class='modal-default-button' @click="showAddShipModal = false">Close</button>
+      <button class='modal-default-button' @click="commitNewShip">{{addMessage}}</button>
     </div>
   </div>
-</transition>
 </template>
 
 <script>
@@ -145,36 +137,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 500px;
-  /* height: 400px; */
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #222;
-  color: white;
-  border: 2px solid white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
 
 .modal-header {
   margin-top: 0;

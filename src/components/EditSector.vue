@@ -77,7 +77,7 @@ export default {
   computed: {
     showEditSectorModal: {
       get () {
-        return this.$store.state.showEditSector
+        return this.$store.state.modalBools.showEditSector
       },
       set (value) {
         this.$store.commit('updateShowEditSector', value)

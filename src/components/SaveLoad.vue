@@ -2,8 +2,9 @@
 <div id="saveload">
   <div class='button storage-button' @click="saveState">{{saveMessage}}</div>
   <div class='button storage-button' @click="loadState">{{loadMessage}}</div>
-  <div class='button storage-button' @click="addShip">Add Ship</div>
-  <div class='button storage-button' @click="addSector">Add Sector</div>
+  <div class='button storage-button' @click="addNew">Add...</div>
+  <!-- <div class='button storage-button' @click="addShip">Add Ship</div> -->
+  <!-- <div class='button storage-button' @click="addSector">Add Sector</div> -->
   <div class='timeline'>
     <div class='button timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</div>
     <div class='button timeline-button delete-button' title='Delete tick' @click="() => deleteTick()">&otimes;</div>
@@ -58,6 +59,9 @@ export default {
     },
     deleteTick () {
       this.$store.commit('deleteTick')
+    },
+    addNew () {
+      this.$store.commit('updateShowAddShip', true)
     },
     addSector () {
       this.$store.commit('clearSelectedSector')

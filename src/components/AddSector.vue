@@ -1,54 +1,46 @@
 <template>
-<transition name='modal'>
-  <div class='modal-mask'>
-    <div class='modal-wrapper'>
-      <div class='modal-container'>
-        <!--  -->
-        <div class='modal-header'>
-          <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Add New Sector</div>
-          <div class='lcars-bar lcars-bar-right'></div>
-        </div>
-        <!--  -->
-        <div class='modal-body'>
-          <ul class='add-sector-fields'>
-            <li>
-              <input v-model="currentSectorName" placeholder='Sector name'>
-            </li>
-            <li>
-              <span>Sector Type: </span>
-              <select v-model="currentSectorType">
-                <option disabled value="">Select Sector Type</option>
-                <option v-for="type of sectorTypes" :key="type">{{type}}</option>
-              </select>
-            </li>
-            <li>
-              <span>Theatre: </span>
-              <select v-model="currentSectorTheatre">
-                <option disabled value="">Select Theatre</option>
-                <option v-for="theatre of theatres" :key="theatre">{{theatre}}</option>
-              </select>
-            </li>
-            <li>
-              <span>Defense Requirements: </span>
-              <input v-model="currentSectorDef" placeholder='Min Defense'>
-            </li>
-            <li>
-              <span>Supporting Sectors: </span>
-              <span>(Not yet implemented)</span>
-            </li>
-          </ul>
-        </div>
-        <!--  -->
-        <div class='modal-footer'>
-          <button class='modal-default-button' @click="showAddSectorModal = false">Close</button>
-          <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
-        </div>
-        <!--  -->
-      </div>
+  <div class='modal-content'>
+    <div class='modal-header'>
+      <div class='lcars-bar lcars-bar-left'></div>
+      <div class='lcars-bar lcars-bar-main'>Add New Sector</div>
+      <div class='lcars-bar lcars-bar-right'></div>
+    </div>
+    <!--  -->
+    <div class='modal-body'>
+      <ul class='add-sector-fields'>
+        <li>
+          <input v-model="currentSectorName" placeholder='Sector name'>
+        </li>
+        <li>
+          <span>Sector Type: </span>
+          <select v-model="currentSectorType">
+            <option disabled value="">Select Sector Type</option>
+            <option v-for="type of sectorTypes" :key="type">{{type}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Theatre: </span>
+          <select v-model="currentSectorTheatre">
+            <option disabled value="">Select Theatre</option>
+            <option v-for="theatre of theatres" :key="theatre">{{theatre}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Defense Requirements: </span>
+          <input v-model="currentSectorDef" placeholder='Min Defense'>
+        </li>
+        <li>
+          <span>Supporting Sectors: </span>
+          <span>(Not yet implemented)</span>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class='modal-footer'>
+      <button class='modal-default-button' @click="showAddSectorModal = false">Close</button>
+      <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
     </div>
   </div>
-</transition>
 </template>
 
 <script>
@@ -73,7 +65,7 @@ export default {
   computed: {
     showAddSectorModal: {
       get () {
-        return this.$store.state.showAddSector
+        return this.$store.state.modalBools.showAddSector
       },
       set (value) {
         this.$store.commit('updateShowAddSector', value)
@@ -117,37 +109,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 500px;
-  /* height: 400px; */
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #222;
-  color: white;
-  border: 2px solid white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 .modal-header {
   margin-top: 0;
 }

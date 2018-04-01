@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <AddShip v-if="showAddShipModal"></AddShip>
-    <EditShip v-if="showEditShipModal"></EditShip>
-    <ShipInfo v-if="showShipInfoModal"></ShipInfo>
-    <AddSector v-if="showAddSectorModal"></AddSector>
-    <EditSector v-if="showEditSectorModal"></EditSector>
+    <!-- <AddShip v-if="showAddShipModal"></AddShip> -->
+    <!-- <EditShip v-if="showEditShipModal"></EditShip> -->
+    <!-- <ShipInfo v-if="showShipInfoModal"></ShipInfo> -->
+    <!-- <AddSector v-if="showAddSectorModal"></AddSector> -->
+    <!-- <EditSector v-if="showEditSectorModal"></EditSector> -->
+    <ModalBase v-show="showModalBase"></ModalBase>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
   </div>
@@ -13,6 +14,7 @@
 <script>
 import Planner from './components/Planner'
 import SaveLoad from './components/SaveLoad'
+import ModalBase from './components/ModalBase'
 import AddShip from './components/AddShip'
 import EditShip from './components/EditShip'
 import ShipInfo from './components/ShipInfo'
@@ -24,6 +26,7 @@ export default {
   components: {
     Planner,
     SaveLoad,
+    ModalBase,
     AddShip,
     EditShip,
     ShipInfo,
@@ -31,9 +34,19 @@ export default {
     EditSector
   },
   computed: {
+    showModalBase: {
+      get () {
+        // let vals = Object.values(this.$store.state.modalBools)
+        return Object.values(this.$store.state.modalBools).reduce((acc, curr) => acc || curr, false)
+        // return this.$store.state.modalBools.showModalBase
+      },
+      set (value) {
+        this.$store.commit('updateShowModalBase', value)
+      }
+    },
     showAddShipModal: {
       get () {
-        return this.$store.state.showAddShip
+        return this.$store.state.modalBools.showAddShip
       },
       set (value) {
         this.$store.commit('updateShowAddShip', value)
@@ -41,7 +54,7 @@ export default {
     },
     showEditShipModal: {
       get () {
-        return this.$store.state.showEditShip
+        return this.$store.state.modalBools.showEditShip
       },
       set (value) {
         this.$store.commit('updateShowEditShip', value)
@@ -49,7 +62,7 @@ export default {
     },
     showShipInfoModal: {
       get () {
-        return this.$store.state.showShipInfo
+        return this.$store.state.modalBools.showShipInfo
       },
       set (value) {
         this.$store.commit('updateShowShipInfo', value)
@@ -57,7 +70,7 @@ export default {
     },
     showAddSectorModal: {
       get () {
-        return this.$store.state.showAddSector
+        return this.$store.state.modalBools.showAddSector
       },
       set (value) {
         this.$store.commit('updateShowAddSector', value)
@@ -65,7 +78,7 @@ export default {
     },
     showEditSectorModal: {
       get () {
-        return this.$store.state.showEditSector
+        return this.$store.state.modalBools.showEditSector
       },
       set (value) {
         this.$store.commit('updateShowEditSector', value)
