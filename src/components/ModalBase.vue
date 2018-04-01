@@ -3,8 +3,11 @@
   <div class='modal-mask'>
     <div class='modal-wrapper'>
       <div class='modal-container'>
-        <!-- <AddSector></AddSector> -->
-        <AddShip></AddShip>
+        <AddShip v-show="showAddShipModal"></AddShip>
+        <EditShip v-show="showEditShipModal"></EditShip>
+        <ShipInfo v-show="showShipInfoModal"></ShipInfo>
+        <AddSector v-show="showAddSectorModal"></AddSector>
+        <EditSector v-show="showEditSectorModal"></EditSector>
       </div>
     </div>
   </div>
@@ -13,30 +16,60 @@
 
 <script>
 // import sectorDataFields from '../assets/sectorDataFields.json'
-import AddSector from './AddSector'
 import AddShip from './AddShip'
+import EditShip from './EditShip'
+import ShipInfo from './ShipInfo'
+import AddSector from './AddSector'
+import EditSector from './EditSector'
 
 export default {
   name: 'ModalBase',
   components: {
+    AddShip,
+    EditShip,
+    ShipInfo,
     AddSector,
-    AddShip
+    EditSector
   },
   computed: {
-    showAddSectorModal: {
+    showAddShipModal: {
       get () {
-        return this.store.state.modalBools.showAddSector
+        return this.$store.state.modalBools.showAddShip
       },
       set (value) {
-        this.store.commit('updateShowAddSector')
+        this.$store.commit('updateShowAddShip', value)
       }
     },
-    showAddSectorShip: {
+    showEditShipModal: {
       get () {
-        return this.store.state.modalBools.showAddShip
+        return this.$store.state.modalBools.showEditShip
       },
       set (value) {
-        this.store.commit('updateShowAddShip')
+        this.$store.commit('updateShowEditShip', value)
+      }
+    },
+    showShipInfoModal: {
+      get () {
+        return this.$store.state.modalBools.showShipInfo
+      },
+      set (value) {
+        this.$store.commit('updateShowShipInfo', value)
+      }
+    },
+    showAddSectorModal: {
+      get () {
+        return this.$store.state.modalBools.showAddSector
+      },
+      set (value) {
+        this.$store.commit('updateShowAddSector', value)
+      }
+    },
+    showEditSectorModal: {
+      get () {
+        return this.$store.state.modalBools.showEditSector
+      },
+      set (value) {
+        this.$store.commit('updateShowEditSector', value)
       }
     }
   }

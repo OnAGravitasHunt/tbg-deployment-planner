@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <!-- <AddShip v-if="showAddShipModal"></AddShip> -->
-    <!-- <EditShip v-if="showEditShipModal"></EditShip> -->
-    <!-- <ShipInfo v-if="showShipInfoModal"></ShipInfo> -->
-    <!-- <AddSector v-if="showAddSectorModal"></AddSector> -->
-    <!-- <EditSector v-if="showEditSectorModal"></EditSector> -->
+    <!-- <AddShip v-if="showAddShipModal"></AddShip>
+    <EditShip v-if="showEditShipModal"></EditShip>
+    <ShipInfo v-if="showShipInfoModal"></ShipInfo>
+    <AddSector v-if="showAddSectorModal"></AddSector>
+    <EditSector v-if="showEditSectorModal"></EditSector> -->
     <ModalBase v-show="showModalBase"></ModalBase>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
@@ -42,46 +42,6 @@ export default {
       },
       set (value) {
         this.$store.commit('updateShowModalBase', value)
-      }
-    },
-    showAddShipModal: {
-      get () {
-        return this.$store.state.modalBools.showAddShip
-      },
-      set (value) {
-        this.$store.commit('updateShowAddShip', value)
-      }
-    },
-    showEditShipModal: {
-      get () {
-        return this.$store.state.modalBools.showEditShip
-      },
-      set (value) {
-        this.$store.commit('updateShowEditShip', value)
-      }
-    },
-    showShipInfoModal: {
-      get () {
-        return this.$store.state.modalBools.showShipInfo
-      },
-      set (value) {
-        this.$store.commit('updateShowShipInfo', value)
-      }
-    },
-    showAddSectorModal: {
-      get () {
-        return this.$store.state.modalBools.showAddSector
-      },
-      set (value) {
-        this.$store.commit('updateShowAddSector', value)
-      }
-    },
-    showEditSectorModal: {
-      get () {
-        return this.$store.state.modalBools.showEditSector
-      },
-      set (value) {
-        this.$store.commit('updateShowEditSector', value)
       }
     }
   }
