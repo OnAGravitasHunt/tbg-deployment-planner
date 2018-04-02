@@ -1,55 +1,49 @@
 <template>
-<transition name='modal'>
-  <div class='modal-mask'>
-    <div class='modal-wrapper'>
-      <div class='modal-container'>
-        <!--  -->
-        <div class='modal-header'>
-          <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Edit Sector</div>
-          <div class='lcars-bar lcars-bar-right'></div>
-        </div>
-        <!--  -->
-        <div class='modal-body'>
-          <ul class='add-sector-fields'>
-            <li>
-              <input v-model="currentSectorName" placeholder='Sector name'>
-            </li>
-            <li>
-              <span>Sector Type: </span>
-              <select v-model="currentSectorType">
-                <option disabled value="">Select Sector Type</option>
-                <option v-for="type of sectorTypes" :key="type">{{type}}</option>
-              </select>
-            </li>
-            <li>
-              <span>Theatre: </span>
-              <select v-model="currentSectorTheatre">
-                <option disabled value="">Select Theatre</option>
-                <option v-for="theatre of theatres" :key="theatre">{{theatre}}</option>
-              </select>
-            </li>
-            <li>
-              <span>Defense Requirements: </span>
-              <input v-model="currentSectorDef" placeholder='Min Defense'>
-            </li>
-            <li>
-              <span>Supporting Sectors: </span>
-              <span>(Not yet implemented)</span>
-            </li>
-          </ul>
-        </div>
-        <!--  -->
-        <div class='modal-footer'>
-          <button class='modal-default-button' @click="showEditSectorModal = false">Close</button>
-          <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
-          <button class='modal-default-button' @click="deleteSector">DELETE</button>
-        </div>
-        <!--  -->
-      </div>
+  <div class='modal-content'>
+    <!--  -->
+    <div class='modal-header'>
+      <div class='lcars-bar lcars-bar-left'></div>
+      <div class='lcars-bar lcars-bar-main'>Edit Sector</div>
+      <div class='lcars-bar lcars-bar-right'></div>
     </div>
+    <!--  -->
+    <div class='modal-body'>
+      <ul class='add-sector-fields'>
+        <li>
+          <input v-model="currentSectorName" placeholder='Sector name'>
+        </li>
+        <li>
+          <span>Sector Type: </span>
+          <select v-model="currentSectorType">
+            <option disabled value="">Select Sector Type</option>
+            <option v-for="type of sectorTypes" :key="type">{{type}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Theatre: </span>
+          <select v-model="currentSectorTheatre">
+            <option disabled value="">Select Theatre</option>
+            <option v-for="theatre of theatres" :key="theatre">{{theatre}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Defense Requirements: </span>
+          <input v-model="currentSectorDef" placeholder='Min Defense'>
+        </li>
+        <li>
+          <span>Supporting Sectors: </span>
+          <span>(Not yet implemented)</span>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class='modal-footer'>
+      <button class='modal-default-button' @click="showEditSectorModal = false">Close</button>
+      <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
+      <button class='modal-default-button' @click="deleteSector">DELETE</button>
+    </div>
+    <!--  -->
   </div>
-</transition>
 </template>
 
 <script>

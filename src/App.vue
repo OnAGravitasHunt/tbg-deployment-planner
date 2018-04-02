@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <!-- <AddShip v-if="showAddShipModal"></AddShip>
-    <EditShip v-if="showEditShipModal"></EditShip>
-    <ShipInfo v-if="showShipInfoModal"></ShipInfo>
-    <AddSector v-if="showAddSectorModal"></AddSector>
-    <EditSector v-if="showEditSectorModal"></EditSector> -->
     <ModalBase v-show="showModalBase"></ModalBase>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
@@ -36,9 +31,8 @@ export default {
   computed: {
     showModalBase: {
       get () {
-        // let vals = Object.values(this.$store.state.modalBools)
-        return Object.values(this.$store.state.modalBools).reduce((acc, curr) => acc || curr, false)
-        // return this.$store.state.modalBools.showModalBase
+        // return Object.values(this.$store.state.modalBools).reduce((acc, curr) => acc || curr, false)
+        return Object.values(this.$store.state.modalBools).some((b) => b)
       },
       set (value) {
         this.$store.commit('updateShowModalBase', value)

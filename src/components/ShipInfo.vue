@@ -1,51 +1,45 @@
 <template>
-<transition name='modal'>
-  <div class='modal-mask'>
-    <div class='modal-wrapper'>
-      <div class='modal-container'>
-        <!--  -->
-        <div class='modal-header'>
-          <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-name'>{{currentShip.prefix}} {{currentShip.name}}</div>
-          <div class='lcars-bar lcars-bar-reg'>NCC-{{currentShip.registry}}</div>
-          <div class='lcars-bar lcars-bar-right'></div>
-        </div>
-        <!--  -->
-        <div class='modal-body'>
-          <div class='ship-data'>
-            <div class='image-placeholder'>[Image here]</div>
-            <table class='stat-table'>
-              <tr class='stat-name-row'>
-                <th v-for="statName of statOrder" :key="'stat-name-' + statName">
-                  {{statName}}
-                </th>
-              </tr>
+  <div class='modal-content'>
+    <!--  -->
+    <div class='modal-header'>
+      <div class='lcars-bar lcars-bar-left'></div>
+      <div class='lcars-bar lcars-bar-name'>{{currentShip.prefix}} {{currentShip.name}}</div>
+      <div class='lcars-bar lcars-bar-reg'>NCC-{{currentShip.registry}}</div>
+      <div class='lcars-bar lcars-bar-right'></div>
+    </div>
+    <!--  -->
+    <div class='modal-body'>
+      <div class='ship-data'>
+        <div class='image-placeholder'>[Image here]</div>
+        <table class='stat-table'>
+          <tr class='stat-name-row'>
+            <th v-for="statName of statOrder" :key="'stat-name-' + statName">
+              {{statName}}
+            </th>
+          </tr>
 
-              <tr class='stat-row'>
-                <td v-for="(stat, index) of shipStats" :key="'stat-' + statOrder[index]">
-                  {{stat}}
-                </td>
-              </tr>
-            </table>
-            <p class='ship-data-item'>{{veterancy}}</p>
-          </div>
-          <div class='ship-data'>
-            <p class='ship-data-item' v-html="displayClassName"></p>
-            <p class='ship-data-item'>Launched: [LAUNCH DATE]</p>
-            <p class='ship-data-item'>Captain: [CAPTAIN]</p>
-            <p class='ship-data-item'>Assignment: [SECTOR]</p>
-            <p class='ship-data-item'>Status: Active/Under Refit etc.</p>
-          </div>
-        </div>
-        <!--  -->
-        <div class='modal-footer'>
-          <button class='modal-default-button' @click="showShipInfoModal = false">Close</button>
-        </div>
-        <!--  -->
+          <tr class='stat-row'>
+            <td v-for="(stat, index) of shipStats" :key="'stat-' + statOrder[index]">
+              {{stat}}
+            </td>
+          </tr>
+        </table>
+        <p class='ship-data-item'>{{veterancy}}</p>
+      </div>
+      <div class='ship-data'>
+        <p class='ship-data-item' v-html="displayClassName"></p>
+        <p class='ship-data-item'>Launched: [LAUNCH DATE]</p>
+        <p class='ship-data-item'>Captain: [CAPTAIN]</p>
+        <p class='ship-data-item'>Assignment: [SECTOR]</p>
+        <p class='ship-data-item'>Status: Active/Under Refit etc.</p>
       </div>
     </div>
+    <!--  -->
+    <div class='modal-footer'>
+      <button class='modal-default-button' @click="showShipInfoModal = false">Close</button>
+    </div>
+    <!--  -->
   </div>
-</transition>
 </template>
 
 <script>
@@ -105,36 +99,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 500px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #222;
-  color: white;
-  border: 2px solid white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 .modal-header {
   margin-top: 0;
 }

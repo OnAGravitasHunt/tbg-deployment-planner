@@ -1,54 +1,48 @@
 <template>
-<transition name='modal'>
-  <div class='modal-mask'>
-    <div class='modal-wrapper'>
-      <div class='modal-container'>
-        <!--  -->
-        <div class='modal-header'>
-          <div class='lcars-bar lcars-bar-left'></div>
-          <div class='lcars-bar lcars-bar-main'>Edit Starship</div>
-          <div class='lcars-bar lcars-bar-right'></div>
+  <div class='modal-content'>
+    <!--  -->
+    <div class='modal-header'>
+      <div class='lcars-bar lcars-bar-left'></div>
+      <div class='lcars-bar lcars-bar-main'>Edit Starship</div>
+      <div class='lcars-bar lcars-bar-right'></div>
 
-        </div>
-        <!--  -->
-        <div class='modal-body'>
-          <ul class='add-ship-fields'>
-            <li>
-              <!-- <span>Name: </span> -->
-              <select v-model="currentShipPrefix">
-                <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
-              </select>
-              <input v-model="currentShipName" placeholder='Starship name'>
-              <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
-            </li>
-            <li>
-              <span>Ship Class: </span>
-              <select v-model="currentShipClass">
-                <option disabled value="">Select starship class</option>
-                <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
-              </select>
-            </li>
-            <li>
-              <span>Veterancy: </span>
-              <select v-model="currentShipVet">
-                <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
-              </select>
-            </li>
-            <li>
-              <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
-            </li>
-          </ul>
-        </div>
-        <!--  -->
-        <div class='modal-footer'>
-          <button class='modal-default-button' @click="showEditShipModal = false">Close</button>
-          <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
-        </div>
-        <!--  -->
-      </div>
     </div>
+    <!--  -->
+    <div class='modal-body'>
+      <ul class='add-ship-fields'>
+        <li>
+          <!-- <span>Name: </span> -->
+          <select v-model="currentShipPrefix">
+            <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
+          </select>
+          <input v-model="currentShipName" placeholder='Starship name'>
+          <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
+        </li>
+        <li>
+          <span>Ship Class: </span>
+          <select v-model="currentShipClass">
+            <option disabled value="">Select starship class</option>
+            <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Veterancy: </span>
+          <select v-model="currentShipVet">
+            <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
+          </select>
+        </li>
+        <li>
+          <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class='modal-footer'>
+      <button class='modal-default-button' @click="showEditShipModal = false">Close</button>
+      <button class='modal-default-button' @click="commitChanges">{{saveMessage}}</button>
+    </div>
+    <!--  -->
   </div>
-</transition>
 </template>
 
 <script>
