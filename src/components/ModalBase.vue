@@ -3,16 +3,16 @@
   <div class='modal-mask'>
     <div class='modal-wrapper'>
       <div class='modal-container'>
-        <ModalHeader :heading="shipHeader"></ModalHeader>
+        <ModalHeader :heading="header"></ModalHeader>
         <div class='modal-body'>
           <ModalMenu :menuItems="menuItems"></ModalMenu>
-          <!-- <AddShip v-show="showAddShipModal"></AddShip> -->
-          <!-- <EditShip v-show="showEditShipModal"></EditShip> -->
-          <ShipInfo v-show="currentModal === 'showShipInfo'"></ShipInfo>
-          <!-- <AddSector v-show="showAddSectorModal"></AddSector> -->
-          <!-- <EditSector v-show="showEditSectorModal"></EditSector> -->
+          <AddShip v-show="currentModal === 'add-ship'"></AddShip>
+          <AddSector v-show="currentModal === 'add-sector'"></AddSector>
+          <ShipInfo v-show="currentModal === 'ship-info'"></ShipInfo>
+          <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
+          <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
         </div>
-        <ModalFooter heading='USS Avandar &#xb7; NCC-2010'></ModalFooter>
+        <ModalFooter footer=''></ModalFooter>
       </div>
     </div>
   </div>
@@ -46,71 +46,42 @@ export default {
     // Current Modal
     currentModal () {
       return this.$store.state.currentModal
-      // let filt = Object.keys(this.$store.state.modalBools).filter(key => this.$store.state.modalBools[key])
-      // return filt.length ? filt[0] : 'none'
-      // return filt
     },
     // Modal Menu
     menuItems () {
       switch (this.currentModal) {
-        case 'showAddShip':
-        case 'showAddSector':
+        case 'add-ship':
+        case 'add-sector':
           return ['Add Ship', 'Add Sector']
-        case 'showShipInfo':
-        case 'showEditShip':
+        case 'ship-info':
+        case 'ship-edit':
           return ['Ship Info', 'Edit Ship']
+        case 'sector-edit':
+          return ['Edit Sector']
         default:
           return []
+      }
+    },
+    header () {
+      switch (this.currentModal) {
+        case 'add-ship':
+          return 'Add New Starship'
+        case 'add-sector':
+          return 'Add New Sector'
+        case 'ship-info':
+          return `${this.shipHeader}`
+        case 'ship-edit':
+          return `Editing ${this.shipHeader}`
+        case 'sector-edit':
+          return 'Edit Sector'
+        default:
+          return ''
       }
     },
     // Ship Info Title
     shipHeader () {
       let curr = this.$store.state.shipEditing.newShip
       return `${curr.prefix} ${curr.name} &#xb7; NCC-${curr.registry}`
-    },
-    // Modals show/hide
-    // Add Ship/Sector/(ShipClass)
-    showAddShipModal: {
-      get () {
-        return this.$store.state.modalBools.showAddShip
-      },
-      set (value) {
-        this.$store.commit('updateShowAddShip', value)
-      }
-    },
-    showAddSectorModal: {
-      get () {
-        return this.$store.state.modalBools.showAddSector
-      },
-      set (value) {
-        this.$store.commit('updateShowAddSector', value)
-      }
-    },
-    // Ship Info/Edit
-    showShipInfoModal: {
-      get () {
-        return this.$store.state.modalBools.showShipInfo
-      },
-      set (value) {
-        this.$store.commit('updateShowShipInfo', value)
-      }
-    },
-    showEditShipModal: {
-      get () {
-        return this.$store.state.modalBools.showEditShip
-      },
-      set (value) {
-        this.$store.commit('updateShowEditShip', value)
-      }
-    },
-    // Sector (Info)/Edit
-    showEditSectorModal: {
-      get () {
-        return this.$store.state.modalBools.showEditSector
-      },
-      set (value) {
-        this.$store.commit('updateShowEditSector', value)
-      }
     }
   }
 }

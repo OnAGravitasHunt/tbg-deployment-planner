@@ -101,7 +101,7 @@ export default {
     editSector () {
       this.$store.commit('setSelectedSectorIndex', this.index)
       this.$store.commit('updateSelectedSectorAllFields', this.sectorInfoObj)
-      this.$store.commit('updateShowEditSector', true)
+      this.$store.commit('setModal', 'sector-edit')
     },
     displayClassName (className) {
       let bits = className.split('-')

@@ -59,11 +59,11 @@ export default {
     editShip () {
       this.$store.commit('setEditShipTargetParent', this.$parent.$attrs.id)
       this.$store.commit('updateNewShipAllFields', this.shipObj)
-      this.$store.commit('updateShowEditShip', true)
+      this.$store.commit('setModal', 'ship-edit')
     },
     displayMoreInfo () {
       this.$store.commit('updateNewShipAllFields', this.shipObj)
-      this.$store.commit('updateShowShipInfo', true)
+      this.$store.commit('setModal', 'ship-info')
     },
     unassignShip (event) {
       if (this.$parent.$attrs.id !== 'available-ships') {

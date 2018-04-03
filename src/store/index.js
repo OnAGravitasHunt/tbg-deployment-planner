@@ -25,36 +25,29 @@ export default new Vuex.Store({
     } */
   },
   mutations: {
+    setModal (state, value) {
+      state.currentModal = value
+    },
     setAllModalsHidden (state) {
       state.currentModal = 'none'
-      /*
-      for (let modalFlag of Object.keys(state.modalBools)) {
-        state.modalBools[modalFlag] = false
-      }
-      */
     },
-    // Add/edit sectors - modals
+    // Add modals
     updateShowAddSector (state, value) { // show/hide ship info modal
-      // state.modalBools.showAddSector = value
-      state.currentModal = 'showAddSector'
+      state.currentModal = 'add-sector'
     },
-    updateShowEditSector (state, value) { // show/hide ship info modal
-      // state.modalBools.showEditSector = value
-      state.currentModal = 'showEditSector'
-    },
-    // Add/edit ships - modals
     updateShowAddShip (state, value) { // show/hide ship info modal
-      // state.modalBools.showAddShip = value
-      state.currentModal = 'showAddShip'
+      state.currentModal = 'add-ship'
     },
+    // Ship Modals
     updateShowEditShip (state, value) { // show/hide ship info modal
-      // state.modalBools.showEditShip = value
-      state.currentModal = 'showEditShip'
+      state.currentModal = 'ship-edit'
     },
-    // Other modals
     updateShowShipInfo (state, value) { // show/hide ship info modal
-      // state.modalBools.showShipInfo = value
-      state.currentModal = 'showShipInfo'
+      state.currentModal = 'ship-info'
+    },
+    // Sector Modals
+    updateShowEditSector (state, value) { // show/hide ship info modal
+      state.currentModal = 'sector-edit'
     }
   }
 })

@@ -1,43 +1,30 @@
 <template>
-  <div class='modal-content'>
-    <div class='modal-header'>
-      <div class='lcars-bar lcars-bar-left'></div>
-      <div class='lcars-bar lcars-bar-main'>Add New Starship</div>
-      <div class='lcars-bar lcars-bar-right'></div>
-    </div>
-    <!--  -->
-    <div class='modal-body'>
-      <ul class='add-ship-fields'>
-        <li>
-          <select v-model="currentShipPrefix">
-            <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
-          </select>
-          <input v-model="currentShipName" placeholder='Starship name'>
-          <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
-        </li>
-        <li>
-          <span>Ship Class: </span>
-          <select v-model="currentShipClass">
-            <option disabled value="">Select starship class</option>
-            <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
-          </select>
-        </li>
-        <li>
-          <span>Veterancy: </span>
-          <select v-model="currentShipVet">
-            <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
-          </select>
-        </li>
-        <li>
-          <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
-        </li>
-      </ul>
-    </div>
-    <!--  -->
-    <div class='modal-footer'>
-      <button class='modal-default-button' @click="showAddShipModal = false">Close</button>
-      <button class='modal-default-button' @click="commitNewShip">{{addMessage}}</button>
-    </div>
+  <div class='add-ship'>
+    <ul class='add-ship-fields'>
+      <li>
+        <select v-model="currentShipPrefix">
+          <option v-for="prefix of prefixes" :key="prefix">{{prefix}}</option>
+        </select>
+        <input v-model="currentShipName" placeholder='Starship name'>
+        <span>NCC-</span><input class='registry-input' v-model="currentShipRegistry" placeholder='Registry'>
+      </li>
+      <li>
+        <span>Ship Class: </span>
+        <select v-model="currentShipClass">
+          <option disabled value="">Select starship class</option>
+          <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
+        </select>
+      </li>
+      <li>
+        <span>Veterancy: </span>
+        <select v-model="currentShipVet">
+          <option v-for="(vet, i) of veterancies" :value="i" :key="vet">{{vet}}</option>
+        </select>
+      </li>
+      <li>
+        <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -137,71 +124,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.modal-header {
-  margin-top: 0;
-}
-
-.modal-body {
+.add-sector {
   margin: 20px 0;
+  display: inline-block;
+  vertical-align: top;
 }
-
 .add-ship-fields {
   list-style-type:none;
   padding-left: 10px;
 }
-
 li {
   margin: 10px 0px;
-}
-
-.lcars-bar {
-  height: 40px;
-  background-color:  #55f;
-  margin: 0px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.lcars-bar-left {
-  width: 30px;
-  border-radius: 20px 0px 0px 20px;
-}
-
-.lcars-bar-main {
-  width: 400px;
-  font-size: 20px;
-  color: #ccc;
-  border-radius: 0;
-  padding: 0px 10px;
-  line-height: 40px;
-  text-transform: uppercase;
-}
-
-.lcars-bar-right {
-  width: 30px;
-  border-radius: 0px 20px 20px 0px;
-}
-
-button {
-  background-color: #55f;
-  color: white;
-  height: 40px;
-  width: 100px;
-  border: none;
-  border-radius: 5px;
-  padding: 0px;
-  color: #ccc;
-  display: inline-block;
-  margin: 5px 10px;
-  font-size: 16px;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-input {
-  /* width: 50px; */
 }
 .registry-input {
   width: 60px;

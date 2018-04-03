@@ -40,14 +40,6 @@ export default {
     }
   },
   computed: {
-    showShipInfoModal: {
-      get () {
-        return this.$store.state.modalBools.showShipInfo
-      },
-      set (value) {
-        this.$store.commit('updateShowShipInfo', value)
-      }
-    },
     currentShip () {
       return this.$store.state.shipEditing.newShip
     },
