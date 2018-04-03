@@ -3,11 +3,16 @@
   <div class='modal-mask'>
     <div class='modal-wrapper'>
       <div class='modal-container'>
-        <AddShip v-show="showAddShipModal"></AddShip>
-        <EditShip v-show="showEditShipModal"></EditShip>
-        <ShipInfo v-show="showShipInfoModal"></ShipInfo>
-        <AddSector v-show="showAddSectorModal"></AddSector>
-        <EditSector v-show="showEditSectorModal"></EditSector>
+        <ModalHeader :heading="shipHeader"></ModalHeader>
+        <div class='modal-body'>
+          <ModalMenu :menuItems="menuItems"></ModalMenu>
+          <!-- <AddShip v-show="showAddShipModal"></AddShip> -->
+          <!-- <EditShip v-show="showEditShipModal"></EditShip> -->
+          <ShipInfo v-show="currentModal === 'showShipInfo'"></ShipInfo>
+          <!-- <AddSector v-show="showAddSectorModal"></AddSector> -->
+          <!-- <EditSector v-show="showEditSectorModal"></EditSector> -->
+        </div>
+        <ModalFooter heading='USS Avandar &#xb7; NCC-2010'></ModalFooter>
       </div>
     </div>
   </div>
@@ -16,6 +21,9 @@
 
 <script>
 // import sectorDataFields from '../assets/sectorDataFields.json'
+import ModalHeader from './ModalHeader'
+import ModalFooter from './ModalFooter'
+import ModalMenu from './ModalMenu'
 import AddShip from './AddShip'
 import EditShip from './EditShip'
 import ShipInfo from './ShipInfo'
@@ -25,6 +33,9 @@ import EditSector from './EditSector'
 export default {
   name: 'ModalBase',
   components: {
+    ModalHeader,
+    ModalFooter,
+    ModalMenu,
     AddShip,
     EditShip,
     ShipInfo,
@@ -32,28 +43,39 @@ export default {
     EditSector
   },
   computed: {
+    // Current Modal
+    currentModal () {
+      return this.$store.state.currentModal
+      // let filt = Object.keys(this.$store.state.modalBools).filter(key => this.$store.state.modalBools[key])
+      // return filt.length ? filt[0] : 'none'
+      // return filt
+    },
+    // Modal Menu
+    menuItems () {
+      switch (this.currentModal) {
+        case 'showAddShip':
+        case 'showAddSector':
+          return ['Add Ship', 'Add Sector']
+        case 'showShipInfo':
+        case 'showEditShip':
+          return ['Ship Info', 'Edit Ship']
+        default:
+          return []
+      }
+    },
+    // Ship Info Title
+    shipHeader () {
+      let curr = this.$store.state.shipEditing.newShip
+      return `${curr.prefix} ${curr.name} &#xb7; NCC-${curr.registry}`
+    },
+    // Modals show/hide
+    // Add Ship/Sector/(ShipClass)
     showAddShipModal: {
       get () {
         return this.$store.state.modalBools.showAddShip
       },
       set (value) {
         this.$store.commit('updateShowAddShip', value)
-      }
-    },
-    showEditShipModal: {
-      get () {
-        return this.$store.state.modalBools.showEditShip
-      },
-      set (value) {
-        this.$store.commit('updateShowEditShip', value)
-      }
-    },
-    showShipInfoModal: {
-      get () {
-        return this.$store.state.modalBools.showShipInfo
-      },
-      set (value) {
-        this.$store.commit('updateShowShipInfo', value)
       }
     },
     showAddSectorModal: {
@@ -64,6 +86,24 @@ export default {
         this.$store.commit('updateShowAddSector', value)
       }
     },
+    // Ship Info/Edit
+    showShipInfoModal: {
+      get () {
+        return this.$store.state.modalBools.showShipInfo
+      },
+      set (value) {
+        this.$store.commit('updateShowShipInfo', value)
+      }
+    },
+    showEditShipModal: {
+      get () {
+        return this.$store.state.modalBools.showEditShip
+      },
+      set (value) {
+        this.$store.commit('updateShowEditShip', value)
+      }
+    },
+    // Sector (Info)/Edit
     showEditSectorModal: {
       get () {
         return this.$store.state.modalBools.showEditSector
@@ -85,7 +125,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .8);
   display: table;
   transition: opacity .3s ease;
 }
@@ -96,56 +136,22 @@ export default {
 }
 
 .modal-container {
-  width: 500px;
-  /* height: 400px; */
+  width: 700px;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 5px;
   background-color: #222;
   color: white;
-  border: 2px solid white;
-  border-radius: 10px;
+  /* border: 1px solid white; */
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header {
-  margin-top: 0;
-}
-
 .modal-body {
-  margin: 20px 0;
-}
-
-li {
-  margin: 10px 0px;
-}
-
-.lcars-bar {
-  height: 40px;
-  background-color:  #55f;
-  margin: 0px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.lcars-bar-left {
-  width: 30px;
-  border-radius: 20px 0px 0px 20px;
-}
-
-.lcars-bar-main {
-  width: 400px;
-  font-size: 20px;
-  color: #ccc;
-  border-radius: 0;
-  padding: 0px 10px;
-  line-height: 40px;
-  text-transform: uppercase;
-}
-
-.lcars-bar-right {
-  width: 30px;
-  border-radius: 0px 20px 20px 0px;
+  display: flex;
 }
 </style>

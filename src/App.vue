@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ModalBase v-show="showModalBase"></ModalBase>
+    <ModalBase v-show="currentModal !== 'none'"></ModalBase>
     <SaveLoad></SaveLoad>
     <Planner></Planner>
   </div>
@@ -29,14 +29,8 @@ export default {
     EditSector
   },
   computed: {
-    showModalBase: {
-      get () {
-        // return Object.values(this.$store.state.modalBools).reduce((acc, curr) => acc || curr, false)
-        return Object.values(this.$store.state.modalBools).some((b) => b)
-      },
-      set (value) {
-        this.$store.commit('updateShowModalBase', value)
-      }
+    currentModal () {
+      return this.$store.state.currentModal
     }
   }
 }

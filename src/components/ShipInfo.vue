@@ -1,44 +1,29 @@
 <template>
-  <div class='modal-content'>
-    <!--  -->
-    <div class='modal-header'>
-      <div class='lcars-bar lcars-bar-left'></div>
-      <div class='lcars-bar lcars-bar-name'>{{currentShip.prefix}} {{currentShip.name}}</div>
-      <div class='lcars-bar lcars-bar-reg'>NCC-{{currentShip.registry}}</div>
-      <div class='lcars-bar lcars-bar-right'></div>
-    </div>
-    <!--  -->
-    <div class='modal-body'>
-      <div class='ship-data'>
-        <div class='image-placeholder'>[Image here]</div>
-        <table class='stat-table'>
-          <tr class='stat-name-row'>
-            <th v-for="statName of statOrder" :key="'stat-name-' + statName">
-              {{statName}}
-            </th>
-          </tr>
+  <div class='ship-info'>
+    <div class='ship-data'>
+      <div class='image-placeholder'>[Image here]</div>
+      <table class='stat-table'>
+        <tr class='stat-name-row'>
+          <th v-for="statName of statOrder" :key="'stat-name-' + statName">
+            {{statName}}
+          </th>
+        </tr>
 
-          <tr class='stat-row'>
-            <td v-for="(stat, index) of shipStats" :key="'stat-' + statOrder[index]">
-              {{stat}}
-            </td>
-          </tr>
-        </table>
-        <p class='ship-data-item'>{{veterancy}}</p>
-      </div>
-      <div class='ship-data'>
-        <p class='ship-data-item' v-html="displayClassName"></p>
-        <p class='ship-data-item'>Launched: [LAUNCH DATE]</p>
-        <p class='ship-data-item'>Captain: [CAPTAIN]</p>
-        <p class='ship-data-item'>Assignment: [SECTOR]</p>
-        <p class='ship-data-item'>Status: Active/Under Refit etc.</p>
-      </div>
+        <tr class='stat-row'>
+          <td v-for="(stat, index) of shipStats" :key="'stat-' + statOrder[index]">
+            {{stat}}
+          </td>
+        </tr>
+      </table>
+      <p class='ship-data-item'>{{veterancy}}</p>
     </div>
-    <!--  -->
-    <div class='modal-footer'>
-      <button class='modal-default-button' @click="showShipInfoModal = false">Close</button>
+    <div class='ship-data'>
+      <p class='ship-data-item' v-html="displayClassName"></p>
+      <p class='ship-data-item'>Launched: [LAUNCH DATE]</p>
+      <!-- <p class='ship-data-item'>Captain: [CAPTAIN]</p> -->
+      <p class='ship-data-item'>Assignment: [SECTOR]</p>
+      <p class='ship-data-item'>Status: Active/Under Refit etc.</p>
     </div>
-    <!--  -->
   </div>
 </template>
 
@@ -99,108 +84,46 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.modal-header {
-  margin-top: 0;
-}
-
 li {
   margin: 10px 0px;
 }
-
-.lcars-bar {
-  height: 40px;
-  background-color:  #55f;
-  margin: 0px;
+.ship-info {
   display: inline-block;
   vertical-align: top;
-  font-size: 20px;
-  color: #ccc;
-  line-height: 40px;
-  text-transform: uppercase;
 }
-
-.lcars-bar-left {
-  width: 30px;
-  border-radius: 20px 0px 0px 20px;
-}
-
-.lcars-bar-name {
-  width: 250px;
-  border-radius: 0;
-  padding: 0px 10px;
-}
-
-.lcars-bar-reg {
-  width: 130px;
-  border-radius: 0;
-  padding: 0px 10px;
-}
-
-.lcars-bar-right {
-  width: 30px;
-  border-radius: 0px 20px 20px 0px;
-}
-
-.modal-body {
-  margin: 20px 0;
-  display: flex;
-  flex-flow: row wrap;
-}
-
 .ship-data {
+  vertical-align: top;
   width: 228px;
   padding: 0px 10px;
   display: inline-block;
 }
-
 .ship-data:first-child {
   border-right: 1px solid white;
 }
-
 .image-placeholder {
   box-sizing: border-box;
   width: 228px;
   height: 100px;
   background-color: #ddd;
   color: black;
-  padding: 10px;
+  text-align: center;
+  line-height: 100px;
 }
-
-button {
-  background-color: #55f;
-  color: white;
-  height: 40px;
-  width: 100px;
-  border: none;
-  border-radius: 50px;
-  padding: 0px;
-  color: #ccc;
-  display: inline-block;
-  margin: 5px 10px;
-  font-size: 16px;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 table {
   margin: 10px 0;
   border-spacing: 0;
   border-collapse: collapse;
   table-layout: fixed;
 }
-
 th, td {
   min-width: 35px;
   text-align: center;
 }
-
 .stat-name-row th {
   border: 1px solid #ccc;
   border: 1px solid #ccc;
   border: 1px solid #ccc;
 }
-
 .stat-row td {
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
