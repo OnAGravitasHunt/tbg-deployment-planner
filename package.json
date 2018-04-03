@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "papaparse": "^4.3.7",
     "vue": "^2.5.2",
     "vuedraggable": "^2.16.0",
     "vuex": "^3.0.1"

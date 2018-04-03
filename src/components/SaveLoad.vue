@@ -15,7 +15,7 @@
     title='Load from local storage'
     @click="loadState"
   >{{loadMessage}}</div><!--
-  --><div class='button storage-button right-button' title='Load from file' @click="$refs.load_file_input.click()">&#x21E7;</div>
+  --><div class='button storage-button right-button' title='Load from file' @click="$refs.stateFileInput.click()">&#x21E7;</div>
 
   <div class='button storage-button' title='Add new item' @click="addNew">Add...</div>
 
@@ -50,15 +50,22 @@
   </div>
   <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
   <!-- <div class='button storage-button short-button' title='Download state file' @click="download">&#x21E9;</div> -->
-  <!-- <div class='button storage-button short-button' title='Upload state file' @click="$refs.load_file_input.click()">&#x21E7;</div> -->
+  <div class='button storage-button short-button' title='Import ships' @click="$refs.shipCSVInput.click()">&#x21E7;</div>
   <!--  -->
   <a ref="save_file_a" style="display:none"></a>
-  <input style="display:none" type="file" ref="load_file_input" @change="upload" value="Load file"/>
+  <input style="display:none" type="file" ref="stateFileInput" @change="uploadState" value="Load file"/>
+  <input style="display:none" type="file" ref="shipCSVInput" @change="uploadCSV" value="Load file"/>
 </div>
 </template>
 
 <script>
+import SheetConverter from '../lib/sheet-converter.js'
+import Papa from 'papaparse'
+
 const DEPLOYMENT_KEY = 'deployment'
+const PAPA_CONFIG = {
+  header: true
+}
 
 export default {
   name: 'SaveLoad',
@@ -110,8 +117,8 @@ export default {
       element.setAttribute('download', filename)
       element.click()
     },
-    upload () {
-      let loadFile = this.$refs.load_file_input.files[0]
+    uploadState () {
+      let loadFile = this.$refs.stateFileInput.files[0]
       let reader = new FileReader()
       let self = this
       reader.onload = function (event) {
@@ -121,6 +128,19 @@ export default {
             currentTick: 0
           }
           self.$store.commit('restoreSave', save)
+        }
+      }
+      reader.readAsText(loadFile)
+    },
+    uploadCSV () {
+      let loadFile = this.$refs.shipCSVInput.files[0]
+      let reader = new FileReader()
+      // let self = this
+      reader.onload = function (event) {
+        if (reader.readyState === FileReader.DONE) {
+          let shipsArr = Papa.parse(reader.result, PAPA_CONFIG)
+          shipsArr = new SheetConverter(shipsArr).convert()
+          console.log(shipsArr)
         }
       }
       reader.readAsText(loadFile)
