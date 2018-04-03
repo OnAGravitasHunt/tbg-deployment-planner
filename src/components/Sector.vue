@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     defDisp () {
-      return this.defense === '0' ? '' : `/${this.defense}`
+      return this.defense === 0 ? '' : `/${this.defense}`
     },
     sectorStats () {
       let stats = []

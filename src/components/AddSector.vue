@@ -45,6 +45,11 @@ export default {
   },
   methods: {
     commitNewSector () {
+      console.log(this.currentSectorDef)
+      console.log(!this.currentSectorDef)
+      if (!this.currentSectorDef) {
+        this.currentSectorDef = '0'
+      }
       this.$store.dispatch('createNewSector')
       this.$store.commit('setModal', 'none')
     }

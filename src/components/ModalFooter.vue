@@ -25,6 +25,14 @@ export default {
   computed: {
     currentModal () {
       return this.$store.state.currentModal
+    },
+    currentSectorDef: {
+      get () {
+        return this.$store.state.sectorEditing.selectedSector.defense
+      },
+      set (defense) {
+        this.$store.commit('updateSelectedSectorField', {field: 'defense', value: defense})
+      }
     }
   },
   methods: {
@@ -35,6 +43,9 @@ export default {
           dispatchString = 'createNewShip'
           break
         case 'add-sector':
+          if (!this.currentSectorDef) {
+            this.currentSectorDef = 0
+          }
           dispatchString = 'createNewSector'
           break
         case 'ship-edit':

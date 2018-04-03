@@ -1,21 +1,56 @@
 <template>
 <div id="saveload">
-  <div class='button storage-button' @click="saveState">{{saveMessage}}</div>
-  <div class='button storage-button' @click="loadState">{{loadMessage}}</div>
-  <div class='button storage-button' @click="addNew">Add...</div>
-  <!-- <div class='button storage-button' @click="addShip">Add Ship</div> -->
-  <!-- <div class='button storage-button' @click="addSector">Add Sector</div> -->
+  <div
+    class='button storage-button left-button'
+    title='Save to local storage'
+    @click="saveState"
+  >{{saveMessage}}</div><!--
+  --><div
+    class='button storage-button right-button'
+    title='Save to file'
+    @click="download"
+  >&#x21E9;</div>
+  <div
+    class='button storage-button left-button'
+    title='Load from local storage'
+    @click="loadState"
+  >{{loadMessage}}</div><!--
+  --><div class='button storage-button right-button' title='Load from file' @click="$refs.load_file_input.click()">&#x21E7;</div>
+
+  <div class='button storage-button' title='Add new item' @click="addNew">Add...</div>
+
   <div class='timeline'>
-    <div class='button timeline-button' title='Previous tick' @click="() => changeTick(-1)">&#x25C4;</div>
-    <div class='button timeline-button delete-button' title='Delete tick' @click="() => deleteTick()">&otimes;</div>
-    <input spellcheck="false" v-model="dateLabel" placeholder='Current Date'>
-    <div class='button timeline-button' title='Insert new tick' style='line-height: 25px;' @click="() => insertNewTick()"><sub>]</sub><sup>&darr;</sup><sub>[</sub></div>
-    <div class='button timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</div>
-    <div class='button timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</div>
+    <div
+      class='button timeline-button'
+      title='Previous tick'
+      @click="() => changeTick(-1)"
+    >&#x25C4;</div><!--
+    --><div
+      class='button timeline-button delete-button'
+      title='Delete tick'
+      @click="() => deleteTick()"
+    >&otimes;</div><!--
+    --><input spellcheck="false" v-model="dateLabel" placeholder='Current Date'><!--
+    --><div
+      class='button timeline-button'
+      title='Insert new tick'
+      style='line-height: 25px;'
+      @click="() => insertNewTick()"
+    ><sub>]</sub><sup>&darr;</sup><sub>[</sub></div><!--
+    --><div
+      class='button timeline-button'
+      title='Copy state forwards'
+      @click="() => copyForwards()"
+    >&#x21B7;</div><!--
+    --><div
+      class='button timeline-button'
+      title='Next tick'
+      click="() => changeTick(1)"
+    >&#x25BA;</div>
   </div>
   <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
-  <div class='button storage-button short-button' title='Download state file' @click="download">&#x21E9;</div>
-  <div class='button storage-button short-button' title='Upload state file' @click="$refs.load_file_input.click()">&#x21E7;</div>
+  <!-- <div class='button storage-button short-button' title='Download state file' @click="download">&#x21E9;</div> -->
+  <!-- <div class='button storage-button short-button' title='Upload state file' @click="$refs.load_file_input.click()">&#x21E7;</div> -->
   <!--  -->
   <a ref="save_file_a" style="display:none"></a>
   <input style="display:none" type="file" ref="load_file_input" @change="upload" value="Load file"/>
@@ -142,29 +177,42 @@ export default {
   border-radius: 20px;
   margin: 5px 2px;
 }
-.short-button {
+.left-button {
+  padding-left: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
   width: 60px;
+}
+.right-button {
+  width: 40px;
+  padding-right: 5px;
   margin: 5px 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 1px solid #047;
 }
 .button:first-child {
   margin-left: 20px;
 }
 .timeline {
-  margin-left: 80px;
+  margin-left: 40px;
   height: 50px;
   display: inline-block;
   vertical-align: top;
 }
 .timeline-button {
   padding: 0 5px;
-  margin: 5px -0px;
+  margin: 5px 0px;
   background-color: #06a;
   color: white;
   /* vertical-align: top; */
+  border-right: 1px solid #047;
   font-size: 22px;
 }
 .delete-button {
   background-color: #c44;
+  border-right: 0;
 }
 .timeline-button:first-child {
   border-top-left-radius: 20px;
@@ -173,6 +221,7 @@ export default {
 .timeline-button:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-right: 0;
 }
 input {
   height: 40px;
