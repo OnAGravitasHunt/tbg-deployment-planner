@@ -6,7 +6,7 @@
     <span class='sector-info'>C{{sectorStats[0]}}</span>
     <span class='sector-info'>S{{sectorStats[1]}}</span>
     <span class='sector-info'>P{{sectorStats[4]}}</span>
-    <button class='sector-edit' @click="editSector">Edit Sector</button>
+    <button class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
   </div>
   <div :class="`ship-summary sector-show-${!sectorShow}`">
     <span v-for="shipClass of Object.keys(shipSummary)" :key="shipClass" class='sector-info'>
@@ -84,8 +84,16 @@ export default {
       for (let className of ships) {
         summ[className] = summ[className] ? summ[className] + 1 : 1
       }
-      console.log()
       return summ
+    },
+    editButtonDisplay () {
+      switch (this.type) {
+        case 'Core':
+        case 'Border':
+          return 'Sector'
+        default:
+          return this.type
+      }
     }
   },
   methods: {

@@ -33,7 +33,7 @@ const actions = {
       targetArr[index] = Object.assign(targetArr[index], state.newShip)
       commit('updateSectorField', {sectorIndex: sectorIndex, field: 'ships', value: targetArr}, {root: 'true'})
     }
-    state.showEditShip = false
+    /*
     state.newShip = {
       registry: '',
       name: '',
@@ -44,6 +44,7 @@ const actions = {
       veterancy: 0,
       bonusStats: [0, 0, 0, 0, 0, 0]
     }
+    */
   }
 }
 

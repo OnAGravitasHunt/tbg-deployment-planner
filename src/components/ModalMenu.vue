@@ -6,7 +6,8 @@
         v-for="(item, index) of menuItems"
         :key="`menu-${index}`"
         class='modal-menu-item'
-        >{{item}}</div>
+        @click="() => setModal(item.modal)"
+        >{{item.label}}</div>
     </div>
     <div class='modal-menu-item fill'></div>
   </div>
@@ -16,7 +17,12 @@
 export default {
   name: 'ModalMenu',
   props: ['menuItems'],
-  computed: {}
+  computed: {},
+  methods: {
+    setModal (modalType) {
+      this.$store.commit('setModal', modalType)
+    }
+  }
 }
 </script>
 

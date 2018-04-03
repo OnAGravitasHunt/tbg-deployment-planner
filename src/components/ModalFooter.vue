@@ -5,9 +5,9 @@
     </div><!--
     --><div class='modal-footer-wrapper'>
       <div class='modal-footer-fill'></div>
-      <div class='button modal-footer-item green'>Save</div>
+      <div class='button modal-footer-item green' @click="save">{{saveMessage}}</div>
       <div class='modal-footer-fill'></div>
-      <div class='button modal-footer-item red' @click='close'>Close</div>
+      <div class='button modal-footer-item red' @click="close">Close</div>
       <div class='modal-footer-fill'></div>
     </div>
   </div>
@@ -17,8 +17,39 @@
 export default {
   name: 'ModalHeader',
   props: ['footer'],
-  computed: {},
+  data () {
+    return {
+      saveMessage: 'Save'
+    }
+  },
+  computed: {
+    currentModal () {
+      return this.$store.state.currentModal
+    }
+  },
   methods: {
+    save () {
+      let dispatchString = ''
+      switch (this.currentModal) {
+        case 'add-ship':
+          dispatchString = 'createNewShip'
+          break
+        case 'add-sector':
+          dispatchString = 'createNewSector'
+          break
+        case 'ship-edit':
+          dispatchString = 'commitShipChanges'
+          break
+        case 'sector-edit':
+          dispatchString = 'commitSectorChanges'
+          break
+        default:
+          return
+      }
+      this.$store.dispatch(dispatchString)
+      this.saveMessage = 'Saved'
+      setTimeout(() => { this.saveMessage = 'Save' }, 1000)
+    },
     close () {
       this.$store.commit('setAllModalsHidden')
     }
@@ -61,7 +92,7 @@ export default {
   display: inline-flex;
   flex-flow: row;
   text-transform: uppercase;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .modal-footer-item {
@@ -69,12 +100,12 @@ export default {
   display: inline-block;
 }
 .modal-footer-fill {
-  flex: 1;
+  flex: 2;
   background-color: #68c;
   margin: 0 2px;
 }
 .modal-footer-fill:first-child {
-  flex: 8;
+  flex: 4;
   margin-left: 0;
 }
 .modal-footer-fill:last-child {

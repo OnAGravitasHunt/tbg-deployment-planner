@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    commitChanges () {
+    commitNewSector () {
       this.$store.dispatch('createNewSector')
       this.$store.commit('setModal', 'none')
     }

@@ -1,6 +1,6 @@
 <template>
   <div class='ship-info'>
-    <div class='ship-data'>
+    <div class='ship-data-column'>
       <div class='image-placeholder'>[Image here]</div>
       <table class='stat-table'>
         <tr class='stat-name-row'>
@@ -17,7 +17,7 @@
       </table>
       <p class='ship-data-item'>{{veterancy}}</p>
     </div>
-    <div class='ship-data'>
+    <div class='ship-data-column'>
       <p class='ship-data-item' v-html="displayClassName"></p>
       <p class='ship-data-item'>Launched: [LAUNCH DATE]</p>
       <!-- <p class='ship-data-item'>Captain: [CAPTAIN]</p> -->
@@ -76,20 +76,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-li {
-  margin: 10px 0px;
-}
 .ship-info {
   display: inline-block;
   vertical-align: top;
+  margin-top: 30px;
 }
-.ship-data {
+li {
+  margin: 10px 0px;
+}
+.ship-data-column {
   vertical-align: top;
   width: 228px;
   padding: 0px 10px;
   display: inline-block;
 }
-.ship-data:first-child {
+.ship-data-column:first-child {
   border-right: 1px solid white;
 }
 .image-placeholder {

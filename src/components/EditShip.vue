@@ -57,14 +57,6 @@ export default {
     }
   },
   computed: {
-    showEditShipModal: {
-      get () {
-        return this.$store.state.shipEditing.showEditShip
-      },
-      set (value) {
-        this.$store.commit('updateShowEditShip', value)
-      }
-    },
     currentShipPrefix: {
       get () {
         return this.$store.state.shipEditing.newShip.prefix
@@ -127,6 +119,7 @@ export default {
 .add-ship-fields {
   list-style-type:none;
   padding-left: 10px;
+  margin-top: 30px;
 }
 li {
   margin: 10px 0px;

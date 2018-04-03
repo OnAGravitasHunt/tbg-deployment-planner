@@ -42,6 +42,21 @@ export default {
     AddSector,
     EditSector
   },
+  data () {
+    return {
+      addMenu: [
+        {label: 'Add Ship', modal: 'add-ship'},
+        {label: 'Add Sector', modal: 'add-sector'}
+      ],
+      shipMenu: [
+        {label: 'Ship Info', modal: 'ship-info'},
+        {label: 'Edit Starship', modal: 'ship-edit'}
+      ],
+      sectorMenu: [
+        {label: 'Edit Sector', modal: 'sector-edit'}
+      ]
+    }
+  },
   computed: {
     // Current Modal
     currentModal () {
@@ -52,12 +67,12 @@ export default {
       switch (this.currentModal) {
         case 'add-ship':
         case 'add-sector':
-          return ['Add Ship', 'Add Sector']
+          return this.addMenu
         case 'ship-info':
         case 'ship-edit':
-          return ['Ship Info', 'Edit Ship']
+          return this.shipMenu
         case 'sector-edit':
-          return ['Edit Sector']
+          return this.sectorMenu
         default:
           return []
       }
@@ -109,7 +124,7 @@ export default {
 .modal-container {
   width: 700px;
   margin: 0px auto;
-  padding: 5px;
+  /* padding: 5px; */
   background-color: #222;
   color: white;
   /* border: 1px solid white; */
@@ -124,5 +139,6 @@ export default {
 
 .modal-body {
   display: flex;
+  min-height: 300px;
 }
 </style>

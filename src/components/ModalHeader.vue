@@ -46,7 +46,7 @@ export default {
   flex-flow: row;
   margin-bottom: 40px;
   text-transform: uppercase;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .modal-heading-item {

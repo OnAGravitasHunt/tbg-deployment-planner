@@ -124,7 +124,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.add-sector {
+.add-ship {
   margin: 20px 0;
   display: inline-block;
   vertical-align: top;

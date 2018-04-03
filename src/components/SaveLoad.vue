@@ -13,7 +13,7 @@
     <div class='button timeline-button' title='Copy state forwards' @click="() => copyForwards()">&#x21B7;</div>
     <div class='button timeline-button' title='Next tick' @click="() => changeTick(1)">&#x25BA;</div>
   </div>
-  <div class='timeline-info'>Currently at {{currentTick + 1}} of {{timelineLength}}</div>
+  <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
   <div class='button storage-button short-button' title='Download state file' @click="download">&#x21E9;</div>
   <div class='button storage-button short-button' title='Upload state file' @click="$refs.load_file_input.click()">&#x21E7;</div>
   <!--  -->
@@ -61,15 +61,9 @@ export default {
       this.$store.commit('deleteTick')
     },
     addNew () {
-      this.$store.commit('updateShowAddShip', true)
-    },
-    addSector () {
-      this.$store.commit('clearSelectedSector')
-      this.$store.commit('updateShowAddSector', true)
-    },
-    addShip () {
       this.$store.commit('clearNewShip')
-      this.$store.commit('updateShowAddShip', true)
+      this.$store.commit('clearSelectedSector')
+      this.$store.commit('setModal', 'add-ship')
     },
     download () {
       let timestamp = new Date()
