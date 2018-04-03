@@ -27,7 +27,7 @@ const actions = {
       targetArr[index] = Object.assign(targetArr[index], state.newShip)
       commit('updateAvail', targetArr, {root: 'true'})
     } else {
-      let sectorIndex = Number(this.editShipTargetParent.split('-').pop())
+      let sectorIndex = Number(state.editShipTargetParent.split('-').pop())
       targetArr = rootGetters.sectors[sectorIndex].ships
       index = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
       targetArr[index] = Object.assign(targetArr[index], state.newShip)

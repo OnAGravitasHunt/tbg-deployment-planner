@@ -95,10 +95,10 @@
           "defense": 18,
           "ships": [
             {
-              "registry": "S001",
-              "name": "Starbase 1, Sol III",
-              "shipClass": "Starbase",
-              "prefix": "",
+              "registry": "SB001",
+              "name": "1, Sol III",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
               "scale": "station",
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,

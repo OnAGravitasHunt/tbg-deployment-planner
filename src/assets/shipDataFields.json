@@ -69,6 +69,11 @@
       "name": "Patroller-A",
       "scale": "frigate",
       "stats": [2, 3, 1, 3, 2, 2]
+    },
+    {
+      "name": "Starbase I",
+      "scale": "station",
+      "stats": [10, 6, 18, 18, 6, 5]
     }
   ],
   "memberShipClasses": [
@@ -105,6 +110,6 @@
       "stats": [2, 0, 6, 4, 0, 0]
     }
   ],
-  "prefixes": ["USS"],
+  "prefixes": ["USS", "CAS", "Starbase"],
   "veterancies": ["Green", "Blooded", "Veteran", "Elite"]
 }

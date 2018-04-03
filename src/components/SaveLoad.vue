@@ -70,7 +70,6 @@ export default {
       timestamp.setMilliseconds(0)
       const filename = `deployment-${timestamp.toISOString()}.json`
       const data = JSON.stringify(this.$store.state.deployment.timeline)
-
       let element = this.$refs.save_file_a
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + data)
       element.setAttribute('download', filename)
