@@ -15,7 +15,11 @@
     title='Load from local storage'
     @click="loadState"
   >{{loadMessage}}</div><!--
-  --><div class='button storage-button right-button' title='Load from file' @click="$refs.stateFileInput.click()">&#x21E7;</div>
+  --><div
+    class='button storage-button right-button'
+    title='Load from file'
+    @click="$refs.stateFileInput.click()"
+  >&#x21E7;</div>
 
   <div class='button storage-button' title='Add new item' @click="addNew">Add...</div>
 
@@ -49,8 +53,12 @@
     >&#x25BA;</div>
   </div>
   <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
-  <!-- <div class='button storage-button short-button' title='Download state file' @click="download">&#x21E9;</div> -->
-  <div class='button storage-button short-button' title='Import ships' @click="$refs.shipCSVInput.click()">&#x21E7;</div>
+  <!--  -->
+  <div
+    class='button storage-button short-button'
+    title='Import ships from CSV'
+    @click="$refs.shipCSVInput.click()"
+  >&#x21E7;</div>
   <!--  -->
   <a ref="save_file_a" style="display:none"></a>
   <input style="display:none" type="file" ref="stateFileInput" @change="uploadState" value="Load file"/>
@@ -242,6 +250,9 @@ export default {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   border-right: 0;
+}
+.short-button {
+  width: 80px;
 }
 input {
   height: 40px;
