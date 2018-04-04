@@ -8,12 +8,13 @@ for (let shipClass of shipData.shipClasses) {
 export default class SheetConverter {
   constructor (parsedFile) {
     this.fileShips = parsedFile.data
-          .filter(ship => ship['Operator'] === 'Starfleet')       // Only Starfleet (for now)
-          .filter(ship => ship['EC?'] === '')                     // Only non-EC
-          .filter(ship => ship['Lost'] === '')                    // Only non-lost
-          .filter(ship => ship['Registry'] !== '')                // Exclude ships without registry
-          .filter(ship => ship['Class'] !== 'Runabout')           // Exclude runabouts
-          .filter(ship => ship['Class'].indexOf('huttle') !== -1) // Exclude shuttlecraft
+      .filter(ship => ship['Operator'] === 'Starfleet') // Only Starfleet (for now)
+      .filter(ship => ship['EC?'] === '') // Only non-EC
+      .filter(ship => ship['Lost'] === '') // Only non-lost
+      .filter(ship => ship['Registry'] !== '') // Exclude ships without registry
+      .filter(ship => ship['Class'] !== 'Runabout') // Exclude runabouts
+      .filter(ship => ship['Class'].indexOf('huttle') === -1) // Exclude shuttlecraft
+      .filter(ship => ship['Notes'].indexOf('AU') === -1) // Exclude shuttlecraft
   }
 
   convert () {

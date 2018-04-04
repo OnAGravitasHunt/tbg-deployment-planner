@@ -143,12 +143,13 @@ export default {
     uploadCSV () {
       let loadFile = this.$refs.shipCSVInput.files[0]
       let reader = new FileReader()
-      // let self = this
+      let self = this
       reader.onload = function (event) {
         if (reader.readyState === FileReader.DONE) {
           let shipsArr = Papa.parse(reader.result, PAPA_CONFIG)
           shipsArr = new SheetConverter(shipsArr).convert()
-          console.log(shipsArr)
+          self.$store.commit('updateAvail', shipsArr)
+          // console.log(shipsArr)
         }
       }
       reader.readAsText(loadFile)
