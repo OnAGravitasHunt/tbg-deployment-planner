@@ -24,6 +24,9 @@
       <li>
         <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
       </li>
+      <li>
+        <label for='mobile-check'>Static installation? <input type='checkbox' id="mobile-check" v-model="currentShipFixed"></label>
+      </li>
     </ul>
   </div>
 </template>
@@ -99,6 +102,14 @@ export default {
       },
       set (vet) {
         this.$store.commit('updateNewShipField', {field: 'veterancy', value: vet})
+      }
+    },
+    currentShipFixed: {
+      get () {
+        return !this.$store.state.shipEditing.newShip.mobile
+      },
+      set (fixed) {
+        this.$store.commit('updateNewShipField', {field: 'mobile', value: !fixed})
       }
     },
     currentShipClassObject () {

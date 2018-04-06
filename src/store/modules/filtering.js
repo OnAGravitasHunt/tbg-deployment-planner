@@ -6,7 +6,8 @@ const state = {
     scale: {
       frigate: true,
       cruiser: true,
-      explorer: true
+      explorer: true,
+      station: true
     },
     minDef: 0
   }
@@ -20,6 +21,7 @@ const mutations = {
   // update all filter criteria in a category
   updateFilterAll (state, {category, value}) {
     Object.keys(state.filterCategories[category]).forEach(v => { state.filterCategories[category][v] = value })
+    state.filterCategories.scale.station = true
   }
 }
 

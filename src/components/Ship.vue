@@ -39,7 +39,8 @@ export default {
         scale: this.scale,
         classStats: this.classStats,
         veterancy: this.veterancy,
-        bonusStats: this.bonusStats
+        bonusStats: this.bonusStats,
+        mobile: this.mobile
       }
     },
     displayClassName () {

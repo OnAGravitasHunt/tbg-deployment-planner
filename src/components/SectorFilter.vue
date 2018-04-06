@@ -1,6 +1,6 @@
 <template>
 <div class='sector-filter'>
-  <div class='sector-filter-heading'>Filter sectors by:</div>
+  <div class='sector-filter-heading'>Filter by:</div>
   <div class='sector-filter-group'>
     <div class='group-title'>Theatre:</div><!--
     --><SectorFilterBox

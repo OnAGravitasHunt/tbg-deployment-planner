@@ -103,7 +103,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             },
             {
               "registry": "SB012",
@@ -114,7 +114,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -134,7 +134,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -154,7 +154,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -174,7 +174,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -194,7 +194,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -214,7 +214,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -234,7 +234,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -254,7 +254,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -282,7 +282,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -302,7 +302,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -322,7 +322,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -342,7 +342,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -362,7 +362,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -398,7 +398,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             },
             {
               "registry": "SB014",
@@ -409,7 +409,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -429,7 +429,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             },
             {
               "registry": "SB017",
@@ -440,7 +440,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Core",
@@ -460,7 +460,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -480,7 +480,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
@@ -500,7 +500,7 @@
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": true
+              "mobile": false
             }
           ],
           "type": "Border",
