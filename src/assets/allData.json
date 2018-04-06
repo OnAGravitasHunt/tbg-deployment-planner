@@ -84,7 +84,7 @@
       "sectors": [
         {
           "name": "Tailward Theatre",
-          "defense": 0,
+          "defence": 0,
           "ships": [],
           "type": "Theatre",
           "theatre": "Tailward",
@@ -92,86 +92,459 @@
         },
         {
           "name": "Sol",
-          "defense": 18,
+          "defence": 18,
           "ships": [
             {
               "registry": "SB001",
-              "name": "1, Sol III",
+              "name": "1, Earth",
               "shipClass": "Starbase I",
               "prefix": "Starbase",
               "scale": "station",
               "classStats": [10, 6, 18, 18, 6, 5],
               "veterancy": 0,
               "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
+              "mobile": true
+            },
+            {
+              "registry": "SB012",
+              "name": "12, Betazed",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
             }
           ],
           "type": "Core",
           "theatre": "Tailward",
-          "supporters": ["Licori Border Zone"]
+          "supporters": ["Licori Border Zone", "Sydraxian Border Zone"]
         },
         {
           "name": "Vulcan",
-          "defense": 10,
-          "ships": [],
+          "defence": 10,
+          "ships": [
+            {
+              "registry": "SB002",
+              "name": "2, Vulcan",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
           "type": "Core",
           "theatre": "Tailward",
           "supporters": ["Romulan Border Zone"]
-        },
-        {
-          "name": "Rigel",
-          "defense": 9,
-          "ships": [],
-          "type": "Core",
-          "theatre": "Tailward",
-          "supporters": ["Licori Border Zone", "Horizon Border Zone"]
         },
         {
           "name": "Andor",
-          "defense": 7,
-          "ships": [],
+          "defence": 7,
+          "ships": [
+            {
+              "registry": "SB003",
+              "name": "3, Andoria",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
           "type": "Core",
           "theatre": "Tailward",
-          "supporters": ["Romulan Border Zone"]
+          "supporters": ["Romulan Border Zone", "Klingon Border Zone"]
         },
         {
-          "name": "Klingon Border Zone",
-          "defense": 9,
-          "ships": [],
+          "name": "Rigel",
+          "defence": 9,
+          "ships": [
+            {
+              "registry": "SB010",
+              "name": "10, Rigel",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Tailward",
+          "supporters": ["Licori Border Zone,Horizon Border Zone", "Sydraxian Border Zone"]
+        },
+        {
+          "name": "Romulan Border Zone",
+          "defence": 12,
+          "ships": [
+            {
+              "registry": "SB006",
+              "name": "6, Beta Indi",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
         },
         {
-          "name": "Romulan Border Zone",
-          "defense": 12,
-          "ships": [],
+          "name": "Klingon Border Zone",
+          "defence": 9,
+          "ships": [
+            {
+              "registry": "SB013",
+              "name": "13, Shrantet III",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
         },
         {
           "name": "Licori Border Zone",
-          "defense": 9,
-          "ships": [],
+          "defence": 9,
+          "ships": [
+            {
+              "registry": "SB020",
+              "name": "20, Kappa Tau",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
         },
         {
           "name": "Horizon Border Zone",
-          "defense": 9,
-          "ships": [],
+          "defence": 9,
+          "ships": [
+            {
+              "registry": "SB021",
+              "name": "21, Ke'luur",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
         },
         {
+          "name": "Central Theatre",
+          "defence": 0,
+          "ships": [],
+          "type": "Theatre",
+          "theatre": "Central",
+          "supporters": []
+        },
+        {
+          "name": "Tellar",
+          "defence": 7,
+          "ships": [
+            {
+              "registry": "SB004",
+              "name": "4, Tellar Prime",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Central",
+          "supporters": ["Sydraxian Border Zone"]
+        },
+        {
+          "name": "Amarkia",
+          "defence": 7,
+          "ships": [
+            {
+              "registry": "SB005",
+              "name": "5, Amarkia",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Central",
+          "supporters": ["Sydraxian Border Zone"]
+        },
+        {
+          "name": "Ferasa",
+          "defence": 13,
+          "ships": [
+            {
+              "registry": "SB007",
+              "name": "7, Ferasa",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Central",
+          "supporters": ["Klingon Border Zone", "Straits of Themis"]
+        },
+        {
+          "name": "Alukk",
+          "defence": 7,
+          "ships": [
+            {
+              "registry": "SB015",
+              "name": "15, Alukk",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Central",
+          "supporters": ["Straits of Themis"]
+        },
+        {
+          "name": "Sydraxian Border Zone",
+          "defence": 11,
+          "ships": [
+            {
+              "registry": "SB008",
+              "name": "8, Vega",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Border",
+          "theatre": "Central",
+          "supporters": []
+        },
+        {
+          "name": "Ruby Eyes’ Folly",
+          "defence": 7,
+          "ships": [],
+          "type": "Border",
+          "theatre": "Central",
+          "supporters": []
+        },
+        {
+          "name": "Spinward Theatre",
+          "defence": 0,
+          "ships": [],
+          "type": "Theatre",
+          "theatre": "Spinward",
+          "supporters": []
+        },
+        {
+          "name": "Apinae",
+          "defence": 10,
+          "ships": [
+            {
+              "registry": "SB011",
+              "name": "11, Apinae",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            },
+            {
+              "registry": "SB014",
+              "name": "14, Indoria",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Spinward",
+          "supporters": ["Cardassian Border Zone", "Sydraxian Border Zone"]
+        },
+        {
+          "name": "Rethelia",
+          "defence": 12,
+          "ships": [
+            {
+              "registry": "SB016",
+              "name": "16, Arqueniou",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            },
+            {
+              "registry": "SB017",
+              "name": "17, Rethelia",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Core",
+          "theatre": "Spinward",
+          "supporters": ["Straits of Themis"]
+        },
+        {
+          "name": "Cardassian Border Zone",
+          "defence": 12,
+          "ships": [
+            {
+              "registry": "SB009",
+              "name": "9, Lapycorias",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Border",
+          "theatre": "Spinward",
+          "supporters": []
+        },
+        {
+          "name": "Straits of Themis",
+          "defence": 7,
+          "ships": [
+            {
+              "registry": "SB018",
+              "name": "18, Gamma Canidae",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Border",
+          "theatre": "Spinward",
+          "supporters": []
+        },
+        {
+          "name": "Gabriel Border Zone",
+          "defence": 0,
+          "ships": [
+            {
+              "registry": "SB019",
+              "name": "19, Collie",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [10, 6, 18, 18, 6, 5],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": true
+            }
+          ],
+          "type": "Border",
+          "theatre": "Spinward",
+          "supporters": []
+        },
+        {
           "name": "Task Force Beyond",
-          "defense": 0,
+          "defence": 0,
           "ships": [],
           "type": "Task Force",
           "theatre": "Tailward",
+          "supporters": []
+        },
+        {
+          "name": "Task Force Shield",
+          "defence": 0,
+          "ships": [],
+          "type": "Task Force",
+          "theatre": "Central",
+          "supporters": []
+        },
+        {
+          "name": "Task Force Boldly",
+          "defence": 0,
+          "ships": [],
+          "type": "Task Force",
+          "theatre": "Spinward",
+          "supporters": []
+        },
+        {
+          "name": "Task Force Forward",
+          "defence": 0,
+          "ships": [],
+          "type": "Task Force",
+          "theatre": "Central",
+          "supporters": []
+        },
+        {
+          "name": "Task Force Relief",
+          "defence": 0,
+          "ships": [],
+          "type": "Task Force",
+          "theatre": "Central",
           "supporters": []
         }
       ]

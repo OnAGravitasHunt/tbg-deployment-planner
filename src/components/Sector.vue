@@ -33,7 +33,7 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'Sector',
-  props: ['name', 'defense', 'type', 'theatre', 'supporters', 'index'],
+  props: ['name', 'defence', 'type', 'theatre', 'supporters', 'index'],
   components: {
     Ship,
     draggable
@@ -58,7 +58,7 @@ export default {
       return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()] && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
     },
     defDisp () {
-      return this.defense === 0 ? '' : `/${this.defense}`
+      return this.defence === 0 ? '' : `/${this.defence}`
     },
     sectorStats () {
       let stats = []
@@ -82,7 +82,7 @@ export default {
     sectorInfoObj () {
       return {
         name: this.name,
-        defense: this.defense,
+        defence: this.defence,
         type: this.type,
         theatre: this.theatre,
         supporters: this.supporters

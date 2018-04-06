@@ -2,7 +2,7 @@ const state = {
   selectedSectorIndex: '',
   selectedSector: {
     name: '',
-    defense: '',
+    defence: '',
     type: '',
     theatre: '',
     supporters: []
@@ -46,7 +46,7 @@ const mutations = {
   clearSelectedSector (state) {
     state.selectedSector = {
       name: '',
-      defense: '',
+      defence: '',
       type: '',
       theatre: '',
       supporters: []

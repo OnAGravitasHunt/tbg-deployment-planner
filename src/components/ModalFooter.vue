@@ -28,10 +28,10 @@ export default {
     },
     currentSectorDef: {
       get () {
-        return this.$store.state.sectorEditing.selectedSector.defense
+        return this.$store.state.sectorEditing.selectedSector.defence
       },
-      set (defense) {
-        this.$store.commit('updateSelectedSectorField', {field: 'defense', value: defense})
+      set (defence) {
+        this.$store.commit('updateSelectedSectorField', {field: 'defence', value: defence})
       }
     }
   },
