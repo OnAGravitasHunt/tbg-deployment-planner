@@ -1,4 +1,4 @@
 {
   "sectorTypes": ["Border", "Core", "Task Force", "Theatre"],
-  "theatres": ["Tailward", "Central", "Spinward", "None or Other"]
+  "theatres": ["Tailward", "Central", "Spinward", "None/Other"]
 }

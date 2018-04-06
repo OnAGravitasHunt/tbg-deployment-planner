@@ -1,5 +1,5 @@
 <template>
-<div :class="`sector ${sectorTypeCSS}`" :id="'sector-' + name">
+<div :class="`sector ${sectorTypeCSS} vis-${filterShow}`" :id="'sector-' + name">
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
     <span class='sector-info'>D{{sectorStats[5]}}{{defDisp}}</span>
@@ -44,6 +44,19 @@ export default {
     }
   },
   computed: {
+    sectorTypeKey () {
+      switch (this.type) {
+        case 'Task Force':
+          return 'taskforce'
+        case 'Theatre':
+          return 'theatrefleet'
+        default:
+          return this.type.toLowerCase()
+      }
+    },
+    filterShow () {
+      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()] && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
+    },
     defDisp () {
       return this.defense === 0 ? '' : `/${this.defense}`
     },
@@ -192,6 +205,9 @@ export default {
 }
 .sector-drag {
   height: inherit;
+}
+.vis-false {
+  display: none;
 }
 
 /* height */

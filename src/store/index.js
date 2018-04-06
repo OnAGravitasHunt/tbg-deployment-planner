@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import deployment from './modules/deployment'
 import filtering from './modules/filtering'
 import sectorEditing from './modules/sectorEditing'
+import sectorFiltering from './modules/sectorFiltering'
 import shipEditing from './modules/shipEditing'
 
 Vue.use(Vuex)
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     deployment,
     filtering,
     sectorEditing,
+    sectorFiltering,
     shipEditing
   },
   state: {

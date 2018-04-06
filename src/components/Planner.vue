@@ -4,15 +4,19 @@
   <Unassigned></Unassigned>
 
   <div id="sectors-wrapper">
-    <Sector v-for="(sector, index) of sectors" v-bind="sector" :index="index" :key="sector.name" :id="sector.name"></Sector>
+    <SectorFilter></SectorFilter>
+    <div id="sector-list-wrapper">
+      <Sector v-for="(sector, index) of sectors" v-bind="sector" :index="index" :key="sector.name" :id="sector.name"></Sector>
+    </div>
   </div>
 
 </div>
 </template>
 
 <script>
-import Ship from './Ship'
+// import Ship from './Ship'
 import Unassigned from './Unassigned'
+import SectorFilter from './SectorFilter'
 import Sector from './Sector'
 import draggable from 'vuedraggable'
 // import allData from '../assets/allData.json'
@@ -20,8 +24,8 @@ import draggable from 'vuedraggable'
 export default {
   name: 'Planner',
   components: {
-    Ship,
     Unassigned,
+    SectorFilter,
     Sector,
     draggable
   },
@@ -49,5 +53,9 @@ export default {
   background-color: black;
   color: #ccc;
   margin-top: 50px;
+  /* padding-top: 30px; */
+}
+#sector-list-wrapper {
+  margin-top: 30px;
 }
 </style>
