@@ -29,7 +29,6 @@
 import Ship from './Ship'
 import FilterBox from './FilterBox'
 import draggable from 'vuedraggable'
-import shipDataFields from '../assets/shipDataFields.json'
 
 export default {
   name: 'Unassigned',
@@ -40,7 +39,7 @@ export default {
   },
   data () {
     return {
-      shipClasses: shipDataFields.shipClasses.map((el) => el.name),
+      shipClasses: this.$store.state.shipData.shipClasses.map((el) => el.name),
       shipScales: ['frigate', 'cruiser', 'explorer'],
       classFilterShow: false,
       scaleFilterShow: false,

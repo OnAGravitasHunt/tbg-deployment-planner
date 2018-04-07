@@ -40,8 +40,8 @@ export default {
   data () {
     return {
       addMessage: 'Add Ship',
-      prefixes: shipDataFields.prefixes,
-      shipClasses: shipDataFields.shipClasses,
+      prefixes: this.$store.state.shipData.prefixes,
+      shipClasses: this.$store.state.shipData.shipClasses,
       veterancies: shipDataFields.veterancies
     }
   },

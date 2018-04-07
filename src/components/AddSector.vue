@@ -2,6 +2,7 @@
   <div class='add-sector'>
     <ul class='add-sector-fields'>
       <li>
+        <span>Sector Name: </span>
         <input v-model="currentSectorName" placeholder='Sector name'>
       </li>
       <li>
@@ -104,6 +105,9 @@ export default {
 }
 li {
   margin: 10px 0px;
+}
+input, select {
+  float: right;
 }
 select option {
   text-transform: capitalize;

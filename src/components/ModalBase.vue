@@ -9,6 +9,7 @@
           <AddShip v-show="currentModal === 'add-ship'"></AddShip>
           <AddSector v-show="currentModal === 'add-sector'"></AddSector>
           <ShipInfo v-show="currentModal === 'ship-info'"></ShipInfo>
+          <AddShipClass v-show="currentModal === 'add-ship-class'"></AddShipClass>
           <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
           <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
         </div>
@@ -27,6 +28,7 @@ import ModalMenu from './ModalMenu'
 import AddShip from './AddShip'
 import EditShip from './EditShip'
 import ShipInfo from './ShipInfo'
+import AddShipClass from './AddShipClass'
 import AddSector from './AddSector'
 import EditSector from './EditSector'
 
@@ -39,14 +41,16 @@ export default {
     AddShip,
     EditShip,
     ShipInfo,
+    AddShipClass,
     AddSector,
     EditSector
   },
   data () {
     return {
       addMenu: [
-        {label: 'Add Ship', modal: 'add-ship'},
-        {label: 'Add Sector', modal: 'add-sector'}
+        {label: 'New Ship', modal: 'add-ship'},
+        {label: 'New Sector', modal: 'add-sector'},
+        {label: 'New Ship Options', modal: 'add-ship-class'}
       ],
       shipMenu: [
         {label: 'Ship Info', modal: 'ship-info'},
@@ -67,6 +71,7 @@ export default {
       switch (this.currentModal) {
         case 'add-ship':
         case 'add-sector':
+        case 'add-ship-class':
           return this.addMenu
         case 'ship-info':
         case 'ship-edit':
@@ -87,6 +92,8 @@ export default {
           return `${this.shipHeader}`
         case 'ship-edit':
           return `Editing ${this.shipHeader}`
+        case 'add-ship-class':
+          return 'Add New Starship Options'
         case 'sector-edit':
           return 'Edit Sector'
         default:

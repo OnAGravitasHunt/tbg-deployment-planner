@@ -4,6 +4,7 @@ import deployment from './modules/deployment'
 import filtering from './modules/filtering'
 import sectorEditing from './modules/sectorEditing'
 import sectorFiltering from './modules/sectorFiltering'
+import shipData from './modules/shipData'
 import shipEditing from './modules/shipEditing'
 
 Vue.use(Vuex)
@@ -14,7 +15,15 @@ export default new Vuex.Store({
     filtering,
     sectorEditing,
     sectorFiltering,
+    shipData,
     shipEditing
+  },
+  actions: {
+    restoreSave (context, save) {
+      context.commit('restoreTimeline', save.timeline)
+      context.commit('restoreData', save.data)
+      context.commit('restoreFilter', save.data.shipClasses)
+    }
   },
   state: {
     currentModal: 'none'

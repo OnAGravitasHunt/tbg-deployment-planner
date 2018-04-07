@@ -15,6 +15,9 @@ const state = {
 
 const mutations = {
   // update filter criterion
+  restoreFilter (state, shipClasses) {
+    state.filterCategories.shipClass = shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {})
+  },
   updateFilter (state, {category, criterion, value}) {
     state.filterCategories[category][criterion] = value
   },

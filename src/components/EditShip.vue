@@ -44,8 +44,8 @@ export default {
   data () {
     return {
       saveMessage: 'Save',
-      prefixes: shipDataFields.prefixes,
-      shipClasses: shipDataFields.shipClasses,
+      prefixes: this.$store.state.shipData.prefixes,
+      shipClasses: this.$store.state.shipData.shipClasses,
       veterancies: shipDataFields.veterancies
     }
   },

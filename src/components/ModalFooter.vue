@@ -5,7 +5,7 @@
     </div><!--
     --><div class='modal-footer-wrapper'>
       <div class='modal-footer-fill'></div>
-      <div class='button modal-footer-item green' @click="save">{{saveMessage}}</div>
+      <div :class="`button modal-footer-item ${saveColour}`" @click="save">{{saveMessage}}</div>
       <div class='modal-footer-fill'></div>
       <div class='button modal-footer-item red' @click="close">Close</div>
       <div class='modal-footer-fill'></div>
@@ -23,6 +23,13 @@ export default {
     }
   },
   computed: {
+    saveColour () {
+      if (this.currentModal === 'add-ship-class') {
+        return 'grey'
+      } else {
+        return 'green'
+      }
+    },
     currentModal () {
       return this.$store.state.currentModal
     },
@@ -78,6 +85,9 @@ export default {
 }
 .red {
   background-color: #c68;
+}
+.grey {
+  background-color: #888;
 }
 .modal-corner {
   vertical-align: bottom;

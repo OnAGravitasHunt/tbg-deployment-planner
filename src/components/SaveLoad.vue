@@ -21,7 +21,7 @@
     @click="$refs.stateFileInput.click()"
   >&#x21E7;</div>
 
-  <div class='button storage-button' title='Add new item' @click="addNew">Add...</div>
+  <div class='button storage-button' title='Add new item' @click="addNew">New...</div>
 
   <div class='timeline'>
     <div
@@ -86,15 +86,21 @@ export default {
   methods: {
     saveState () {
       let save = {
-        timeline: this.$store.state.deployment.timeline,
-        currentTick: this.$store.state.deployment.currentTick
+        timeline: {
+          timeline: this.$store.state.deployment.timeline,
+          currentTick: this.$store.state.deployment.currentTick
+        },
+        data: {
+          prefixes: this.$store.state.shipData.prefixes,
+          shipClasses: this.$store.state.shipData.shipClasses
+        }
       }
       localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(save))
       this.saveMessage = 'Saved!'
       setTimeout(() => { this.saveMessage = 'Save' }, 1000)
     },
     loadState () {
-      this.$store.commit('restoreSave', JSON.parse(localStorage.getItem(DEPLOYMENT_KEY)))
+      this.$store.dispatch('restoreSave', JSON.parse(localStorage.getItem(DEPLOYMENT_KEY)))
       this.loadMessage = 'Loaded!'
       setTimeout(() => { this.loadMessage = 'Load' }, 1000)
     },

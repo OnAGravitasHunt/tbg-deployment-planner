@@ -13,9 +13,9 @@ const getters = {
 
 const mutations = {
   // Save/Load
-  restoreSave (state, save) { // restore save from localstorage
-    state.timeline = save.timeline
-    state.currentTick = save.currentTick
+  restoreTimeline (state, timeline) { // restore save from localstorage
+    state.timeline = timeline.timeline
+    state.currentTick = timeline.currentTick
   },
   // update list of unassigned ships
   updateAvail (state, value) {
