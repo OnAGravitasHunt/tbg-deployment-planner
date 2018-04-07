@@ -27,6 +27,12 @@
         <span>Supporting Sectors: </span>
         <span class='not-imp'>(Not yet implemented)</span>
       </li>
+      <li>
+        <div
+          class='button delete-button'
+          @click="deleteSector"
+        >Delete Sector</div>
+      </li>
     </ul>
   </div>
 </template>
@@ -51,6 +57,7 @@ export default {
     },
     deleteSector () {
       this.$store.dispatch('removeSector')
+      this.$store.commit('setModal', 'none')
     }
   },
   computed: {
@@ -110,5 +117,18 @@ input, select, .not-imp {
 }
 select option {
   text-transform: capitalize;
+}
+li:last-child {
+  margin-top: 80px;
+}
+.button {
+  border-radius: 20px;
+  /* width: 100px; */
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #c34;
+  padding: 0 10px;
+  margin: 0 2px;
 }
 </style>

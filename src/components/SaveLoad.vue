@@ -235,7 +235,6 @@ export default {
   margin: 5px 0px;
   background-color: #06a;
   color: white;
-  /* vertical-align: top; */
   border-right: 1px solid #047;
   font-size: 22px;
 }
@@ -258,6 +257,7 @@ export default {
 input {
   height: 40px;
   border: none;
+  border-radius: 0;
   margin: 5px 0px;
   outline: none;
   padding: 0px;
@@ -267,7 +267,6 @@ input {
 .fast {
   letter-spacing: -10px;
   padding-right: 15px;
-  /* padding-right: 10px; */
 }
 .timeline-info {
   height: 40px;
@@ -278,7 +277,6 @@ input {
   line-height: 40px;
   vertical-align: top;
   display: inline-block;
-  /* background-color: #06a; */
   color: white;
   border-radius: 20px;
   margin: 5px 5px;
