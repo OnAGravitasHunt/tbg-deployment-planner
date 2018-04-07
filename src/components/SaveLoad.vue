@@ -49,7 +49,7 @@
     --><div
       class='button timeline-button'
       title='Next tick'
-      click="() => changeTick(1)"
+      @click="() => changeTick(1)"
     >&#x25BA;</div>
   </div>
   <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
