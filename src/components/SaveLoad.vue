@@ -8,7 +8,7 @@
   --><div
     class='button storage-button right-button'
     title='Save to file'
-    @click="download"
+    @click="downloadState"
   >&#x21E9;</div>
   <div
     class='button storage-button left-button'
@@ -84,8 +84,8 @@ export default {
     }
   },
   methods: {
-    saveState () {
-      let save = {
+    createSave () {
+      return {
         timeline: {
           timeline: this.$store.state.deployment.timeline,
           currentTick: this.$store.state.deployment.currentTick
@@ -95,7 +95,9 @@ export default {
           shipClasses: this.$store.state.shipData.shipClasses
         }
       }
-      localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(save))
+    },
+    saveState () {
+      localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(this.createSave))
       this.saveMessage = 'Saved!'
       setTimeout(() => { this.saveMessage = 'Save' }, 1000)
     },
@@ -121,11 +123,11 @@ export default {
       this.$store.commit('clearSelectedSector')
       this.$store.commit('setModal', 'add-ship')
     },
-    download () {
+    downloadState () {
       let timestamp = new Date()
       timestamp.setMilliseconds(0)
       const filename = `deployment-${timestamp.toISOString()}.json`
-      const data = JSON.stringify(this.$store.state.deployment.timeline)
+      const data = JSON.stringify(this.createSave())
       let element = this.$refs.save_file_a
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + data)
       element.setAttribute('download', filename)
@@ -137,11 +139,7 @@ export default {
       let self = this
       reader.onload = function (event) {
         if (reader.readyState === FileReader.DONE) {
-          let save = {
-            timeline: JSON.parse(reader.result),
-            currentTick: 0
-          }
-          self.$store.commit('restoreSave', save)
+          self.$store.dispatch('restoreSave', JSON.parse(reader.result))
         }
       }
       reader.readAsText(loadFile)

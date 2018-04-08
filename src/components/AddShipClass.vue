@@ -25,7 +25,7 @@
             <th></th>
             <td v-for="(statName, index) of statOrder"
               :key="'up-' + statName"
-              @click="() => { statChange(index, 1) }"
+              @click="statChange(index, 1)"
             >&#9650;</td>
           </tr>
 
@@ -46,7 +46,7 @@
             <th></th>
             <td v-for="(statName, index) of statOrder"
               :key="'down-' + statName"
-              @click="() => { statChange(index, -1) }"
+              @click="statChange(index, -1)"
             >&#9660;</td>
           </tr>
         </table>
@@ -99,7 +99,6 @@ export default {
       this.shipClassStats.splice(i, 1, Math.max(Number(this.shipClassStats[i]) + diff, 0))
     },
     checkPositive (index, event) {
-      // console.log(index, event)
       let value = event.target.value
       if (value < 0 || isNaN(value)) {
         this.shipClassStats[index] = 0

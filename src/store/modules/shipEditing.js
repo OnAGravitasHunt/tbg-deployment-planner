@@ -56,7 +56,7 @@ const mutations = {
   },
   // update all fields of newShip
   updateNewShipAllFields (state, shipObj) {
-    console.log(shipObj)
+    // console.log(shipObj)
     Object.assign(state.newShip, shipObj)
   },
   // set index of parent of ship under edit

@@ -24,7 +24,7 @@
 
       <tr class='up-row'>
         <th></th>
-        <td v-for="(statName, index) of statOrder" :key="'up-' + statName" @click="() => { bStatChange(index, 1) }">
+        <td v-for="(statName, index) of statOrder" :key="'up-' + statName" @click="bStatChange(index, 1)">
           &#9650;
         </td>
       </tr>
@@ -39,7 +39,7 @@
 
       <tr class='down-row'>
         <th></th>
-        <td v-for="(statName, index) of statOrder" :key="'down-' + statName" @click="() => { bStatChange(index, -1) }">
+        <td v-for="(statName, index) of statOrder" :key="'down-' + statName" @click="bStatChange(index, -1)">
           &#9660;
         </td>
       </tr>
