@@ -48,9 +48,9 @@
       </li>
       <li>
         <div
-          class='button'
+          :class="`button button-error-${newClassError}`"
           @click="saveClass"
-        >Save Class</div>
+        >{{classMessage}}</div>
       </li>
       <li>
         <span>Prefix:</span>
@@ -58,9 +58,9 @@
       </li>
       <li>
         <div
-          class='button'
+          :class="`button button-error-${newPrefixError}`"
           @click="savePrefix"
-        >Save Prefix</div>
+        >{{prefixMessage}}</div>
       </li>
     </ul>
   </div>
@@ -81,7 +81,11 @@ export default {
       shipClassScale: '',
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
       shipClassStats: [0, 0, 0, 0, 0, 0],
-      newPrefix: ''
+      newPrefix: '',
+      classMessage: 'Save Class',
+      prefixMessage: 'Save Prefix',
+      newClassError: false,
+      newPrefixError: false
     }
   },
   methods: {
@@ -89,16 +93,45 @@ export default {
       this.shipClassStats.splice(i, 1, Math.max(this.shipClassStats[i] + diff, 0))
     },
     saveClass () {
-      // let exist = this.$store.state.shipData.shipClasses.filter
-      this.$store.commit('addShipClass', {
-        name: this.shipClassName,
-        scale: this.shipClassScale,
-        stats: this.shipClassStats
-      })
-      this.$store.commit('restoreFilter', this.$store.state.shipData.shipClasses)
+      if (this.shipClassName && this.shipClassScale) {
+        if (this.$store.state.shipData.shipClasses.filter(shipClass => shipClass.name === this.shipClassName).length) {
+          this.classMessage = 'Class Exists'
+          this.newClassError = true
+          setTimeout(() => {
+            this.classMessage = 'Save Class'
+            this.newClassError = false
+          }, 1500)
+        } else {
+          this.$store.commit('addShipClass', {
+            name: this.shipClassName,
+            scale: this.shipClassScale,
+            stats: this.shipClassStats
+          })
+          this.classMessage = 'Class Added'
+          this.$store.commit('restoreFilter', this.$store.state.shipData.shipClasses)
+          setTimeout(() => {
+            this.classMessage = 'Save Class'
+          }, 1500)
+        }
+      }
     },
     savePrefix () {
-      this.$store.commit('addShipPrefix', this.newPrefix)
+      if (this.newPrefix) {
+        if (this.$store.state.shipData.prefixes.filter(prefix => prefix === this.newPrefix).length) {
+          this.prefixMessage = 'Prefix Exists'
+          this.newPrefixError = true
+          setTimeout(() => {
+            this.prefixMessage = 'Save Prefix'
+            this.newPrefixError = false
+          }, 1500)
+        } else {
+          this.$store.commit('addShipPrefix', this.newPrefix)
+          this.prefixMessage = 'Prefix Added'
+          setTimeout(() => {
+            this.prefixMessage = 'Save Prefix'
+          }, 1500)
+        }
+      }
     }
   },
   computed: {}
@@ -172,5 +205,8 @@ th, td {
   background-color: #4a3;
   padding: 0 10px;
   margin: 0 2px;
+}
+.button-error-true {
+  background-color: #a43;
 }
 </style>

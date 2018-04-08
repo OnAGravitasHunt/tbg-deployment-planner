@@ -55,7 +55,8 @@ export default {
       }
     },
     filterShow () {
-      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()] && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
+      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()] &&
+        this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
     },
     defDisp () {
       return this.defence === 0 ? '' : `/${this.defence}`
@@ -195,7 +196,7 @@ export default {
   margin-bottom: 5px;
   border-top: 1px solid #ccc;
   height: 98px;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
 }
