@@ -1,6 +1,6 @@
 <template>
 <div id='nav-left-wrapper'>
-  <h2>Filter Criteria</h2>
+  <h3>Filter Criteria</h3>
 
   <!-- <h3>Filter by Class</h3> -->
   <label for='show-class-filter'><input type='checkbox' id='show-class-filter' v-model="classFilterShow">Filter by Class</label>
@@ -16,7 +16,7 @@
     <FilterBox v-for="scale of shipScales" :key="scale" category='scale' :criterion="scale"></FilterBox>
   </div>
 
-  <h2>Available Starships</h2>
+  <h3>Available Starships</h3>
   <div id='unassigned-wrapper'>
     <draggable id='available-ships' v-model="availableShips" :options="{group:'ships'}">
       <Ship v-for="ship of availableShips" :key="ship.registry" v-bind="ship"></Ship>
@@ -39,7 +39,7 @@ export default {
   },
   data () {
     return {
-      shipClasses: this.$store.state.shipData.shipClasses.map((el) => el.name),
+      // shipClasses: this.$store.state.shipData.shipClasses.map((el) => el.name),
       shipScales: ['frigate', 'cruiser', 'explorer'],
       classFilterShow: false,
       scaleFilterShow: false,
@@ -48,6 +48,9 @@ export default {
     }
   },
   computed: {
+    shipClasses () {
+      return this.$store.state.shipData.shipClasses.map((el) => el.name)
+    },
     availableShips: {
       get () {
         return this.$store.getters.ships
@@ -92,7 +95,7 @@ h3 {
   float: left;
   background-color: #ccc;
   margin-top: 50px;
-  /* overflow-y: scroll; */
+  padding-top: 10px;
   display: flex;
   flex-flow: column;
 }
@@ -102,21 +105,18 @@ h3 {
   flex-shrink: 1;
   margin-bottom: 50px;
 }
-/* height */
+/* scrollbar */
 #unassigned-wrapper::-webkit-scrollbar {
     width: 10px;
 }
-/* Track */
 #unassigned-wrapper::-webkit-scrollbar-track {
   width: 8px;
   border-radius: 4px;
 }
-/* Handle */
 #unassigned-wrapper::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 5px;
 }
-/* Handle on hover */
 #unassigned-wrapper::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
@@ -125,15 +125,10 @@ h3 {
   padding-bottom: 100px;
 }
 .filter-wrapper {
-  /* height: 210px; */
   width: 100%;
-  /* overflow-y: scroll; */
   display: flex;
   flex-flow: row wrap;
   flex-shrink: 0;
-}
-#filter-wrapper-scale.filter-show-true {
-  /* height: 60px; */
 }
 .filter-show-false {
   visibility: collapse;
@@ -155,7 +150,7 @@ h3 {
   color: #2c3e50;
 }
 label {
-  font-size: 19px;
+  font-size: 15px;
   font-weight: bold;
   width: 100%;
   margin: 0;

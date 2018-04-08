@@ -32,8 +32,13 @@
           <tr class='stat-row'>
             <th>Class stats</th>
             <td v-for="(stat, index) of shipClassStats" :key="'bonus-' + statOrder[index]">
-              <!-- <input v-model="stats[index]" class='align stat-value' placeholder='0'> -->
-              {{stat}}
+              <input
+                v-model="shipClassStats[index]"
+                class='stat-value'
+                placeholder='0'
+                @input="checkPositive(index, $event)"
+              >
+              <!-- {{stat}} -->
             </td>
           </tr>
 
@@ -52,6 +57,7 @@
           @click="saveClass"
         >{{classMessage}}</div>
       </li>
+      <hr/>
       <li>
         <span>Prefix:</span>
         <input v-model="newPrefix" placeholder='Class Name'>
@@ -90,7 +96,14 @@ export default {
   },
   methods: {
     statChange (i, diff) {
-      this.shipClassStats.splice(i, 1, Math.max(this.shipClassStats[i] + diff, 0))
+      this.shipClassStats.splice(i, 1, Math.max(Number(this.shipClassStats[i]) + diff, 0))
+    },
+    checkPositive (index, event) {
+      // console.log(index, event)
+      let value = event.target.value
+      if (value < 0 || isNaN(value)) {
+        this.shipClassStats[index] = 0
+      }
     },
     saveClass () {
       if (this.shipClassName && this.shipClassScale) {
@@ -100,7 +113,7 @@ export default {
           setTimeout(() => {
             this.classMessage = 'Save Class'
             this.newClassError = false
-          }, 1500)
+          }, 1200)
         } else {
           this.$store.commit('addShipClass', {
             name: this.shipClassName,
@@ -111,7 +124,7 @@ export default {
           this.$store.commit('restoreFilter', this.$store.state.shipData.shipClasses)
           setTimeout(() => {
             this.classMessage = 'Save Class'
-          }, 1500)
+          }, 1200)
         }
       }
     },
@@ -164,37 +177,38 @@ th, td {
   min-width: 30px;
   text-align: center;
 }
-
 .stat-name-row th {
   border-top: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
-
 .up-row td,
 .up-row th {
   border-top: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
-
 .stat-row td,
 .stat-row th {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
-
 .down-row td,
 .down-row th {
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
-
 .up-row td,
 .down-row td {
   -moz-user-select: none;
   -webkit-user-select: none;
+}
+.stat-value {
+  width: 20px;
+  text-align: center;
+  margin: auto 4px;
+  border: none;
 }
 .button {
   border-radius: 20px;
