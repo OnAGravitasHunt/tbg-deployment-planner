@@ -153,7 +153,6 @@ export default {
           let shipsArr = Papa.parse(reader.result, PAPA_CONFIG)
           shipsArr = new SheetConverter(shipsArr).convert()
           self.$store.commit('updateAvail', shipsArr)
-          // console.log(shipsArr)
         }
       }
       reader.readAsText(loadFile)

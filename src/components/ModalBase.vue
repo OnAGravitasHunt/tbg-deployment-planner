@@ -89,9 +89,8 @@ export default {
         case 'add-sector':
           return 'Add New Sector'
         case 'ship-info':
-          return `${this.shipHeader}`
         case 'ship-edit':
-          return `Editing ${this.shipHeader}`
+          return `${this.shipHeader}`
         case 'add-ship-class':
           return 'Add New Starship Options'
         case 'sector-edit':
@@ -103,7 +102,7 @@ export default {
     // Ship Info Title
     shipHeader () {
       let curr = this.$store.state.shipEditing.newShip
-      let prefix = curr.prefix === 'No prefix' ? '' : `${this.prefix} `
+      let prefix = curr.prefix === 'No prefix' ? '' : `${curr.prefix} `
       let regPrefix = this.$store.state.shipEditing.newShip.scale === 'station' ? '' : 'NCC-'
       return `${prefix}${curr.name} &#xb7; ${regPrefix}${curr.registry}`
     }

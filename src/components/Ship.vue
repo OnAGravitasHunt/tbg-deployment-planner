@@ -1,5 +1,5 @@
 <template>
-<div @dblclick='unassignShip' :class="`ship ${scale} generic-${false} vis-${filterShow}`" :id="'ncc-' + registry">
+<div @dblclick='unassignShip' :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
   <div class='ship-data'>
     <p class='ship-data-item'>{{prefixDisplay}}<em>{{name}}</em></p>
     <p class='ship-data-item' v-html="displayClassName"></p>
@@ -22,7 +22,18 @@
 <script>
 export default {
   name: 'Ship',
-  props: ['registry', 'name', 'shipClass', 'prefix', 'scale', 'classStats', 'veterancy', 'bonusStats', 'mobile'],
+  props: [
+    'registry',
+    'name',
+    'shipClass',
+    'prefix',
+    'scale',
+    'classStats',
+    'veterancy',
+    'bonusStats',
+    'mobile',
+    'captain'
+  ],
   computed: {
     imgUrl () {
       return `/static/${this.shipClass.toLowerCase()}.png`
@@ -100,13 +111,6 @@ export default {
 <style scoped>
 .stat-D {
   font-weight: bold;
-}
-.generic-true .stat-C,
-.generic-true .stat-S,
-.generic-true .stat-H,
-.generic-true .stat-L,
-.generic-true .stat-P {
-  display: none;
 }
 /*.stat-C, .stat-H, .stat-L {
   display: none;
