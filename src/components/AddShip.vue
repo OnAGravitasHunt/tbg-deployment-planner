@@ -101,6 +101,8 @@ export default {
         this.$store.commit('updateNewShipField', {field: 'classStats', value: this.currentShipClassObject.stats})
         if (this.currentShipClassObject.scale === 'station') {
           this.$store.commit('updateNewShipField', {field: 'bonusStats', value: this.currentShipClassObject.researchBonus})
+        } else {
+          this.$store.commit('updateNewShipField', {field: 'bonusStats', value: [0, 0, 0, 0, 0, 0]})
         }
       }
     },
