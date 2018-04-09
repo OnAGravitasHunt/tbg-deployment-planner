@@ -107,7 +107,6 @@ export default {
       }
     },
     currentShipClassStats () {
-      // console.log(this.$store.state.shipEditing.newShip)
       return this.$store.state.shipEditing.newShip.classStats
     },
     currentShipVet: {

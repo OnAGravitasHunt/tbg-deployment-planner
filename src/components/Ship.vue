@@ -1,10 +1,15 @@
 <template>
-<div @dblclick='unassignShip' :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
+<div @dblclick='unassignShip' :class="`ship ${scale} generic-${false} vis-${filterShow}`" :id="'ncc-' + registry">
   <div class='ship-data'>
-    <p class='ship-data-item'>{{prefix}} <em>{{name}}</em></p>
+    <p class='ship-data-item'>{{prefixDisplay}}<em>{{name}}</em></p>
     <p class='ship-data-item' v-html="displayClassName"></p>
     <p class='ship-data-item'>
-      <span v-for="(stat, i) of statOrder" :key="stat" :class="'stat-' + stat">{{stat}}{{stats[i]}}&nbsp;</span>
+      <span
+        v-for="(stat, i) of statOrder"
+        :key="stat"
+        :class="`stat-${stat}`"
+        v-if="showStat(stat)"
+      >{{stat}}{{stats[i]}}&nbsp;</span>
     </p>
   </div>
   <div class='ship-operations'>
@@ -21,6 +26,9 @@ export default {
   computed: {
     imgUrl () {
       return `/static/${this.shipClass.toLowerCase()}.png`
+    },
+    prefixDisplay () {
+      return this.prefix === 'No prefix' ? '' : `${this.prefix} `
     },
     filterShow () {
       return (this.$store.state.filtering.filterCategories.shipClass[this.shipClass] &&
@@ -76,6 +84,13 @@ export default {
         this.$store.commit('updateSector', {sectorIndex: i, shipList: newSector})
         this.$store.commit('updateAvailAppend', this.shipObj)
       }
+    },
+    showStat (stat) {
+      if (this.shipClass === 'Other Outposts') {
+        return stat === 'D'
+      } else {
+        return true
+      }
     }
   }
 }
@@ -85,6 +100,13 @@ export default {
 <style scoped>
 .stat-D {
   font-weight: bold;
+}
+.generic-true .stat-C,
+.generic-true .stat-S,
+.generic-true .stat-H,
+.generic-true .stat-L,
+.generic-true .stat-P {
+  display: none;
 }
 /*.stat-C, .stat-H, .stat-L {
   display: none;

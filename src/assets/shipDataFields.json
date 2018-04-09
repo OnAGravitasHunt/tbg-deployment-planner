@@ -77,10 +77,10 @@
       "researchBonus": [5, 3, 2, 4, 0, 2]
     },
     {
-      "name": "Outpost I",
+      "name": "Other Outposts",
       "scale": "station",
-      "stats": [2, 0, 6, 4, 0, 4],
-      "researchBonus": [4, 0, 2, 4, 0, 1]
+      "stats": [0, 0, 0, 0, 0, 0],
+      "researchBonus": [0, 0, 0, 0, 0, 0]
     }
   ],
   "memberShipClasses": [
@@ -100,6 +100,6 @@
       "stats": [5, 2, 3, 5, 3, 4]
     }
   ],
-  "prefixes": ["USS", "CAS", "Starbase"],
+  "prefixes": ["USS", "CAS", "Starbase", "No prefix"],
   "veterancies": ["Green", "Blooded", "Veteran", "Elite"]
 }

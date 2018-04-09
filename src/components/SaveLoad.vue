@@ -97,7 +97,7 @@ export default {
       }
     },
     saveState () {
-      localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(this.createSave))
+      localStorage.setItem(DEPLOYMENT_KEY, JSON.stringify(this.createSave()))
       this.saveMessage = 'Saved!'
       setTimeout(() => { this.saveMessage = 'Save' }, 1000)
     },
