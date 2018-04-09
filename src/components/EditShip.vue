@@ -45,8 +45,6 @@ export default {
   data () {
     return {
       saveMessage: 'Save',
-      prefixes: this.$store.state.shipData.prefixes,
-      shipClasses: this.$store.state.shipData.shipClasses,
       veterancies: shipDataFields.veterancies
     }
   },
@@ -63,6 +61,12 @@ export default {
     }
   },
   computed: {
+    prefixes () {
+      return this.$store.state.shipData.prefixes
+    },
+    shipClasses () {
+      return this.$store.state.shipData.shipClasses
+    },
     regPrefix () {
       return this.$store.state.shipEditing.newShip.scale === 'station' ? '' : 'NCC-'
     },

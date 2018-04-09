@@ -40,8 +40,6 @@ export default {
   data () {
     return {
       addMessage: 'Add Ship',
-      prefixes: this.$store.state.shipData.prefixes,
-      shipClasses: this.$store.state.shipData.shipClasses,
       veterancies: shipDataFields.veterancies
     }
   },
@@ -56,6 +54,12 @@ export default {
     }
   },
   computed: {
+    prefixes () {
+      return this.$store.state.shipData.prefixes
+    },
+    shipClasses () {
+      return this.$store.state.shipData.shipClasses
+    },
     showAddShipModal: {
       get () {
         return this.$store.state.addShipShow
@@ -95,6 +99,9 @@ export default {
       set (shipClass) {
         this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
         this.$store.commit('updateNewShipField', {field: 'classStats', value: this.currentShipClassObject.stats})
+        if (this.currentShipClassObject.scale === 'station') {
+          this.$store.commit('updateNewShipField', {field: 'bonusStats', value: this.currentShipClassObject.researchBonus})
+        }
       }
     },
     currentShipClassStats () {

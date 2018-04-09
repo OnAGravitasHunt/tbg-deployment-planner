@@ -73,7 +73,14 @@
     {
       "name": "Starbase I",
       "scale": "station",
-      "stats": [10, 6, 18, 18, 6, 5]
+      "stats": [10, 6, 18, 18, 6, 5],
+      "researchBonus": [5, 3, 2, 4, 0, 2]
+    },
+    {
+      "name": "Outpost I",
+      "scale": "station",
+      "stats": [2, 0, 6, 4, 0, 4],
+      "researchBonus": [4, 0, 2, 4, 0, 1]
     }
   ],
   "memberShipClasses": [
@@ -91,23 +98,6 @@
       "name": "Hebrinda-A",
       "scale": "cruiser",
       "stats": [5, 2, 3, 5, 3, 4]
-    }
-  ],
-  "installations": [
-    {
-      "name": "Starbase I",
-      "scale": "station",
-      "stats": [10, 6, 18, 18, 6, 5]
-    },
-    {
-      "name": "Outpost I",
-      "scale": "station",
-      "stats": [6, 0, 12, 12, 0, 0]
-    },
-    {
-      "name": "Station I",
-      "scale": "station",
-      "stats": [2, 0, 6, 4, 0, 0]
     }
   ],
   "prefixes": ["USS", "CAS", "Starbase"],
