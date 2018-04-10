@@ -50,9 +50,9 @@ export default {
   },
   methods: {
     commitChanges () {
-      if (this.currentShipName.length &&
-          (this.currentShipRegistry.length || this.currentShipClassObject.scale === 'station') &&
-          this.currentShipClass.length) {
+      if (this.currentShipName.length
+        && (this.currentShipRegistry.length || this.currentShipClassObject.scale === 'station')
+        && this.currentShipClass.length) {
         this.$store.dispatch('commitShipChanges')
         this.saveMessage = 'Saved'
         setTimeout(() => { this.saveMessage = 'Save' }, 1000)

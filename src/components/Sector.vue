@@ -55,8 +55,8 @@ export default {
       }
     },
     filterShow () {
-      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()] &&
-        this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
+      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()]
+        && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
     },
     defDisp () {
       return this.defence === 0 ? '' : `/${this.defence}`

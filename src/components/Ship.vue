@@ -42,9 +42,9 @@ export default {
       return this.prefix === 'No prefix' ? '' : `${this.prefix} `
     },
     filterShow () {
-      return (this.$store.state.filtering.filterCategories.shipClass[this.shipClass] &&
-        this.$store.state.filtering.filterCategories.scale[this.scale]) ||
-        this.$parent.$attrs.id !== 'available-ships'
+      return (this.$store.state.filtering.filterCategories.shipClass[this.shipClass]
+        && this.$store.state.filtering.filterCategories.scale[this.scale])
+        || this.$parent.$attrs.id !== 'available-ships'
     },
     stats () {
       return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
