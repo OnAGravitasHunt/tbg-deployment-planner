@@ -12,6 +12,7 @@
           <AddShipClass v-show="currentModal === 'add-ship-class'"></AddShipClass>
           <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
           <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
+          <ModalList v-show="currentModal === 'modal-list'"></ModalList>
         </div>
         <ModalFooter footer=''></ModalFooter>
       </div>
@@ -31,6 +32,7 @@ import ShipInfo from './ShipInfo'
 import AddShipClass from './AddShipClass'
 import AddSector from './AddSector'
 import EditSector from './EditSector'
+import ModalList from './modalList/ModalList.vue'
 
 export default {
   name: 'ModalBase',
@@ -43,7 +45,8 @@ export default {
     ShipInfo,
     AddShipClass,
     AddSector,
-    EditSector
+    EditSector,
+    ModalList
   },
   data () {
     return {

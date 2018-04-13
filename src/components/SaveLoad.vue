@@ -22,6 +22,7 @@
   >&#x21E7;</div>
 
   <div class='button storage-button' title='Add new item' @click="addNew">New...</div>
+  <div class='button storage-button' title='Edit item' @click="editor">Edit...</div>
 
   <div class='timeline'>
     <div
@@ -156,6 +157,9 @@ export default {
         }
       }
       reader.readAsText(loadFile)
+    },
+    editor () {
+      this.$store.commit('setModal', 'modal-list')
     }
   },
   computed: {
