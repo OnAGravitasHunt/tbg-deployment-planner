@@ -31,7 +31,7 @@
 
           <tr class='stat-row'>
             <th>Class stats</th>
-            <td v-for="(stat, index) of shipClassStats" :key="'bonus-' + statOrder[index]">
+            <td v-for="(stat, index) of shipClassStats" :key="'stat-' + statOrder[index]">
               <input
                 v-model="shipClassStats[index]"
                 class='stat-value'

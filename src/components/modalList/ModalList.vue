@@ -7,7 +7,7 @@
       <ModalListRow
         v-for="(entry, index) of dataPoints"
         :key="entry.className"
-        :schema="currentSchema"
+        schema="shipClasses"
         :entry="entry"
         :index="index"
       ></ModalListRow>
@@ -27,8 +27,13 @@ export default {
     return {
       currentSchema: [
         {name: 'Class Name', key: 'name', type: 'text'},
-        {name: 'Scale', key: 'scale', type: 'select', options: ['frigate', 'cruiser', 'explorer', 'station']},
-        {name: 'Class Stats', key: 'stats', type: 'text'}
+        {name: 'Scale', key: 'scale', type: 'text', options: ['frigate', 'cruiser', 'explorer', 'station']},
+        {name: 'C', key: 'c', type: 'text'},
+        {name: 'S', key: 's', type: 'text'},
+        {name: 'H', key: 'h', type: 'text'},
+        {name: 'L', key: 'l', type: 'text'},
+        {name: 'P', key: 'p', type: 'text'},
+        {name: 'D', key: 'd', type: 'text'}
       ]
     }
   },
@@ -45,6 +50,10 @@ export default {
 <style scoped>
 .modal-list {
   margin-left: 20px;
+  padding-right: 15px;
+  height: 300px;
+  overflow-y: auto;
+  /* overflow-x: visible; */
 }
 table {
   border-spacing: 0;
