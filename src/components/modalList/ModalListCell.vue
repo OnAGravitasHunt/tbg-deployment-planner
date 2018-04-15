@@ -29,13 +29,6 @@
         :key="opt"
       >{{opt}}</option>
     </select>
-
-    <StatPicker
-      v-if="field.type === 'stat'"
-      :initialStats="displayValue"
-      :rowHeader="false"
-      :colHeader="false"
-    ></StatPicker>
   </td>
 </template>
 
