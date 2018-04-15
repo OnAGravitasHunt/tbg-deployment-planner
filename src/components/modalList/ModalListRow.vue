@@ -19,7 +19,7 @@ export default {
     ModalListCell
   },
   directives: {},
-  props: ['schema', 'entry'],
+  props: ['schema', 'entry', 'rowIndex'],
   data () {
     return {
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
@@ -48,7 +48,8 @@ export default {
           {name: 'H', key: 'h', type: 'text', display: 'narrow'},
           {name: 'L', key: 'l', type: 'text', display: 'narrow'},
           {name: 'P', key: 'p', type: 'text', display: 'narrow'},
-          {name: 'D', key: 'd', type: 'text', display: 'narrow'}
+          {name: 'D', key: 'd', type: 'text', display: 'narrow'},
+          {name: '', key: 'delete', type: 'text', display: 'narrow'}
         ]
       }
     }

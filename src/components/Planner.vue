@@ -45,14 +45,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   width: 100%;
-  /* margin-top: 30px; */
+  margin-top: 50px;
 }
 #sectors-wrapper {
   width: 100%;
   float: right;
   background-color: black;
   color: #ccc;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   /* padding-top: 30px; */
 }
 #sector-list-wrapper {

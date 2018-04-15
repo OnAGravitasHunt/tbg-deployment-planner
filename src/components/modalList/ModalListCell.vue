@@ -3,16 +3,22 @@
     class='modal-list-cell'
   >
     <div
+      tabindex='-1'
+      :class="`cell-div delete ${field.display}`"
+      v-if="field.key === 'delete'"
+    >&#x2716;</div>
+
+    <div
       @click="editCell"
       @focus="editCell"
       tabindex='0'
       :class="`cell-div ${field.display}`"
-      v-show="!underEdit && field.type === 'text'"
+      v-else-if="!underEdit && field.type === 'text'"
     >{{displayValue}}</div>
 
     <input
       :class="`cell-input ${field.display}`"
-      v-if="underEdit && field.type === 'text'"
+      v-else-if="underEdit && field.type === 'text'"
       v-model='tempValue'
       v-focus
       @blur="commitEdit"
@@ -21,7 +27,7 @@
 
     <select
       class='cell-select'
-      v-if="field.type === 'select'"
+      v-else-if="field.type === 'select'"
       v-model='displayValue'
     >
       <option
@@ -44,7 +50,8 @@ export default {
   directives: {
     focus: {
       inserted (el) {
-        el.focus()
+        // el.focus()
+        el.select()
       }
     }
   },
@@ -66,7 +73,7 @@ export default {
           break
       }
     },
-    editCell () {
+    editCell ($event) {
       this.underEdit = true
       this.tempValue = this.displayValue
     },
@@ -102,6 +109,9 @@ td {
 }
 .narrow {
   width: 30px;
+}
+.delete {
+  color: #c66;
 }
 input {
   background-color: #888;

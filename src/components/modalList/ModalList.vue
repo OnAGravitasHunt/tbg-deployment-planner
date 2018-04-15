@@ -9,7 +9,7 @@
         :key="entry.className"
         schema="shipClasses"
         :entry="entry"
-        :index="index"
+        :rowIndex="index"
       ></ModalListRow>
     </table>
   </div>
@@ -33,7 +33,8 @@ export default {
         {name: 'H', key: 'h', type: 'text'},
         {name: 'L', key: 'l', type: 'text'},
         {name: 'P', key: 'p', type: 'text'},
-        {name: 'D', key: 'd', type: 'text'}
+        {name: 'D', key: 'd', type: 'text'},
+        {name: '', key: 'delete', type: 'text'}
       ]
     }
   },

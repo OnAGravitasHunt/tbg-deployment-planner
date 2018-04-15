@@ -94,7 +94,7 @@ h3:first-child {
   position: fixed;
   float: left;
   background-color: #ccc;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding-top: 10px;
   display: flex;
   flex-flow: column;
