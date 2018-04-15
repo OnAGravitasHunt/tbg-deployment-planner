@@ -67,7 +67,6 @@ export default {
       }
     },
     editCell () {
-      console.log(this.displayValue)
       this.underEdit = true
       this.tempValue = this.displayValue
     },
