@@ -1,10 +1,10 @@
 <template>
   <tr class='modal-list-row'>
     <ModalListCell
-      v-for="(field, index) of schemaFields"
+      v-for="field of schemaFields"
       :key="field.key"
-      :fieldIndex="index"
-      :schema="schema"
+      :field="field"
+      :schemaFields="schema"
       :cellValue="spreadStats[field.key]"
     ></ModalListCell>
   </tr>
@@ -18,13 +18,7 @@ export default {
   components: {
     ModalListCell
   },
-  directives: {
-    load: {
-      bind (el) {
-        // console.log(this)
-      }
-    }
-  },
+  directives: {},
   props: ['schema', 'entry'],
   data () {
     return {
@@ -39,7 +33,6 @@ export default {
         for (let i = 0; i < this.entry.stats.length; i++) {
           entry[this.statOrder[i].toLowerCase()] = this.entry.stats[i]
         }
-        console.log(entry)
         return entry
       } else {
         return this.entry
@@ -48,14 +41,14 @@ export default {
     schemaFields () {
       if (this.schema === 'shipClasses') {
         return [
-          {name: 'Class Name', key: 'name', type: 'text'},
+          {name: 'Class Name', key: 'name', type: 'text', display: 'wide'},
           {name: 'Scale', key: 'scale', type: 'select', options: ['frigate', 'cruiser', 'explorer', 'station']},
-          {name: 'C', key: 'c', type: 'text', display: 'short'},
-          {name: 'S', key: 's', type: 'text', display: 'short'},
-          {name: 'H', key: 'h', type: 'text', display: 'short'},
-          {name: 'L', key: 'l', type: 'text', display: 'short'},
-          {name: 'P', key: 'p', type: 'text', display: 'short'},
-          {name: 'D', key: 'd', type: 'text', display: 'short'}
+          {name: 'C', key: 'c', type: 'text', display: 'narrow'},
+          {name: 'S', key: 's', type: 'text', display: 'narrow'},
+          {name: 'H', key: 'h', type: 'text', display: 'narrow'},
+          {name: 'L', key: 'l', type: 'text', display: 'narrow'},
+          {name: 'P', key: 'p', type: 'text', display: 'narrow'},
+          {name: 'D', key: 'd', type: 'text', display: 'narrow'}
         ]
       }
     }

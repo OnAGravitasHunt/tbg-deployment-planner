@@ -1,15 +1,17 @@
 <template>
   <td
-    @click="editCell"
-    @focus="editCell"
-    class='modal-list-cell'>
+    class='modal-list-cell'
+  >
     <div
-      class='cell-div'
+      @click="editCell"
+      @focus="editCell"
+      tabindex='0'
+      :class="`cell-div ${field.display}`"
       v-show="!underEdit && field.type === 'text'"
     >{{displayValue}}</div>
 
     <input
-      class='cell-input'
+      :class="`cell-input ${field.display}`"
       v-if="underEdit && field.type === 'text'"
       v-model='tempValue'
       v-focus
@@ -21,8 +23,6 @@
       class='cell-select'
       v-if="field.type === 'select'"
       v-model='displayValue'
-      @blur="commitEdit"
-      @keydown="onKeydown"
     >
       <option
         v-for="opt of field.options"
@@ -40,7 +40,7 @@ export default {
   components: {
     StatPicker
   },
-  props: ['fieldIndex', 'cellValue', 'schema'],
+  props: ['field', 'cellValue', 'schema'],
   directives: {
     focus: {
       inserted (el) {
@@ -59,7 +59,6 @@ export default {
     onKeydown (ev) {
       switch (ev.key) {
         case 'Enter':
-          // leave focus and let the app save changes
           this.commitEdit()
           break
         case 'Escape':
@@ -68,7 +67,7 @@ export default {
       }
     },
     editCell () {
-      // console.log(this.field)
+      console.log(this.displayValue)
       this.underEdit = true
       this.tempValue = this.displayValue
     },
@@ -81,31 +80,7 @@ export default {
       this.underEdit = false
     }
   },
-  computed: {
-    field () {
-      return this.schemaFields[this.fieldIndex]
-    },
-    schemaFields () {
-      if (this.schema === 'shipClasses') {
-        return [
-          {name: 'Class Name', key: 'name', type: 'text'},
-          {name: 'Scale', key: 'scale', type: 'select', options: ['frigate', 'cruiser', 'explorer', 'station']},
-          {name: 'C', key: 'c', type: 'text'},
-          {name: 'S', key: 's', type: 'text'},
-          {name: 'H', key: 'h', type: 'text'},
-          {name: 'L', key: 'l', type: 'text'},
-          {name: 'P', key: 'p', type: 'text'},
-          {name: 'D', key: 'd', type: 'text'}
-        ]
-      } else {
-        return [
-          {name: 'Class Name', key: 'name', type: 'text'},
-          {name: 'Scale', key: 'scale', type: 'select', options: ['frigate', 'cruiser', 'explorer', 'station']},
-          {name: 'Class Stats', key: 'stats', type: 'text'}
-        ]
-      }
-    }
-  }
+  computed: {}
 }
 </script>
 
@@ -116,15 +91,18 @@ td {
   border: 1px solid #555;
   margin: 0;
   padding: 0;
-  min-width: 100px;
   height: 20px;
 }
 .cell-div {
-  width: 150px;
   height: 20px;
   line-height: 20px;
-  /* padding: 0px 4px; */
   font-size: 16px;
+}
+.wide {
+  width: 150px;
+}
+.narrow {
+  width: 30px;
 }
 input {
   background-color: #888;
