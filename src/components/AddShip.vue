@@ -39,6 +39,7 @@ export default {
   },
   data () {
     return {
+      statOrder: ['c', 's', 'h', 'l', 'p', 'd'],
       addMessage: 'Add Ship',
       veterancies: shipDataFields.veterancies
     }
@@ -98,13 +99,23 @@ export default {
       },
       set (shipClass) {
         this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
-        this.$store.commit('updateNewShipField', {field: 'classStats', value: this.currentShipClassObject.stats})
+        this.$store.commit('updateNewShipField', {field: 'scale', value: this.currentShipClassObject.scale})
+        this.$store.commit('updateNewShipField', {field: 'classStats', value: this.statsArray})
         if (this.currentShipClassObject.scale === 'station') {
           this.$store.commit('updateNewShipField', {field: 'bonusStats', value: this.currentShipClassObject.researchBonus})
         } else {
           this.$store.commit('updateNewShipField', {field: 'bonusStats', value: [0, 0, 0, 0, 0, 0]})
         }
       }
+    },
+    statsArray () {
+      let sArr = []
+      let shipClass = this.currentShipClassObject
+      for (let stat of this.statOrder) {
+        sArr.push(shipClass[stat])
+      }
+      console.log(sArr)
+      return sArr
     },
     currentShipClassStats () {
       return this.$store.state.shipEditing.newShip.classStats
@@ -122,7 +133,6 @@ export default {
       if (typeof (classObject) === 'undefined') {
         return {stats: [0, 0, 0, 0, 0, 0]}
       } else {
-        this.$store.commit('updateNewShipField', {field: 'scale', value: classObject.scale})
         return classObject
       }
     }

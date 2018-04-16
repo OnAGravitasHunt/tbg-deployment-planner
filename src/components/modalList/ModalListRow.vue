@@ -5,7 +5,7 @@
       :key="field.key"
       :rowIndex="rowIndex"
       :field="field"
-      :cellValue="spreadStats[field.key]"
+      :cellValue="entry[field.key]"
     ></ModalListCell>
   </tr>
 </template>
@@ -27,17 +27,6 @@ export default {
   },
   methods: {},
   computed: {
-    spreadStats () {
-      if (this.schema === 'shipClasses') {
-        let entry = Object.assign({}, this.entry)
-        for (let i = 0; i < this.entry.stats.length; i++) {
-          entry[this.statOrder[i].toLowerCase()] = this.entry.stats[i]
-        }
-        return entry
-      } else {
-        return this.entry
-      }
-    },
     schemaFields () {
       if (this.schema === 'shipClasses') {
         return [

@@ -3,83 +3,163 @@
     {
       "name": "Ambassador",
       "scale": "explorer",
-      "stats": [8, 9, 7, 9, 9, 8]
+      "c": 8,
+      "s": 9,
+      "h": 7,
+      "l": 9,
+      "p": 9,
+      "d": 8
     },
     {
       "name": "Constitution-A",
       "scale": "explorer",
-      "stats": [5, 4, 4, 4, 5, 5]
+      "c": 5,
+      "s": 4,
+      "h": 4,
+      "l": 4,
+      "p": 5,
+      "d": 5
     },
     {
       "name": "Excelsior",
       "scale": "explorer",
-      "stats": [6, 5, 4, 5, 5, 6]
+      "c": 6,
+      "s": 5,
+      "h": 4,
+      "l": 5,
+      "p": 5,
+      "d": 6
     },
     {
       "name": "Excelsior-A",
       "scale": "explorer",
-      "stats": [7, 6, 4, 6, 6, 6]
+      "c": 7,
+      "s": 6,
+      "h": 4,
+      "l": 6,
+      "p": 6,
+      "d": 6
     },
     {
       "name": "Constellation-A",
       "scale": "cruiser",
-      "stats": [3, 4, 2, 3, 3, 4]
+      "c": 3,
+      "s": 4,
+      "h": 2,
+      "l": 3,
+      "p": 3,
+      "d": 4
     },
     {
       "name": "Constitution-B",
       "scale": "cruiser",
-      "stats": [5, 3, 3, 4, 3, 5]
+      "c": 5,
+      "s": 3,
+      "h": 3,
+      "l": 4,
+      "p": 3,
+      "d": 5
     },
     {
       "name": "Renaissance",
       "scale": "cruiser",
-      "stats": [5, 3, 4, 5, 4, 5]
+      "c": 5,
+      "s": 3,
+      "h": 4,
+      "l": 5,
+      "p": 4,
+      "d": 5
     },
     {
       "name": "Centaur-A",
       "scale": "frigate",
-      "stats": [3, 3, 2, 3, 3, 3]
+      "c": 3,
+      "s": 3,
+      "h": 2,
+      "l": 3,
+      "p": 3,
+      "d": 3
     },
     {
       "name": "Centaur-B",
       "scale": "frigate",
-      "stats": [4, 4, 2, 4, 4, 5]
+      "c": 4,
+      "s": 4,
+      "h": 2,
+      "l": 4,
+      "p": 4,
+      "d": 5
     },
     {
       "name": "Comet",
       "scale": "frigate",
-      "stats": [4, 4, 3, 5, 4, 8]
+      "c": 4,
+      "s": 4,
+      "h": 3,
+      "l": 5,
+      "p": 4,
+      "d": 8
     },
     {
       "name": "Kepler",
       "scale": "frigate",
-      "stats": [2, 7, 2, 4, 5, 5]
+      "c": 2,
+      "s": 7,
+      "h": 2,
+      "l": 4,
+      "p": 5,
+      "d": 5
     },
     {
       "name": "Miranda-A",
       "scale": "frigate",
-      "stats": [3, 2, 2, 3, 1, 2]
+      "c": 3,
+      "s": 2,
+      "h": 2,
+      "l": 3,
+      "p": 1,
+      "d": 2
     },
     {
       "name": "Oberth",
       "scale": "frigate",
-      "stats": [1, 5, 1, 2, 1, 1]
+      "c": 1,
+      "s": 5,
+      "h": 1,
+      "l": 2,
+      "p": 1,
+      "d": 1
     },
     {
       "name": "Patroller-A",
       "scale": "frigate",
-      "stats": [2, 3, 1, 3, 2, 2]
+      "c": 2,
+      "s": 3,
+      "h": 1,
+      "l": 3,
+      "p": 2,
+      "d": 2
     },
     {
       "name": "Starbase I",
       "scale": "station",
-      "stats": [10, 6, 18, 18, 6, 5],
+      "c": 10,
+      "s": 6,
+      "h": 18,
+      "l": 18,
+      "p": 6,
+      "d": 5,
       "researchBonus": [5, 3, 2, 4, 0, 2]
     },
     {
       "name": "Other Outposts",
       "scale": "station",
-      "stats": [0, 0, 0, 0, 0, 0],
+      "c": 0,
+      "s": 0,
+      "h": 0,
+      "l": 0,
+      "p": 0,
+      "d": 0,
       "researchBonus": [0, 0, 0, 0, 0, 0]
     }
   ],
@@ -87,17 +167,32 @@
     {
       "name": "Riala-A",
       "scale": "explorer",
-      "stats": [8, 5, 6, 9, 5, 6]
+      "c": 8,
+      "s": 5,
+      "h": 6,
+      "l": 9,
+      "p": 5,
+      "d": 6
     },
     {
       "name": "Perciar",
       "scale": "cruiser",
-      "stats": [3, 2, 3, 2, 1, 3]
+      "c": 3,
+      "s": 2,
+      "h": 3,
+      "l": 2,
+      "p": 1,
+      "d": 3
     },
     {
       "name": "Hebrinda-A",
       "scale": "cruiser",
-      "stats": [5, 2, 3, 5, 3, 4]
+      "c": 5,
+      "s": 2,
+      "h": 3,
+      "l": 5,
+      "p": 3,
+      "d": 4
     }
   ],
   "prefixes": ["USS", "CAS", "Starbase", "No prefix"],

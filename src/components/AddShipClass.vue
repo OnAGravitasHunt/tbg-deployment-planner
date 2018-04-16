@@ -17,7 +17,7 @@
           <tr class='stat-name-row'>
             <th></th>
             <th v-for="statName of statOrder" :key="'stat-name-' + statName">
-              {{statName}}
+              {{statName.toUpperCase()}}
             </th>
           </tr>
 
@@ -38,7 +38,6 @@
                 placeholder='0'
                 @input="checkPositive(index, $event)"
               >
-              <!-- {{stat}} -->
             </td>
           </tr>
 
@@ -85,7 +84,7 @@ export default {
       shipScales: ['frigate', 'cruiser', 'explorer', 'station'],
       shipClassName: '',
       shipClassScale: '',
-      statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
+      statOrder: ['c', 's', 'h', 'l', 'p', 'd'],
       shipClassStats: [0, 0, 0, 0, 0, 0],
       newPrefix: '',
       classMessage: 'Save Class',
@@ -117,7 +116,13 @@ export default {
           this.$store.commit('addShipClass', {
             name: this.shipClassName,
             scale: this.shipClassScale,
-            stats: this.shipClassStats
+            // stats: this.shipClassStats,
+            c: this.shipClassStats[0],
+            s: this.shipClassStats[1],
+            h: this.shipClassStats[2],
+            l: this.shipClassStats[3],
+            p: this.shipClassStats[4],
+            d: this.shipClassStats[5]
           })
           this.classMessage = 'Class Added'
           this.$store.commit('restoreFilter', this.$store.state.shipData.shipClasses)
