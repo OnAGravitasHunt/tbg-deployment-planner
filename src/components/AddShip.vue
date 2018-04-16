@@ -101,11 +101,7 @@ export default {
         this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
         this.$store.commit('updateNewShipField', {field: 'scale', value: this.currentShipClassObject.scale})
         this.$store.commit('updateNewShipField', {field: 'classStats', value: this.statsArray})
-        if (this.currentShipClassObject.scale === 'station') {
-          this.$store.commit('updateNewShipField', {field: 'bonusStats', value: this.currentShipClassObject.researchBonus})
-        } else {
-          this.$store.commit('updateNewShipField', {field: 'bonusStats', value: [0, 0, 0, 0, 0, 0]})
-        }
+        this.$store.commit('updateNewShipField', {field: 'bonusStats', value: [0, 0, 0, 0, 0, 0]})
       }
     },
     statsArray () {

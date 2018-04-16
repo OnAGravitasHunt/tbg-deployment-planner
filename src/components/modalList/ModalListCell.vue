@@ -9,7 +9,6 @@
     >&#x2716;</div>
 
     <div
-      @click="editCell"
       @focus="editCell"
       tabindex='0'
       :class="`cell-div ${field.display}`"
@@ -58,7 +57,7 @@ export default {
   data () {
     return {
       underEdit: false,
-      displayValue: this.cellValue,
+      // displayValue: this.cellValue,
       tempValue: ''
     }
   },
@@ -74,7 +73,8 @@ export default {
       }
     },
     editCell ($event) {
-      console.log(this.rowIndex, this.field.key)
+      // console.log(this.rowIndex, this.field.key)
+      // console.log(this.$store.state.shipData.shipClasses[this.rowIndex][this.field.key])
       this.underEdit = true
       this.tempValue = this.displayValue
     },
@@ -87,7 +87,16 @@ export default {
       this.underEdit = false
     }
   },
-  computed: {}
+  computed: {
+    displayValue: {
+      get () {
+        return this.$store.state.shipData.shipClasses[this.rowIndex][this.field.key]
+      },
+      set (value) {
+        this.$store.commit('updateShipClassField', {classIndex: this.rowIndex, field: this.field.key, value: value})
+      }
+    }
+  }
 }
 </script>
 

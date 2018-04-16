@@ -98,6 +98,8 @@ export default {
           return 'Add New Starship Options'
         case 'sector-edit':
           return 'Edit Sector'
+        case 'modal-list':
+          return 'Editing Core Data'
         default:
           return ''
       }

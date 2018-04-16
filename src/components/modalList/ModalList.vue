@@ -52,7 +52,7 @@ export default {
 .modal-list {
   margin-left: 20px;
   padding-right: 15px;
-  height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   /* overflow-x: visible; */
 }

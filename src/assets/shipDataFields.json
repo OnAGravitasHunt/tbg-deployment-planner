@@ -143,13 +143,12 @@
     {
       "name": "Starbase I",
       "scale": "station",
-      "c": 10,
-      "s": 6,
-      "h": 18,
-      "l": 18,
+      "c": 15,
+      "s": 9,
+      "h": 20,
+      "l": 22,
       "p": 6,
-      "d": 5,
-      "researchBonus": [5, 3, 2, 4, 0, 2]
+      "d": 7
     },
     {
       "name": "Other Outposts",
@@ -159,8 +158,7 @@
       "h": 0,
       "l": 0,
       "p": 0,
-      "d": 0,
-      "researchBonus": [0, 0, 0, 0, 0, 0]
+      "d": 0
     }
   ],
   "memberShipClasses": [

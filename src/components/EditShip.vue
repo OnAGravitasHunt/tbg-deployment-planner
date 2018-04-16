@@ -44,6 +44,7 @@ export default {
   props: ['target'],
   data () {
     return {
+      statOrder: ['c', 's', 'h', 'l', 'p', 'd'],
       saveMessage: 'Save',
       veterancies: shipDataFields.veterancies
     }
@@ -100,8 +101,18 @@ export default {
       },
       set (shipClass) {
         this.$store.commit('updateNewShipField', {field: 'shipClass', value: shipClass})
-        this.$store.commit('updateNewShipField', {field: 'classStats', value: this.currentShipClassObject.stats})
+        this.$store.commit('updateNewShipField', {field: 'scale', value: this.currentShipClassObject.scale})
+        this.$store.commit('updateNewShipField', {field: 'classStats', value: this.statsArray})
+        this.$store.commit('updateNewShipField', {field: 'bonusStats', value: [0, 0, 0, 0, 0, 0]})
       }
+    },
+    statsArray () {
+      let sArr = []
+      let shipClass = this.currentShipClassObject
+      for (let stat of this.statOrder) {
+        sArr.push(shipClass[stat])
+      }
+      return sArr
     },
     currentShipClassStats () {
       return this.$store.state.shipEditing.newShip.classStats
