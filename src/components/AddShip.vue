@@ -114,7 +114,6 @@ export default {
       for (let stat of this.statOrder) {
         sArr.push(shipClass[stat])
       }
-      console.log(sArr)
       return sArr
     },
     currentShipClassStats () {
