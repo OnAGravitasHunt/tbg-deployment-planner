@@ -46,7 +46,7 @@ export default {
   components: {
     StatPicker
   },
-  props: ['field', 'cellValue', 'schema'],
+  props: ['rowIndex', 'field', 'cellValue'],
   directives: {
     focus: {
       inserted (el) {
@@ -74,6 +74,7 @@ export default {
       }
     },
     editCell ($event) {
+      console.log(this.rowIndex, this.field.key)
       this.underEdit = true
       this.tempValue = this.displayValue
     },

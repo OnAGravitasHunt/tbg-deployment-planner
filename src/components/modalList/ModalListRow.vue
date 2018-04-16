@@ -3,8 +3,8 @@
     <ModalListCell
       v-for="field of schemaFields"
       :key="field.key"
+      :rowIndex="rowIndex"
       :field="field"
-      :schemaFields="schema"
       :cellValue="spreadStats[field.key]"
     ></ModalListCell>
   </tr>

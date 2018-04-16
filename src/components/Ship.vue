@@ -116,7 +116,7 @@ export default {
   display: none;
 }*/
 .ship {
-  font-family: 'Avenir';
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 15px;
   width: 200px;
   height: 60px;
