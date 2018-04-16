@@ -11,11 +11,21 @@
   --></div><!--
   --><div id='filter-wrapper-class' v-show="classFilterShow" class='filter-wrapper'><!--
     --><div class='button' @click="selectAllClasses">Select {{classAll}}</div><!--
-    --><FilterBox v-for="shipClass of shipClasses" :key="shipClass" category='class' :criterion="shipClass"></FilterBox><!--
+    --><FilterBox
+      v-for="shipClass of shipClasses"
+      :key="shipClass"
+      category='class'
+      :criterion="shipClass"
+    ></FilterBox><!--
   --></div><!--
   --><div id='filter-wrapper-scale' v-show="scaleFilterShow" class='filter-wrapper'><!--
     --><div class='button' @click="selectAllScales">Select {{scaleAll}}</div><!--
-    --><FilterBox v-for="scale of shipScales" :key="scale" category='scale' :criterion="scale"></FilterBox><!--
+    --><FilterBox
+      v-for="scale of shipScales"
+      :key="scale"
+      category='scale'
+      :criterion="scale"
+    ></FilterBox><!--
   --></div>
   <h3>Available Starships</h3>
   <div id='unassigned-wrapper'>
@@ -54,7 +64,7 @@ export default {
     },
     availableShips: {
       get () {
-        return this.$store.getters.ships
+        return this.$store.getters.unassignedShips
       },
       set (value) {
         this.$store.commit('updateAvail', value)

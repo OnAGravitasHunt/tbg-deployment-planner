@@ -49,7 +49,6 @@ export default {
       if (this.currentShipName.length * this.currentShipRegistry.length * this.currentShipClass.length) {
         this.$store.dispatch('createNewShip')
         this.addMessage = 'Added'
-        this.$store.commit('updateShowAddShip', true)
         setTimeout(() => { this.addMessage = 'Add Ship' }, 1000)
       }
     }
@@ -60,14 +59,6 @@ export default {
     },
     shipClasses () {
       return this.$store.state.shipData.shipClasses
-    },
-    showAddShipModal: {
-      get () {
-        return this.$store.state.addShipShow
-      },
-      set (value) {
-        this.$store.commit('updateShowAddShip', value)
-      }
     },
     currentShipPrefix: {
       get () {

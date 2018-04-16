@@ -3,15 +3,6 @@
     {
       "dateLabel": "2323 Q1",
       "unassignedShips": [
-        "2010",
-        "2001",
-        "2602",
-        "2603",
-        "1742",
-        "2105",
-        "4101"
-      ],
-      "shipObjects": [
         {
           "registry": "2010",
           "name": "Avandar",
@@ -88,39 +79,6 @@
           "veterancy": 0,
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
-        },
-        {
-          "registry": "SB001",
-          "name": "1, Earth",
-          "shipClass": "Starbase I",
-          "prefix": "Starbase",
-          "scale": "station",
-          "classStats": [15, 9, 20, 22, 6, 7],
-          "veterancy": 0,
-          "bonusStats": [0, 0, 0, 0, 0, 0],
-          "mobile": false
-        },
-        {
-          "registry": "SB002",
-          "name": "2, Vulcan",
-          "shipClass": "Starbase I",
-          "prefix": "Starbase",
-          "scale": "station",
-          "classStats": [15, 9, 20, 22, 6, 7],
-          "veterancy": 0,
-          "bonusStats": [0, 0, 0, 0, 0, 0],
-          "mobile": false
-        },
-        {
-          "registry": "SB012",
-          "name": "12, Betazed",
-          "shipClass": "Starbase I",
-          "prefix": "Starbase",
-          "scale": "station",
-          "classStats": [15, 9, 20, 22, 6, 7],
-          "veterancy": 0,
-          "bonusStats": [0, 0, 0, 0, 0, 0],
-          "mobile": false
         }
       ],
       "sectors": [
@@ -135,7 +93,30 @@
         {
           "name": "Sol",
           "defence": 18,
-          "ships": ["SB001", "SB012"],
+          "ships": [
+            {
+              "registry": "SB001",
+              "name": "1, Earth",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [15, 9, 20, 22, 6, 7],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": false
+            },
+            {
+              "registry": "SB012",
+              "name": "12, Betazed",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [15, 9, 20, 22, 6, 7],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": false
+            }
+          ],
           "type": "Core",
           "theatre": "Tailward",
           "supporters": ["Licori Border Zone", "Sydraxian Border Zone"]
@@ -144,7 +125,17 @@
           "name": "Vulcan",
           "defence": 10,
           "ships": [
-
+            {
+              "registry": "SB002",
+              "name": "2, Vulcan",
+              "shipClass": "Starbase I",
+              "prefix": "Starbase",
+              "scale": "station",
+              "classStats": [15, 9, 20, 22, 6, 7],
+              "veterancy": 0,
+              "bonusStats": [0, 0, 0, 0, 0, 0],
+              "mobile": false
+            }
           ],
           "type": "Core",
           "theatre": "Tailward",

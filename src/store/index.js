@@ -27,13 +27,6 @@ export default new Vuex.Store({
   },
   state: {
     currentModal: 'none'
-    /* modalBools: {
-      showAddShip: false,
-      showEditShip: false,
-      showShipInfo: false,
-      showAddSector: false,
-      showEditSector: false
-    } */
   },
   mutations: {
     setModal (state, value) {
