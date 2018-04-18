@@ -47,6 +47,9 @@ const mutations = {
   updateShipObject (state, {registry, newShip}) {
     state.timeline[state.currentTick].shipObjects[registry] = newShip
   },
+  updateAllShipObjects (state, newShips) {
+    Object.assign(state.timeline[state.currentTick].shipObjects, newShips)
+  },
   //
   // List sorting - places starbases first
   sortSector (state, sectorIndex) {

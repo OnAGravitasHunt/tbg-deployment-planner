@@ -151,9 +151,11 @@ export default {
       let self = this
       reader.onload = function (event) {
         if (reader.readyState === FileReader.DONE) {
-          let shipsArr = Papa.parse(reader.result, PAPA_CONFIG)
-          shipsArr = new SheetConverter(shipsArr).convert()
-          self.$store.commit('updateAvail', shipsArr)
+          let ships = Papa.parse(reader.result, PAPA_CONFIG)
+          ships = new SheetConverter(ships).convert()
+          let newShips = Object.keys(ships).filter(ship => !self.$store.getters.shipObjects.hasOwnProperty(ship))
+          self.$store.commit('updateAllShipObjects', ships)
+          self.$store.commit('updateAvail', self.$store.getters.unassignedShips.concat(newShips))
         }
       }
       reader.readAsText(loadFile)

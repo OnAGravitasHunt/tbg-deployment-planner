@@ -2,7 +2,7 @@ import shipData from '../assets/shipDataFields.json'
 
 let shipClasses = {}
 for (let shipClass of shipData.shipClasses) {
-  shipClasses[shipClass.name] = {stats: shipClass.stats, scale: shipClass.scale}
+  shipClasses[shipClass.name] = shipClass
 }
 
 export default class SheetConverter {
@@ -18,7 +18,12 @@ export default class SheetConverter {
   }
 
   convert () {
-    return this.fileShips.map(ship => this.convertShip(ship))
+    let convertedShips = {}
+    for (let ship of this.fileShips) {
+      ship = this.convertShip(ship)
+      convertedShips[ship.registry] = ship
+    }
+    return convertedShips
   }
 
   convertShip (ship) {
@@ -29,7 +34,7 @@ export default class SheetConverter {
       shipClass: ship['Class'],
       prefix: names.prefix,
       scale: shipClasses[ship['Class']].scale,
-      classStats: shipClasses[ship['Class']].stats,
+      classStats: this.getClassStats(ship['Class']),
       veterancy: this.getVeterancy(ship['Rating']),
       bonusStats: this.getBonuses(ship),
       mobile: true
@@ -58,16 +63,27 @@ export default class SheetConverter {
     }[rating]
   }
 
+  getClassStats (className) {
+    return [
+      shipClasses[className].c,
+      shipClasses[className].s,
+      shipClasses[className].h,
+      shipClasses[className].l,
+      shipClasses[className].p,
+      shipClasses[className].d
+    ]
+  }
+
   getBonuses (ship) {
     let bonuses = [0, 0, 0, 0, 0, 0]
-    let classStats = shipClasses[ship['Class']].stats
+    let shipClass = shipClasses[ship['Class']]
     let vet = this.getVeterancy(ship['Rating'])
-    bonuses[0] = Number(ship['C']) - vet - classStats[0]
-    bonuses[1] = Number(ship['S']) - vet - classStats[1]
-    bonuses[2] = Number(ship['H']) - vet - classStats[2]
-    bonuses[3] = Number(ship['L']) - vet - classStats[3]
-    bonuses[4] = Number(ship['P']) - vet - classStats[4]
-    bonuses[5] = Number(ship['D']) - classStats[5]
+    bonuses[0] = Number(ship['C']) - vet - shipClass.c
+    bonuses[1] = Number(ship['S']) - vet - shipClass.s
+    bonuses[2] = Number(ship['H']) - vet - shipClass.h
+    bonuses[3] = Number(ship['L']) - vet - shipClass.l
+    bonuses[4] = Number(ship['P']) - vet - shipClass.p
+    bonuses[5] = Number(ship['D']) - shipClass.d
     return bonuses
   }
 }
