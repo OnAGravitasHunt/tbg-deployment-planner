@@ -1,31 +1,32 @@
 import shipDataFields from '../../assets/shipDataFields.json'
 
 function setShipField (ship, field, value) {
-  // /*
   switch (field) {
     case 'c':
-      ship.classStats[0] = Number(value)
+      ship.classStats.splice(0, 1, Number(value))
       break
     case 's':
-      ship.classStats[1] = Number(value)
+      ship.classStats.splice(1, 1, Number(value))
       break
     case 'h':
-      ship.classStats[2] = Number(value)
+      ship.classStats.splice(2, 1, Number(value))
       break
     case 'l':
-      ship.classStats[3] = Number(value)
+      ship.classStats.splice(3, 1, Number(value))
       break
     case 'p':
-      ship.classStats[4] = Number(value)
+      ship.classStats.splice(4, 1, Number(value))
       break
     case 'd':
-      ship.classStats[5] = Number(value)
+      ship.classStats.splice(5, 1, Number(value))
+      break
+    case 'name':
+      ship.shipClass = value
       break
     default:
       ship[field] = value
   }
   return ship
-  // */
 }
 
 const state = {
@@ -39,6 +40,7 @@ const actions = {
     let shipsOfClass = Object.values(rootGetters.shipObjects)
       .filter(ship => ship.shipClass === className)
     commit('updateShipClassField', payload)
+    commit('restoreFilter', state.shipClasses)
 
     for (let ship of shipsOfClass) {
       ship = setShipField(ship, payload.field, payload.value)

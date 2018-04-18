@@ -19,6 +19,7 @@ const actions = {
   createNewShip ({state, commit, rootState}) {
     commit('updateShipObject', {registry: state.newShip.registry, newShip: state.newShip})
     commit('updateAvailAppend', state.newShip.registry)
+    commit('clearNewShip')
     commit('setModal', 'none')
   },
   // commit changes to ship under edit
@@ -34,6 +35,7 @@ const mutations = {
   },
   // update all fields of newShip
   updateNewShipAllFields (state, shipObj) {
+    shipObj.bonusStats = shipObj.bonusStats.slice()
     Object.assign(state.newShip, shipObj)
   },
   // set index of parent of ship under edit
