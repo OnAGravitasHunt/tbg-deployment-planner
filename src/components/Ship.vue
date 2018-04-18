@@ -22,19 +22,32 @@
 <script>
 export default {
   name: 'Ship',
-  props: [
-    'registry',
-    'name',
-    'shipClass',
-    'prefix',
-    'scale',
-    'classStats',
-    'veterancy',
-    'bonusStats',
-    'mobile',
-    'captain'
-  ],
+  props: ['registry'],
   computed: {
+    name () {
+      return this.shipObj.name
+    },
+    shipClass () {
+      return this.shipObj.shipClass
+    },
+    prefix () {
+      return this.shipObj.prefix
+    },
+    scale () {
+      return this.shipObj.scale
+    },
+    classStats () {
+      return this.shipObj.classStats
+    },
+    veterancy () {
+      return this.shipObj.veterancy
+    },
+    bonusStats () {
+      return this.shipObj.bonusStats
+    },
+    mobile () {
+      return this.shipObj.mobile
+    },
     imgUrl () {
       return `/static/${this.shipClass.toLowerCase()}.png`
     },
@@ -50,17 +63,7 @@ export default {
       return this.classStats.map((stat, i) => stat + this.bonusStats[i] + this.veterancy * this.vetStats[i])
     },
     shipObj () {
-      return {
-        registry: this.registry,
-        name: this.name,
-        shipClass: this.shipClass,
-        prefix: this.prefix,
-        scale: this.scale,
-        classStats: this.classStats,
-        veterancy: this.veterancy,
-        bonusStats: this.bonusStats,
-        mobile: this.mobile
-      }
+      return this.$store.getters.shipObjects[this.registry]
     },
     displayClassName () {
       let bits = this.shipClass.split('-')

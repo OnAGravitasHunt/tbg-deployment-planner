@@ -93,7 +93,7 @@ export default {
         return this.$store.state.shipData.shipClasses[this.rowIndex][this.field.key]
       },
       set (value) {
-        this.$store.commit('updateShipClassField', {classIndex: this.rowIndex, field: this.field.key, value: value})
+        this.$store.dispatch('updateShipClassFieldAction', {classIndex: this.rowIndex, field: this.field.key, value: value})
       }
     }
   }

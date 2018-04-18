@@ -21,7 +21,7 @@
         :move="onMove"
         @change="onUpdate"
         >
-      <Ship v-for="shipReg of sectorShips" :key="shipReg" v-bind="shipObjects[shipReg]"></Ship>
+      <Ship v-for="shipReg of sectorShips" :key="shipReg" :registry="shipReg"></Ship>
     </draggable>
   </div>
 </div>

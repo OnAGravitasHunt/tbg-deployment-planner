@@ -30,7 +30,7 @@
   <h3>Available Starships</h3>
   <div id='unassigned-wrapper'>
     <draggable id='available-ships' v-model="availableShips" :options="{group:'ships'}">
-      <Ship v-for="shipReg of availableShips" :key="shipReg" v-bind="shipObjects[shipReg]"></Ship>
+      <Ship v-for="shipReg of availableShips" :key="shipReg" :registry="shipReg"></Ship>
     </draggable>
   </div>
 </div>
@@ -50,7 +50,6 @@ export default {
   },
   data () {
     return {
-      // shipClasses: this.$store.state.shipData.shipClasses.map((el) => el.name),
       shipScales: ['frigate', 'cruiser', 'explorer'],
       classFilterShow: false,
       scaleFilterShow: false,

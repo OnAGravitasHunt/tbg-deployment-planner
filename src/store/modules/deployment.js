@@ -44,7 +44,11 @@ const mutations = {
   },
   //
   // Update ship objects
+  // updateShipField (state, {registry, field, value}) {
+  //   state.timeline[state.currentTick].shipObjects[registry][field] = value
+  // },
   updateShipObject (state, {registry, newShip}) {
+    console.log(`Updating NCC-${registry}`)
     state.timeline[state.currentTick].shipObjects[registry] = newShip
   },
   //
