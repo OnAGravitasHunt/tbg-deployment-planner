@@ -3,9 +3,9 @@
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
     <span class='sector-info'>D{{sectorStats[5]}}{{defDisp}}</span>
-    <!-- <span class='sector-info'>C{{sectorStats[0]}}</span> -->
-    <!-- <span class='sector-info'>S{{sectorStats[1]}}</span> -->
-    <!-- <span class='sector-info'>P{{sectorStats[4]}}</span> -->
+    <span class='sector-info'>C{{sectorStats[0]}}</span>
+    <span class='sector-info'>S{{sectorStats[1]}}</span>
+    <span class='sector-info'>P{{sectorStats[4]}}</span>
     <button class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
   </div>
   <div :class="`ship-summary sector-show-${!sectorShow}`">
