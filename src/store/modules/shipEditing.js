@@ -23,23 +23,7 @@ const actions = {
   },
   // commit changes to ship under edit
   commitShipChanges ({state, commit, rootState, rootGetters}) {
-    console.log(state.newShip.registry)
     commit('updateShipObject', {registry: state.newShip.registry, newShip: state.newShip})
-    /*
-    let targetArr, index
-    if (state.editShipTargetParent === 'available-ships') {
-      targetArr = rootGetters.unassignedShips
-      index = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
-      targetArr[index] = Object.assign(targetArr[index], state.newShip)
-      commit('updateAvail', targetArr, {root: 'true'})
-    } else {
-      let sectorIndex = Number(state.editShipTargetParent.split('-').pop())
-      targetArr = rootGetters.sectors[sectorIndex].ships
-      index = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
-      targetArr[index] = Object.assign(targetArr[index], state.newShip)
-      commit('updateSectorField', {sectorIndex: sectorIndex, field: 'ships', value: targetArr}, {root: 'true'})
-    }
-    */
   }
 }
 
