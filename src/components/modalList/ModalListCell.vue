@@ -1,7 +1,5 @@
 <template>
-  <td
-    class='modal-list-cell'
-  >
+  <td class='modal-list-cell'>
     <div
       tabindex='-1'
       :class="`cell-div delete ${field.display}`"
@@ -57,7 +55,6 @@ export default {
   data () {
     return {
       underEdit: false,
-      // displayValue: this.cellValue,
       tempValue: ''
     }
   },
@@ -72,9 +69,8 @@ export default {
           break
       }
     },
-    editCell ($event) {
-      // console.log(this.rowIndex, this.field.key)
-      // console.log(this.$store.state.shipData.shipClasses[this.rowIndex][this.field.key])
+    editCell () {
+      // console.log(this.rowIndex, this.field)
       this.underEdit = true
       this.tempValue = this.displayValue
     },
@@ -88,12 +84,20 @@ export default {
     }
   },
   computed: {
+    currentSchema () {
+      return this.$store.state.shipData.currentSchema
+    },
     displayValue: {
       get () {
-        return this.$store.state.shipData.shipClasses[this.rowIndex][this.field.key]
+        if (this.currentSchema === 'prefixes') {
+          return this.$store.state.shipData[this.currentSchema][this.rowIndex]
+        } else {
+          return this.$store.state.shipData[this.currentSchema][this.rowIndex][this.field.key]
+        }
       },
       set (value) {
-        this.$store.dispatch('updateShipClassFieldAction', {classIndex: this.rowIndex, field: this.field.key, value: value})
+        let dispatchString = this.currentSchema === 'prefixes' ? 'updatePrefixAction' : 'updateShipClassFieldAction'
+        this.$store.dispatch(dispatchString, {entryIndex: this.rowIndex, field: this.field.key, value: value})
       }
     }
   }

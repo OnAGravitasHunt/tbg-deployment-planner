@@ -2,12 +2,11 @@
   <div class='modal-list'>
     <table>
       <tr>
-        <th v-for="field of currentSchema" :key="field.name">{{field.name}}</th>
+        <th v-for="field of schemaFields" :key="field.name">{{field.name}}</th>
       </tr>
       <ModalListRow
         v-for="(entry, index) of dataPoints"
         :key="entry.className"
-        schema="shipClasses"
         :entry="entry"
         :rowIndex="index"
       ></ModalListRow>
@@ -24,24 +23,17 @@ export default {
     ModalListRow
   },
   data () {
-    return {
-      currentSchema: [
-        {name: 'Class Name', key: 'name', type: 'text'},
-        {name: 'Scale', key: 'scale', type: 'text', options: ['frigate', 'cruiser', 'explorer', 'station']},
-        {name: 'C', key: 'c', type: 'text'},
-        {name: 'S', key: 's', type: 'text'},
-        {name: 'H', key: 'h', type: 'text'},
-        {name: 'L', key: 'l', type: 'text'},
-        {name: 'P', key: 'p', type: 'text'},
-        {name: 'D', key: 'd', type: 'text'},
-        {name: '', key: 'delete', type: 'text'}
-      ]
-    }
+    return {}
   },
   methods: {},
   computed: {
+    schemaFields () {
+      // console.log(this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema])
+      return this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema]
+    },
     dataPoints () {
-      return this.$store.state.shipData.shipClasses
+      // console.log(this.$store.state.shipData[this.$store.state.shipData.currentSchema])
+      return this.$store.state.shipData[this.$store.state.shipData.currentSchema]
     }
   }
 }

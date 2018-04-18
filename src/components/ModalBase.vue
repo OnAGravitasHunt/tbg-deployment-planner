@@ -5,7 +5,7 @@
       <div class='modal-container'>
         <ModalHeader :heading="header"></ModalHeader>
         <div class='modal-body'>
-          <ModalMenu :menuItems="menuItems"></ModalMenu>
+          <ModalMenu :menuItems="menuItems" :menuType="menuType"></ModalMenu>
           <AddShip v-show="currentModal === 'add-ship'"></AddShip>
           <AddSector v-show="currentModal === 'add-sector'"></AddSector>
           <ShipInfo v-show="currentModal === 'ship-info'"></ShipInfo>
@@ -61,6 +61,10 @@ export default {
       ],
       sectorMenu: [
         {label: 'Edit Sector', modal: 'sector-edit'}
+      ],
+      listMenu: [
+        {label: 'Edit Ship Classes', modal: 'shipClasses'},
+        {label: 'Edit Prefixes', modal: 'prefixes'}
       ]
     }
   },
@@ -81,8 +85,17 @@ export default {
           return this.shipMenu
         case 'sector-edit':
           return this.sectorMenu
+        case 'modal-list':
+          return this.listMenu
         default:
           return []
+      }
+    },
+    menuType () {
+      if (this.currentModal === 'modal-list') {
+        return 'list'
+      } else {
+        return 'normal'
       }
     },
     header () {
@@ -93,15 +106,23 @@ export default {
           return 'Add New Sector'
         case 'ship-info':
         case 'ship-edit':
-          return `${this.shipHeader}`
+          return this.shipHeader
         case 'add-ship-class':
           return 'Add New Starship Options'
         case 'sector-edit':
           return 'Edit Sector'
         case 'modal-list':
-          return 'Editing Core Data'
+          return this.listHeader
         default:
           return ''
+      }
+    },
+    // List headers
+    listHeader () {
+      if (this.$store.state.shipData.currentSchema === 'shipClasses') {
+        return 'Editing Ship Classes'
+      } else if (this.$store.state.shipData.currentSchema === 'prefixes') {
+        return 'Editing Prefixes'
       }
     },
     // Ship Info Title

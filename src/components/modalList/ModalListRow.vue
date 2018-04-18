@@ -19,7 +19,7 @@ export default {
     ModalListCell
   },
   directives: {},
-  props: ['schema', 'entry', 'rowIndex'],
+  props: ['entry', 'rowIndex'],
   data () {
     return {
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
@@ -28,19 +28,7 @@ export default {
   methods: {},
   computed: {
     schemaFields () {
-      if (this.schema === 'shipClasses') {
-        return [
-          {name: 'Class Name', key: 'name', type: 'text', display: 'wide'},
-          {name: 'Scale', key: 'scale', type: 'select', options: ['frigate', 'cruiser', 'explorer', 'station']},
-          {name: 'C', key: 'c', type: 'text', display: 'narrow'},
-          {name: 'S', key: 's', type: 'text', display: 'narrow'},
-          {name: 'H', key: 'h', type: 'text', display: 'narrow'},
-          {name: 'L', key: 'l', type: 'text', display: 'narrow'},
-          {name: 'P', key: 'p', type: 'text', display: 'narrow'},
-          {name: 'D', key: 'd', type: 'text', display: 'narrow'},
-          {name: '', key: 'delete', type: 'text', display: 'narrow'}
-        ]
-      }
+      return this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema]
     }
   }
 }

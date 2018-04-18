@@ -16,11 +16,15 @@
 <script>
 export default {
   name: 'ModalMenu',
-  props: ['menuItems'],
+  props: ['menuItems', 'menuType'],
   computed: {},
   methods: {
     setModal (modalType) {
-      this.$store.commit('setModal', modalType)
+      if (this.menuType === 'list') {
+        this.$store.commit('setSchema', modalType)
+      } else {
+        this.$store.commit('setModal', modalType)
+      }
     }
   }
 }
