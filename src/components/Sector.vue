@@ -3,9 +3,9 @@
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
     <span class='sector-info'>D{{sectorStats[5]}}{{defDisp}}</span>
-    <span class='sector-info'>C{{sectorStats[0]}}</span>
-    <span class='sector-info'>S{{sectorStats[1]}}</span>
-    <span class='sector-info'>P{{sectorStats[4]}}</span>
+    <!-- <span class='sector-info'>C{{sectorStats[0]}}</span> -->
+    <!-- <span class='sector-info'>S{{sectorStats[1]}}</span> -->
+    <!-- <span class='sector-info'>P{{sectorStats[4]}}</span> -->
     <button class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
   </div>
   <div :class="`ship-summary sector-show-${!sectorShow}`">
@@ -21,7 +21,7 @@
         :move="onMove"
         @change="onUpdate"
         >
-      <Ship v-for="ship of sectorShips" :key="ship.registry" v-bind="ship"></Ship>
+      <Ship v-for="shipReg of sectorShips" :key="shipReg" v-bind="shipObjects[shipReg]"></Ship>
     </draggable>
   </div>
 </div>
@@ -44,6 +44,9 @@ export default {
     }
   },
   computed: {
+    shipObjects () {
+      return this.$store.getters.shipObjects
+    },
     sectorTypeKey () {
       switch (this.type) {
         case 'Task Force':
@@ -64,9 +67,9 @@ export default {
     sectorStats () {
       let stats = []
       for (var i = 0; i < 5; i++) {
-        stats[i] = this.sectorShips.reduce((acc, curr) => acc + curr.classStats[i] + curr.veterancy + curr.bonusStats[i], 0)
+        stats[i] = this.sectorShips.reduce((acc, curr) => acc + this.shipObjects[curr].classStats[i] + this.shipObjects[curr].veterancy + this.shipObjects[curr].bonusStats[i], 0)
       }
-      stats[5] = this.sectorShips.reduce((acc, curr) => acc + curr.classStats[5] + curr.bonusStats[5], 0)
+      stats[5] = this.sectorShips.reduce((acc, curr) => acc + this.shipObjects[curr].classStats[5] + this.shipObjects[curr].bonusStats[5], 0)
       return stats
     },
     sectorShips: {
@@ -93,7 +96,7 @@ export default {
       return this.type.replace(' ', '-').toLowerCase()
     },
     shipSummary () {
-      let ships = this.sectorShips.map(ship => ship.shipClass)
+      let ships = this.sectorShips.map(ship => this.shipObjects[ship].shipClass)
       let summ = {}
       for (let className of ships) {
         summ[className] = summ[className] ? summ[className] + 1 : 1

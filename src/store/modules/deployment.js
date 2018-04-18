@@ -6,6 +6,7 @@ const state = {
 }
 
 const getters = {
+  shipObjects: state => state.timeline[state.currentTick].shipObjects,
   unassignedShips: state => state.timeline[state.currentTick].unassignedShips,
   sectors: state => state.timeline[state.currentTick].sectors,
   dateLabel: state => state.timeline[state.currentTick].dateLabel
@@ -21,7 +22,7 @@ const mutations = {
   updateAvail (state, value) {
     state.timeline[state.currentTick].unassignedShips = value
   },
-  // update list of ships in sector
+  // update a particular sector
   updateSectorField (state, {sectorIndex, field, value}) {
     state.timeline[state.currentTick].sectors[sectorIndex][field] = value
   },
@@ -40,6 +41,11 @@ const mutations = {
   // update list of unassigned ships
   updateAvailAppend (state, value) {
     state.timeline[state.currentTick].unassignedShips.push(value)
+  },
+  //
+  // Update ship objects
+  updateShipObject (state, {registry, newShip}) {
+    state.timeline[state.currentTick].shipObjects[registry] = newShip
   },
   //
   // List sorting - places starbases first

@@ -30,7 +30,7 @@
   <h3>Available Starships</h3>
   <div id='unassigned-wrapper'>
     <draggable id='available-ships' v-model="availableShips" :options="{group:'ships'}">
-      <Ship v-for="ship of availableShips" :key="ship.registry" v-bind="ship"></Ship>
+      <Ship v-for="shipReg of availableShips" :key="shipReg" v-bind="shipObjects[shipReg]"></Ship>
     </draggable>
   </div>
 </div>
@@ -69,6 +69,9 @@ export default {
       set (value) {
         this.$store.commit('updateAvail', value)
       }
+    },
+    shipObjects () {
+      return this.$store.getters.shipObjects
     },
     classAll () {
       return this.classAllSelected ? 'none' : 'all'

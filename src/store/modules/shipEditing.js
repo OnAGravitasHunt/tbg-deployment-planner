@@ -17,14 +17,18 @@ const state = {
 const actions = {
   // add new ship to list
   createNewShip ({state, commit, rootState}) {
-    commit('updateAvailAppend', Object.assign({}, state.newShip), {root: 'true'})
+    commit('updateShipObject', {registry: state.newShip.registry, newShip: state.newShip})
+    commit('updateAvailAppend', state.newShip.registry)
     commit('setModal', 'none')
   },
   // commit changes to ship under edit
   commitShipChanges ({state, commit, rootState, rootGetters}) {
+    console.log(state.newShip.registry)
+    commit('updateShipObject', {registry: state.newShip.registry, newShip: state.newShip})
+    /*
     let targetArr, index
     if (state.editShipTargetParent === 'available-ships') {
-      targetArr = rootGetters.ships
+      targetArr = rootGetters.unassignedShips
       index = targetArr.map((el) => el.registry).indexOf(state.newShip.registry)
       targetArr[index] = Object.assign(targetArr[index], state.newShip)
       commit('updateAvail', targetArr, {root: 'true'})
@@ -35,6 +39,7 @@ const actions = {
       targetArr[index] = Object.assign(targetArr[index], state.newShip)
       commit('updateSectorField', {sectorIndex: sectorIndex, field: 'ships', value: targetArr}, {root: 'true'})
     }
+    */
   }
 }
 

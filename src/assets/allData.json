@@ -11,8 +11,8 @@
         "2105",
         "4101"
       ],
-      "shipObjects": [
-        {
+      "shipObjects": {
+        "2010": {
           "registry": "2010",
           "name": "Avandar",
           "shipClass": "Excelsior-A",
@@ -23,7 +23,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "2001": {
           "registry": "2001",
           "name": "Excalibur",
           "shipClass": "Excelsior-A",
@@ -34,7 +34,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "2602": {
           "registry": "2602",
           "name": "Reason",
           "shipClass": "Renaissance",
@@ -45,7 +45,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "2603": {
           "registry": "2603",
           "name": "Epiphany",
           "shipClass": "Renaissance",
@@ -56,7 +56,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "1742": {
           "registry": "1742",
           "name": "Hood",
           "shipClass": "Constitution-B",
@@ -67,7 +67,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "2105": {
           "registry": "2105",
           "name": "Lightning",
           "shipClass": "Centaur-A",
@@ -78,7 +78,7 @@
           "bonusStats": [0, 1, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "4101": {
           "registry": "4101",
           "name": "Kepler",
           "shipClass": "Kepler",
@@ -89,7 +89,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": true
         },
-        {
+        "SB001": {
           "registry": "SB001",
           "name": "1, Earth",
           "shipClass": "Starbase I",
@@ -100,7 +100,7 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": false
         },
-        {
+        "SB002": {
           "registry": "SB002",
           "name": "2, Vulcan",
           "shipClass": "Starbase I",
@@ -111,7 +111,106 @@
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": false
         },
-        {
+        "SB003": {
+          "registry": "SB003",
+          "name": "3, Andoria",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB004": {
+          "registry": "SB004",
+          "name": "4, Tellar Prime",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB005": {
+          "registry": "SB005",
+          "name": "5, Amarkia",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB006": {
+          "registry": "SB006",
+          "name": "6, Beta Indi",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB007": {
+          "registry": "SB007",
+          "name": "7, Ferasa",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB008": {
+          "registry": "SB008",
+          "name": "8, Vega",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB009": {
+          "registry": "SB009",
+          "name": "9, Lapycorias",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB010": {
+          "registry": "SB010",
+          "name": "10, Rigel",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB011": {
+          "registry": "SB011",
+          "name": "11, Apinae",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB012": {
           "registry": "SB012",
           "name": "12, Betazed",
           "shipClass": "Starbase I",
@@ -121,8 +220,107 @@
           "veterancy": 0,
           "bonusStats": [0, 0, 0, 0, 0, 0],
           "mobile": false
+        },
+        "SB013": {
+          "registry": "SB013",
+          "name": "13, Shrantet III",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB014": {
+          "registry": "SB014",
+          "name": "14, Indoria",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB015": {
+          "registry": "SB015",
+          "name": "15, Alukk",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB016": {
+          "registry": "SB016",
+          "name": "16, Arqueniou",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB017": {
+          "registry": "SB017",
+          "name": "17, Rethelia",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB018": {
+          "registry": "SB018",
+          "name": "18, Gamma Canidae",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB019": {
+          "registry": "SB019",
+          "name": "19, Collie",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB020": {
+          "registry": "SB020",
+          "name": "20, Kappa Tau",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
+        },
+        "SB021": {
+          "registry": "SB021",
+          "name": "21, Ke'luur",
+          "shipClass": "Starbase I",
+          "prefix": "Starbase",
+          "scale": "station",
+          "classStats": [15, 9, 20, 22, 6, 7],
+          "veterancy": 0,
+          "bonusStats": [0, 0, 0, 0, 0, 0],
+          "mobile": false
         }
-      ],
+      },
       "sectors": [
         {
           "name": "Tailward Theatre",
@@ -143,9 +341,7 @@
         {
           "name": "Vulcan",
           "defence": 10,
-          "ships": [
-
-          ],
+          "ships": ["SB002"],
           "type": "Core",
           "theatre": "Tailward",
           "supporters": ["Romulan Border Zone"]
@@ -153,19 +349,7 @@
         {
           "name": "Andor",
           "defence": 7,
-          "ships": [
-            {
-              "registry": "SB003",
-              "name": "3, Andoria",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB003"],
           "type": "Core",
           "theatre": "Tailward",
           "supporters": ["Romulan Border Zone", "Klingon Border Zone"]
@@ -173,19 +357,7 @@
         {
           "name": "Rigel",
           "defence": 9,
-          "ships": [
-            {
-              "registry": "SB010",
-              "name": "10, Rigel",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB010"],
           "type": "Core",
           "theatre": "Tailward",
           "supporters": ["Licori Border Zone,Horizon Border Zone", "Sydraxian Border Zone"]
@@ -193,19 +365,7 @@
         {
           "name": "Romulan Border Zone",
           "defence": 12,
-          "ships": [
-            {
-              "registry": "SB006",
-              "name": "6, Beta Indi",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB006"],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
@@ -213,19 +373,7 @@
         {
           "name": "Klingon Border Zone",
           "defence": 9,
-          "ships": [
-            {
-              "registry": "SB013",
-              "name": "13, Shrantet III",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB013"],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
@@ -233,19 +381,7 @@
         {
           "name": "Licori Border Zone",
           "defence": 9,
-          "ships": [
-            {
-              "registry": "SB020",
-              "name": "20, Kappa Tau",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB020"],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
@@ -253,19 +389,7 @@
         {
           "name": "Horizon Border Zone",
           "defence": 9,
-          "ships": [
-            {
-              "registry": "SB021",
-              "name": "21, Ke'luur",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB021"],
           "type": "Border",
           "theatre": "Tailward",
           "supporters": []
@@ -281,19 +405,7 @@
         {
           "name": "Tellar",
           "defence": 7,
-          "ships": [
-            {
-              "registry": "SB004",
-              "name": "4, Tellar Prime",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB004"],
           "type": "Core",
           "theatre": "Central",
           "supporters": ["Sydraxian Border Zone"]
@@ -301,19 +413,7 @@
         {
           "name": "Amarkia",
           "defence": 7,
-          "ships": [
-            {
-              "registry": "SB005",
-              "name": "5, Amarkia",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB005"],
           "type": "Core",
           "theatre": "Central",
           "supporters": ["Sydraxian Border Zone"]
@@ -321,19 +421,7 @@
         {
           "name": "Ferasa",
           "defence": 13,
-          "ships": [
-            {
-              "registry": "SB007",
-              "name": "7, Ferasa",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB007"],
           "type": "Core",
           "theatre": "Central",
           "supporters": ["Klingon Border Zone", "Straits of Themis"]
@@ -341,19 +429,7 @@
         {
           "name": "Alukk",
           "defence": 7,
-          "ships": [
-            {
-              "registry": "SB015",
-              "name": "15, Alukk",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB015"],
           "type": "Core",
           "theatre": "Central",
           "supporters": ["Straits of Themis"]
@@ -361,19 +437,7 @@
         {
           "name": "Sydraxian Border Zone",
           "defence": 11,
-          "ships": [
-            {
-              "registry": "SB008",
-              "name": "8, Vega",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB008"],
           "type": "Border",
           "theatre": "Central",
           "supporters": []
@@ -397,30 +461,7 @@
         {
           "name": "Apinae",
           "defence": 10,
-          "ships": [
-            {
-              "registry": "SB011",
-              "name": "11, Apinae",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            },
-            {
-              "registry": "SB014",
-              "name": "14, Indoria",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB011", "SB014"],
           "type": "Core",
           "theatre": "Spinward",
           "supporters": ["Cardassian Border Zone", "Sydraxian Border Zone"]
@@ -428,30 +469,7 @@
         {
           "name": "Rethelia",
           "defence": 12,
-          "ships": [
-            {
-              "registry": "SB016",
-              "name": "16, Arqueniou",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            },
-            {
-              "registry": "SB017",
-              "name": "17, Rethelia",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB016", "SB017"],
           "type": "Core",
           "theatre": "Spinward",
           "supporters": ["Straits of Themis"]
@@ -459,19 +477,7 @@
         {
           "name": "Cardassian Border Zone",
           "defence": 12,
-          "ships": [
-            {
-              "registry": "SB009",
-              "name": "9, Lapycorias",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB009"],
           "type": "Border",
           "theatre": "Spinward",
           "supporters": []
@@ -479,19 +485,7 @@
         {
           "name": "Straits of Themis",
           "defence": 7,
-          "ships": [
-            {
-              "registry": "SB018",
-              "name": "18, Gamma Canidae",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB018"],
           "type": "Border",
           "theatre": "Spinward",
           "supporters": []
@@ -499,19 +493,7 @@
         {
           "name": "Gabriel Border Zone",
           "defence": 0,
-          "ships": [
-            {
-              "registry": "SB019",
-              "name": "19, Collie",
-              "shipClass": "Starbase I",
-              "prefix": "Starbase",
-              "scale": "station",
-              "classStats": [15, 9, 20, 22, 6, 7],
-              "veterancy": 0,
-              "bonusStats": [0, 0, 0, 0, 0, 0],
-              "mobile": false
-            }
-          ],
+          "ships": ["SB019"],
           "type": "Border",
           "theatre": "Spinward",
           "supporters": []
