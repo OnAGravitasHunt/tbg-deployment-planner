@@ -18,7 +18,7 @@ yarn dev
 yarn build
 
 # build for production and view the bundle analyzer report
-npm run build --report
+yarn build --report
 ```
 
 With `npm`
