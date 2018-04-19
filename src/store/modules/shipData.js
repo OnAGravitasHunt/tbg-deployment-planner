@@ -72,6 +72,21 @@ const actions = {
       ship = setShipField(ship, 'prefix', payload.value)
       commit('updateShipObject', {registry: ship.registry, newShip: ship})
     }
+  },
+  deleteRowAction ({state, commit, rootState, rootGetters}, rowIndex) {
+    let property = {shipClasses: 'shipClass', prefixes: 'prefix'}[state.currentSchema]
+    let comparison = state[state.currentSchema][rowIndex]
+    if (state.currentSchema === 'shipClasses') {
+      comparison = comparison.name
+    }
+    let shipsOfProperty = Object.values(rootGetters.shipObjects)
+      .map(ship => ship[property])
+      .filter(shipProp => shipProp === comparison)
+    if (!shipsOfProperty.length) {
+      commit('deleteRow', rowIndex)
+    } else {
+      // alert('Cannot delete; there are ships using this property.')
+    }
   }
 }
 
@@ -98,6 +113,9 @@ const mutations = {
   },
   setSchema (state, value) {
     state.currentSchema = value
+  },
+  deleteRow (state, rowIndex) {
+    state[state.currentSchema].splice(rowIndex, 1)
   }
 }
 

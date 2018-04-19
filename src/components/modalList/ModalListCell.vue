@@ -4,6 +4,7 @@
       tabindex='-1'
       :class="`cell-div delete ${field.display}`"
       v-if="field.key === 'delete'"
+      @click="deleteRow"
     >&#x2716;</div>
 
     <div
@@ -81,6 +82,9 @@ export default {
     abortEdit () {
       this.tempValue = this.displayValue
       this.underEdit = false
+    },
+    deleteRow () {
+      this.$store.dispatch('deleteRowAction', this.rowIndex)
     }
   },
   computed: {
