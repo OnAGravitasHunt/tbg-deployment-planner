@@ -2,41 +2,27 @@
 <div id='nav-left-wrapper'>
   <h3>Filter Criteria</h3>
   <div id='filter-heading-wrapper'>
-    <label
-      class='filter-heading'
-      for='show-class-filter'
-    ><input
-      type='checkbox'
-      id='show-class-filter'
-      v-model="classFilterShow"
-    >Filter by Class</label>
-    <label
-      class='filter-heading'
-      for='show-scale-filter'
-    ><input
-      type='checkbox'
-      id='show-scale-filter'
-      v-model="scaleFilterShow"
-    >Filter by Scale</label><!--
-  --></div><!--
-  --><div id='filter-wrapper-class' v-show="classFilterShow" class='filter-wrapper'><!--
-    --><div class='button' @click="selectAllClasses">Select {{classAll}}</div><!--
-    --><FilterBox
+    <div @click="setFilter('class')" class='filter-heading'>Filter by Class</div>
+    <div @click="setFilter('scale')" class='filter-heading'>Filter by Scale</div>
+  </div>
+  <div id='filter-wrapper-class' v-show="currentFilter === 'class'" class='filter-wrapper'>
+    <div class='button' @click="selectAllClasses">Select {{classAll}}</div>
+    <FilterBox
       v-for="shipClass of shipClasses"
       :key="shipClass"
       category='class'
       :criterion="shipClass"
-    ></FilterBox><!--
-  --></div><!--
-  --><div id='filter-wrapper-scale' v-show="scaleFilterShow" class='filter-wrapper'><!--
-    --><div class='button' @click="selectAllScales">Select {{scaleAll}}</div><!--
-    --><FilterBox
+    ></FilterBox>
+  </div>
+  <div id='filter-wrapper-scale' v-show="currentFilter === 'scale'" class='filter-wrapper'>
+    <div class='button' @click="selectAllScales">Select {{scaleAll}}</div>
+    <FilterBox
       v-for="scale of shipScales"
       :key="scale"
       category='scale'
       :criterion="scale"
-    ></FilterBox><!--
-  --></div>
+    ></FilterBox>
+  </div>
   <h3>Available Starships</h3>
   <div id='unassigned-wrapper'>
     <draggable id='available-ships' v-model="availableShips" :options="{group:'ships'}">
@@ -61,6 +47,7 @@ export default {
   data () {
     return {
       shipScales: ['frigate', 'cruiser', 'explorer'],
+      currentFilter: 'none',
       classFilterShow: false,
       scaleFilterShow: false,
       classAllSelected: true,
@@ -97,6 +84,9 @@ export default {
     selectAllScales () {
       this.scaleAllSelected = !this.scaleAllSelected
       this.$store.commit('updateFilterAll', {category: 'scale', value: this.scaleAllSelected})
+    },
+    setFilter (filter) {
+      this.currentFilter = this.currentFilter === filter ? 'none' : filter
     }
   }
 }
@@ -116,7 +106,6 @@ h3:first-child {
   position: fixed;
   float: left;
   background-color: #ccc;
-  /* margin-top: 50px; */
   padding-top: 10px;
   display: flex;
   flex-flow: column;
@@ -165,10 +154,11 @@ h3:first-child {
   color: #2c3e50;
 }
 #filter-heading-wrapper {
+  flex-shrink: 0;
   display: flex;
   flex-flow: row nowrap;
-  /* height: 25px; */
-  margin-bottom: 15px;
+  height: 25px;
+  margin-bottom: 5px;
 }
 .filter-heading {
   max-width: 50%;
