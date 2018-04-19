@@ -1,5 +1,5 @@
 <template>
-<div :class="`sector-filter-selector sector-filter-${filterValue}`">
+<div :class="`sector-filter-selector filter-${filterValue}`">
   <label :for="filterId"><input type='checkbox' :id="filterId" :value="criterion" v-model="filterValue">{{criterion}}</label>
 </div>
 </template>
@@ -56,20 +56,23 @@ export default {
   border-bottom-right-radius: 12px;
   padding-right: 10px;
 }
-.sector-filter-true {
-  background-color: #9c9;
-}
-.sector-filter-false {
-  background-color: #c99;
-}
 label {
   text-transform: capitalize;
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
-  color: black;
+  /* color: black; */
   width: 100%;
   margin: 0;
+}
+.filter-true {
+  background-color: #7d7f;
+  color: black;
+}
+.filter-false {
+  /* background-color: #c99; */
+  background-color: #666f;
+  color: white;
 }
 input {
   margin: 0;

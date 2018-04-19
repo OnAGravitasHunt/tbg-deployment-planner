@@ -39,16 +39,18 @@ export default {
 .filter-selector {
   margin: 1px 2.5px;
   width: 48%;
-  /* border: 1px solid black; */
   border-radius: 12px;
   box-sizing: border-box;
   height: 24px;
 }
 .filter-true {
-  background-color: #9c9;
+  border: 1px solid #474;
+  background-color: #7d7;
+  color: black;
 }
 .filter-false {
-  background-color: #c99;
+  background-color: #999;
+  color: white;
 }
 label {
   text-transform: capitalize;
