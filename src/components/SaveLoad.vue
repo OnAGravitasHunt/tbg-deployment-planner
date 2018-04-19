@@ -212,7 +212,7 @@ export default {
 .storage-button {
   background-color: #06a;
   color: white;
-  width: 100px;
+  width: 80px;
   border-radius: 20px;
   margin: 5px 2px;
 }
@@ -235,7 +235,7 @@ export default {
   margin-left: 20px;
 }
 .timeline {
-  margin-left: 40px;
+  margin-left: 20px;
   height: 50px;
   display: inline-block;
   vertical-align: top;

@@ -2,12 +2,22 @@
 <div id='nav-left-wrapper'>
   <h3>Filter Criteria</h3>
   <div id='filter-heading-wrapper'>
-    <label class='filter-heading' for='show-class-filter'>
-      <input type='checkbox' id='show-class-filter' v-model="classFilterShow">Filter by Class
-    </label>
-    <label class='filter-heading' for='show-scale-filter'>
-      <input type='checkbox' id='show-scale-filter' v-model="scaleFilterShow">Filter by Scale
-    </label><!--
+    <label
+      class='filter-heading'
+      for='show-class-filter'
+    ><input
+      type='checkbox'
+      id='show-class-filter'
+      v-model="classFilterShow"
+    >Filter by Class</label>
+    <label
+      class='filter-heading'
+      for='show-scale-filter'
+    ><input
+      type='checkbox'
+      id='show-scale-filter'
+      v-model="scaleFilterShow"
+    >Filter by Scale</label><!--
   --></div><!--
   --><div id='filter-wrapper-class' v-show="classFilterShow" class='filter-wrapper'><!--
     --><div class='button' @click="selectAllClasses">Select {{classAll}}</div><!--
