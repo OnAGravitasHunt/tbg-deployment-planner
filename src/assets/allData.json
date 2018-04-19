@@ -461,7 +461,7 @@
         {
           "name": "Apinae",
           "defence": 10,
-          "ships": ["SB011", "SB014"],
+          "ships": ["SB011", "SB014", "SB018"],
           "type": "Core",
           "theatre": "Spinward",
           "supporters": ["Cardassian Border Zone", "Sydraxian Border Zone"]
@@ -478,14 +478,6 @@
           "name": "Cardassian Border Zone",
           "defence": 12,
           "ships": ["SB009"],
-          "type": "Border",
-          "theatre": "Spinward",
-          "supporters": []
-        },
-        {
-          "name": "Straits of Themis",
-          "defence": 7,
-          "ships": ["SB018"],
           "type": "Border",
           "theatre": "Spinward",
           "supporters": []
