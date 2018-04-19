@@ -48,7 +48,7 @@ const mutations = {
   // mutation to remove sector
   deleteSector (state, index) {
     let deletedShips = state.timeline[state.currentTick].sectors.splice(index, 1)[0].ships
-    state.timeline[state.currentTick].unassignedShips = state.timeline[state.currentTick].ships.concat(deletedShips)
+    state.timeline[state.currentTick].unassignedShips = state.timeline[state.currentTick].unassignedShips.concat(deletedShips)
   },
   // update list of unassigned ships
   updateAvailAppend (state, value) {

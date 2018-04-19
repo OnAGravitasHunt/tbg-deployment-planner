@@ -424,7 +424,7 @@
           "ships": ["SB007"],
           "type": "Core",
           "theatre": "Central",
-          "supporters": ["Klingon Border Zone", "Straits of Themis"]
+          "supporters": ["Klingon Border Zone"]
         },
         {
           "name": "Alukk",
@@ -432,7 +432,7 @@
           "ships": ["SB015"],
           "type": "Core",
           "theatre": "Central",
-          "supporters": ["Straits of Themis"]
+          "supporters": []
         },
         {
           "name": "Sydraxian Border Zone",
@@ -472,7 +472,7 @@
           "ships": ["SB016", "SB017"],
           "type": "Core",
           "theatre": "Spinward",
-          "supporters": ["Straits of Themis"]
+          "supporters": []
         },
         {
           "name": "Cardassian Border Zone",

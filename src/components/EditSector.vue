@@ -56,8 +56,8 @@ export default {
       this.$store.commit('setModal', 'none')
     },
     deleteSector () {
-      this.$store.dispatch('removeSector')
       this.$store.commit('setModal', 'none')
+      this.$store.dispatch('removeSector')
     }
   },
   computed: {
