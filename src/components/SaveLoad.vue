@@ -156,6 +156,7 @@ export default {
           let newShips = Object.keys(ships).filter(ship => !self.$store.getters.shipObjects.hasOwnProperty(ship))
           self.$store.commit('updateAllShipObjects', ships)
           self.$store.commit('updateAvail', self.$store.getters.unassignedShips.concat(newShips))
+          self.$store.commit('sortAvail')
         }
       }
       reader.readAsText(loadFile)

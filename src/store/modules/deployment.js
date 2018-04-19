@@ -1,5 +1,11 @@
 import allData from '../../assets/allData.json'
 
+const SCALE_SORT = {
+  explorer: 0,
+  cruiser: 1,
+  frigate: 2
+}
+
 const state = {
   timeline: allData.timeline,
   currentTick: 0
@@ -21,6 +27,12 @@ const mutations = {
   // update list of unassigned ships
   updateAvail (state, value) {
     state.timeline[state.currentTick].unassignedShips = value
+  },
+  sortAvail (state) {
+    state.timeline[state.currentTick].unassignedShips.sort(
+      (a, b) => SCALE_SORT[state.timeline[state.currentTick].shipObjects[a].scale]
+        - SCALE_SORT[state.timeline[state.currentTick].shipObjects[b].scale]
+    )
   },
   // update a particular sector
   updateSectorField (state, {sectorIndex, field, value}) {

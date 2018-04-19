@@ -42,7 +42,7 @@ export default class SheetConverter {
   }
 
   getRegistry (ship) {
-    let reg = ship['Registry'].split('-')
+    let reg = ship['Registry'].replace(' (!)', '').split('-')
     reg.shift()
     return reg.join('-')
   }
