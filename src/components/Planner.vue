@@ -30,8 +30,11 @@ export default {
     draggable
   },
   data () {
-    return {
-      sectors: this.$store.getters.sectors
+    return {}
+  },
+  computed: {
+    sectors () {
+      return this.$store.getters.sectors
     }
   }
 }
