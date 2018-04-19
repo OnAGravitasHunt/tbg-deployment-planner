@@ -151,7 +151,7 @@ export default {
       let self = this
       reader.onload = function (event) {
         if (reader.readyState === FileReader.DONE) {
-          let ships = Papa.parse(reader.result, PAPA_CONFIG)
+          let ships = Papa.parse(reader.result.substring(reader.result.indexOf('\n') + 1), PAPA_CONFIG)
           ships = new SheetConverter(ships).convert()
           let newShips = Object.keys(ships).filter(ship => !self.$store.getters.shipObjects.hasOwnProperty(ship))
           self.$store.commit('updateAllShipObjects', ships)
