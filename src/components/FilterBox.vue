@@ -11,7 +11,7 @@ export default {
   name: 'FilterBox',
   props: ['category', 'criterion'],
   computed: {
-    filterID () {
+    filterId () {
       return 'filter-' + this.category + '-' + this.criterion
     },
     categoryKey () {

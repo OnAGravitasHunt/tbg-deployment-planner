@@ -13,7 +13,13 @@
         <span>Ship Class: </span>
         <select v-model="currentShipClass">
           <option disabled value="">Select starship class</option>
-          <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
+          <!-- <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option> -->
+          <template v-for="operator of operators">
+            <option disabled :key="`${operator}-before`" value=''>-----</option>
+            <option disabled :key="operator" value=''>{{operator}}</option>
+            <option disabled :key="`${operator}-after`" value=''>-----</option>
+            <option v-for="shipClass of shipClasses[operator.toLowerCase()]" :key="shipClass.name">{{shipClass.name}}</option>
+          </template>
         </select>
       </li>
       <li>
@@ -65,8 +71,14 @@ export default {
     prefixes () {
       return this.$store.state.shipData.prefixes
     },
+    allShipClasses () {
+      return [].concat.apply([], Object.values(this.$store.state.shipData.shipClasses))
+    },
     shipClasses () {
       return this.$store.state.shipData.shipClasses
+    },
+    operators () {
+      return this.$store.state.shipData.operators
     },
     regPrefix () {
       return this.$store.state.shipEditing.newShip.scale === 'station' ? '' : 'NCC-'
@@ -134,7 +146,7 @@ export default {
       }
     },
     currentShipClassObject () {
-      let classObject = this.shipClasses.find(el => el.name === this.currentShipClass)
+      let classObject = this.allShipClasses.find(el => el.name === this.currentShipClass)
       if (typeof (classObject) === 'undefined') {
         return {stats: [0, 0, 0, 0, 0, 0]}
       } else {

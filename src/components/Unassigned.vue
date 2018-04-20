@@ -56,7 +56,9 @@ export default {
   },
   computed: {
     shipClasses () {
-      return this.$store.state.shipData.shipClasses.map((el) => el.name)
+      let shipClasses = [].concat.apply([], Object.values(this.$store.state.shipData.shipClasses))
+      // console.log(shipClasses.map((el) => el.name))
+      return shipClasses.map((el) => el.name)
     },
     availableShips: {
       get () {
@@ -140,6 +142,8 @@ h3:first-child {
   display: flex;
   flex-flow: row wrap;
   flex-shrink: 0;
+  max-height: 500px;
+  overflow-y: auto;
 }
 .button {
   height: 22px;

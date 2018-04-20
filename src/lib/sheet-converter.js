@@ -1,7 +1,7 @@
 import shipData from '../assets/shipDataFields.json'
 
 let shipClasses = {}
-for (let shipClass of shipData.shipClasses) {
+for (let shipClass of [].concat.apply([], Object.values(shipData.shipClasses))) {
   shipClasses[shipClass.name] = shipClass
 }
 

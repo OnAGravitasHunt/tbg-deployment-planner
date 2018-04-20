@@ -32,6 +32,7 @@ function setShipField (ship, field, value) {
 const state = {
   prefixes: shipDataFields.prefixes,
   shipClasses: shipDataFields.shipClasses,
+  operators: shipDataFields.operators,
   currentSchema: 'shipClasses',
   schemaList: {
     shipClasses: [

@@ -2,7 +2,7 @@ import shipDataFields from '../../assets/shipDataFields.json'
 
 const state = {
   filterCategories: {
-    shipClass: shipDataFields.shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
+    shipClass: [].concat.apply([], Object.values(shipDataFields.shipClasses)).reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
     scale: {
       frigate: true,
       cruiser: true,
