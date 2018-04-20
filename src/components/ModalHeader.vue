@@ -14,8 +14,7 @@
 <script>
 export default {
   name: 'ModalHeader',
-  props: ['heading'],
-  computed: {}
+  props: ['heading']
 }
 </script>
 

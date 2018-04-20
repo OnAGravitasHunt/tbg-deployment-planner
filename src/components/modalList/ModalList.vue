@@ -22,17 +22,12 @@ export default {
   components: {
     ModalListRow
   },
-  data () {
-    return {}
-  },
   methods: {},
   computed: {
     schemaFields () {
-      // console.log(this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema])
       return this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema]
     },
     dataPoints () {
-      // console.log(this.$store.state.shipData[this.$store.state.shipData.currentSchema])
       return this.$store.state.shipData[this.$store.state.shipData.currentSchema]
     }
   }
@@ -46,17 +41,14 @@ export default {
   padding-right: 15px;
   max-height: 400px;
   overflow-y: auto;
-  /* overflow-x: visible; */
 }
 table {
   border-spacing: 0;
   border-collapse: collapse;
-  /* table-layout: fixed; */
 }
 th, td {
   margin: 0;
   padding: 0 1px;
-  /* width: 100px; */
   height: 20px;
 }
 td {

@@ -18,7 +18,6 @@ export default {
   components: {
     ModalListCell
   },
-  directives: {},
   props: ['entry', 'rowIndex'],
   data () {
     return {

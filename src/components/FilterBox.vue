@@ -10,12 +10,10 @@
 export default {
   name: 'FilterBox',
   props: ['category', 'criterion'],
-  data () {
-    return {
-      filterId: 'filter-' + this.category + '-' + this.criterion
-    }
-  },
   computed: {
+    filterID () {
+      return 'filter-' + this.category + '-' + this.criterion
+    }
     categoryKey () {
       if (this.category === 'class') {
         return 'shipClass'

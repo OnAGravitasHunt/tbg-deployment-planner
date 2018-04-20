@@ -205,7 +205,7 @@ export default {
 }
 .theatre .sector-drag-wrapper,
 .task-force .sector-drag-wrapper {
-  border-top: 0px;
+  border-top: none;
 }
 .sector-drag {
   height: inherit;

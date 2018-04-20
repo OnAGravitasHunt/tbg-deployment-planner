@@ -71,7 +71,6 @@ export default {
       }
     },
     editCell () {
-      // console.log(this.rowIndex, this.field)
       this.underEdit = true
       this.tempValue = this.displayValue
     },

@@ -17,7 +17,6 @@
 export default {
   name: 'ModalMenu',
   props: ['menuItems', 'menuType'],
-  computed: {},
   methods: {
     setModal (modalType) {
       if (this.menuType === 'list') {

@@ -23,6 +23,12 @@
 export default {
   name: 'Ship',
   props: ['registry'],
+  data () {
+    return {
+      statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
+      vetStats: [1, 1, 1, 1, 1, 0]
+    }
+  },
   computed: {
     name () {
       return this.shipObj.name
@@ -72,12 +78,6 @@ export default {
       } else {
         return `<em>${bits[0]}</em>-${bits[1]}`
       }
-    }
-  },
-  data () {
-    return {
-      statOrder: ['C', 'S', 'H', 'L', 'P', 'D'],
-      vetStats: [1, 1, 1, 1, 1, 0]
     }
   },
   methods: {
