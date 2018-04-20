@@ -11,8 +11,12 @@
       <li>
         <span>Ship Class: </span>
         <select v-model="currentShipClass">
-          <option disabled value="">Select starship class</option>
-          <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option>
+          <option disabled value=''>Select starship class</option>
+          <!-- <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option> -->
+          <template v-for="operator of operators">
+            <option disabled :key="operator" value=''>{{operator}}</option>
+            <option v-for="shipClass of shipClasses[operator.toLowerCase()]" :key="shipClass.name">{{shipClass.name}}</option>
+          </template>
         </select>
       </li>
       <li>
@@ -59,6 +63,9 @@ export default {
     },
     shipClasses () {
       return this.$store.state.shipData.shipClasses
+    },
+    operators () {
+      return this.$store.state.shipData.operators
     },
     currentShipPrefix: {
       get () {

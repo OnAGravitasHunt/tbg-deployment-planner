@@ -1,198 +1,757 @@
 {
-  "shipClasses": [
-    {
-      "name": "Ambassador",
-      "scale": "explorer",
-      "c": 8,
-      "s": 9,
-      "h": 7,
-      "l": 9,
-      "p": 9,
-      "d": 8
-    },
-    {
-      "name": "Constitution-A",
-      "scale": "explorer",
-      "c": 5,
-      "s": 4,
-      "h": 4,
-      "l": 4,
-      "p": 5,
-      "d": 5
-    },
-    {
-      "name": "Excelsior",
-      "scale": "explorer",
-      "c": 6,
-      "s": 5,
-      "h": 4,
-      "l": 5,
-      "p": 5,
-      "d": 6
-    },
-    {
-      "name": "Excelsior-A",
-      "scale": "explorer",
-      "c": 7,
-      "s": 6,
-      "h": 4,
-      "l": 6,
-      "p": 6,
-      "d": 6
-    },
-    {
-      "name": "Constellation-A",
-      "scale": "cruiser",
-      "c": 3,
-      "s": 4,
-      "h": 2,
-      "l": 3,
-      "p": 3,
-      "d": 4
-    },
-    {
-      "name": "Constitution-B",
-      "scale": "cruiser",
-      "c": 5,
-      "s": 3,
-      "h": 3,
-      "l": 4,
-      "p": 3,
-      "d": 5
-    },
-    {
-      "name": "Renaissance",
-      "scale": "cruiser",
-      "c": 5,
-      "s": 3,
-      "h": 4,
-      "l": 5,
-      "p": 4,
-      "d": 5
-    },
-    {
-      "name": "Centaur-A",
-      "scale": "frigate",
-      "c": 3,
-      "s": 3,
-      "h": 2,
-      "l": 3,
-      "p": 3,
-      "d": 3
-    },
-    {
-      "name": "Centaur-B",
-      "scale": "frigate",
-      "c": 4,
-      "s": 4,
-      "h": 2,
-      "l": 4,
-      "p": 4,
-      "d": 5
-    },
-    {
-      "name": "Comet",
-      "scale": "frigate",
-      "c": 4,
-      "s": 4,
-      "h": 3,
-      "l": 5,
-      "p": 4,
-      "d": 8
-    },
-    {
-      "name": "Kepler",
-      "scale": "frigate",
-      "c": 2,
-      "s": 7,
-      "h": 2,
-      "l": 4,
-      "p": 5,
-      "d": 5
-    },
-    {
-      "name": "Miranda-A",
-      "scale": "frigate",
-      "c": 3,
-      "s": 2,
-      "h": 2,
-      "l": 3,
-      "p": 1,
-      "d": 2
-    },
-    {
-      "name": "Oberth",
-      "scale": "frigate",
-      "c": 1,
-      "s": 5,
-      "h": 1,
-      "l": 2,
-      "p": 1,
-      "d": 1
-    },
-    {
-      "name": "Patroller-A",
-      "scale": "frigate",
-      "c": 2,
-      "s": 3,
-      "h": 1,
-      "l": 3,
-      "p": 2,
-      "d": 2
-    },
-    {
-      "name": "Starbase I",
-      "scale": "station",
-      "c": 15,
-      "s": 9,
-      "h": 20,
-      "l": 22,
-      "p": 6,
-      "d": 7
-    },
-    {
-      "name": "Other Outposts",
-      "scale": "station",
-      "c": 0,
-      "s": 0,
-      "h": 0,
-      "l": 0,
-      "p": 0,
-      "d": 0
-    }
+  "operators": [
+    "Starfleet",
+    "Amarki",
+    "Apiata",
+    "Betazoid",
+    "Caitian",
+    "Caldonian",
+    "Gaeni",
+    "Honiani",
+    "Indorian",
+    "Orion",
+    "Rigellian",
+    "Risan",
+    "STO",
+    "Stations"
   ],
-  "memberShipClasses": [
-    {
-      "name": "Riala-A",
-      "scale": "explorer",
-      "c": 8,
-      "s": 5,
-      "h": 6,
-      "l": 9,
-      "p": 5,
-      "d": 6
-    },
-    {
-      "name": "Perciar",
-      "scale": "cruiser",
-      "c": 3,
-      "s": 2,
-      "h": 3,
-      "l": 2,
-      "p": 1,
-      "d": 3
-    },
-    {
-      "name": "Hebrinda-A",
-      "scale": "cruiser",
-      "c": 5,
-      "s": 2,
-      "h": 3,
-      "l": 5,
-      "p": 3,
-      "d": 4
-    }
+  "prefixes": [
+    "USS",
+    "UES",
+    "VCS",
+    "(AND)",
+    "TSS",
+    "CAS",
+    "(API)",
+    "BDS",
+    "CSS",
+    "(CAL)",
+    "IGS",
+    "SKS",
+    "ICS",
+    "OUS",
+    "RDS",
+    "(RIS)",
+    "QSS",
+    "SFS",
+    "Starbase",
+    "No prefix"
   ],
-  "prefixes": ["USS", "CAS", "Starbase", "No prefix"],
-  "veterancies": ["Green", "Blooded", "Veteran", "Elite"]
+  "veterancies": ["Green", "Blooded", "Veteran", "Elite"],
+  "shipClasses": {
+    "starfleet": [{
+        "name": "Ambassador",
+        "scale": "explorer",
+        "c": 8,
+        "s": 9,
+        "h": 7,
+        "l": 9,
+        "p": 9,
+        "d": 8
+      },
+      {
+        "name": "Constitution-A",
+        "scale": "explorer",
+        "c": 5,
+        "s": 4,
+        "h": 4,
+        "l": 4,
+        "p": 5,
+        "d": 5
+      },
+      {
+        "name": "Excelsior",
+        "scale": "explorer",
+        "c": 6,
+        "s": 5,
+        "h": 4,
+        "l": 5,
+        "p": 5,
+        "d": 6
+      },
+      {
+        "name": "Excelsior-A",
+        "scale": "explorer",
+        "c": 7,
+        "s": 6,
+        "h": 4,
+        "l": 6,
+        "p": 6,
+        "d": 6
+      },
+      {
+        "name": "Constellation-A",
+        "scale": "cruiser",
+        "c": 3,
+        "s": 4,
+        "h": 2,
+        "l": 3,
+        "p": 3,
+        "d": 4
+      },
+      {
+        "name": "Constitution-B",
+        "scale": "cruiser",
+        "c": 5,
+        "s": 3,
+        "h": 3,
+        "l": 4,
+        "p": 3,
+        "d": 5
+      },
+      {
+        "name": "Renaissance",
+        "scale": "cruiser",
+        "c": 5,
+        "s": 3,
+        "h": 4,
+        "l": 5,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Centaur-A",
+        "scale": "frigate",
+        "c": 3,
+        "s": 3,
+        "h": 2,
+        "l": 3,
+        "p": 3,
+        "d": 3
+      },
+      {
+        "name": "Centaur-B",
+        "scale": "frigate",
+        "c": 4,
+        "s": 4,
+        "h": 2,
+        "l": 4,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Comet",
+        "scale": "frigate",
+        "c": 4,
+        "s": 4,
+        "h": 3,
+        "l": 5,
+        "p": 4,
+        "d": 8
+      },
+      {
+        "name": "Kepler",
+        "scale": "frigate",
+        "c": 2,
+        "s": 7,
+        "h": 2,
+        "l": 4,
+        "p": 5,
+        "d": 5
+      },
+      {
+        "name": "Miranda-A",
+        "scale": "frigate",
+        "c": 3,
+        "s": 2,
+        "h": 2,
+        "l": 3,
+        "p": 1,
+        "d": 2
+      },
+      {
+        "name": "Oberth",
+        "scale": "frigate",
+        "c": 1,
+        "s": 5,
+        "h": 1,
+        "l": 2,
+        "p": 1,
+        "d": 1
+      }
+    ],
+    "amarki": [{
+        "name": "Riala-A",
+        "scale": "explorer",
+        "c": 8,
+        "s": 5,
+        "h": 6,
+        "l": 9,
+        "p": 5,
+        "d": 6
+      },
+      {
+        "name": "Perciar",
+        "scale": "cruiser",
+        "c": 3,
+        "s": 2,
+        "h": 3,
+        "l": 2,
+        "p": 1,
+        "d": 3
+      },
+      {
+        "name": "Hebrinda-A",
+        "scale": "cruiser",
+        "c": 5,
+        "s": 2,
+        "h": 3,
+        "l": 5,
+        "p": 3,
+        "d": 4
+      },
+      {
+        "name": "Calac-A",
+        "scale": "frigate",
+        "c": 2,
+        "s": 3,
+        "h": 2,
+        "l": 3,
+        "p": 1,
+        "d": 3
+      },
+      {
+        "name": "Breica-A",
+        "scale": "frigate",
+        "c": 3,
+        "s": 2,
+        "h": 3,
+        "l": 4,
+        "p": 1,
+        "d": 2
+      },
+      {
+        "name": "Mielab",
+        "scale": "frigate",
+        "c": 3,
+        "s": 5,
+        "h": 2,
+        "l": 3,
+        "p": 1,
+        "d": 4
+      },
+      {
+        "name": "Anacail",
+        "scale": "frigate",
+        "c": 4,
+        "s": 2,
+        "h": 4,
+        "l": 6,
+        "p": 1,
+        "d": 4
+      }
+    ],
+    "apiata": [{
+        "name": "Queenship",
+        "scale": "explorer",
+        "c": 4,
+        "s": 3,
+        "h": 3,
+        "l": 8,
+        "p": 7,
+        "d": 7
+      },
+      {
+        "name": "Little Queenship",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 4,
+        "h": 2,
+        "l": 7,
+        "p": 6,
+        "d": 7
+      },
+      {
+        "name": "Forager",
+        "scale": "frigate",
+        "c": 2,
+        "s": 6,
+        "h": 1,
+        "l": 2,
+        "p": 2,
+        "d": 3
+      },
+      {
+        "name": "Stinger",
+        "scale": "frigate",
+        "c": 4,
+        "s": 2,
+        "h": 1,
+        "l": 4,
+        "p": 2,
+        "d": 4
+      }
+    ],
+    "betazoid": [{
+        "name": "Patrol Cruiser",
+        "scale": "cruiser",
+        "c": 3,
+        "s": 2,
+        "h": 3,
+        "l": 3,
+        "p": 5,
+        "d": 3
+      },
+      {
+        "name": "Patroller-A",
+        "scale": "frigate",
+        "c": 2,
+        "s": 3,
+        "h": 1,
+        "l": 3,
+        "p": 2,
+        "d": 2
+      }
+    ],
+    "caitian": [{
+        "name": "Nifari Fathership",
+        "scale": "explorer",
+        "c": 5,
+        "s": 6,
+        "h": 3,
+        "l": 7,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Arsharra N’Gir FS",
+        "scale": "explorer",
+        "c": 7,
+        "s": 9,
+        "h": 6,
+        "l": 10,
+        "p": 8,
+        "d": 9
+      },
+      {
+        "name": "Mishir Swarmer",
+        "scale": "frigate",
+        "c": 3,
+        "s": 3,
+        "h": 1,
+        "l": 4,
+        "p": 2,
+        "d": 3
+      }
+    ],
+    "caldonian": [{
+        "name": "Science Cruiser",
+        "scale": "cruiser",
+        "c": 3,
+        "s": 4,
+        "h": 3,
+        "l": 3,
+        "p": 3,
+        "d": 2
+      },
+      {
+        "name": "New Science Cruiser",
+        "scale": "cruiser",
+        "c": 3,
+        "s": 8,
+        "h": 2,
+        "l": 4,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Escort",
+        "scale": "frigate",
+        "c": 2,
+        "s": 2,
+        "h": 1,
+        "l": 2,
+        "p": 1,
+        "d": 1
+      }
+    ],
+    "gaeni": [{
+        "name": "Tech-Explorer",
+        "scale": "explorer",
+        "c": 5,
+        "s": 8,
+        "h": 4,
+        "l": 8,
+        "p": 6,
+        "d": 5
+      },
+      {
+        "name": "Tech-Cruiser",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 5,
+        "h": 3,
+        "l": 6,
+        "p": 3,
+        "d": 3
+      },
+      {
+        "name": "Tech-Cruiser-A",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 6,
+        "h": 4,
+        "l": 6,
+        "p": 4,
+        "d": 4
+      },
+      {
+        "name": "Tech-Frigate",
+        "scale": "frigate",
+        "c": 2,
+        "s": 3,
+        "h": 2,
+        "l": 3,
+        "p": 1,
+        "d": 2
+      }
+    ],
+    "honiani": [{
+        "name": "Cathedral",
+        "scale": "explorer",
+        "c": 5,
+        "s": 4,
+        "h": 6,
+        "l": 4,
+        "p": 5,
+        "d": 4
+      },
+      {
+        "name": "Basilica",
+        "scale": "explorer",
+        "c": 6,
+        "s": 5,
+        "h": 6,
+        "l": 6,
+        "p": 7,
+        "d": 5
+      },
+      {
+        "name": "Basilica of Lakhept",
+        "scale": "explorer",
+        "c": 8,
+        "s": 6,
+        "h": 7,
+        "l": 6,
+        "p": 8,
+        "d": 5
+      },
+      {
+        "name": "Chapel",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 4,
+        "h": 4,
+        "l": 4,
+        "p": 4,
+        "d": 3
+      },
+      {
+        "name": "Reliquary",
+        "scale": "cruiser",
+        "c": 5,
+        "s": 4,
+        "h": 3,
+        "l": 5,
+        "p": 4,
+        "d": 3
+      },
+      {
+        "name": "Parish",
+        "scale": "frigate",
+        "c": 2,
+        "s": 2,
+        "h": 3,
+        "l": 1,
+        "p": 3,
+        "d": 2
+      },
+      {
+        "name": "Monastery",
+        "scale": "frigate",
+        "c": 3,
+        "s": 3,
+        "h": 3,
+        "l": 3,
+        "p": 3,
+        "d": 3
+      }
+    ],
+    "indorian": [{
+        "name": "Egillah",
+        "scale": "explorer",
+        "c": 5,
+        "s": 5,
+        "h": 5,
+        "l": 5,
+        "p": 5,
+        "d": 5
+      },
+      {
+        "name": "Frigate",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 2,
+        "h": 2,
+        "l": 3,
+        "p": 2,
+        "d": 3
+      },
+      {
+        "name": "Vendan-A",
+        "scale": "frigate",
+        "c": 4,
+        "s": 2,
+        "h": 2,
+        "l": 3,
+        "p": 2,
+        "d": 3
+      },
+      {
+        "name": "Peketa-A",
+        "scale": "frigate",
+        "c": 3,
+        "s": 3,
+        "h": 1,
+        "l": 2,
+        "p": 1,
+        "d": 3
+      }
+    ],
+    "orion": [{
+        "name": "Embpor Battleship",
+        "scale": "explorer",
+        "c": 8,
+        "s": 6,
+        "h": 6,
+        "l": 7,
+        "p": 6,
+        "d": 6
+      },
+      {
+        "name": "Onaya Orbiter",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 3,
+        "h": 3,
+        "l": 3,
+        "p": 3,
+        "d": 3
+      },
+      {
+        "name": "Nelhiar Enforcer",
+        "scale": "cruiser",
+        "c": 5,
+        "s": 3,
+        "h": 2,
+        "l": 5,
+        "p": 7,
+        "d": 3
+      },
+      {
+        "name": "Holena Vigilante",
+        "scale": "cruiser",
+        "c": 5,
+        "s": 4,
+        "h": 5,
+        "l": 5,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Molhane Escort",
+        "scale": "frigate",
+        "c": 3,
+        "s": 2,
+        "h": 2,
+        "l": 2,
+        "p": 5,
+        "d": 2
+      },
+      {
+        "name": "Mekpali Escort",
+        "scale": "frigate",
+        "c": 4,
+        "s": 3,
+        "h": 3,
+        "l": 3,
+        "p": 3,
+        "d": 3
+      }
+    ],
+    "rigellian": [{
+        "name": "Megatortoise",
+        "scale": "explorer",
+        "c": 6,
+        "s": 4,
+        "h": 8,
+        "l": 9,
+        "p": 3,
+        "d": 3
+      },
+      {
+        "name": "Turtleship",
+        "scale": "cruiser",
+        "c": 4,
+        "s": 4,
+        "h": 5,
+        "l": 5,
+        "p": 4,
+        "d": 3
+      },
+      {
+        "name": "Oda-Gach",
+        "scale": "frigate",
+        "c": 2,
+        "s": 4,
+        "h": 1,
+        "l": 2,
+        "p": 4,
+        "d": 2
+      }
+    ],
+    "risan": [{
+        "name": "Heavy Corvette",
+        "scale": "cruiser",
+        "c": 2,
+        "s": 2,
+        "h": 2,
+        "l": 2,
+        "p": 4,
+        "d": 4
+      },
+      {
+        "name": "Heavy Corvette-A",
+        "scale": "cruiser",
+        "c": 2,
+        "s": 3,
+        "h": 2,
+        "l": 2,
+        "p": 5,
+        "d": 5
+      },
+      {
+        "name": "Light Corvette",
+        "scale": "frigate",
+        "c": 1,
+        "s": 1,
+        "h": 1,
+        "l": 1,
+        "p": 3,
+        "d": 3
+      },
+      {
+        "name": "Light Corvette-A",
+        "scale": "frigate",
+        "c": 1,
+        "s": 2,
+        "h": 1,
+        "l": 1,
+        "p": 4,
+        "d": 4
+      }
+    ],
+    "sto": [{
+        "name": "Torqui Leb Lagan",
+        "scale": "explorer",
+        "c": 5,
+        "s": 5,
+        "h": 4,
+        "l": 5,
+        "p": 3,
+        "d": 5
+      },
+      {
+        "name": "Arqueniou Leb Nin",
+        "scale": "explorer",
+        "c": 7,
+        "s": 5,
+        "h": 4,
+        "l": 5,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Sunrise",
+        "scale": "explorer",
+        "c": 9,
+        "s": 6,
+        "h": 4,
+        "l": 6,
+        "p": 4,
+        "d": 5
+      },
+      {
+        "name": "Audacious",
+        "scale": "cruiser",
+        "c": 7,
+        "s": 4,
+        "h": 3,
+        "l": 5,
+        "p": 4,
+        "d": 4
+      },
+      {
+        "name": "Constrictor",
+        "scale": "cruiser",
+        "c": 6,
+        "s": 3,
+        "h": 3,
+        "l": 4,
+        "p": 3,
+        "d": 4
+      },
+      {
+        "name": "Seeker",
+        "scale": "frigate",
+        "c": 1,
+        "s": 5,
+        "h": 1,
+        "l": 2,
+        "p": 2,
+        "d": 2
+      },
+      {
+        "name": "Quital Leb Quitan",
+        "scale": "frigate",
+        "c": 3,
+        "s": 3,
+        "h": 2,
+        "l": 2,
+        "p": 0,
+        "d": 2
+      },
+      {
+        "name": "Arquilla Heb Lioathi",
+        "scale": "frigate",
+        "c": 4,
+        "s": 4,
+        "h": 3,
+        "l": 3,
+        "p": 1,
+        "d": 2
+      }
+    ],
+    "stations": [{
+        "name": "Starbase I",
+        "scale": "station",
+        "c": 15,
+        "s": 9,
+        "h": 20,
+        "l": 22,
+        "p": 6,
+        "d": 7
+      },
+      {
+        "name": "Other Outposts",
+        "scale": "station",
+        "c": 0,
+        "s": 0,
+        "h": 0,
+        "l": 0,
+        "p": 0,
+        "d": 0
+      }
+    ]
+  }
 }
