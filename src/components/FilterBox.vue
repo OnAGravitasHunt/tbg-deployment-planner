@@ -13,7 +13,7 @@ export default {
   computed: {
     filterID () {
       return 'filter-' + this.category + '-' + this.criterion
-    }
+    },
     categoryKey () {
       if (this.category === 'class') {
         return 'shipClass'
