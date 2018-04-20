@@ -1,5 +1,9 @@
 <template>
-<div :class="`sector ${sectorTypeCSS} vis-${filterShow}`" :id="'sector-' + name">
+<div
+  v-show="filterShow"
+  :class="`sector ${sectorTypeCSS}`"
+  :id="'sector-' + name"
+>
   <div class='sector-header'>
     <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
     <span class='sector-info'>D{{sectorStats[5]}}{{defDisp}}</span>
@@ -8,12 +12,12 @@
     <span class='sector-info'>P{{sectorStats[4]}}</span>
     <button class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
   </div>
-  <div :class="`ship-summary sector-show-${!sectorShow}`">
+  <div v-show="!sectorShow" class='ship-summary'>
     <span v-for="shipClass of Object.keys(shipSummary)" :key="shipClass" class='sector-info'>
       {{shipSummary[shipClass]}} {{shipClass}}
     </span>
   </div>
-  <div :class="`sector-drag-wrapper sector-show-${sectorShow}`">
+  <div v-show="sectorShow" class='sector-drag-wrapper'>
     <draggable class='sector-drag'
         :id="'s-drag-' + index"
         v-model="sectorShips"
@@ -187,10 +191,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.sector-show-false {
-  display: none;
-  visibility: collapse;
-}
 .ship-summary {
   padding: 0 0 10px 80px;
 }
@@ -209,9 +209,6 @@ export default {
 }
 .sector-drag {
   height: inherit;
-}
-.vis-false {
-  display: none;
 }
 
 /* height */
