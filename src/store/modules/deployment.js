@@ -52,7 +52,7 @@ const mutations = {
   },
   // update list of unassigned ships
   updateAvailAppend (state, value) {
-    state.timeline[state.currentTick].unassignedShips.push(value)
+    state.timeline[state.currentTick].unassignedShips.unshift(value)
   },
   //
   // Update ship objects
