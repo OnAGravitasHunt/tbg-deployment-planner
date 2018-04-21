@@ -1,8 +1,13 @@
 import shipDataFields from '../../assets/shipDataFields.json'
 
+function regenerateFilterArray (shipClasses) {
+  return [].concat.apply([], Object.values(shipClasses))
+    .reduce((classes, ship) => ({...classes, [ship.name]: true}), {})
+}
+
 const state = {
   filterCategories: {
-    shipClass: [].concat.apply([], Object.values(shipDataFields.shipClasses)).reduce((classes, ship) => ({...classes, [ship.name]: true}), {}),
+    shipClass: regenerateFilterArray(shipDataFields.shipClasses),
     scale: {
       frigate: true,
       cruiser: true,
@@ -16,7 +21,7 @@ const state = {
 const mutations = {
   // update filter criterion
   restoreFilter (state, shipClasses) {
-    state.filterCategories.shipClass = shipClasses.reduce((classes, ship) => ({...classes, [ship.name]: true}), {})
+    state.filterCategories.shipClass = regenerateFilterArray(shipDataFields.shipClasses)
   },
   updateFilter (state, {category, criterion, value}) {
     state.filterCategories[category][criterion] = value

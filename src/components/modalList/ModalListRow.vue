@@ -6,6 +6,7 @@
       :rowIndex="rowIndex"
       :field="field"
       :cellValue="entry[field.key]"
+      :operator="operator"
     ></ModalListCell>
   </tr>
 </template>
@@ -18,7 +19,7 @@ export default {
   components: {
     ModalListCell
   },
-  props: ['entry', 'rowIndex'],
+  props: ['entry', 'rowIndex', 'operator'],
   data () {
     return {
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']

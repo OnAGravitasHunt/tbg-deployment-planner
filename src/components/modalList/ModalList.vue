@@ -4,12 +4,29 @@
       <tr>
         <th v-for="field of schemaFields" :key="field.name">{{field.name}}</th>
       </tr>
-      <ModalListRow
-        v-for="(entry, index) of dataPoints"
-        :key="entry.className"
-        :entry="entry"
-        :rowIndex="index"
-      ></ModalListRow>
+      <template
+        v-if="currentSchema === 'shipClasses'"
+        v-for="(shipClasses, operator) of dataPoints"
+      >
+        <tr :key="`op-${operator}`">
+          <th class='operator-header' colspan='9'>{{operator}}</th>
+        </tr>
+        <ModalListRow
+          v-for="(entry, index) of shipClasses"
+          :key="entry.className"
+          :entry="entry"
+          :rowIndex="index"
+          :operator="operator"
+        ></ModalListRow>
+      </template>
+      <template v-else>
+        <ModalListRow
+          v-for="(entry, index) of dataPoints"
+          :key="entry.className"
+          :entry="entry"
+          :rowIndex="index"
+        ></ModalListRow>
+      </template>
     </table>
   </div>
 </template>
@@ -24,11 +41,14 @@ export default {
   },
   methods: {},
   computed: {
+    currentSchema () {
+      return this.$store.state.shipData.currentSchema
+    },
     schemaFields () {
-      return this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema]
+      return this.$store.state.shipData.schemaList[this.currentSchema]
     },
     dataPoints () {
-      return this.$store.state.shipData[this.$store.state.shipData.currentSchema]
+      return this.$store.state.shipData[this.currentSchema]
     }
   }
 }
@@ -64,5 +84,9 @@ input, select {
   border: none;
   vertical-align: top;
   border-radius: 0;
+}
+.operator-header {
+  border: 1px solid #555;
+  text-transform: capitalize;
 }
 </style>

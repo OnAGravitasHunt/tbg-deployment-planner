@@ -44,7 +44,7 @@ export default {
   components: {
     StatPicker
   },
-  props: ['rowIndex', 'field', 'cellValue'],
+  props: ['rowIndex', 'field', 'cellValue', 'operator'],
   directives: {
     focus: {
       inserted (el) {
@@ -83,7 +83,7 @@ export default {
       this.underEdit = false
     },
     deleteRow () {
-      this.$store.dispatch('deleteRowAction', this.rowIndex)
+      this.$store.dispatch('deleteRowAction', {operator: this.operator, rowIndex: this.rowIndex})
     }
   },
   computed: {
@@ -95,12 +95,17 @@ export default {
         if (this.currentSchema === 'prefixes') {
           return this.$store.state.shipData[this.currentSchema][this.rowIndex]
         } else {
-          return this.$store.state.shipData[this.currentSchema][this.rowIndex][this.field.key]
+          return this.$store.state.shipData[this.currentSchema][this.operator][this.rowIndex][this.field.key]
         }
       },
       set (value) {
         let dispatchString = this.currentSchema === 'prefixes' ? 'updatePrefixAction' : 'updateShipClassFieldAction'
-        this.$store.dispatch(dispatchString, {entryIndex: this.rowIndex, field: this.field.key, value: value})
+        this.$store.dispatch(dispatchString, {
+          operator: this.operator,
+          entryIndex: this.rowIndex,
+          field: this.field.key,
+          value: value
+        })
       }
     }
   }

@@ -53,7 +53,6 @@ export default {
   computed: {},
   methods: {
     statChange (i, diff) {
-      console.log(this.header)
       this.shipClassStats.splice(i, 1, Math.max(Number(this.shipClassStats[i]) + diff, 0))
     },
     checkPositive (index, event) {

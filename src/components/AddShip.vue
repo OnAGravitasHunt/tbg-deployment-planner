@@ -67,7 +67,6 @@ export default {
           shipClasses: this.shipClasses[op.toLowerCase()].map(shipClass => shipClass.name)
         }
       ))
-      // console.log(options)
       return options
     },
     prefixes () {

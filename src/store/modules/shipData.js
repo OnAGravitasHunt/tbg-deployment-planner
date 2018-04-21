@@ -55,7 +55,7 @@ const state = {
 
 const actions = {
   updateShipClassFieldAction ({state, commit, rootState, rootGetters}, payload) {
-    let className = state.shipClasses[payload.entryIndex].name
+    let className = state.shipClasses[payload.operator][payload.entryIndex].name
     let shipsOfClass = Object.values(rootGetters.shipObjects).filter(ship => ship.shipClass === className)
     commit('updateShipClassField', payload)
     commit('restoreFilter', state.shipClasses)
@@ -66,7 +66,6 @@ const actions = {
   },
   updatePrefixAction ({state, commit, rootState, rootGetters}, payload) {
     let prefix = state.prefixes[payload.entryIndex]
-    // console.log(prefix)
     let shipsOfPrefix = Object.values(rootGetters.shipObjects).filter(ship => ship.prefix === prefix)
     commit('updatePrefix', payload)
     for (let ship of shipsOfPrefix) {
@@ -74,17 +73,19 @@ const actions = {
       commit('updateShipObject', {registry: ship.registry, newShip: ship})
     }
   },
-  deleteRowAction ({state, commit, rootState, rootGetters}, rowIndex) {
+  deleteRowAction ({state, commit, rootState, rootGetters}, {operator, rowIndex}) {
     let property = {shipClasses: 'shipClass', prefixes: 'prefix'}[state.currentSchema]
-    let comparison = state[state.currentSchema][rowIndex]
+    let comparison
     if (state.currentSchema === 'shipClasses') {
-      comparison = comparison.name
+      comparison = state[state.currentSchema][operator][rowIndex].name
+    } else {
+      comparison = state[state.currentSchema][rowIndex]
     }
     let shipsOfProperty = Object.values(rootGetters.shipObjects)
       .map(ship => ship[property])
       .filter(shipProp => shipProp === comparison)
     if (!shipsOfProperty.length) {
-      commit('deleteRow', rowIndex)
+      commit('deleteRow', {operator: operator, rowIndex: rowIndex})
     } else {
       // alert('Cannot delete; there are ships using this property.')
     }
@@ -102,11 +103,11 @@ const mutations = {
     state.prefixes = data.prefixes
     state.shipClasses = data.shipClasses
   },
-  updateShipClassField (state, {entryIndex, field, value}) {
-    if (typeof state.shipClasses[entryIndex][field] === 'number') {
-      state.shipClasses[entryIndex][field] = Number(value)
+  updateShipClassField (state, {operator, entryIndex, field, value}) {
+    if (typeof state.shipClasses[operator][entryIndex][field] === 'number') {
+      state.shipClasses[operator][entryIndex][field] = Number(value)
     } else {
-      state.shipClasses[entryIndex][field] = value
+      state.shipClasses[operator][entryIndex][field] = value
     }
   },
   updatePrefix (state, {entryIndex, field, value}) {
@@ -115,8 +116,12 @@ const mutations = {
   setSchema (state, value) {
     state.currentSchema = value
   },
-  deleteRow (state, rowIndex) {
-    state[state.currentSchema].splice(rowIndex, 1)
+  deleteRow (state, {operator, rowIndex}) {
+    if (state.currentSchema === 'shipClasses') {
+      state[state.currentSchema][operator].splice(rowIndex, 1)
+    } else {
+      state[state.currentSchema].splice(rowIndex, 1)
+    }
   }
 }
 

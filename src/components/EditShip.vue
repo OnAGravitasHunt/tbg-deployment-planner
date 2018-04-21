@@ -75,7 +75,6 @@ export default {
           shipClasses: this.shipClasses[op.toLowerCase()].map(shipClass => shipClass.name)
         }
       ))
-      // console.log(options)
       return options
     },
     prefixes () {
@@ -95,7 +94,6 @@ export default {
     },
     currentShipPrefix: {
       get () {
-        console.log(this.$store.state.shipEditing.newShip)
         return this.$store.state.shipEditing.newShip.prefix
       },
       set (prefix) {

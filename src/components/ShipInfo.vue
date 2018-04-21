@@ -41,9 +41,7 @@ export default {
   },
   computed: {
     currentShip () {
-      console.log(this.$store.state.shipEditing.shipRegistry)
       let ship = this.$store.getters.shipObjects[this.$store.state.shipEditing.shipRegistry]
-      console.log(ship)
       if (ship) {
         return ship
       } else {
@@ -72,7 +70,6 @@ export default {
       if (this.currentShip.scale === 'station') {
         return this.currentShip.shipClass
       } else {
-        // console.log(this.currentShip.shipClass)
         let splitName = this.currentShip.shipClass.split('-')
         let dispName = ''
         if (splitName.length === 1) {

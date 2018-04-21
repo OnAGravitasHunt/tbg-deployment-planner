@@ -57,7 +57,6 @@ export default {
   computed: {
     shipClasses () {
       let shipClasses = [].concat.apply([], Object.values(this.$store.state.shipData.shipClasses))
-      // console.log(shipClasses.map((el) => el.name))
       return shipClasses.map((el) => el.name)
     },
     availableShips: {
