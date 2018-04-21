@@ -1,4 +1,5 @@
 const state = {
+  shipRegistry: '',
   editShipTargetParent: '',
   newShip: {
     registry: '',
@@ -29,6 +30,9 @@ const actions = {
 }
 
 const mutations = {
+  setCurrentShipRegistry (state, value) {
+    state.shipRegistry = value
+  },
   // update field of newShip
   updateNewShipField (state, {field, value}) {
     state.newShip[field] = value

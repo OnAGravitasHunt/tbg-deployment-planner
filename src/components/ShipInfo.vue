@@ -41,7 +41,25 @@ export default {
   },
   computed: {
     currentShip () {
-      return this.$store.state.shipEditing.newShip
+      console.log(this.$store.state.shipEditing.shipRegistry)
+      let ship = this.$store.getters.shipObjects[this.$store.state.shipEditing.shipRegistry]
+      console.log(ship)
+      if (ship) {
+        return ship
+      } else {
+        return {
+          registry: '',
+          name: '',
+          shipClass: '',
+          prefix: 'USS',
+          scale: '',
+          classStats: [0, 0, 0, 0, 0, 0],
+          veterancy: 0,
+          bonusStats: [0, 0, 0, 0, 0, 0],
+          mobile: true,
+          captain: ''
+        }
+      }
     },
     displayShipName () {
       if (this.currentShip.scale === 'station') {

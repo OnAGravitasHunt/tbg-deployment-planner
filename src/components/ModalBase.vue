@@ -127,7 +127,7 @@ export default {
     },
     // Ship Info Title
     shipHeader () {
-      let curr = this.$store.state.shipEditing.newShip
+      let curr = this.$store.getters.shipObjects[this.$store.state.shipEditing.shipRegistry]
       let prefix = curr.prefix === 'No prefix' ? '' : `${curr.prefix} `
       let regPrefix = this.$store.state.shipEditing.newShip.scale === 'station' ? '' : 'NCC-'
       return `${prefix}${curr.name} &#xb7; ${regPrefix}${curr.registry}`

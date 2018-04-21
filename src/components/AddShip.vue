@@ -138,7 +138,6 @@ export default {
     },
     currentShipClassObject () {
       let classObject = this.allShipClasses.find(el => el.name === this.currentShipClass)
-      console.log(classObject)
       if (!classObject) {
         return {
           c: 0,

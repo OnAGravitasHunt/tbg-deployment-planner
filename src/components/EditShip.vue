@@ -11,16 +11,14 @@
       </li>
       <li>
         <span>Ship Class: </span>
-        <select v-model="currentShipClass">
-          <option disabled value="">Select starship class</option>
-          <!-- <option v-for="shipClass of shipClasses" :key="shipClass.name">{{shipClass.name}}</option> -->
-          <template v-for="operator of operators">
-            <option disabled :key="`${operator}-before`" value=''>-----</option>
-            <option disabled :key="operator" value=''>{{operator}}</option>
-            <option disabled :key="`${operator}-after`" value=''>-----</option>
-            <option v-for="shipClass of shipClasses[operator.toLowerCase()]" :key="shipClass.name">{{shipClass.name}}</option>
-          </template>
-        </select>
+        <multiselect
+          v-model="currentShipClass"
+          :options="multiselectOptions"
+          :multiple="false"
+          group-values="shipClasses"
+          group-label="operator"
+          placeholder="Type to Search"
+        ><span slot="noResult">None found.</span></multiselect>
       </li>
       <li>
         <span>Veterancy: </span>
@@ -41,11 +39,13 @@
 <script>
 import shipDataFields from '../assets/shipDataFields.json'
 import StatChanger from './StatChanger'
+import multiselect from 'vue-multiselect'
 
 export default {
   name: 'EditShip',
   components: {
-    StatChanger
+    StatChanger,
+    multiselect
   },
   props: ['target'],
   data () {
@@ -68,6 +68,16 @@ export default {
     }
   },
   computed: {
+    multiselectOptions () {
+      let options = this.operators.map(op => (
+        {
+          operator: op,
+          shipClasses: this.shipClasses[op.toLowerCase()].map(shipClass => shipClass.name)
+        }
+      ))
+      // console.log(options)
+      return options
+    },
     prefixes () {
       return this.$store.state.shipData.prefixes
     },
@@ -85,6 +95,7 @@ export default {
     },
     currentShipPrefix: {
       get () {
+        console.log(this.$store.state.shipEditing.newShip)
         return this.$store.state.shipEditing.newShip.prefix
       },
       set (prefix) {
@@ -147,10 +158,16 @@ export default {
     },
     currentShipClassObject () {
       let classObject = this.allShipClasses.find(el => el.name === this.currentShipClass)
-      if (typeof (classObject) === 'undefined') {
-        return {stats: [0, 0, 0, 0, 0, 0]}
+      if (!classObject) {
+        return {
+          c: 0,
+          s: 0,
+          h: 0,
+          l: 0,
+          p: 0,
+          d: 0
+        }
       } else {
-        this.$store.commit('updateNewShipField', {field: 'scale', value: classObject.scale})
         return classObject
       }
     }
@@ -158,6 +175,7 @@ export default {
 }
 </script>
 
+<style src="../../static/vue-multiselect.css"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .add-ship-fields {

@@ -82,11 +82,13 @@ export default {
   },
   methods: {
     editShip () {
+      this.$store.commit('setCurrentShipRegistry', this.registry)
       this.$store.commit('setEditShipTargetParent', this.$parent.$attrs.id)
       this.$store.commit('updateNewShipAllFields', this.shipObj)
       this.$store.commit('setModal', 'ship-edit')
     },
     displayMoreInfo () {
+      this.$store.commit('setCurrentShipRegistry', this.registry)
       this.$store.commit('setEditShipTargetParent', this.$parent.$attrs.id)
       this.$store.commit('updateNewShipAllFields', this.shipObj)
       this.$store.commit('setModal', 'ship-info')
