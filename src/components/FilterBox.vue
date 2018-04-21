@@ -54,7 +54,7 @@ label {
   text-transform: capitalize;
   display: inline-block;
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 12px;
   width: 100%;
   margin: 0;
   /* height: 100%; */

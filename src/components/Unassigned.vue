@@ -142,7 +142,7 @@ h3:first-child {
   display: flex;
   flex-flow: row wrap;
   flex-shrink: 0;
-  max-height: 500px;
+  max-height: 40%;
   overflow-y: auto;
 }
 .button {
