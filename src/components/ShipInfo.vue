@@ -54,6 +54,7 @@ export default {
       if (this.currentShip.scale === 'station') {
         return this.currentShip.shipClass
       } else {
+        // console.log(this.currentShip.shipClass)
         let splitName = this.currentShip.shipClass.split('-')
         let dispName = ''
         if (splitName.length === 1) {
