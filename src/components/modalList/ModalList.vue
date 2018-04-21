@@ -6,13 +6,13 @@
       </tr>
       <template
         v-if="currentSchema === 'shipClasses'"
-        v-for="(shipClasses, operator) of dataPoints"
+        v-for="operator of operators"
       >
         <tr :key="`op-${operator}`">
           <th class='operator-header' colspan='9'>{{operator}}</th>
         </tr>
         <ModalListRow
-          v-for="(entry, index) of shipClasses"
+          v-for="(entry, index) of dataPoints[operator.toLowerCase()]"
           :key="entry.className"
           :entry="entry"
           :rowIndex="index"
@@ -49,6 +49,9 @@ export default {
     },
     dataPoints () {
       return this.$store.state.shipData[this.currentSchema]
+    },
+    operators () {
+      return this.$store.state.shipData.operators
     }
   }
 }
