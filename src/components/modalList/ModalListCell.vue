@@ -95,7 +95,7 @@ export default {
         if (this.currentSchema === 'prefixes') {
           return this.$store.state.shipData[this.currentSchema][this.rowIndex]
         } else {
-          return this.$store.state.shipData[this.currentSchema][this.operator][this.rowIndex][this.field.key]
+          return this.$store.state.shipData[this.currentSchema][this.operator.toLowerCase()][this.rowIndex][this.field.key]
         }
       },
       set (value) {
