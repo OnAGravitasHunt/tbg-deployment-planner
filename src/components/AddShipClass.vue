@@ -13,6 +13,13 @@
         </select>
       </li>
       <li>
+        <span>Primary Operator:</span>
+        <select v-model="shipClassOperator">
+          <option disabled value="">Select primary operator</option>
+          <option v-for="operator of operators" :key="operator">{{operator}}</option>
+        </select>
+      </li>
+      <li>
         <table class='stat-table'>
           <tr class='stat-name-row'>
             <th></th>
@@ -84,6 +91,7 @@ export default {
       shipScales: ['frigate', 'cruiser', 'explorer', 'station'],
       shipClassName: '',
       shipClassScale: '',
+      shipClassOperator: 'Starfleet',
       statOrder: ['c', 's', 'h', 'l', 'p', 'd'],
       shipClassStats: [0, 0, 0, 0, 0, 0],
       newPrefix: '',
@@ -102,10 +110,11 @@ export default {
       if (value < 0 || isNaN(value)) {
         this.shipClassStats[index] = 0
       }
+      this.shipClassStats[index] = Number(this.shipClassStats[index])
     },
     saveClass () {
       if (this.shipClassName && this.shipClassScale) {
-        if (this.$store.state.shipData.shipClasses.filter(shipClass => shipClass.name === this.shipClassName).length) {
+        if (this.shipClasses[this.shipClassOperator.toLowerCase()].filter(shipClass => shipClass.name === this.shipClassName).length) {
           this.classMessage = 'Class Exists'
           this.newClassError = true
           setTimeout(() => {
@@ -114,15 +123,17 @@ export default {
           }, 1200)
         } else {
           this.$store.commit('addShipClass', {
-            name: this.shipClassName,
-            scale: this.shipClassScale,
-            // stats: this.shipClassStats,
-            c: this.shipClassStats[0],
-            s: this.shipClassStats[1],
-            h: this.shipClassStats[2],
-            l: this.shipClassStats[3],
-            p: this.shipClassStats[4],
-            d: this.shipClassStats[5]
+            operator: this.shipClassOperator.toLowerCase(),
+            shipClass: {
+              name: this.shipClassName,
+              scale: this.shipClassScale,
+              c: this.shipClassStats[0],
+              s: this.shipClassStats[1],
+              h: this.shipClassStats[2],
+              l: this.shipClassStats[3],
+              p: this.shipClassStats[4],
+              d: this.shipClassStats[5]
+            }
           })
           this.classMessage = 'Class Added'
           this.$store.commit('restoreFilter', this.$store.state.shipData.shipClasses)
@@ -151,7 +162,14 @@ export default {
       }
     }
   },
-  computed: {}
+  computed: {
+    shipClasses () {
+      return this.$store.state.shipData.shipClasses
+    },
+    operators () {
+      return this.$store.state.shipData.operators
+    }
+  }
 }
 </script>
 

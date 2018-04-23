@@ -93,8 +93,8 @@ const actions = {
 }
 
 const mutations = {
-  addShipClass (state, shipClass) {
-    state.shipClasses.push(shipClass)
+  addShipClass (state, {operator, shipClass}) {
+    state.shipClasses[operator].push(shipClass)
   },
   addShipPrefix (state, prefix) {
     state.prefixes.push(prefix)
