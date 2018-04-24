@@ -23,6 +23,7 @@
 
   <div class='button storage-button' title='Add new item' @click="addNew">New...</div>
   <div class='button storage-button' title='Edit item' @click="editor">Edit...</div>
+  <div class='button storage-button' title='BBCode' @click="bbcode">BBCode</div>
 
   <div class='timeline'>
     <div
@@ -64,10 +65,12 @@
   <a ref="save_file_a" style="display:none"></a>
   <input style="display:none" type="file" ref="stateFileInput" @change="uploadState" value="Load file"/>
   <input style="display:none" type="file" ref="shipCSVInput" @change="uploadCSV" value="Load file"/>
+  <BBCode ref='bbcode-button'></BBCode>
 </div>
 </template>
 
 <script>
+import BBCode from './bbcode/BBCode.vue'
 import SheetConverter from '../lib/sheet-converter.js'
 import Papa from 'papaparse'
 
@@ -78,6 +81,9 @@ const PAPA_CONFIG = {
 
 export default {
   name: 'SaveLoad',
+  components: {
+    BBCode
+  },
   data () {
     return {
       saveMessage: 'Save',
@@ -163,6 +169,9 @@ export default {
     },
     editor () {
       this.$store.commit('setModal', 'modal-list')
+    },
+    bbcode () {
+      this.$refs['bbcode-button'].copyToClipboard()
     }
   },
   computed: {
