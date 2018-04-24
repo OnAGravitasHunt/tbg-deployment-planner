@@ -23,7 +23,7 @@ const actions = {
   // commit changes to sector
   commitSectorChanges ({state, commit, rootState}) {
     commit('updateSectorAllFields', {
-      sectorIndex: state.selectedSectorIndex,
+      sectorName: state.selectedSectorName,
       sector: Object.assign({}, state.selectedSector)
     })
   },

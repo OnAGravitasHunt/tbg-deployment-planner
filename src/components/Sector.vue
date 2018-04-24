@@ -113,7 +113,7 @@ export default {
         defence: this.defence,
         type: this.type,
         theatre: this.theatre,
-        supporters: this.supporters
+        supporters: this.supporters.slice()
       }
     },
     sectorTypeCSS () {

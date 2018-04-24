@@ -41,7 +41,18 @@ const mutations = {
     state.timeline[state.currentTick].sectors[sectorName][field] = value
   },
   updateSectorAllFields (state, {sectorName, sector}) {
-    Object.assign(state.timeline[state.currentTick].sectors[sectorName], sector)
+    let oldSector = state.timeline[state.currentTick].sectors[sectorName]
+    let oldTheatre = state.timeline[state.currentTick].theatres[oldSector.theatre]
+    if (oldSector.theatre !== sector.theatre) {
+      state.timeline[state.currentTick].theatres[sector.theatre].push(sectorName)
+      let oldIndex = oldTheatre.indexOf(sectorName)
+      state.timeline[state.currentTick].theatres[oldSector.theatre].splice(oldIndex, 1)
+    }
+    if (oldSector.name !== sector.name) {
+      console.log('change name')
+    }
+    console.log(oldSector, sector)
+    // Object.assign(state.timeline[state.currentTick].sectors[sectorName], sector)
   },
   // mutation to add sector
   addNewSector (state, sector) {
