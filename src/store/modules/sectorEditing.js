@@ -1,5 +1,5 @@
 const state = {
-  selectedSectorIndex: '',
+  selectedSectorName: '',
   selectedSector: {
     name: '',
     defence: '',
@@ -22,18 +22,21 @@ const actions = {
   },
   // commit changes to sector
   commitSectorChanges ({state, commit, rootState}) {
-    commit('updateSectorAllFields', {sectorIndex: state.selectedSectorIndex, sector: Object.assign({}, state.selectedSector)})
+    commit('updateSectorAllFields', {
+      sectorIndex: state.selectedSectorIndex,
+      sector: Object.assign({}, state.selectedSector)
+    })
   },
   // delete sector
   removeSector ({state, commit, rootState}) {
-    commit('deleteSector', state.selectedSectorIndex)
+    commit('deleteSector', state.selectedSectorName)
   }
 }
 
 const mutations = {
   // set index of selected sector
-  setSelectedSectorIndex (state, value) {
-    state.selectedSectorIndex = value
+  setSelectedSectorName (state, value) {
+    state.selectedSectorName = value
   },
   // update single field of selected sector
   updateSelectedSectorField (state, {field, value}) {

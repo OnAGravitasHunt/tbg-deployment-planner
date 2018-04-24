@@ -5,8 +5,9 @@
 
   <div id="sectors-wrapper">
     <SectorFilter></SectorFilter>
-    <div id="sector-list-wrapper">
-      <Sector v-for="(sector, index) of sectors" v-bind="sector" :index="index" :key="sector.name" :id="sector.name"></Sector>
+    <div id="theatre-list-wrapper">
+      <Theatre v-for="theatre of theatres" :key="theatre" :theatreName="theatre"></Theatre>
+      <!-- <Sector v-for="(sector, index) of sectors" v-bind="sector" :index="index" :key="sector.name" :id="sector.name"></Sector> -->
     </div>
   </div>
 
@@ -18,8 +19,8 @@
 import Unassigned from './Unassigned'
 import SectorFilter from './SectorFilter'
 import Sector from './Sector'
+import Theatre from './Theatre'
 import draggable from 'vuedraggable'
-// import allData from '../assets/allData.json'
 
 export default {
   name: 'Planner',
@@ -27,11 +28,15 @@ export default {
     Unassigned,
     SectorFilter,
     Sector,
+    Theatre,
     draggable
   },
   computed: {
     sectors () {
       return this.$store.getters.sectors
+    },
+    theatres () {
+      return this.$store.getters.theatreList
     }
   }
 }
@@ -55,7 +60,7 @@ export default {
   /* margin-top: 50px; */
   /* padding-top: 30px; */
 }
-#sector-list-wrapper {
+#theatre-list-wrapper {
   margin-top: 30px;
 }
 </style>

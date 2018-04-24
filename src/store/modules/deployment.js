@@ -14,6 +14,8 @@ const state = {
 const getters = {
   shipObjects: state => state.timeline[state.currentTick].shipObjects,
   unassignedShips: state => state.timeline[state.currentTick].unassignedShips,
+  theatreList: state => state.timeline[state.currentTick].theatreList,
+  theatres: state => state.timeline[state.currentTick].theatres,
   sectors: state => state.timeline[state.currentTick].sectors,
   dateLabel: state => state.timeline[state.currentTick].dateLabel
 }
@@ -35,20 +37,23 @@ const mutations = {
     )
   },
   // update a particular sector
-  updateSectorField (state, {sectorIndex, field, value}) {
-    state.timeline[state.currentTick].sectors[sectorIndex][field] = value
+  updateSectorField (state, {sectorName, field, value}) {
+    state.timeline[state.currentTick].sectors[sectorName][field] = value
   },
-  updateSectorAllFields (state, {sectorIndex, sector}) {
-    Object.assign(state.timeline[state.currentTick].sectors[sectorIndex], sector)
+  updateSectorAllFields (state, {sectorName, sector}) {
+    Object.assign(state.timeline[state.currentTick].sectors[sectorName], sector)
   },
   // mutation to add sector
   addNewSector (state, sector) {
     state.timeline[state.currentTick].sectors.push(sector)
   },
   // mutation to remove sector
-  deleteSector (state, index) {
-    let deletedShips = state.timeline[state.currentTick].sectors.splice(index, 1)[0].ships
-    state.timeline[state.currentTick].unassignedShips = state.timeline[state.currentTick].unassignedShips.concat(deletedShips)
+  deleteSector (state, sectorName) {
+    let sector = state.timeline[state.currentTick].sectors[sectorName]
+    let theatre = state.timeline[state.currentTick].theatres[sector.theatre]
+    state.timeline[state.currentTick].unassignedShips = state.timeline[state.currentTick].unassignedShips.concat(sector.ships)
+    state.timeline[state.currentTick].theatres[sector.theatre].splice(theatre.indexOf(sectorName), 1)
+    delete state.timeline[state.currentTick].sectors[sectorName]
   },
   // update list of unassigned ships
   updateAvailAppend (state, value) {
@@ -64,8 +69,8 @@ const mutations = {
   },
   //
   // List sorting - places starbases first
-  sortSector (state, sectorIndex) {
-    state.timeline[state.currentTick].sectors[sectorIndex].ships.sort(function (a, b) {
+  sortSector (state, sectorName) {
+    state.timeline[state.currentTick].sectors[sectorName].ships.sort(function (a, b) {
       let shipA = state.timeline[state.currentTick].shipObjects[a]
       let shipB = state.timeline[state.currentTick].shipObjects[b]
       if (shipA.scale === 'station') {

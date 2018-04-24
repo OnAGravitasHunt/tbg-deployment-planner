@@ -321,16 +321,65 @@
           "mobile": false
         }
       },
-      "sectors": [
-        {
-          "name": "Tailward Theatre",
+      "theatreList": [
+        "Tailward",
+        "Central",
+        "Spinward",
+        "None/Other"
+      ],
+      "theatres": {
+        "Tailward": [
+          "Sol",
+          "Vulcan",
+          "Andor",
+          "Rigel",
+          "Romulan Border Zone",
+          "Klingon Border Zone",
+          "Licori Border Zone",
+          "Horizon Border Zone"
+        ],
+        "Central": [
+          "Tellar",
+          "Amarkia",
+          "Ferasa",
+          "Alukk",
+          "Sydraxian Border Zone",
+          "Ruby Eyes’ Folly"
+        ],
+        "Spinward": [
+          "Apinae",
+          "Rethelia",
+          "Cardassian Border Zone",
+          "Gabriel Border Zone"
+        ],
+        "None/Other": []
+      },
+      "sectors": {
+        "Tailward": {
+          "name": "Theatre Fleet",
           "defence": 0,
           "ships": [],
-          "type": "Theatre",
+          "type": "Theatre Fleet",
           "theatre": "Tailward",
           "supporters": []
         },
-        {
+        "Central": {
+          "name": "Theatre Fleet",
+          "defence": 0,
+          "ships": [],
+          "type": "Theatre Fleet",
+          "theatre": "Central",
+          "supporters": []
+        },
+        "Spinward": {
+          "name": "Theatre Fleet",
+          "defence": 0,
+          "ships": [],
+          "type": "Theatre Fleet",
+          "theatre": "Spinward",
+          "supporters": []
+        },
+        "Sol": {
           "name": "Sol",
           "defence": 18,
           "ships": ["SB001", "SB012"],
@@ -338,7 +387,7 @@
           "theatre": "Tailward",
           "supporters": ["Licori Border Zone", "Sydraxian Border Zone"]
         },
-        {
+        "Vulcan": {
           "name": "Vulcan",
           "defence": 10,
           "ships": ["SB002"],
@@ -346,7 +395,7 @@
           "theatre": "Tailward",
           "supporters": ["Romulan Border Zone"]
         },
-        {
+        "Andor": {
           "name": "Andor",
           "defence": 7,
           "ships": ["SB003"],
@@ -354,7 +403,7 @@
           "theatre": "Tailward",
           "supporters": ["Romulan Border Zone", "Klingon Border Zone"]
         },
-        {
+        "Rigel": {
           "name": "Rigel",
           "defence": 9,
           "ships": ["SB010"],
@@ -362,7 +411,7 @@
           "theatre": "Tailward",
           "supporters": ["Licori Border Zone,Horizon Border Zone", "Sydraxian Border Zone"]
         },
-        {
+        "Romulan Border Zone": {
           "name": "Romulan Border Zone",
           "defence": 12,
           "ships": ["SB006"],
@@ -370,7 +419,7 @@
           "theatre": "Tailward",
           "supporters": []
         },
-        {
+        "Klingon Border Zone": {
           "name": "Klingon Border Zone",
           "defence": 9,
           "ships": ["SB013"],
@@ -378,7 +427,7 @@
           "theatre": "Tailward",
           "supporters": []
         },
-        {
+        "Licori Border Zone": {
           "name": "Licori Border Zone",
           "defence": 9,
           "ships": ["SB020"],
@@ -386,7 +435,7 @@
           "theatre": "Tailward",
           "supporters": []
         },
-        {
+        "Horizon Border Zone": {
           "name": "Horizon Border Zone",
           "defence": 9,
           "ships": ["SB021"],
@@ -394,15 +443,7 @@
           "theatre": "Tailward",
           "supporters": []
         },
-        {
-          "name": "Central Theatre",
-          "defence": 0,
-          "ships": [],
-          "type": "Theatre",
-          "theatre": "Central",
-          "supporters": []
-        },
-        {
+        "Tellar": {
           "name": "Tellar",
           "defence": 7,
           "ships": ["SB004"],
@@ -410,7 +451,7 @@
           "theatre": "Central",
           "supporters": ["Sydraxian Border Zone"]
         },
-        {
+        "Amarkia": {
           "name": "Amarkia",
           "defence": 7,
           "ships": ["SB005"],
@@ -418,7 +459,7 @@
           "theatre": "Central",
           "supporters": ["Sydraxian Border Zone"]
         },
-        {
+        "Ferasa": {
           "name": "Ferasa",
           "defence": 13,
           "ships": ["SB007"],
@@ -426,7 +467,7 @@
           "theatre": "Central",
           "supporters": ["Klingon Border Zone"]
         },
-        {
+        "Alukk": {
           "name": "Alukk",
           "defence": 7,
           "ships": ["SB015"],
@@ -434,7 +475,7 @@
           "theatre": "Central",
           "supporters": []
         },
-        {
+        "Sydraxian Border Zone": {
           "name": "Sydraxian Border Zone",
           "defence": 11,
           "ships": ["SB008"],
@@ -442,7 +483,7 @@
           "theatre": "Central",
           "supporters": []
         },
-        {
+        "Ruby Eyes’ Folly": {
           "name": "Ruby Eyes’ Folly",
           "defence": 7,
           "ships": [],
@@ -450,15 +491,7 @@
           "theatre": "Central",
           "supporters": []
         },
-        {
-          "name": "Spinward Theatre",
-          "defence": 0,
-          "ships": [],
-          "type": "Theatre",
-          "theatre": "Spinward",
-          "supporters": []
-        },
-        {
+        "Apinae": {
           "name": "Apinae",
           "defence": 10,
           "ships": ["SB011", "SB014", "SB018"],
@@ -466,7 +499,7 @@
           "theatre": "Spinward",
           "supporters": ["Cardassian Border Zone", "Sydraxian Border Zone"]
         },
-        {
+        "Rethelia": {
           "name": "Rethelia",
           "defence": 12,
           "ships": ["SB016", "SB017"],
@@ -474,7 +507,7 @@
           "theatre": "Spinward",
           "supporters": []
         },
-        {
+        "Cardassian Border Zone": {
           "name": "Cardassian Border Zone",
           "defence": 12,
           "ships": ["SB009"],
@@ -482,7 +515,7 @@
           "theatre": "Spinward",
           "supporters": []
         },
-        {
+        "Gabriel Border Zone": {
           "name": "Gabriel Border Zone",
           "defence": 0,
           "ships": ["SB019"],
@@ -490,7 +523,7 @@
           "theatre": "Spinward",
           "supporters": []
         },
-        {
+        "Task Force Beyond": {
           "name": "Task Force Beyond",
           "defence": 0,
           "ships": [],
@@ -498,7 +531,7 @@
           "theatre": "Tailward",
           "supporters": []
         },
-        {
+        "Task Force Shield": {
           "name": "Task Force Shield",
           "defence": 0,
           "ships": [],
@@ -506,7 +539,7 @@
           "theatre": "Central",
           "supporters": []
         },
-        {
+        "Task Force Boldly": {
           "name": "Task Force Boldly",
           "defence": 0,
           "ships": [],
@@ -514,7 +547,7 @@
           "theatre": "Spinward",
           "supporters": []
         },
-        {
+        "Task Force Forward": {
           "name": "Task Force Forward",
           "defence": 0,
           "ships": [],
@@ -522,7 +555,7 @@
           "theatre": "Central",
           "supporters": []
         },
-        {
+        "Task Force Relief": {
           "name": "Task Force Relief",
           "defence": 0,
           "ships": [],
@@ -530,7 +563,7 @@
           "theatre": "Central",
           "supporters": []
         }
-      ]
+      }
     }
   ]
 }

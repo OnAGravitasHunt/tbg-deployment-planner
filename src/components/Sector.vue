@@ -5,7 +5,7 @@
   :id="'sector-' + name"
 >
   <div class='sector-header'>
-    <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{name}}</span>
+    <span class='sector-name' @click="toggleShow">{{toggleIcon}} {{displayName}}</span>
     <span class='sector-info'>D{{sectorStats[5]}}{{defDisp}}</span>
     <span class='sector-info'>C{{sectorStats[0]}}</span>
     <span class='sector-info'>S{{sectorStats[1]}}</span>
@@ -19,7 +19,7 @@
   </div>
   <div v-show="sectorShow" class='sector-drag-wrapper'>
     <draggable class='sector-drag'
-        :id="'s-drag-' + index"
+        :id="'s-drag-' + name"
         v-model="sectorShips"
         :options="{group:'ships'}"
         :move="onMove"
@@ -37,7 +37,8 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'Sector',
-  props: ['name', 'defence', 'type', 'theatre', 'supporters', 'index'],
+  props: ['name'],
+  // , 'defence', 'type', 'theatre', 'supporters', 'index'],
   components: {
     Ship,
     draggable
@@ -48,8 +49,26 @@ export default {
     }
   },
   computed: {
+    sector () {
+      return this.$store.getters.sectors[this.name]
+    },
     shipObjects () {
       return this.$store.getters.shipObjects
+    },
+    displayName () {
+      return this.sector.name
+    },
+    defence () {
+      return this.sector.defence
+    },
+    type () {
+      return this.sector.type
+    },
+    theatre () {
+      return this.sector.theatre
+    },
+    supporters () {
+      return this.sector.supporters
     },
     sectorTypeKey () {
       switch (this.type) {
@@ -62,8 +81,9 @@ export default {
       }
     },
     filterShow () {
-      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()]
-        && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
+      return true
+      // return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()]
+      //   && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
     },
     defDisp () {
       return this.defence === 0 ? '' : `/${this.defence}`
@@ -78,10 +98,10 @@ export default {
     },
     sectorShips: {
       get () {
-        return this.$store.getters.sectors[this.index].ships
+        return this.$store.getters.sectors[this.name].ships
       },
       set (value) {
-        this.$store.commit('updateSectorField', {sectorIndex: this.index, field: 'ships', value: value})
+        this.$store.commit('updateSectorField', {sectorName: this.name, field: 'ships', value: value})
       }
     },
     toggleIcon () {
@@ -122,13 +142,13 @@ export default {
       return evt.draggedContext.element.mobile
     },
     onUpdate () {
-      this.$store.commit('sortSector', this.index)
+      this.$store.commit('sortSector', this.name)
     },
     toggleShow () {
       this.sectorShow = !this.sectorShow
     },
     editSector () {
-      this.$store.commit('setSelectedSectorIndex', this.index)
+      this.$store.commit('setSelectedSectorName', this.name)
       this.$store.commit('updateSelectedSectorAllFields', this.sectorInfoObj)
       this.$store.commit('setModal', 'sector-edit')
     },
@@ -154,14 +174,16 @@ export default {
 .sector-header {
   padding: 10px 0 10px 50px;
 }
-.theatre .sector-header {
+
+.theatre-fleet>.sector-header {
   padding-left: 10px;
 }
-.theatre .sector-header,
-.theatre .ship-summary {
+.theatre-fleet>.sector-header,
+.theatre-fleet>.ship-summary {
   background-color: #8c8;
   color: black;
 }
+
 .task-force .sector-header,
 .task-force .ship-summary {
   background-color: #888;

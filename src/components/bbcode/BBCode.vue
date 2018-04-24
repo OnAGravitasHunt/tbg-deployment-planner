@@ -2,7 +2,7 @@
   <div class='bbcode-export'>
     <div ref='bbcode-root'>
       [SPOILER=Sectors]
-      <BBSector v-for="sector of sectors" :sector="sector" :key="sector.name"></BBSector>
+      <BBSector v-for="sector of sectors" :sector="sector" :key="`${sector.theatre}-${sector.name}`"></BBSector>
       [/SPOILER]
     </div>
   </div>
