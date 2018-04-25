@@ -336,7 +336,8 @@
           "Romulan Border Zone",
           "Klingon Border Zone",
           "Licori Border Zone",
-          "Horizon Border Zone"
+          "Horizon Border Zone",
+          "Task Force Beyond"
         ],
         "Central": [
           "Tellar",
@@ -344,13 +345,17 @@
           "Ferasa",
           "Alukk",
           "Sydraxian Border Zone",
-          "Ruby Eyes’ Folly"
+          "Ruby Eyes’ Folly",
+          "Task Force Shield",
+          "Task Force Forward",
+          "Task Force Relief"
         ],
         "Spinward": [
           "Apinae",
           "Rethelia",
           "Cardassian Border Zone",
-          "Gabriel Border Zone"
+          "Gabriel Border Zone",
+          "Task Force Boldly"
         ],
         "None/Other": []
       },

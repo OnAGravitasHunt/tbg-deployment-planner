@@ -18,7 +18,7 @@ export default {
           return 'other'
         case 'Task Force':
           return 'taskforce'
-        case 'Theatre':
+        case 'Theatre Fleet':
           return 'theatrefleet'
         default:
           return this.criterion.toLowerCase()

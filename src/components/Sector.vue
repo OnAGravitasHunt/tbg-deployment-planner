@@ -10,7 +10,7 @@
     <span class='sector-info'>C{{sectorStats[0]}}</span>
     <span class='sector-info'>S{{sectorStats[1]}}</span>
     <span class='sector-info'>P{{sectorStats[4]}}</span>
-    <button class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
+    <button v-if="type !== 'Theatre Fleet'" class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
   </div>
   <div v-show="!sectorShow" class='ship-summary'>
     <span v-for="shipClass of Object.keys(shipSummary)" :key="shipClass" class='sector-info'>
@@ -71,19 +71,11 @@ export default {
       return this.sector.supporters
     },
     sectorTypeKey () {
-      switch (this.type) {
-        case 'Task Force':
-          return 'taskforce'
-        case 'Theatre':
-          return 'theatrefleet'
-        default:
-          return this.type.toLowerCase()
-      }
+      return this.type.replace(' ', '').toLowerCase()
     },
     filterShow () {
-      return true
-      // return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()]
-      //   && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
+      return this.$store.state.sectorFiltering.filterCategories.theatre[this.theatre.toLowerCase()]
+        && this.$store.state.sectorFiltering.filterCategories.type[this.sectorTypeKey]
     },
     defDisp () {
       return this.defence === 0 ? '' : `/${this.defence}`
