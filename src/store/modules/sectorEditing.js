@@ -6,7 +6,8 @@ const state = {
     type: '',
     theatre: '',
     supporters: []
-  }
+  },
+  statusMessage: ''
 }
 
 const getters = {
@@ -27,6 +28,9 @@ const actions = {
       sector: Object.assign({}, state.selectedSector)
     })
   },
+  abortSectorChanges ({state, commit, rootState}) {
+    commit('abortSectorChanges')
+  },
   // delete sector
   removeSector ({state, commit, rootState}) {
     commit('deleteSector', state.selectedSectorName)
@@ -34,6 +38,14 @@ const actions = {
 }
 
 const mutations = {
+  abortSectorChanges (state) {
+    console.log('aborting')
+    state.statusMessage = 'Error: There is already a sector with that name.'
+    setTimeout(() => { state.statusMessage = '' }, 1000)
+  },
+  setStatusMessage (state, value) {
+    state.statusMessage = value
+  },
   // set index of selected sector
   setSelectedSectorName (state, value) {
     state.selectedSectorName = value

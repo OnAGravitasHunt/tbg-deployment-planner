@@ -40,6 +40,15 @@ export default {
       set (defence) {
         this.$store.commit('updateSelectedSectorField', {field: 'defence', value: defence})
       }
+    },
+    sectorsObj () {
+      return this.$store.getters.sectors
+    },
+    oldName () {
+      return this.$store.state.sectorEditing.selectedSectorName
+    },
+    currentSectorName () {
+      return this.$store.state.sectorEditing.selectedSector.name
     }
   },
   methods: {
@@ -59,11 +68,16 @@ export default {
           dispatchString = 'commitShipChanges'
           break
         case 'sector-edit':
-          dispatchString = 'commitSectorChanges'
+          if (this.sectorsObj.hasOwnProperty(this.currentSectorName) && this.currentSectorName !== this.oldName) {
+            dispatchString = 'abortSectorChanges'
+          } else {
+            dispatchString = 'commitSectorChanges'
+          }
           break
         default:
           return
       }
+      console.log(dispatchString)
       this.$store.dispatch(dispatchString)
       this.saveMessage = 'Saved'
       setTimeout(() => { this.saveMessage = 'Save' }, 1000)

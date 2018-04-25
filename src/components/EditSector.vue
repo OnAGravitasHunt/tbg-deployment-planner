@@ -33,6 +33,9 @@
           @click="deleteSector"
         >Delete Sector</div>
       </li>
+      <li>
+        <p>{{statusMessage}}</p>
+      </li>
     </ul>
   </div>
 </template>
@@ -52,15 +55,31 @@ export default {
   },
   methods: {
     commitChanges () {
-      this.$store.dispatch('commitSectorChanges')
-      this.$store.commit('setModal', 'none')
+      if (this.sectorsObj.hasOwnProperty(this.currentSectorName) && this.currentSectorName !== this.oldName) {
+        this.abortChange()
+      } else {
+        this.$store.dispatch('commitSectorChanges')
+        this.$store.commit('setModal', 'none')
+      }
     },
     deleteSector () {
       this.$store.commit('setModal', 'none')
       this.$store.dispatch('removeSector')
+    },
+    abortChange () {
+      this.statusMessage = 'Error: There is already a sector with that name.'
     }
   },
   computed: {
+    statusMessage () {
+      return this.$store.state.sectorEditing.statusMessage
+    },
+    sectorsObj () {
+      return this.$store.getters.sectors
+    },
+    oldName () {
+      return this.$store.state.sectorEditing.selectedSectorName
+    },
     currentSectorName: {
       get () {
         return this.$store.state.sectorEditing.selectedSector.name
