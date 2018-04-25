@@ -62,7 +62,11 @@ export default {
           if (!this.currentSectorDef) {
             this.currentSectorDef = 0
           }
-          dispatchString = 'createNewSector'
+          if (this.sectorsObj.hasOwnProperty(this.currentSectorName)) {
+            dispatchString = 'abortSectorChanges'
+          } else {
+            dispatchString = 'commitSectorChanges'
+          }
           break
         case 'ship-edit':
           dispatchString = 'commitShipChanges'
@@ -77,7 +81,6 @@ export default {
         default:
           return
       }
-      console.log(dispatchString)
       this.$store.dispatch(dispatchString)
       this.saveMessage = 'Saved'
       setTimeout(() => { this.saveMessage = 'Save' }, 1000)

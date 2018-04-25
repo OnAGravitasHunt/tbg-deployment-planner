@@ -27,6 +27,9 @@
         <span>Supporting Sectors: </span>
         <span>(Not yet implemented)</span>
       </li>
+      <li>
+        <p>{{statusMessage}}</p>
+      </li>
     </ul>
   </div>
 </template>
@@ -54,6 +57,9 @@ export default {
     }
   },
   computed: {
+    statusMessage () {
+      return this.$store.state.sectorEditing.statusMessage
+    },
     currentSectorName: {
       get () {
         return this.$store.state.sectorEditing.selectedSector.name

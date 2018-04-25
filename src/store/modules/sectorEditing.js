@@ -39,7 +39,6 @@ const actions = {
 
 const mutations = {
   abortSectorChanges (state) {
-    console.log('aborting')
     state.statusMessage = 'Error: There is already a sector with that name.'
     setTimeout(() => { state.statusMessage = '' }, 1000)
   },
