@@ -1,13 +1,11 @@
 <template>
 <div id="planner">
-
   <Unassigned></Unassigned>
 
-  <div id="sectors-wrapper">
+  <div id="sectors-wrapper" :class="{'wide': !fullShips}">
     <SectorFilter></SectorFilter>
     <div id="theatre-list-wrapper">
       <Theatre v-for="theatre of theatres" :key="theatre" :theatreName="theatre"></Theatre>
-      <!-- <Sector v-for="(sector, index) of sectors" v-bind="sector" :index="index" :key="sector.name" :id="sector.name"></Sector> -->
     </div>
   </div>
 
@@ -15,7 +13,6 @@
 </template>
 
 <script>
-// import Ship from './Ship'
 import Unassigned from './Unassigned'
 import SectorFilter from './SectorFilter'
 import Sector from './Sector'
@@ -32,6 +29,9 @@ export default {
     draggable
   },
   computed: {
+    fullShips () {
+      return this.$store.state.fullShipSize
+    },
     sectors () {
       return this.$store.getters.sectors
     },
@@ -53,14 +53,15 @@ export default {
   margin-top: 50px;
 }
 #sectors-wrapper {
-  width: 100%;
-  float: right;
+  padding-left: 250px;
+  /* width: 100%; */
   background-color: black;
   color: #ccc;
-  /* margin-top: 50px; */
-  /* padding-top: 30px; */
+}
+#sectors-wrapper.wide {
+  padding-left: 380px;
 }
 #theatre-list-wrapper {
-  margin-top: 30px;
+  padding-top: 30px;
 }
 </style>

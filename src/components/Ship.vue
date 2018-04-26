@@ -26,20 +26,17 @@
   </template>
   <template v-else>
     <div class='ship-data small'>
-      <p class='ship-data-item'>{{prefixDisplay}}<em>{{shortName}}</em></p>
-      <p class='ship-data-item'>
-        {{shortClassName}};
-        <span
-          v-for="(stat, i) of statOrder"
-          :key="stat"
-          :class="`stat-${stat}`"
-          v-if="showStat(stat)"
-        >{{stats[i]}}<span v-if="i < 5">,</span></span>
-      </p>
+      <span>{{prefixDisplay}}<em>{{shortName}}</em>, <span v-html="displayClassName"></span>; <span
+        v-for="(stat, i) of statOrder"
+        :key="stat"
+        class='stat'
+        :class="`stat-${stat}`"
+        v-if="showStat(stat)"
+      >{{stats[i]}}<span v-if="i < 5">,</span></span></span>
+
     </div>
     <div class='ship-operations small'>
       <span class='icon info-icon' @click="displayMoreInfo">&#9432;</span>
-      <span class='icon edit-icon' @click="editShip">&#9998;</span>
     </div>
   </template>
 </div>
@@ -103,7 +100,7 @@ export default {
       return `/static/${this.shipClass.toLowerCase()}.png`
     },
     prefixDisplay () {
-      if (this.fullSize) {
+      if (this.fullSize === 'fullsize') {
         return this.prefix === 'No prefix' ? '' : `${this.prefix} `
       } else {
         return this.prefix === 'No prefix' || this.scale === 'station' ? '' : `${this.prefix} `
@@ -166,6 +163,9 @@ export default {
 .stat-D {
   font-weight: bold;
 }
+.small .stat {
+  margin-left: 2px;
+}
 .ship {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -179,7 +179,9 @@ export default {
   cursor: grab;
 }
 .ship.smallsize {
-  font-size: 15px;
+  padding: 5px;
+  font-size: 14px;
+  width: 330px;
 }
 .ship-data {
   width: 170px;
@@ -194,9 +196,12 @@ export default {
   display: inline-flex;
   flex-flow: row wrap;
 }
-.ship-data.small,
+.ship-data.small {
+  width: 300px;
+  height: 17px;
+}
 .ship-operations.small {
-  height: 40px;
+  height: 17px;
 }
 .frigate {
   background-color: #99c;

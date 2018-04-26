@@ -1,5 +1,5 @@
 <template>
-<div id='nav-left-wrapper'>
+<div id='nav-left-wrapper' :class="{'wide': !fullShips}">
   <h3>Filter Criteria</h3>
   <div id='filter-heading-wrapper'>
     <div @click="setFilter('class')" class='filter-heading'>Filter by Class</div>
@@ -55,6 +55,9 @@ export default {
     }
   },
   computed: {
+    fullShips () {
+      return this.$store.state.fullShipSize
+    },
     shipClasses () {
       let shipClasses = [].concat.apply([], Object.values(this.$store.state.shipData.shipClasses))
       return shipClasses.map((el) => el.name)
@@ -110,6 +113,9 @@ h3:first-child {
   padding-top: 10px;
   display: flex;
   flex-flow: column;
+}
+#nav-left-wrapper.wide {
+  width: 380px;
 }
 #unassigned-wrapper {
   width: 100%;

@@ -160,7 +160,7 @@ export default {
 .sector {
   text-align: left;
   padding: 0 0px;
-  margin-left: 250px;
+  /* margin-left: 250px; */
   border-bottom: 2px solid #ccc;
 }
 .sector-header {
