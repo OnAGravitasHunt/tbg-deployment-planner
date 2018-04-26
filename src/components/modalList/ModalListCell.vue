@@ -2,7 +2,8 @@
   <td class='modal-list-cell'>
     <div
       tabindex='-1'
-      :class="`cell-div delete ${field.display}`"
+      class="cell-div delete"
+      :class="field.display"
       v-if="field.key === 'delete'"
       @click="deleteRow"
     >&#x2716;</div>
@@ -10,12 +11,14 @@
     <div
       @focus="editCell"
       tabindex='0'
-      :class="`cell-div ${field.display}`"
+      class='cell-div'
+      :class="field.display"
       v-else-if="!underEdit && field.type === 'text'"
     >{{displayValue}}</div>
 
     <input
-      :class="`cell-input ${field.display}`"
+      class='cell-input'
+      :class="field.display"
       v-else-if="underEdit && field.type === 'text'"
       v-model='tempValue'
       v-focus

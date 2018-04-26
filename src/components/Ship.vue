@@ -1,21 +1,47 @@
 <template>
-<div @dblclick='unassignShip' :class="`ship ${scale} vis-${filterShow}`" :id="'ncc-' + registry">
-  <div class='ship-data'>
-    <p class='ship-data-item'>{{prefixDisplay}}<em>{{name}}</em></p>
-    <p class='ship-data-item' v-html="displayClassName"></p>
-    <p class='ship-data-item'>
-      <span
-        v-for="(stat, i) of statOrder"
-        :key="stat"
-        :class="`stat-${stat}`"
-        v-if="showStat(stat)"
-      >{{stat}}{{stats[i]}}&nbsp;</span>
-    </p>
-  </div>
-  <div class='ship-operations'>
-    <span class='icon info-icon' @click="displayMoreInfo">&#9432;</span>
-    <span class='icon edit-icon' @click="editShip">&#9998;</span>
-  </div>
+<div
+  @dblclick='unassignShip'
+  v-show="filterShow"
+  class='ship'
+  :class="[scale, fullSize]"
+  :id="'ncc-' + registry"
+>
+  <template v-if="fullSize === 'fullsize'">
+    <div class='ship-data'>
+      <p class='ship-data-item'>{{prefixDisplay}}<em>{{name}}</em></p>
+      <p class='ship-data-item' v-html="displayClassName"></p>
+      <p class='ship-data-item'>
+        <span
+          v-for="(stat, i) of statOrder"
+          :key="stat"
+          :class="`stat-${stat}`"
+          v-if="showStat(stat)"
+        >{{stat}}{{stats[i]}}&nbsp;</span>
+      </p>
+    </div>
+    <div class='ship-operations'>
+      <span class='icon info-icon' @click="displayMoreInfo">&#9432;</span>
+      <span class='icon edit-icon' @click="editShip">&#9998;</span>
+    </div>
+  </template>
+  <template v-else>
+    <div class='ship-data small'>
+      <p class='ship-data-item'>{{prefixDisplay}}<em>{{shortName}}</em></p>
+      <p class='ship-data-item'>
+        {{shortClassName}};
+        <span
+          v-for="(stat, i) of statOrder"
+          :key="stat"
+          :class="`stat-${stat}`"
+          v-if="showStat(stat)"
+        >{{stats[i]}}<span v-if="i < 5">,</span></span>
+      </p>
+    </div>
+    <div class='ship-operations small'>
+      <span class='icon info-icon' @click="displayMoreInfo">&#9432;</span>
+      <span class='icon edit-icon' @click="editShip">&#9998;</span>
+    </div>
+  </template>
 </div>
 </template>
 
@@ -30,8 +56,27 @@ export default {
     }
   },
   computed: {
+    shortClassName () {
+      for (let operator of Object.values(this.$store.state.shipData.shipClasses)) {
+        let filt = operator.filter(cl => cl.name === this.shipClass)
+        if (filt.length) {
+          return filt[0].shortName
+        }
+      }
+      return ''
+    },
+    fullSize () {
+      return this.$store.state.fullShipSize ? 'fullsize' : 'smallsize'
+    },
     name () {
       return this.shipObj.name
+    },
+    shortName () {
+      if (this.scale === 'station') {
+        return this.registry
+      } else {
+        return this.name
+      }
     },
     shipClass () {
       return this.shipObj.shipClass
@@ -58,7 +103,11 @@ export default {
       return `/static/${this.shipClass.toLowerCase()}.png`
     },
     prefixDisplay () {
-      return this.prefix === 'No prefix' ? '' : `${this.prefix} `
+      if (this.fullSize) {
+        return this.prefix === 'No prefix' ? '' : `${this.prefix} `
+      } else {
+        return this.prefix === 'No prefix' || this.scale === 'station' ? '' : `${this.prefix} `
+      }
     },
     filterShow () {
       return (this.$store.state.filtering.filterCategories.shipClass[this.shipClass]
@@ -117,14 +166,10 @@ export default {
 .stat-D {
   font-weight: bold;
 }
-/*.stat-C, .stat-H, .stat-L {
-  display: none;
-}*/
 .ship {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 15px;
   width: 200px;
-  height: 60px;
   border-radius: 0px;
   padding: 10px;
   color: #222;
@@ -132,6 +177,9 @@ export default {
   flex-flow: row wrap;
   text-align: center;
   cursor: grab;
+}
+.ship.smallsize {
+  font-size: 15px;
 }
 .ship-data {
   width: 170px;
@@ -145,6 +193,10 @@ export default {
   height: 60px;
   display: inline-flex;
   flex-flow: row wrap;
+}
+.ship-data.small,
+.ship-operations.small {
+  height: 40px;
 }
 .frigate {
   background-color: #99c;

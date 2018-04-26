@@ -1,5 +1,7 @@
 <template>
-<div :class="`sector-filter-selector filter-${filterValue}`">
+<div
+  class='sector-filter-selector'
+  :class="String(filterValue)">
   <label :for="filterId"><input type='checkbox' :id="filterId" :value="criterion" v-model="filterValue">{{criterion}}</label>
 </div>
 </template>
@@ -65,11 +67,11 @@ label {
   width: 100%;
   margin: 0;
 }
-.filter-true {
+.true {
   background-color: #7d7f;
   color: black;
 }
-.filter-false {
+.false {
   /* background-color: #c99; */
   background-color: #666f;
   color: white;

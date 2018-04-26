@@ -59,7 +59,8 @@
       </li>
       <li>
         <div
-          :class="`button button-error-${newClassError}`"
+          class='button'
+          :class="{'button-error': newClassError}"
           @click="saveClass"
         >{{classMessage}}</div>
       </li>
@@ -70,7 +71,8 @@
       </li>
       <li>
         <div
-          :class="`button button-error-${newPrefixError}`"
+          class='button'
+          :class="{'button-error': newPrefixError}"
           @click="savePrefix"
         >{{prefixMessage}}</div>
       </li>
@@ -242,7 +244,7 @@ th, td {
   padding: 0 10px;
   margin: 0 2px;
 }
-.button-error-true {
+.button-error {
   background-color: #a43;
 }
 </style>

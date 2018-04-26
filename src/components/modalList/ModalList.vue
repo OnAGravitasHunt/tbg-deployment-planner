@@ -8,7 +8,7 @@
         v-if="currentSchema === 'shipClasses'"
         v-for="operator of operators"
       >
-        <tr :key="`op-${operator}`">
+        <tr :key="operator">
           <th class='operator-header' colspan='9'>{{operator}}</th>
         </tr>
         <ModalListRow

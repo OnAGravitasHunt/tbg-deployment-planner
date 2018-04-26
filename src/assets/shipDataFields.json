@@ -41,6 +41,7 @@
   "shipClasses": {
     "starfleet": [{
         "name": "Ambassador",
+        "shortName": "AMB",
         "scale": "explorer",
         "c": 8,
         "s": 9,
@@ -51,6 +52,7 @@
       },
       {
         "name": "Constitution-A",
+        "shortName": "CTT-A",
         "scale": "explorer",
         "c": 5,
         "s": 4,
@@ -61,6 +63,7 @@
       },
       {
         "name": "Excelsior",
+        "shortName": "EXC",
         "scale": "explorer",
         "c": 6,
         "s": 5,
@@ -71,6 +74,7 @@
       },
       {
         "name": "Excelsior-A",
+        "shortName": "EXC-A",
         "scale": "explorer",
         "c": 7,
         "s": 6,
@@ -81,6 +85,7 @@
       },
       {
         "name": "Constellation-A",
+        "shortName": "CTL-A",
         "scale": "cruiser",
         "c": 3,
         "s": 4,
@@ -91,6 +96,7 @@
       },
       {
         "name": "Constitution-B",
+        "shortName": "CTT-B",
         "scale": "cruiser",
         "c": 5,
         "s": 3,
@@ -101,6 +107,7 @@
       },
       {
         "name": "Renaissance",
+        "shortName": "REN",
         "scale": "cruiser",
         "c": 5,
         "s": 3,
@@ -111,6 +118,7 @@
       },
       {
         "name": "Centaur-A",
+        "shortName": "CEN-A",
         "scale": "frigate",
         "c": 3,
         "s": 3,
@@ -121,6 +129,7 @@
       },
       {
         "name": "Centaur-B",
+        "shortName": "CEN-B",
         "scale": "frigate",
         "c": 4,
         "s": 4,
@@ -131,6 +140,7 @@
       },
       {
         "name": "Comet",
+        "shortName": "CMT",
         "scale": "frigate",
         "c": 4,
         "s": 4,
@@ -141,6 +151,7 @@
       },
       {
         "name": "Kepler",
+        "shortName": "KPL",
         "scale": "frigate",
         "c": 2,
         "s": 7,
@@ -151,6 +162,7 @@
       },
       {
         "name": "Miranda-A",
+        "shortName": "MIR-A",
         "scale": "frigate",
         "c": 3,
         "s": 2,
@@ -161,6 +173,7 @@
       },
       {
         "name": "Oberth",
+        "shortName": "OBR",
         "scale": "frigate",
         "c": 1,
         "s": 5,
@@ -172,6 +185,7 @@
     ],
     "amarki": [{
         "name": "Riala-A",
+        "shortName": "RIA-A",
         "scale": "explorer",
         "c": 8,
         "s": 5,
@@ -182,6 +196,7 @@
       },
       {
         "name": "Perciar",
+        "shortName": "PRCR",
         "scale": "cruiser",
         "c": 3,
         "s": 2,
@@ -192,6 +207,7 @@
       },
       {
         "name": "Hebrinda-A",
+        "shortName": "HBRN-A",
         "scale": "cruiser",
         "c": 5,
         "s": 2,
@@ -202,6 +218,7 @@
       },
       {
         "name": "Calac-A",
+        "shortName": "CLAC-A",
         "scale": "frigate",
         "c": 2,
         "s": 3,
@@ -212,6 +229,7 @@
       },
       {
         "name": "Breica-A",
+        "shortName": "BRCA-A",
         "scale": "frigate",
         "c": 3,
         "s": 2,
@@ -222,6 +240,7 @@
       },
       {
         "name": "Mielab",
+        "shortName": "MLAB",
         "scale": "frigate",
         "c": 3,
         "s": 5,
@@ -232,6 +251,7 @@
       },
       {
         "name": "Anacail",
+        "shortName": "ANCL",
         "scale": "frigate",
         "c": 4,
         "s": 2,
@@ -243,6 +263,7 @@
     ],
     "apiata": [{
         "name": "Queenship",
+        "shortName": "QSHP",
         "scale": "explorer",
         "c": 4,
         "s": 3,
@@ -253,6 +274,7 @@
       },
       {
         "name": "Little Queenship",
+        "shortName": "LQSP",
         "scale": "cruiser",
         "c": 4,
         "s": 4,
@@ -263,6 +285,7 @@
       },
       {
         "name": "Forager",
+        "shortName": "FRGR",
         "scale": "frigate",
         "c": 2,
         "s": 6,
@@ -273,6 +296,7 @@
       },
       {
         "name": "Stinger",
+        "shortName": "STNG",
         "scale": "frigate",
         "c": 4,
         "s": 2,
@@ -284,6 +308,7 @@
     ],
     "betazoid": [{
         "name": "Patrol Cruiser",
+        "shortName": "PATC",
         "scale": "cruiser",
         "c": 3,
         "s": 2,
@@ -294,6 +319,7 @@
       },
       {
         "name": "Patroller-A",
+        "shortName": "PTRL-A",
         "scale": "frigate",
         "c": 2,
         "s": 3,
@@ -305,6 +331,7 @@
     ],
     "caitian": [{
         "name": "Nifari Fathership",
+        "shortName": "NFRI",
         "scale": "explorer",
         "c": 5,
         "s": 6,
@@ -315,6 +342,7 @@
       },
       {
         "name": "Arsharra N’Gir FS",
+        "shortName": "ARNG",
         "scale": "explorer",
         "c": 7,
         "s": 9,
@@ -325,6 +353,7 @@
       },
       {
         "name": "Mishir Swarmer",
+        "shortName": "SWRM",
         "scale": "frigate",
         "c": 3,
         "s": 3,
@@ -336,6 +365,7 @@
     ],
     "caldonian": [{
         "name": "Science Cruiser",
+        "shortName": "SCIC",
         "scale": "cruiser",
         "c": 3,
         "s": 4,
@@ -346,6 +376,7 @@
       },
       {
         "name": "New Science Cruiser",
+        "shortName": "NSCI",
         "scale": "cruiser",
         "c": 3,
         "s": 8,
@@ -356,6 +387,7 @@
       },
       {
         "name": "Escort",
+        "shortName": "ESCT",
         "scale": "frigate",
         "c": 2,
         "s": 2,
@@ -377,6 +409,7 @@
       },
       {
         "name": "Tech-Cruiser",
+        "shortName": "TCHC",
         "scale": "cruiser",
         "c": 4,
         "s": 5,
@@ -387,6 +420,7 @@
       },
       {
         "name": "Tech-Cruiser-A",
+        "shortName": "TCHC-C",
         "scale": "cruiser",
         "c": 4,
         "s": 6,
@@ -397,6 +431,7 @@
       },
       {
         "name": "Tech-Frigate",
+        "shortName": "TCHF",
         "scale": "frigate",
         "c": 2,
         "s": 3,
@@ -408,6 +443,7 @@
     ],
     "honiani": [{
         "name": "Cathedral",
+        "shortName": "CATH",
         "scale": "explorer",
         "c": 5,
         "s": 4,
@@ -418,6 +454,7 @@
       },
       {
         "name": "Basilica",
+        "shortName": "BSLC",
         "scale": "explorer",
         "c": 6,
         "s": 5,
@@ -428,6 +465,7 @@
       },
       {
         "name": "Basilica of Lakhept",
+        "shortName": "LKPT",
         "scale": "explorer",
         "c": 8,
         "s": 6,
@@ -438,6 +476,7 @@
       },
       {
         "name": "Chapel",
+        "shortName": "CHPL",
         "scale": "cruiser",
         "c": 4,
         "s": 4,
@@ -448,6 +487,7 @@
       },
       {
         "name": "Reliquary",
+        "shortName": "RLQY",
         "scale": "cruiser",
         "c": 5,
         "s": 4,
@@ -458,6 +498,7 @@
       },
       {
         "name": "Parish",
+        "shortName": "PRSH",
         "scale": "frigate",
         "c": 2,
         "s": 2,
@@ -468,6 +509,7 @@
       },
       {
         "name": "Monastery",
+        "shortName": "MSRY",
         "scale": "frigate",
         "c": 3,
         "s": 3,
@@ -479,6 +521,7 @@
     ],
     "indorian": [{
         "name": "Egillah",
+        "shortName": "EGIL",
         "scale": "explorer",
         "c": 5,
         "s": 5,
@@ -489,6 +532,7 @@
       },
       {
         "name": "Frigate",
+        "shortName": "INFR",
         "scale": "cruiser",
         "c": 4,
         "s": 2,
@@ -499,6 +543,7 @@
       },
       {
         "name": "Vendan-A",
+        "shortName": "VNDN-A",
         "scale": "frigate",
         "c": 4,
         "s": 2,
@@ -509,6 +554,7 @@
       },
       {
         "name": "Peketa-A",
+        "shortName": "PKTA-A",
         "scale": "frigate",
         "c": 3,
         "s": 3,
@@ -520,6 +566,7 @@
     ],
     "orion": [{
         "name": "Embpor Battleship",
+        "shortName": "EBPR",
         "scale": "explorer",
         "c": 8,
         "s": 6,
@@ -530,6 +577,7 @@
       },
       {
         "name": "Onaya Orbiter",
+        "shortName": "OORB",
         "scale": "cruiser",
         "c": 4,
         "s": 3,
@@ -540,6 +588,7 @@
       },
       {
         "name": "Nelhiar Enforcer",
+        "shortName": "NLHR",
         "scale": "cruiser",
         "c": 5,
         "s": 3,
@@ -550,6 +599,7 @@
       },
       {
         "name": "Holena Vigilante",
+        "shortName": "VGLT",
         "scale": "cruiser",
         "c": 5,
         "s": 4,
@@ -560,6 +610,7 @@
       },
       {
         "name": "Molhane Escort",
+        "shortName": "MLHN",
         "scale": "frigate",
         "c": 3,
         "s": 2,
@@ -570,6 +621,7 @@
       },
       {
         "name": "Mekpali Escort",
+        "shortName": "MKPL",
         "scale": "frigate",
         "c": 4,
         "s": 3,
@@ -581,6 +633,7 @@
     ],
     "rigellian": [{
         "name": "Megatortoise",
+        "shortName": "MGTR",
         "scale": "explorer",
         "c": 6,
         "s": 4,
@@ -591,6 +644,7 @@
       },
       {
         "name": "Turtleship",
+        "shortName": "TRTL",
         "scale": "cruiser",
         "c": 4,
         "s": 4,
@@ -601,6 +655,7 @@
       },
       {
         "name": "Oda-Gach",
+        "shortName": "ODGC",
         "scale": "frigate",
         "c": 2,
         "s": 4,
@@ -612,6 +667,7 @@
     ],
     "risan": [{
         "name": "Heavy Corvette",
+        "shortName": "HCRV",
         "scale": "cruiser",
         "c": 2,
         "s": 2,
@@ -622,6 +678,7 @@
       },
       {
         "name": "Heavy Corvette-A",
+        "shortName": "HCRV-A",
         "scale": "cruiser",
         "c": 2,
         "s": 3,
@@ -632,6 +689,7 @@
       },
       {
         "name": "Light Corvette",
+        "shortName": "LCRV",
         "scale": "frigate",
         "c": 1,
         "s": 1,
@@ -642,6 +700,7 @@
       },
       {
         "name": "Light Corvette-A",
+        "shortName": "LCRV-A",
         "scale": "frigate",
         "c": 1,
         "s": 2,
@@ -653,6 +712,7 @@
     ],
     "sto": [{
         "name": "Torqui Leb Lagan",
+        "shortName": "TRQI",
         "scale": "explorer",
         "c": 5,
         "s": 5,
@@ -663,6 +723,7 @@
       },
       {
         "name": "Arqueniou Leb Nin",
+        "shortName": "AQLN",
         "scale": "explorer",
         "c": 7,
         "s": 5,
@@ -673,6 +734,7 @@
       },
       {
         "name": "Sunrise",
+        "shortName": "SNRS",
         "scale": "explorer",
         "c": 9,
         "s": 6,
@@ -683,6 +745,7 @@
       },
       {
         "name": "Audacious",
+        "shortName": "AUDA",
         "scale": "cruiser",
         "c": 7,
         "s": 4,
@@ -693,6 +756,7 @@
       },
       {
         "name": "Constrictor",
+        "shortName": "CTRC",
         "scale": "cruiser",
         "c": 6,
         "s": 3,
@@ -703,6 +767,7 @@
       },
       {
         "name": "Seeker",
+        "shortName": "SEEK",
         "scale": "frigate",
         "c": 1,
         "s": 5,
@@ -713,6 +778,7 @@
       },
       {
         "name": "Quital Leb Quitan",
+        "shortName": "QTLQ",
         "scale": "frigate",
         "c": 3,
         "s": 3,
@@ -723,6 +789,7 @@
       },
       {
         "name": "Arquilla Heb Lioathi",
+        "shortName": "AQHL",
         "scale": "frigate",
         "c": 4,
         "s": 4,
@@ -734,6 +801,7 @@
     ],
     "stations": [{
         "name": "Starbase I",
+        "shortName": "STRB",
         "scale": "station",
         "c": 15,
         "s": 9,
@@ -744,6 +812,7 @@
       },
       {
         "name": "Other Outposts",
+        "shortName": "OTHR",
         "scale": "station",
         "c": 0,
         "s": 0,

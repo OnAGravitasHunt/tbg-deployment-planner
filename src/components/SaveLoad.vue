@@ -24,6 +24,7 @@
   <div class='button storage-button' title='Add new item' @click="addNew">New...</div>
   <div class='button storage-button' title='Edit item' @click="editor">Edit...</div>
   <div class='button storage-button' title='BBCode' @click="bbcode">BBCode</div>
+  <div class='button storage-button' title='Summary?' @click="shipSize">S</div>
 
   <div class='timeline'>
     <div
@@ -172,6 +173,9 @@ export default {
     },
     bbcode () {
       this.$refs['bbcode-button'].copyToClipboard()
+    },
+    shipSize () {
+      this.$store.commit('toggleShipSummary')
     }
   },
   computed: {
