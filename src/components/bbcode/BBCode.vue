@@ -1,7 +1,8 @@
 <template>
   <div class='bbcode-export'>
     <div ref='bbcode-root'>
-      [SPOILER=Sectors]
+      [SPOILER=Deployment]
+      <!-- <BBTheatre v-for="theatre of theatres" :theatreName="theatre" :key="theatre"></BBTheatre> -->
       <BBSector v-for="sector of sectors" :sector="sector" :key="`${sector.theatre}-${sector.name}`"></BBSector>
       [/SPOILER]
     </div>
@@ -26,6 +27,9 @@ export default {
     }
   },
   computed: {
+    theatres () {
+      return this.$store.getters.theatreList
+    },
     sectors () {
       return this.$store.getters.sectors
     }
