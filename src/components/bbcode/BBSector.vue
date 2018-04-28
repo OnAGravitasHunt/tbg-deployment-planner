@@ -1,20 +1,33 @@
 <template>
-  <div>
+  <div class='bb-sector'>
     [SPOILER={{sector.name}}]
-    {{sector.name}}
+    [SIZE=8]{{sector.name}}[/SIZE]
+    <template v-for="(ship, index) of sectorShips">
+      <BBShip :key="ship.registry" :ship="ship"></BBShip><span :key="index" v-if="index < sectorShips.length - 1">;&#160;</span>
+    </template>
     [/SPOILER]
   </div>
 </template>
 
 <script>
+import BBShip from './BBShip'
+
 export default {
   name: 'BBSector',
-  components: {},
+  components: {
+    BBShip
+  },
   props: ['sector'],
   methods: {},
   computed: {
     sectors () {
       return this.$store.getters.sectors
+    },
+    shipObjects () {
+      return this.$store.getters.shipObjects
+    },
+    sectorShips () {
+      return this.sector.ships.map(shipName => this.shipObjects[shipName])
     }
   }
 }
