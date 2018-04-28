@@ -64,4 +64,20 @@ html, body {
 button:focus {
   outline:0;
 }
+/* scrollbar */
+#app::-webkit-scrollbar {
+    width: 8px;
+}
+#app::-webkit-scrollbar-track {
+  width: 10px;
+  padding-left: 1px;
+  border-radius: 4px;
+}
+#app::-webkit-scrollbar-thumb {
+  background: #888;
+  /* border-radius: 5px; */
+}
+#app::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
 </style>

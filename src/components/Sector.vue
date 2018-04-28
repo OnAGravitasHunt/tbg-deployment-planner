@@ -218,7 +218,7 @@ export default {
   padding-right: 10px;
   margin-bottom: 5px;
   border-top: 1px solid #ccc;
-  min-height: 98px;
+  min-height: 20px;
   /* overflow-x: auto; */
   /* overflow-y: hidden; */
   white-space: nowrap;
@@ -233,7 +233,7 @@ export default {
   border-top: none;
 }
 .sector-drag {
-  height: inherit;
+  min-height: 100%;
   width: 100%;
 }
 .smallsize.sector-drag {
