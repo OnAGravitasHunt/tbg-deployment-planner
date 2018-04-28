@@ -104,7 +104,7 @@ export default {
       set (value) {
         let dispatchString = this.currentSchema === 'prefixes' ? 'updatePrefixAction' : 'updateShipClassFieldAction'
         this.$store.dispatch(dispatchString, {
-          operator: this.operator,
+          operator: this.operator.toLowerCase(),
           entryIndex: this.rowIndex,
           field: this.field.key,
           value: value
