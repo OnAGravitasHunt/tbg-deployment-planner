@@ -1,27 +1,25 @@
 <template>
-  <div class='bb-sector'>
-    [SPOILER={{sectorName}}]
-    [SIZE=8]{{sectorName}}[/SIZE]
-    <template v-for="(ship, index) of sectorShips">
-      <BBShip :key="ship.registry" :ship="ship"></BBShip><span :key="index" v-if="index < sectorShips.length - 1">;&#160;</span>
-    </template>
+  <div class='bb-theatre'>
+    [SPOILER={{theatreName}} Theatre]
+    [SIZE=12]{{theatreName}} Theatre[/SIZE]
+    <BBSector v-for="sectorName of sectors" :sectorName="sectorName" :key="`${theatreName}-${sectorName}`"></BBSector>
     [/SPOILER]
   </div>
 </template>
 
 <script>
-import BBShip from './BBShip'
+import BBSector from './BBSector'
 
 export default {
-  name: 'BBSector',
+  name: 'BBTheatre',
   components: {
-    BBShip
+    BBSector
   },
-  props: ['sectorName'],
+  props: ['theatreName'],
   methods: {},
   computed: {
-    sector () {
-      return this.$store.getters.sectors[this.sectorName]
+    sectors () {
+      return this.$store.getters.theatres[this.theatreName]
     },
     shipObjects () {
       return this.$store.getters.shipObjects

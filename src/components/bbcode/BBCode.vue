@@ -2,20 +2,20 @@
   <div class='bbcode-export'>
     <div ref='bbcode-root'>
       [SPOILER=Deployment]
-      <!-- <BBTheatre v-for="theatre of theatres" :theatreName="theatre" :key="theatre"></BBTheatre> -->
-      <BBSector v-for="sector of sectors" :sector="sector" :key="`${sector.theatre}-${sector.name}`"></BBSector>
+      <BBTheatre v-for="theatre of theatres" :theatreName="theatre" :key="theatre"></BBTheatre>
+      <!-- <BBSector v-for="sector of sectors" :sector="sector" :key="`${sector.theatre}-${sector.name}`"></BBSector> -->
       [/SPOILER]
     </div>
   </div>
 </template>
 
 <script>
-import BBSector from './BBSector'
+import BBTheatre from './BBTheatre'
 
 export default {
   name: 'BBCode',
   components: {
-    BBSector
+    BBTheatre
   },
   methods: {
     copyToClipboard () {
