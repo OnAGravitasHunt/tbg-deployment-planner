@@ -180,8 +180,9 @@ export default {
 }
 .ship.smallsize {
   padding: 5px;
+  /* padding-right: 5px; */
   font-size: 14px;
-  width: 330px;
+  width: 320px;
   flex: 1 0 auto;
 }
 .ship-data {
