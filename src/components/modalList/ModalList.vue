@@ -65,6 +65,22 @@ export default {
   max-height: 400px;
   overflow-y: auto;
 }
+/* scrollbar */
+.modal-list::-webkit-scrollbar {
+    width: 10px;
+}
+.modal-list::-webkit-scrollbar-track {
+  width: 8px;
+  border-radius: 4px;
+}
+.modal-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+.modal-list::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
