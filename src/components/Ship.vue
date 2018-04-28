@@ -182,6 +182,7 @@ export default {
   padding: 5px;
   font-size: 14px;
   width: 330px;
+  flex: 1 0 auto;
 }
 .ship-data {
   width: 170px;
@@ -236,22 +237,14 @@ export default {
 #available-ships .ship {
   margin: 2px auto;
 }
-/* #available-ships .ship:first-child {
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-}
-#available-ships .ship:last-child {
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-} */
 .sector-drag .ship {
   margin: 4px;
 }
-.sector-drag .ship:first-child {
+.sector-drag .ship.fullsize:first-child {
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
 }
-.sector-drag .ship:last-child {
+.sector-drag .ship.fullsize:last-child {
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }

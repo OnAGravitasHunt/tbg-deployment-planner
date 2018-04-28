@@ -1,7 +1,8 @@
 <template>
 <div
   v-show="filterShow"
-  :class="`sector ${sectorTypeCSS}`"
+  class='sector'
+  :class="[sectorTypeCSS]"
   :id="'sector-' + name"
 >
   <div class='sector-header'>
@@ -17,14 +18,16 @@
       {{shipSummary[shipClass]}} {{shipClass}}
     </span>
   </div>
-  <div v-show="sectorShow" class='sector-drag-wrapper'>
-    <draggable class='sector-drag'
-        :id="'s-drag-' + name"
-        v-model="sectorShips"
-        :options="{group:'ships'}"
-        :move="onMove"
-        @change="onUpdate"
-        >
+  <div v-show="sectorShow" class='sector-drag-wrapper' :class="[fullSize]">
+    <draggable
+      class='sector-drag'
+      :class="[fullSize]"
+      :id="'s-drag-' + name"
+      v-model="sectorShips"
+      :options="{group:'ships'}"
+      :move="onMove"
+      @change="onUpdate"
+    >
       <Ship v-for="shipReg of sectorShips" :key="shipReg" :registry="shipReg"></Ship>
     </draggable>
   </div>
@@ -38,7 +41,6 @@ import draggable from 'vuedraggable'
 export default {
   name: 'Sector',
   props: ['name'],
-  // , 'defence', 'type', 'theatre', 'supporters', 'index'],
   components: {
     Ship,
     draggable
@@ -127,6 +129,9 @@ export default {
         default:
           return this.type
       }
+    },
+    fullSize () {
+      return this.$store.state.fullShipSize ? 'fullsize' : 'smallsize'
     }
   },
   methods: {
@@ -209,13 +214,19 @@ export default {
   padding: 0 0 10px 80px;
 }
 .sector-drag-wrapper {
-  margin-left: 50px;
+  margin-left: 20px;
+  padding-right: 10px;
   margin-bottom: 5px;
   border-top: 1px solid #ccc;
+  min-height: 98px;
+  /* overflow-x: auto; */
+  /* overflow-y: hidden; */
+  white-space: nowrap;
+}
+.sector-drag-wrapper.fullsize {
   height: 98px;
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap;
 }
 .theatre .sector-drag-wrapper,
 .task-force .sector-drag-wrapper {
@@ -223,8 +234,12 @@ export default {
 }
 .sector-drag {
   height: inherit;
+  width: 100%;
 }
-
+.smallsize.sector-drag {
+  display: flex;
+  flex-flow: row wrap;
+}
 /* height */
 ::-webkit-scrollbar {
     height: 10px;

@@ -115,7 +115,7 @@ h3:first-child {
   flex-flow: column;
 }
 #nav-left-wrapper.wide {
-  width: 380px;
+  width: 360px;
 }
 #unassigned-wrapper {
   width: 100%;

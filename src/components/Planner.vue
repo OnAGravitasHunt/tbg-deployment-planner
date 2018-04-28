@@ -59,7 +59,7 @@ export default {
   color: #ccc;
 }
 #sectors-wrapper.wide {
-  padding-left: 380px;
+  padding-left: 360px;
 }
 #theatre-list-wrapper {
   padding-top: 30px;
