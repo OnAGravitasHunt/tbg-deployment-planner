@@ -1,4 +1,5 @@
 import allData from '../../assets/allData.json'
+import Vue from 'vue'
 
 const SCALE_SORT = {
   explorer: 0,
@@ -54,7 +55,7 @@ const mutations = {
       let oldName = oldSector.name
       sector = Object.assign(oldSector, sector)
       // move sector object to new key
-      state.timeline[state.currentTick].sectors[sector.name] = sector
+      Vue.set(state.timeline[state.currentTick].sectors, sector.name, sector)
       // replace old key with new (theatre will have already updated if theatre has changed)
       let index = state.timeline[state.currentTick].theatres[sector.theatre].indexOf(oldName)
       state.timeline[state.currentTick].theatres[sector.theatre].splice(index, 1, sector.name)
@@ -64,7 +65,7 @@ const mutations = {
   },
   // mutation to add sector
   addNewSector (state, sector) {
-    state.timeline[state.currentTick].sectors[sector.name] = sector
+    Vue.set(state.timeline[state.currentTick].sectors, sector.name, sector)
     state.timeline[state.currentTick].theatres[sector.theatre].push(sector.name)
   },
   // mutation to remove sector
