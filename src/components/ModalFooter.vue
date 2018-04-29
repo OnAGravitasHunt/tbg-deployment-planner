@@ -65,7 +65,7 @@ export default {
           if (this.sectorsObj.hasOwnProperty(this.currentSectorName)) {
             dispatchString = 'abortSectorChanges'
           } else {
-            dispatchString = 'commitSectorChanges'
+            dispatchString = 'createNewSector'
           }
           break
         case 'ship-edit':

@@ -21,7 +21,7 @@ const state = {
 const mutations = {
   // update filter criterion
   restoreFilter (state, shipClasses) {
-    state.filterCategories.shipClass = regenerateFilterArray(shipDataFields.shipClasses)
+    state.filterCategories.shipClass = regenerateFilterArray(shipClasses)
   },
   updateFilter (state, {category, criterion, value}) {
     state.filterCategories[category][criterion] = value

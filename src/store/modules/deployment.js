@@ -65,6 +65,7 @@ const mutations = {
   // mutation to add sector
   addNewSector (state, sector) {
     state.timeline[state.currentTick].sectors[sector.name] = sector
+    state.timeline[state.currentTick].theatres[sector.theatre].push(sector.name)
   },
   // mutation to remove sector
   deleteSector (state, sectorName) {

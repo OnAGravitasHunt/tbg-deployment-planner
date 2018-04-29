@@ -11,7 +11,11 @@
     <span class='sector-info'>C{{sectorStats[0]}}</span>
     <span class='sector-info'>S{{sectorStats[1]}}</span>
     <span class='sector-info'>P{{sectorStats[4]}}</span>
-    <button v-if="type !== 'Theatre Fleet'" class='sector-edit' @click="editSector">Edit {{editButtonDisplay}}</button>
+    <button
+      v-if="type !== 'Theatre Fleet'"
+      class='sector-edit'
+      @click="editSector"
+    >Edit {{editButtonDisplay}}</button>
   </div>
   <div v-show="!sectorShow" class='ship-summary'>
     <span v-for="shipClass of Object.keys(shipSummary)" :key="shipClass" class='sector-info'>
@@ -233,7 +237,7 @@ export default {
   border-top: none;
 }
 .sector-drag {
-  min-height: 100%;
+  min-height: 20px;
   width: 100%;
 }
 .smallsize.sector-drag {
