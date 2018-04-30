@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import shipDataFields from '../assets/shipDataFields.json'
+import shipDataFields from '../../assets/shipDataFields.json'
 
 export default {
   name: 'ShipInfo',

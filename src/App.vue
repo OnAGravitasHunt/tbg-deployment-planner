@@ -10,23 +10,13 @@
 import Planner from './components/Planner'
 import SaveLoad from './components/SaveLoad'
 import ModalBase from './components/modalCommon/ModalBase'
-import AddShip from './components/AddShip'
-import EditShip from './components/EditShip'
-import ShipInfo from './components/ShipInfo'
-import AddSector from './components/AddSector'
-import EditSector from './components/EditSector'
 
 export default {
   name: 'app',
   components: {
     Planner,
     SaveLoad,
-    ModalBase,
-    AddShip,
-    EditShip,
-    ShipInfo,
-    AddSector,
-    EditSector
+    ModalBase
   },
   computed: {
     currentModal () {

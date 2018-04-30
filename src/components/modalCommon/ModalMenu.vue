@@ -19,7 +19,6 @@ export default {
   props: ['menuItems', 'menuType'],
   methods: {
     setModal (menuItem) {
-      console.log(menuItem)
       if (menuItem.modalType === 'list') {
         this.$store.commit('setModal', 'modal-list')
         this.$store.commit('setSchema', menuItem.modal)

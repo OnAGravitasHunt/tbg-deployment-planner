@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import sectorDataFields from '../assets/sectorDataFields.json'
+import sectorDataFields from '../../assets/sectorDataFields.json'
 
 export default {
   name: 'AddSector',

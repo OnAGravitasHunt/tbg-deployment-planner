@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import shipDataFields from '../assets/shipDataFields.json'
+import shipDataFields from '../../assets/shipDataFields.json'
 import StatChanger from './StatChanger'
 import multiselect from 'vue-multiselect'
 
@@ -173,7 +173,7 @@ export default {
 }
 </script>
 
-<style src="../../static/vue-multiselect.css"></style>
+<style src="../../../static/vue-multiselect.css"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .add-ship-fields {
