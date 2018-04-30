@@ -23,8 +23,8 @@
 
   <div class='button storage-button' title='Add new item' @click="addNew">Add/Edit</div>
   <!-- <div class='button storage-button' title='Edit item' @click="editor">Edit...</div> -->
-  <div class='button storage-button' title='BBCode' @click="bbcode">BBCode</div>
-  <div class='button storage-button small-text' title='Summary?' @click="shipSize">Summary view</div>
+  <!-- <div class='button storage-button' title='BBCode' @click="bbcode">BBCode</div> -->
+  <div class='button storage-button small-text' title='Change?' @click="shipSize">Change view style</div>
 
   <div class='timeline'>
     <div
@@ -57,33 +57,33 @@
   </div>
   <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
   <!--  -->
-  <div
+  <!-- <div
     class='button storage-button short-button'
     title='Import ships from CSV'
     @click="$refs.shipCSVInput.click()"
-  >&#x21E7;</div>
+  >&#x21E7;</div> -->
   <!--  -->
   <a ref="save_file_a" style="display:none"></a>
   <input style="display:none" type="file" ref="stateFileInput" @change="uploadState" value="Load file"/>
-  <input style="display:none" type="file" ref="shipCSVInput" @change="uploadCSV" value="Load file"/>
-  <BBCode ref='bbcode-button'></BBCode>
+  <!-- <input style="display:none" type="file" ref="shipCSVInput" @change="uploadCSV" value="Load file"/> -->
+  <!-- <BBCode ref='bbcode-button'></BBCode> -->
 </div>
 </template>
 
 <script>
-import BBCode from './bbcode/BBCode.vue'
-import SheetConverter from '../lib/sheet-converter.js'
-import Papa from 'papaparse'
+// import BBCode from './bbcode/BBCode.vue'
+// import SheetConverter from '../lib/sheet-converter.js'
+// import Papa from 'papaparse'
 
 const DEPLOYMENT_KEY = 'deployment'
-const PAPA_CONFIG = {
-  header: true
-}
+// const PAPA_CONFIG = {
+//   header: true
+// }
 
 export default {
   name: 'SaveLoad',
   components: {
-    BBCode
+    // BBCode
   },
   data () {
     return {
@@ -152,22 +152,22 @@ export default {
       }
       reader.readAsText(loadFile)
     },
-    uploadCSV () {
-      let loadFile = this.$refs.shipCSVInput.files[0]
-      let reader = new FileReader()
-      let self = this
-      reader.onload = function (event) {
-        if (reader.readyState === FileReader.DONE) {
-          let ships = Papa.parse(reader.result.substring(reader.result.indexOf('\n') + 1), PAPA_CONFIG)
-          ships = new SheetConverter(ships).convert()
-          let newShips = Object.keys(ships).filter(ship => !self.$store.getters.shipObjects.hasOwnProperty(ship))
-          self.$store.commit('updateAllShipObjects', ships)
-          self.$store.commit('updateAvail', self.$store.getters.unassignedShips.concat(newShips))
-          self.$store.commit('sortAvail')
-        }
-      }
-      reader.readAsText(loadFile)
-    },
+    // uploadCSV () {
+    //   let loadFile = this.$refs.shipCSVInput.files[0]
+    //   let reader = new FileReader()
+    //   let self = this
+    //   reader.onload = function (event) {
+    //     if (reader.readyState === FileReader.DONE) {
+    //       let ships = Papa.parse(reader.result.substring(reader.result.indexOf('\n') + 1), PAPA_CONFIG)
+    //       ships = new SheetConverter(ships).convert()
+    //       let newShips = Object.keys(ships).filter(ship => !self.$store.getters.shipObjects.hasOwnProperty(ship))
+    //       self.$store.commit('updateAllShipObjects', ships)
+    //       self.$store.commit('updateAvail', self.$store.getters.unassignedShips.concat(newShips))
+    //       self.$store.commit('sortAvail')
+    //     }
+    //   }
+    //   reader.readAsText(loadFile)
+    // },
     editor () {
       this.$store.commit('setModal', 'modal-list')
     },

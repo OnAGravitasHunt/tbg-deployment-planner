@@ -13,6 +13,8 @@
           <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
           <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
           <ModalList v-show="currentModal === 'modal-list'"></ModalList>
+          <ImportExport v-show="currentModal === 'import-export'"></ImportExport>
+          <DeleteShip v-show="currentModal === 'ship-delete'"></DeleteShip>
         </div>
         <ModalFooter footer=''></ModalFooter>
       </div>
@@ -32,7 +34,9 @@ import ShipInfo from './ShipInfo'
 import AddShipClass from './AddShipClass'
 import AddSector from './AddSector'
 import EditSector from './EditSector'
-import ModalList from './modalList/ModalList.vue'
+import ModalList from './modalList/ModalList'
+import ImportExport from './ImportExport'
+import DeleteShip from './DeleteShip'
 
 export default {
   name: 'ModalBase',
@@ -46,7 +50,9 @@ export default {
     AddShipClass,
     AddSector,
     EditSector,
-    ModalList
+    ModalList,
+    ImportExport,
+    DeleteShip
   },
   data () {
     return {
@@ -55,11 +61,13 @@ export default {
         {label: 'New Sector', modalType: 'normal', modal: 'add-sector'},
         {label: 'New Ship Options', modalType: 'normal', modal: 'add-ship-class'},
         {label: 'Edit Ship Classes', modalType: 'list', modal: 'shipClasses'},
-        {label: 'Edit Prefixes', modalType: 'list', modal: 'prefixes'}
+        {label: 'Edit Prefixes', modalType: 'list', modal: 'prefixes'},
+        {label: 'Import/Export', modalType: 'normal', modal: 'import-export'}
       ],
       shipMenu: [
         {label: 'Ship Info', modal: 'ship-info'},
-        {label: 'Edit Starship', modal: 'ship-edit'}
+        {label: 'Edit Starship', modal: 'ship-edit'},
+        {label: 'Delete Starship', modal: 'ship-delete'}
       ],
       sectorMenu: [
         {label: 'Edit Sector', modal: 'sector-edit'}
@@ -78,9 +86,11 @@ export default {
         case 'add-sector':
         case 'add-ship-class':
         case 'modal-list':
+        case 'import-export':
           return this.addMenu
         case 'ship-info':
         case 'ship-edit':
+        case 'ship-delete':
           return this.shipMenu
         case 'sector-edit':
           return this.sectorMenu
@@ -103,6 +113,7 @@ export default {
           return 'Add New Sector'
         case 'ship-info':
         case 'ship-edit':
+        case 'ship-delete':
           return this.shipHeader
         case 'add-ship-class':
           return 'Add New Starship Options'
@@ -110,6 +121,8 @@ export default {
           return 'Edit Sector'
         case 'modal-list':
           return this.listHeader
+        case 'import-export':
+          return 'Import/Export'
         default:
           return ''
       }

@@ -51,22 +51,10 @@ export default {
   data () {
     return {
       statOrder: ['c', 's', 'h', 'l', 'p', 'd'],
-      saveMessage: 'Save',
       veterancies: shipDataFields.veterancies
     }
   },
-  methods: {
-    commitChanges () {
-      if (this.currentShipName.length
-        && (this.currentShipRegistry.length || this.currentShipClassObject.scale === 'station')
-        && this.currentShipClass.length) {
-        this.$store.dispatch('commitShipChanges')
-        this.saveMessage = 'Saved'
-        setTimeout(() => { this.saveMessage = 'Save' }, 1000)
-        this.$store.commit('setModal', 'none')
-      }
-    }
-  },
+  methods: {},
   computed: {
     multiselectOptions () {
       let options = this.operators.map(op => (

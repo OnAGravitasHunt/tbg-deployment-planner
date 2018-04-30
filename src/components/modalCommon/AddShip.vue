@@ -46,19 +46,10 @@ export default {
   data () {
     return {
       statOrder: ['c', 's', 'h', 'l', 'p', 'd'],
-      addMessage: 'Add Ship',
       veterancies: shipDataFields.veterancies
     }
   },
-  methods: {
-    commitNewShip () {
-      if (this.currentShipName.length * this.currentShipRegistry.length * this.currentShipClass.length) {
-        this.$store.dispatch('createNewShip')
-        this.addMessage = 'Added'
-        setTimeout(() => { this.addMessage = 'Add Ship' }, 1000)
-      }
-    }
-  },
+  methods: {},
   computed: {
     multiselectOptions () {
       let options = this.operators.map(op => (

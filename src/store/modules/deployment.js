@@ -88,6 +88,24 @@ const mutations = {
   updateAllShipObjects (state, newShips) {
     Object.assign(state.timeline[state.currentTick].shipObjects, newShips)
   },
+  deleteShip (state, shipReg) {
+    let index
+    let unassignedIndex = state.timeline[state.currentTick].unassignedShips.indexOf(shipReg)
+    if (unassignedIndex === -1) {
+      let sectorName
+      for (let sectorKey of Object.keys(state.timeline[state.currentTick].sectors)) {
+        index = state.timeline[state.currentTick].sectors[sectorKey].ships.indexOf(shipReg)
+        if (index !== -1) {
+          sectorName = sectorKey
+          break
+        }
+      }
+      state.timeline[state.currentTick].sectors[sectorName].splice(index, 1)
+    } else {
+      state.timeline[state.currentTick].unassignedShips.splice(unassignedIndex, 1)
+    }
+    delete state.timeline[state.currentTick].shipObjects[shipReg]
+  },
   //
   // List sorting - places starbases first
   sortSector (state, sectorName) {

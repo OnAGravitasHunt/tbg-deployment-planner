@@ -24,10 +24,19 @@ export default {
   },
   computed: {
     saveColour () {
-      if (this.currentModal === 'add-ship-class') {
-        return 'grey'
-      } else {
-        return 'green'
+      // if (this.currentModal === 'add-ship-class') {
+      //   return 'grey'
+      // } else {
+      //   return 'green'
+      // }
+      switch (this.currentModal) {
+        case 'add-ship-class':
+        case 'import-export':
+        case 'modal-list':
+        case 'ship-delete':
+          return 'grey'
+        default:
+          return 'green'
       }
     },
     currentModal () {
@@ -79,7 +88,7 @@ export default {
           }
           break
         default:
-          return
+          return // if none, return from function and do not continue
       }
       this.$store.dispatch(dispatchString)
       this.saveMessage = 'Saved'
