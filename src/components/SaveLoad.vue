@@ -21,10 +21,10 @@
     @click="$refs.stateFileInput.click()"
   >&#x21E7;</div>
 
-  <div class='button storage-button' title='Add new item' @click="addNew">New...</div>
-  <div class='button storage-button' title='Edit item' @click="editor">Edit...</div>
+  <div class='button storage-button' title='Add new item' @click="addNew">Add/Edit</div>
+  <!-- <div class='button storage-button' title='Edit item' @click="editor">Edit...</div> -->
   <div class='button storage-button' title='BBCode' @click="bbcode">BBCode</div>
-  <div class='button storage-button' title='Summary?' @click="shipSize">S</div>
+  <div class='button storage-button small-text' title='Summary?' @click="shipSize">Summary view</div>
 
   <div class='timeline'>
     <div
@@ -276,6 +276,12 @@ export default {
 }
 .short-button {
   width: 80px;
+}
+.small-text {
+  padding-top: 5px;
+  height: 35px;
+  font-size: 14px;
+  line-height: 15px;
 }
 input {
   height: 40px;

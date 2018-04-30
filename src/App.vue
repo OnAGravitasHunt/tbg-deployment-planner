@@ -9,7 +9,7 @@
 <script>
 import Planner from './components/Planner'
 import SaveLoad from './components/SaveLoad'
-import ModalBase from './components/ModalBase'
+import ModalBase from './components/modalCommon/ModalBase'
 import AddShip from './components/AddShip'
 import EditShip from './components/EditShip'
 import ShipInfo from './components/ShipInfo'

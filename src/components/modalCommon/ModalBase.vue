@@ -51,9 +51,11 @@ export default {
   data () {
     return {
       addMenu: [
-        {label: 'New Ship', modal: 'add-ship'},
-        {label: 'New Sector', modal: 'add-sector'},
-        {label: 'New Ship Options', modal: 'add-ship-class'}
+        {label: 'New Ship', modalType: 'normal', modal: 'add-ship'},
+        {label: 'New Sector', modalType: 'normal', modal: 'add-sector'},
+        {label: 'New Ship Options', modalType: 'normal', modal: 'add-ship-class'},
+        {label: 'Edit Ship Classes', modalType: 'list', modal: 'shipClasses'},
+        {label: 'Edit Prefixes', modalType: 'list', modal: 'prefixes'}
       ],
       shipMenu: [
         {label: 'Ship Info', modal: 'ship-info'},
@@ -61,10 +63,6 @@ export default {
       ],
       sectorMenu: [
         {label: 'Edit Sector', modal: 'sector-edit'}
-      ],
-      listMenu: [
-        {label: 'Edit Ship Classes', modal: 'shipClasses'},
-        {label: 'Edit Prefixes', modal: 'prefixes'}
       ]
     }
   },
@@ -79,14 +77,13 @@ export default {
         case 'add-ship':
         case 'add-sector':
         case 'add-ship-class':
+        case 'modal-list':
           return this.addMenu
         case 'ship-info':
         case 'ship-edit':
           return this.shipMenu
         case 'sector-edit':
           return this.sectorMenu
-        case 'modal-list':
-          return this.listMenu
         default:
           return []
       }
@@ -173,6 +170,7 @@ export default {
 
 .modal-body {
   display: flex;
-  min-height: 300px;
+  /* min-height: 300px; */
+  height: 400px;
 }
 </style>
