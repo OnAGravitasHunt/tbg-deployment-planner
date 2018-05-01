@@ -568,7 +568,8 @@
           "theatre": "Central",
           "supporters": []
         }
-      }
+      },
+      "bbExport": false
     }
   ]
 }

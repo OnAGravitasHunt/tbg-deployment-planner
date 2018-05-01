@@ -13,6 +13,7 @@
           <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
           <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
           <ModalList v-show="currentModal === 'modal-list'"></ModalList>
+          <TimelineList v-show="currentModal === 'timeline-list'"></TimelineList>
           <ImportExport v-show="currentModal === 'import-export'"></ImportExport>
           <DeleteShip v-show="currentModal === 'ship-delete'"></DeleteShip>
         </div>
@@ -35,6 +36,7 @@ import AddShipClass from './AddShipClass'
 import AddSector from './AddSector'
 import EditSector from './EditSector'
 import ModalList from './modalList/ModalList'
+import TimelineList from './modalList/TimelineList'
 import ImportExport from './ImportExport'
 import DeleteShip from './DeleteShip'
 
@@ -51,6 +53,7 @@ export default {
     AddSector,
     EditSector,
     ModalList,
+    TimelineList,
     ImportExport,
     DeleteShip
   },
@@ -62,6 +65,7 @@ export default {
         {label: 'New Ship Options', modalType: 'normal', modal: 'add-ship-class'},
         {label: 'Edit Ship Classes', modalType: 'list', modal: 'shipClasses'},
         {label: 'Edit Prefixes', modalType: 'list', modal: 'prefixes'},
+        {label: 'Timeline', modalType: 'normal', modal: 'timeline-list'},
         {label: 'Import/Export', modalType: 'normal', modal: 'import-export'}
       ],
       shipMenu: [
@@ -86,6 +90,7 @@ export default {
         case 'add-sector':
         case 'add-ship-class':
         case 'modal-list':
+        case 'timeline-list':
         case 'import-export':
           return this.addMenu
         case 'ship-info':

@@ -9,7 +9,8 @@ const SCALE_SORT = {
 
 const state = {
   timeline: allData.timeline,
-  currentTick: 0
+  currentTick: 0,
+  exportArray: []
 }
 
 const getters = {
@@ -22,6 +23,13 @@ const getters = {
 }
 
 const mutations = {
+  // set exportArray
+  setExportArray (state, value) {
+    state.exportArray = value
+  },
+  setExport (state, {index, value}) {
+    Vue.set(state.timeline[index], 'bbExport', value)
+  },
   // Save/Load
   restoreTimeline (state, timeline) { // restore save from localstorage
     state.timeline = timeline.timeline
