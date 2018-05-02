@@ -1,28 +1,28 @@
 <template>
   <td class='timeline-cell'>
     <div
-      tabindex='-1'
-      class='cell-div delete'
-      :class="field.display"
-      v-if="field.key === 'delete'"
-      @click="deleteRow"
-    >&#x2716;</div>
-
-    <div
       class='cell-div'
-      :class="field.display"
-      v-else-if="field.type === 'text'"
-    >{{cellValue}}</div>
+      :class="[field.display, field.key]"
+      v-if="field.type === 'text'"
+    >{{cellValue}}, ({{rowIndex}})</div>
 
     <div
       class='cell-div button'
-      :class="field.display"
-      v-else-if="field.type === 'button'"
-    >(B)</div>
+      :class="[field.display, field.key]"
+      v-else-if="field.key === 'copy'"
+      @click="clickHandler"
+    >Copy</div>
+
+    <div
+      class='cell-div button'
+      :class="[field.display, field.key]"
+      v-else-if="field.key === 'paste'"
+      @click="clickHandler"
+    >Paste</div>
 
     <div
       class='cell-div checkbox'
-      :class="field.display"
+      :class="[field.display, field.key]"
       v-else-if="field.type === 'check'"
     ><input type='checkbox' v-model="exportBox"></div>
   </td>
@@ -39,30 +39,14 @@ export default {
     }
   },
   methods: {
-    onKeydown (ev) {
-      switch (ev.key) {
-        case 'Enter':
-          this.commitEdit()
-          break
-        case 'Escape':
-          this.abortEdit()
-          break
+    clickHandler () {
+      if (this.field.key === 'copy') {
+        // handle copy
+        this.$store.commit('copyTick', this.rowIndex)
+      } else if (this.field.key === 'paste') {
+        // handle paste
+        this.$store.commit('pasteTick', this.rowIndex)
       }
-    },
-    editCell () {
-      this.underEdit = true
-      this.tempValue = this.displayValue
-    },
-    commitEdit () {
-      this.displayValue = this.tempValue
-      this.underEdit = false
-    },
-    abortEdit () {
-      this.tempValue = this.displayValue
-      this.underEdit = false
-    },
-    deleteRow () {
-      this.$store.dispatch('deleteRowAction', {operator: this.operator, rowIndex: this.rowIndex})
     }
   },
   computed: {
@@ -115,5 +99,15 @@ td {
 .checkbox {
   text-align: center;
   vertical-align: middle;
+}
+.button {
+  border-radius: 2px;
+  margin: 1px 3px;
+}
+.copy {
+  background-color: #3a4;
+}
+.paste {
+  background-color: #34a;
 }
 </style>

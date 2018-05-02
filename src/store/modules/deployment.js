@@ -10,7 +10,8 @@ const SCALE_SORT = {
 const state = {
   timeline: allData.timeline,
   currentTick: 0,
-  exportArray: []
+  exportArray: [],
+  copiedTick: null
 }
 
 const getters = {
@@ -23,6 +24,9 @@ const getters = {
 }
 
 const mutations = {
+  rearrangeTimeline (state, value) {
+    state.timeline = value
+  },
   // set exportArray
   setExportArray (state, value) {
     state.exportArray = value
@@ -130,8 +134,8 @@ const mutations = {
     })
   },
   // Set Tick name
-  setDateLabel (state, date) {
-    state.timeline[state.currentTick].dateLabel = date
+  setDateLabel (state, newLabel) {
+    state.timeline[state.currentTick].dateLabel = newLabel
   },
   // Move forwards or backwards
   changeTick (state, delta) {
@@ -177,12 +181,13 @@ const mutations = {
   },
   insertNewTick (state) {
     let current = JSON.parse(JSON.stringify(state.timeline[state.currentTick]))
-    let label = current.dateLabel.split('+')
-    if (label.length < 2) {
-      current.dateLabel = current.dateLabel + '+1'
-    } else {
-      current.dateLabel = label[0] + '+' + (Number(label[1]) + 1)
-    }
+    // let label = current.dateLabel.split('+')
+    // if (label.length < 2) {
+    //   current.dateLabel = current.dateLabel + '+1'
+    // } else {
+    //   current.dateLabel = label[0] + '+' + (Number(label[1]) + 1)
+    // }
+    current.dateLabel = current.dateLabel + '\''
     if (state.currentTick === state.timeline.length - 1) {
       state.timeline.push(current)
     } else {
@@ -199,6 +204,17 @@ const mutations = {
       } else {
         state.timeline.splice(state.currentTick, 1)
       }
+    }
+  },
+  copyTick (state, index) {
+    state.copiedTick = JSON.parse(JSON.stringify(state.timeline[index]))
+  },
+  pasteTick (state, index) {
+    if (state.copiedTick) {
+      let oldName = state.timeline[index].dateLabel
+      let newTick = JSON.parse(JSON.stringify(state.copiedTick))
+      Vue.set(newTick, 'dateLabel', oldName)
+      Vue.set(state.timeline, index, newTick)
     }
   }
 }

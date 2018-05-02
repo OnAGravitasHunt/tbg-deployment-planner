@@ -1,23 +1,28 @@
 <template>
   <div class='modal-list'>
-    <table>
-      <tr>
-        <th v-for="field of schemaFields" :key="field.name">{{field.name}}</th>
-      </tr>
-      <draggable
-        class='table-drag'
-        v-model="dataPoints"
-        element='tbody'
-        :options="{group: 'timeline'}"
-      >
-        <TimelineRow
-          v-for="(entry, index) of dataPoints"
-          :key="`${entry.dateLabel}-${index}`"
-          :entry="entry"
-          :rowIndex="index"
-        ></TimelineRow>
-      </draggable>
-    </table>
+    <div id='timeline-table'>
+      <table>
+        <tr>
+          <th v-for="field of schemaFields" :key="field.name">{{field.name}}</th>
+        </tr>
+        <draggable
+          class='table-drag'
+          v-model="dataPoints"
+          element='tbody'
+          :options="{group: 'timeline'}"
+        >
+          <TimelineRow
+            v-for="(entry, index) of dataPoints"
+            :key="`${entry.dateLabel}-${index}`"
+            :entry="entry"
+            :rowIndex="index"
+          ></TimelineRow>
+        </draggable>
+      </table>
+    </div>
+    <div class='message'>
+      Message here!
+    </div>
   </div>
 </template>
 
@@ -35,7 +40,7 @@ export default {
   computed: {
     schemaFields () {
       return [
-        {name: 'Tick Name', key: 'tick', type: 'text', display: 'wide'},
+        {name: 'Name', key: 'tick', type: 'text', display: 'wide'},
         {name: 'Copy', key: 'copy', type: 'button', display: 'narrow'},
         {name: 'Paste', key: 'paste', type: 'button', display: 'narrow'},
         {name: 'Export?', key: 'tick', type: 'check', display: 'narrow'}
@@ -45,8 +50,8 @@ export default {
       get () {
         return this.$store.state.deployment.timeline
       },
-      set () {
-        // this.$store.commit('')
+      set (value) {
+        this.$store.commit('rearrangeTimeline', value)
       }
     },
     operators () {
@@ -79,7 +84,6 @@ export default {
 .modal-list::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
-
 table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -106,5 +110,28 @@ input, select {
 .operator-header {
   border: 1px solid #555;
   text-transform: capitalize;
+}
+#timeline-table {
+  height: 350px;
+  overflow-y: auto;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid white;
+  margin-bottom: 10px;
+}
+/* scrollbar */
+#timeline-table::-webkit-scrollbar {
+    width: 10px;
+}
+#timeline-table::-webkit-scrollbar-track {
+  width: 8px;
+  border-radius: 4px;
+}
+#timeline-table::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+#timeline-table::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
 </style>

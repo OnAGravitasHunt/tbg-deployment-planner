@@ -24,16 +24,12 @@ export default {
   },
   computed: {
     saveColour () {
-      // if (this.currentModal === 'add-ship-class') {
-      //   return 'grey'
-      // } else {
-      //   return 'green'
-      // }
       switch (this.currentModal) {
         case 'add-ship-class':
         case 'import-export':
         case 'modal-list':
         case 'ship-delete':
+        case 'timeline-list':
           return 'grey'
         default:
           return 'green'

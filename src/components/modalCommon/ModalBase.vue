@@ -128,6 +128,8 @@ export default {
           return this.listHeader
         case 'import-export':
           return 'Import/Export'
+        case 'timeline-list':
+          return 'Timeline'
         default:
           return ''
       }

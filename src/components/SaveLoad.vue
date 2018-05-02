@@ -21,10 +21,8 @@
     @click="$refs.stateFileInput.click()"
   >&#x21E7;</div>
 
-  <div class='button storage-button' title='Add new item' @click="addNew">Add/Edit</div>
-  <!-- <div class='button storage-button' title='Edit item' @click="editor">Edit...</div> -->
-  <!-- <div class='button storage-button' title='BBCode' @click="bbcode">BBCode</div> -->
-  <div class='button storage-button small-text' title='Change?' @click="shipSize">Change view style</div>
+  <div class='button storage-button' title='Add new item; edit existing; import/export' @click="addNew">More...</div>
+  <div class='button storage-button small-text' title='Toggle view style' @click="shipSize">Change view style</div>
 
   <div class='timeline'>
     <div
@@ -37,7 +35,13 @@
       title='Delete tick'
       @click="() => deleteTick()"
     >&otimes;</div><!--
-    --><input spellcheck="false" v-model="dateLabel" placeholder='Current Date'><!--
+    --><input
+      spellcheck="false"
+      v-model="tempLabel"
+      placeholder='Current Date'
+      @blur="commitLabelChange"
+      @keydown="onKeydown"
+    ><!--
     --><div
       class='button timeline-button'
       title='Insert new tick'
@@ -57,38 +61,21 @@
   </div>
   <div class='timeline-info'>Tick {{currentTick + 1}}/{{timelineLength}}</div>
   <!--  -->
-  <!-- <div
-    class='button storage-button short-button'
-    title='Import ships from CSV'
-    @click="$refs.shipCSVInput.click()"
-  >&#x21E7;</div> -->
-  <!--  -->
   <a ref="save_file_a" style="display:none"></a>
   <input style="display:none" type="file" ref="stateFileInput" @change="uploadState" value="Load file"/>
-  <!-- <input style="display:none" type="file" ref="shipCSVInput" @change="uploadCSV" value="Load file"/> -->
-  <!-- <BBCode ref='bbcode-button'></BBCode> -->
 </div>
 </template>
 
 <script>
-// import BBCode from './bbcode/BBCode.vue'
-// import SheetConverter from '../lib/sheet-converter.js'
-// import Papa from 'papaparse'
-
 const DEPLOYMENT_KEY = 'deployment'
-// const PAPA_CONFIG = {
-//   header: true
-// }
 
 export default {
   name: 'SaveLoad',
-  components: {
-    // BBCode
-  },
   data () {
     return {
       saveMessage: 'Save',
-      loadMessage: 'Load'
+      loadMessage: 'Load',
+      tempLabel: this.$store.getters.dateLabel
     }
   },
   methods: {
@@ -113,18 +100,22 @@ export default {
       this.$store.dispatch('restoreSave', JSON.parse(localStorage.getItem(DEPLOYMENT_KEY)))
       this.loadMessage = 'Loaded!'
       setTimeout(() => { this.loadMessage = 'Load' }, 1000)
+      this.tempLabel = this.dateLabel
     },
     changeTick (delta) {
       this.$store.commit('changeTick', delta)
+      this.tempLabel = this.dateLabel
     },
     copyForwards () {
       this.$store.commit('copyForwards')
     },
     insertNewTick () {
       this.$store.commit('insertNewTick')
+      this.tempLabel = this.dateLabel
     },
     deleteTick () {
       this.$store.commit('deleteTick')
+      this.tempLabel = this.dateLabel
     },
     addNew () {
       this.$store.commit('clearNewShip')
@@ -152,22 +143,6 @@ export default {
       }
       reader.readAsText(loadFile)
     },
-    // uploadCSV () {
-    //   let loadFile = this.$refs.shipCSVInput.files[0]
-    //   let reader = new FileReader()
-    //   let self = this
-    //   reader.onload = function (event) {
-    //     if (reader.readyState === FileReader.DONE) {
-    //       let ships = Papa.parse(reader.result.substring(reader.result.indexOf('\n') + 1), PAPA_CONFIG)
-    //       ships = new SheetConverter(ships).convert()
-    //       let newShips = Object.keys(ships).filter(ship => !self.$store.getters.shipObjects.hasOwnProperty(ship))
-    //       self.$store.commit('updateAllShipObjects', ships)
-    //       self.$store.commit('updateAvail', self.$store.getters.unassignedShips.concat(newShips))
-    //       self.$store.commit('sortAvail')
-    //     }
-    //   }
-    //   reader.readAsText(loadFile)
-    // },
     editor () {
       this.$store.commit('setModal', 'modal-list')
     },
@@ -176,6 +151,26 @@ export default {
     },
     shipSize () {
       this.$store.commit('toggleShipSummary')
+    },
+    commitLabelChange () {
+      if (this.allDateLabels.indexOf(this.tempLabel) === -1) {
+        this.dateLabel = this.tempLabel
+      } else {
+        this.abortLabelChange()
+      }
+    },
+    abortLabelChange () {
+      this.tempLabel = this.dateLabel
+    },
+    onKeydown (ev) {
+      switch (ev.key) {
+        case 'Enter':
+          this.commitLabelChange()
+          break
+        case 'Escape':
+          this.abortLabelChange()
+          break
+      }
     }
   },
   computed: {
@@ -184,7 +179,9 @@ export default {
         return this.$store.getters.dateLabel
       },
       set (value) {
-        this.$store.commit('setDateLabel', value)
+        if (this.allDateLabels.indexOf(value) === -1) {
+          this.$store.commit('setDateLabel', value)
+        }
       }
     },
     currentTick () {
@@ -192,6 +189,9 @@ export default {
     },
     timelineLength () {
       return this.$store.state.deployment.timeline.length
+    },
+    allDateLabels () {
+      return this.$store.state.deployment.timeline.map(tick => tick.dateLabel)
     }
   }
 }

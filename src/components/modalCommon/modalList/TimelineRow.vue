@@ -29,7 +29,7 @@ export default {
   computed: {
     schemaFields () {
       return [
-        {name: 'Tick Name', key: 'dateLabel', type: 'text', display: 'wide'},
+        {name: 'Tick', key: 'dateLabel', type: 'text', display: 'wide'},
         {name: 'Copy', key: 'copy', type: 'button', display: 'narrow'},
         {name: 'Paste', key: 'paste', type: 'button', display: 'narrow'},
         {name: 'Export?', key: 'export', type: 'check', display: 'narrow'}
