@@ -2,9 +2,14 @@
   <div class='bb-sector'>
     [SPOILER={{sectorName}}]
     [SIZE=8]{{sectorName}}[/SIZE]
-    <template v-for="(ship, index) of sectorShips">
-      <BBShip :key="ship.registry" :ship="ship"></BBShip><span :key="index" v-if="index < sectorShips.length - 1">;&#160;</span>
-    </template>
+    <ul>
+      <li class='sector-tick' v-for="tick of sector.ships" :key="tick.dateLabel">
+        {{tick.dateLabel}}: <!--
+        --><template v-for="(ship, index) of tick.ships.map(shipReg => shipObjects[shipReg])">
+          <BBShip :key="ship.registry" :ship="ship"></BBShip><span :key="index" v-if="index < tick.ships.length - 1">;&#160;</span>
+        </template>
+      </li>
+    </ul>
     [/SPOILER]
   </div>
 </template>
@@ -17,15 +22,9 @@ export default {
   components: {
     BBShip
   },
-  props: ['sectorName'],
+  props: ['sectorName', 'sector', 'shipObjects'],
   methods: {},
   computed: {
-    sector () {
-      return this.$store.getters.sectors[this.sectorName]
-    },
-    shipObjects () {
-      return this.$store.getters.shipObjects
-    },
     sectorShips () {
       return this.sector.ships.map(shipName => this.shipObjects[shipName])
     }

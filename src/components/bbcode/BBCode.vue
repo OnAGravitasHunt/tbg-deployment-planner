@@ -1,9 +1,8 @@
 <template>
   <div class='bbcode-export'>
-    <div ref='bbcode-root'>
+    <div v-if="timeline.length" ref='bbcode-root'>
       [SPOILER=Deployment]
-      <BBTheatre v-for="theatre of theatres" :theatreName="theatre" :key="theatre"></BBTheatre>
-      <!-- <BBSector v-for="sector of sectors" :sector="sector" :key="`${sector.theatre}-${sector.name}`"></BBSector> -->
+      <BBTheatre v-for="theatre of theatres" :theatreName="theatre" :timeline="refactoredTimeline" :key="theatre"></BBTheatre>
       [/SPOILER]
     </div>
   </div>
@@ -19,19 +18,38 @@ export default {
   },
   methods: {
     copyToClipboard () {
+      // let self = this
       navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText).then(function () {
         console.log('Copied to clipboard successfully!')
+        // console.log(self.refactoredTimeline)
       }, function () {
         console.error('Unable to write to clipboard.')
       })
     }
   },
   computed: {
-    theatres () {
-      return this.$store.getters.theatreList
+    timeline () {
+      return this.$store.state.deployment.timeline.filter(tick => tick.bbExport)
     },
-    sectors () {
-      return this.$store.getters.sectors
+    refactoredTimeline () {
+      let refactor = JSON.parse(JSON.stringify(this.timeline[0]))
+      delete refactor.dateLabel
+      delete refactor.bbExport
+      for (let sectorName of Object.keys(refactor.sectors)) {
+        // console.log(sectorName, refactor.sectors[sectorName])
+        refactor.sectors[sectorName].ships = []
+        for (let tick of this.timeline) {
+          refactor.sectors[sectorName].ships.push({
+            dateLabel: tick.dateLabel,
+            ships: JSON.parse(JSON.stringify(tick.sectors[sectorName].ships))
+          })
+        }
+        // console.log(refactor.sectors[sectorName])
+      }
+      return refactor
+    },
+    theatres () {
+      return this.refactoredTimeline.theatreList
     }
   }
 }

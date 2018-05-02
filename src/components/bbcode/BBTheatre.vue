@@ -2,7 +2,13 @@
   <div class='bb-theatre'>
     [SPOILER={{theatreName}} Theatre]
     [SIZE=12]{{theatreName}} Theatre[/SIZE]
-    <BBSector v-for="sectorName of sectors" :sectorName="sectorName" :key="`${theatreName}-${sectorName}`"></BBSector>
+    <BBSector
+      v-for="sectorName of sectorNames"
+      :sectorName="sectorName"
+      :sector="sectors[sectorName]"
+      :shipObjects="shipObjects"
+      :key="`${theatreName}-${sectorName}`"
+    ></BBSector>
     [/SPOILER]
   </div>
 </template>
@@ -15,17 +21,17 @@ export default {
   components: {
     BBSector
   },
-  props: ['theatreName'],
+  props: ['theatreName', 'timeline'],
   methods: {},
   computed: {
+    sectorNames () {
+      return this.timeline.theatres[this.theatreName]
+    },
     sectors () {
-      return this.$store.getters.theatres[this.theatreName]
+      return this.timeline.sectors
     },
     shipObjects () {
-      return this.$store.getters.shipObjects
-    },
-    sectorShips () {
-      return this.sector.ships.map(shipName => this.shipObjects[shipName])
+      return this.timeline.shipObjects
     }
   }
 }
