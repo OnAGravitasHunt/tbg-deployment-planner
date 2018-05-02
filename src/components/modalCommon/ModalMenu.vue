@@ -6,6 +6,7 @@
         v-for="(item, index) of menuItems"
         :key="`menu-${index}`"
         class='modal-menu-item'
+        :class="{'selected': selected(item.modal)}"
         @click="() => setModal(item)"
         >{{item.label}}</div>
     </div>
@@ -17,6 +18,14 @@
 export default {
   name: 'ModalMenu',
   props: ['menuItems', 'menuType'],
+  computed: {
+    currentModal () {
+      return this.$store.state.currentModal
+    },
+    currentSchema () {
+      return this.$store.state.shipData.currentSchema
+    }
+  },
   methods: {
     setModal (menuItem) {
       if (menuItem.modal !== 'timeline-list') {
@@ -28,6 +37,9 @@ export default {
       } else {
         this.$store.commit('setModal', menuItem.modal)
       }
+    },
+    selected (modal) {
+      return this.currentModal === modal || (this.currentSchema === modal && this.currentModal === 'modal-list')
     }
   }
 }
@@ -53,13 +65,16 @@ export default {
   background-color: #c86;
   color: black;
 }
-.modal-menu-item.select {
+.modal-menu-item.selected {
+  background-color: #4a4;
+}
+/* .modal-menu-item.select {
   height: 40px;
   margin: 5px 0 0 0;
 }
 .modal-menu-item.select:last-child {
   margin-bottom: 5px;
-}
+} */
 .modal-menu-item.fill {
   margin: 0;
   background-color: #68c;
