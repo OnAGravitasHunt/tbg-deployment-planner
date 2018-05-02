@@ -216,6 +216,9 @@ const mutations = {
       Vue.set(newTick, 'dateLabel', oldName)
       Vue.set(state.timeline, index, newTick)
     }
+  },
+  clearCopied (state) {
+    state.copiedTick = null
   }
 }
 

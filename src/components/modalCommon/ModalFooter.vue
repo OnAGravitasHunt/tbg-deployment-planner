@@ -92,6 +92,7 @@ export default {
     },
     close () {
       this.$store.commit('setAllModalsHidden')
+      this.$store.commit('clearCopied')
     }
   }
 }

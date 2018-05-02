@@ -19,6 +19,9 @@ export default {
   props: ['menuItems', 'menuType'],
   methods: {
     setModal (menuItem) {
+      if (menuItem.modal !== 'timeline-list') {
+        this.$store.commit('clearCopied')
+      }
       if (menuItem.modalType === 'list') {
         this.$store.commit('setModal', 'modal-list')
         this.$store.commit('setSchema', menuItem.modal)

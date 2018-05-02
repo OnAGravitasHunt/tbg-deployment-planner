@@ -21,7 +21,7 @@
       </table>
     </div>
     <div class='message'>
-      Message here!
+      Clipboard: {{displayClipboard}}
     </div>
   </div>
 </template>
@@ -56,6 +56,13 @@ export default {
     },
     operators () {
       return this.$store.state.shipData.operators
+    },
+    displayClipboard () {
+      if (this.$store.state.deployment.copiedTick === null) {
+        return 'Empty'
+      } else {
+        return this.$store.state.deployment.copiedTick.dateLabel
+      }
     }
   }
 }
