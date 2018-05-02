@@ -4,7 +4,7 @@
       class='cell-div'
       :class="[field.display, field.key]"
       v-if="field.type === 'text'"
-    >{{cellValue}}, ({{rowIndex}})</div>
+    >{{cellValue}}</div>
 
     <div
       class='cell-div button'
