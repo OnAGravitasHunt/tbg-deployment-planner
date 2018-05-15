@@ -47,7 +47,7 @@ export default {
   components: {
     StatPicker
   },
-  props: ['rowIndex', 'field', 'cellValue', 'operator'],
+  props: ['rowIndex', 'field', 'cellValue', 'operator', 'currentSchema'],
   directives: {
     focus: {
       inserted (el) {
@@ -90,15 +90,15 @@ export default {
     }
   },
   computed: {
-    currentSchema () {
-      return this.$store.state.shipData.currentSchema
+    currentModal () {
+      return this.$store.state.currentModal
     },
     displayValue: {
       get () {
         if (this.currentSchema === 'prefixes') {
-          return this.$store.state.shipData[this.currentSchema][this.rowIndex]
+          return this.$store.state.shipData.prefixes[this.rowIndex]
         } else {
-          return this.$store.state.shipData[this.currentSchema][this.operator.toLowerCase()][this.rowIndex][this.field.key]
+          return this.$store.state.shipData.shipClasses[this.operator.toLowerCase()][this.rowIndex][this.field.key]
         }
       },
       set (value) {

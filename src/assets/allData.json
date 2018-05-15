@@ -321,6 +321,21 @@
           "mobile": false
         }
       },
+      "memberFleets": {
+        "uespa": {
+          "2017": {
+            "registry": "2017",
+            "name": "Liberty",
+            "shipClass": "Excelsior-A",
+            "prefix": "UES",
+            "scale": "explorer",
+            "classStats": [7, 6, 4, 6, 6, 6],
+            "veterancy": 0,
+            "bonusStats": [0, 0, 0, 0, 0, 0],
+            "mobile": true
+          }
+        }
+      },
       "theatreList": [
         "Tailward",
         "Central",

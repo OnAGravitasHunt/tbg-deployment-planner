@@ -31,12 +31,7 @@ export default {
       if (menuItem.modal !== 'timeline-list') {
         this.$store.commit('clearCopied')
       }
-      if (menuItem.modalType === 'list') {
-        this.$store.commit('setModal', 'modal-list')
-        this.$store.commit('setSchema', menuItem.modal)
-      } else {
-        this.$store.commit('setModal', menuItem.modal)
-      }
+      this.$store.commit('setModal', menuItem.modal)
     },
     selected (modal) {
       return this.currentModal === modal || (this.currentSchema === modal && this.currentModal === 'modal-list')

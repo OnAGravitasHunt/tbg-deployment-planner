@@ -7,6 +7,7 @@
       :field="field"
       :cellValue="entry[field.key]"
       :operator="operator"
+      :currentSchema="currentSchema"
     ></ModalListCell>
   </tr>
 </template>
@@ -19,7 +20,7 @@ export default {
   components: {
     ModalListCell
   },
-  props: ['entry', 'rowIndex', 'operator'],
+  props: ['entry', 'rowIndex', 'operator', 'currentSchema'],
   data () {
     return {
       statOrder: ['C', 'S', 'H', 'L', 'P', 'D']
@@ -28,7 +29,7 @@ export default {
   methods: {},
   computed: {
     schemaFields () {
-      return this.$store.state.shipData.schemaList[this.$store.state.shipData.currentSchema]
+      return this.$store.state.shipData.schemaList[this.currentSchema]
     }
   }
 }

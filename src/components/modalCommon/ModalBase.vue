@@ -12,7 +12,9 @@
           <AddShipClass v-show="currentModal === 'add-ship-class'"></AddShipClass>
           <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
           <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
-          <ModalList v-show="currentModal === 'modal-list'"></ModalList>
+          <MemberFleets v-show="currentModal === 'member-fleets'"></MemberFleets>
+          <ModalListShipClasses v-show="currentModal === 'list-ship-classes'"></ModalListShipClasses>
+          <ModalListPrefixes v-show="currentModal === 'list-prefixes'"></ModalListPrefixes>
           <TimelineList v-show="currentModal === 'timeline-list'"></TimelineList>
           <ImportExport v-show="currentModal === 'import-export'"></ImportExport>
           <DeleteShip v-show="currentModal === 'ship-delete'"></DeleteShip>
@@ -35,7 +37,9 @@ import ShipInfo from './ShipInfo'
 import AddShipClass from './AddShipClass'
 import AddSector from './AddSector'
 import EditSector from './EditSector'
-import ModalList from './modalList/ModalList'
+import MemberFleets from './MemberFleets'
+import ModalListShipClasses from './modalList/ModalListShipClasses'
+import ModalListPrefixes from './modalList/ModalListPrefixes'
 import TimelineList from './modalList/TimelineList'
 import ImportExport from './ImportExport'
 import DeleteShip from './DeleteShip'
@@ -52,7 +56,9 @@ export default {
     AddShipClass,
     AddSector,
     EditSector,
-    ModalList,
+    MemberFleets,
+    ModalListShipClasses,
+    ModalListPrefixes,
     TimelineList,
     ImportExport,
     DeleteShip
@@ -63,8 +69,9 @@ export default {
         {label: 'New Ship', modalType: 'normal', modal: 'add-ship'},
         {label: 'New Sector', modalType: 'normal', modal: 'add-sector'},
         {label: 'New Ship Options', modalType: 'normal', modal: 'add-ship-class'},
-        {label: 'Edit Ship Classes', modalType: 'list', modal: 'shipClasses'},
-        {label: 'Edit Prefixes', modalType: 'list', modal: 'prefixes'},
+        {label: 'Member Fleets', modalType: 'normal', modal: 'member-fleets'},
+        {label: 'Edit Ship Classes', modalType: 'list', modal: 'list-ship-classes'},
+        {label: 'Edit Prefixes', modalType: 'list', modal: 'list-prefixes'},
         {label: 'Timeline', modalType: 'normal', modal: 'timeline-list'},
         {label: 'Import/Export', modalType: 'normal', modal: 'import-export'}
       ],
@@ -89,7 +96,9 @@ export default {
         case 'add-ship':
         case 'add-sector':
         case 'add-ship-class':
-        case 'modal-list':
+        case 'member-fleets':
+        case 'list-ship-classes':
+        case 'list-prefixes':
         case 'timeline-list':
         case 'import-export':
           return this.addMenu
@@ -120,12 +129,16 @@ export default {
         case 'ship-edit':
         case 'ship-delete':
           return this.shipHeader
+        case 'member-fleets':
+          return 'Request from Member Fleets'
         case 'add-ship-class':
           return 'Add New Starship Options'
         case 'sector-edit':
           return 'Edit Sector'
-        case 'modal-list':
-          return this.listHeader
+        case 'list-ship-classes':
+          return 'Editing Ship Classes'
+        case 'list-prefixes':
+          return 'Editing Prefixes'
         case 'import-export':
           return 'Import/Export'
         case 'timeline-list':

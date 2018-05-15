@@ -20,7 +20,8 @@ const getters = {
   theatreList: state => state.timeline[state.currentTick].theatreList,
   theatres: state => state.timeline[state.currentTick].theatres,
   sectors: state => state.timeline[state.currentTick].sectors,
-  dateLabel: state => state.timeline[state.currentTick].dateLabel
+  dateLabel: state => state.timeline[state.currentTick].dateLabel,
+  memberFleets: state => state.timeline[state.currentTick].memberFleets
 }
 
 const mutations = {

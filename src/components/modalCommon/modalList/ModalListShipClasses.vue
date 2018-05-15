@@ -4,10 +4,7 @@
       <tr>
         <th v-for="field of schemaFields" :key="field.name">{{field.name}}</th>
       </tr>
-      <template
-        v-if="currentSchema === 'shipClasses'"
-        v-for="operator of operators"
-      >
+      <template v-for="operator of operators">
         <tr :key="operator">
           <th class='operator-header' colspan='9'>{{operator}}</th>
         </tr>
@@ -15,16 +12,9 @@
           v-for="(entry, index) of dataPoints[operator.toLowerCase()]"
           :key="entry.className"
           :entry="entry"
+          currentSchema='shipClasses'
           :rowIndex="index"
           :operator="operator"
-        ></ModalListRow>
-      </template>
-      <template v-else>
-        <ModalListRow
-          v-for="(entry, index) of dataPoints"
-          :key="entry.className"
-          :entry="entry"
-          :rowIndex="index"
         ></ModalListRow>
       </template>
     </table>
@@ -45,10 +35,10 @@ export default {
       return this.$store.state.shipData.currentSchema
     },
     schemaFields () {
-      return this.$store.state.shipData.schemaList[this.currentSchema]
+      return this.$store.state.shipData.schemaList.shipClasses
     },
     dataPoints () {
-      return this.$store.state.shipData[this.currentSchema]
+      return this.$store.state.shipData.shipClasses
     },
     operators () {
       return this.$store.state.shipData.operators
