@@ -89,9 +89,14 @@ export default {
     sectorStats () {
       let stats = []
       for (var i = 0; i < 5; i++) {
-        stats[i] = this.sectorShips.reduce((acc, curr) => acc + this.shipObjects[curr].classStats[i] + this.shipObjects[curr].veterancy + this.shipObjects[curr].bonusStats[i], 0)
+        stats[i] = this.sectorShips.reduce((acc, curr) =>
+          acc + this.shipObjects[curr].classStats[i]
+              + this.shipObjects[curr].veterancy
+              + this.shipObjects[curr].bonusStats[i], 0)
       }
-      stats[5] = this.sectorShips.reduce((acc, curr) => acc + this.shipObjects[curr].classStats[5] + this.shipObjects[curr].bonusStats[5], 0)
+      stats[5] = this.sectorShips.reduce((acc, curr) =>
+        acc + this.shipObjects[curr].classStats[5]
+            + this.shipObjects[curr].bonusStats[5], 0)
       return stats
     },
     sectorShips: {

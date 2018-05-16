@@ -2,7 +2,14 @@
 <div
   class='sector-filter-selector'
   :class="String(filterValue)">
-  <label :for="filterId"><input type='checkbox' :id="filterId" :value="criterion" v-model="filterValue">{{criterion}}</label>
+  <label
+    :for="filterId"
+  ><input
+    type='checkbox'
+    :id="filterId"
+    :value="criterion"
+    v-model="filterValue"
+  >{{criterion}}</label>
 </div>
 </template>
 
@@ -31,7 +38,11 @@ export default {
         return this.$store.state.sectorFiltering.filterCategories[this.category][this.criterionKey]
       },
       set (value) {
-        this.$store.commit('updateSectorFilter', {category: this.category, criterion: this.criterionKey, value: value})
+        this.$store.commit('updateSectorFilter', {
+          category: this.category,
+          criterion: this.criterionKey,
+          value: value
+        })
       }
     }
   }

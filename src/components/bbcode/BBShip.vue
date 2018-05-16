@@ -1,5 +1,9 @@
 <template>
-  <span class='bb-ship'>{{showPrefix}}{{ship.name}}<span v-if="ship.scale !== 'station'">, {{ship.shipClass}} {{showVet}}</span></span>
+  <span
+    class='bb-ship'
+  >{{showPrefix}}{{ship.name}}<span
+    v-if="ship.scale !== 'station'"
+  >, {{ship.shipClass}} {{showVet}}</span></span>
 </template>
 
 <script>

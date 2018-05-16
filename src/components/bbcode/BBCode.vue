@@ -2,7 +2,12 @@
   <div class='bbcode-export'>
     <div v-if="timeline.length" ref='bbcode-root'>
       [SPOILER=Deployment]
-      <BBTheatre v-for="theatre of theatres" :theatreName="theatre" :timeline="refactoredTimeline" :key="theatre"></BBTheatre>
+      <BBTheatre
+        v-for="theatre of theatres"
+        :theatreName="theatre"
+        :timeline="refactoredTimeline"
+        :key="theatre"
+      ></BBTheatre>
       [/SPOILER]
     </div>
   </div>

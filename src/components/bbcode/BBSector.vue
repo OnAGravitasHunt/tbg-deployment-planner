@@ -6,7 +6,10 @@
       <li class='sector-tick' v-for="tick of sector.ships" :key="tick.dateLabel">
         {{tick.dateLabel}}: <!--
         --><template v-for="(ship, index) of tick.ships.map(shipReg => shipObjects[shipReg])">
-          <BBShip :key="ship.registry" :ship="ship"></BBShip><span :key="index" v-if="index < tick.ships.length - 1">;&#160;</span>
+          <BBShip
+            :key="ship.registry"
+            :ship="ship"
+          ></BBShip><span :key="index" v-if="index < tick.ships.length - 1">;&#160;</span>
         </template>
       </li>
     </ul>
