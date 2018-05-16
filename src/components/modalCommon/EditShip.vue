@@ -27,10 +27,19 @@
         </select>
       </li>
       <li>
-        <StatChanger :classStats="currentShipClassObject.stats" :veterancy="veterancies.indexOf(currentShipVet)"></StatChanger>
+        <StatChanger
+          :classStats="currentShipClassObject.stats"
+          :veterancy="veterancies.indexOf(currentShipVet)"
+        ></StatChanger>
       </li>
       <li>
-        <label for='mobile-check'>Static installation? <input type='checkbox' id="mobile-check" v-model="currentShipFixed"></label>
+        <label
+          for='mobile-check'
+        >Static installation?<input
+          type='checkbox'
+          id="mobile-check"
+          v-model="currentShipFixed"
+        ></label>
       </li>
     </ul>
   </div>

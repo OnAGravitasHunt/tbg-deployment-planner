@@ -81,7 +81,9 @@ export default {
       }
     },
     shipStats () {
-      return this.currentShip.classStats.map((stat, i) => stat + this.currentShip.bonusStats[i] + this.currentShip.veterancy * this.vetStats[i])
+      return this.currentShip.classStats.map((stat, i) =>
+        stat + this.currentShip.bonusStats[i] + this.currentShip.veterancy * this.vetStats[i]
+      )
     },
     veterancy () {
       return this.currentShip.veterancy ? `(${this.veterancies[this.currentShip.veterancy]})` : ''

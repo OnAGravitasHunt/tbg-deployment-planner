@@ -116,7 +116,7 @@ export default {
     },
     saveClass () {
       if (this.shipClassName && this.shipClassScale) {
-        if (this.shipClasses[this.shipClassOperator.toLowerCase()].filter(shipClass => shipClass.name === this.shipClassName).length) {
+        if (this.currentOperatorClasses.filter(shipClass => shipClass.name === this.shipClassName).length) {
           this.classMessage = 'Class Exists'
           this.newClassError = true
           setTimeout(() => {
@@ -125,7 +125,7 @@ export default {
           }, 1200)
         } else {
           this.$store.commit('addShipClass', {
-            operator: this.shipClassOperator.toLowerCase(),
+            operator: this.currentOperator,
             shipClass: {
               name: this.shipClassName,
               scale: this.shipClassScale,
@@ -167,6 +167,12 @@ export default {
   computed: {
     shipClasses () {
       return this.$store.state.shipData.shipClasses
+    },
+    currentOperator () {
+      return this.shipClassOperator.toLowerCase()
+    },
+    currentOperatorClasses () {
+      return this.shipClasses[this.currentOperator]
     },
     operators () {
       return this.$store.state.shipData.operators
