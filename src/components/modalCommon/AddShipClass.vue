@@ -231,6 +231,7 @@ th, td {
 }
 .up-row td,
 .down-row td {
+  user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
 }
