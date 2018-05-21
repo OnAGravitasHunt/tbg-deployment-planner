@@ -21,7 +21,8 @@ const getters = {
   theatres: state => state.timeline[state.currentTick].theatres,
   sectors: state => state.timeline[state.currentTick].sectors,
   dateLabel: state => state.timeline[state.currentTick].dateLabel,
-  memberFleets: state => state.timeline[state.currentTick].memberFleets
+  memberFleets: state => state.timeline[state.currentTick].memberFleets,
+  requestedMemberShips: state => state.timeline[state.currentTick].requestedMemberShips
 }
 
 const mutations = {
@@ -92,6 +93,18 @@ const mutations = {
   // update list of unassigned ships
   updateAvailAppend (state, value) {
     state.timeline[state.currentTick].unassignedShips.unshift(value)
+  },
+  updateRequestedMemberShips (state, value) {
+    state.timeline[state.currentTick].requestedMemberShips = value
+    /*
+    let index = state.timeline[state.currentTick].requestedMemberShips.indexOf(value)
+    if (index === -1) {
+      state.timeline[state.currentTick].requestedMemberShips.push(value)
+    } else {
+      state.timeline[state.currentTick].requestedMemberShips
+        = state.timeline[state.currentTick].requestedMemberShips.splice(index, 1)
+    }
+    */
   },
   //
   // Update ship objects
@@ -182,12 +195,6 @@ const mutations = {
   },
   insertNewTick (state) {
     let current = JSON.parse(JSON.stringify(state.timeline[state.currentTick]))
-    // let label = current.dateLabel.split('+')
-    // if (label.length < 2) {
-    //   current.dateLabel = current.dateLabel + '+1'
-    // } else {
-    //   current.dateLabel = label[0] + '+' + (Number(label[1]) + 1)
-    // }
     current.dateLabel = current.dateLabel + '\''
     if (state.currentTick === state.timeline.length - 1) {
       state.timeline.push(current)

@@ -5,7 +5,7 @@
       <div class='modal-container'>
         <ModalHeader :heading="header"></ModalHeader>
         <div class='modal-body'>
-          <ModalMenu :menuItems="menuItems" :menuType="menuType"></ModalMenu>
+          <ModalMenu :menuItems="menuItems"></ModalMenu>
           <AddShip v-show="currentModal === 'add-ship'"></AddShip>
           <AddSector v-show="currentModal === 'add-sector'"></AddSector>
           <ShipInfo v-show="currentModal === 'ship-info'"></ShipInfo>
@@ -69,7 +69,7 @@ export default {
         {label: 'New Ship', modalType: 'normal', modal: 'add-ship'},
         {label: 'New Sector', modalType: 'normal', modal: 'add-sector'},
         {label: 'New Ship Options', modalType: 'normal', modal: 'add-ship-class'},
-        // {label: 'Member Fleets', modalType: 'normal', modal: 'member-fleets'},
+        {label: 'Member Fleets', modalType: 'normal', modal: 'member-fleets'},
         {label: 'Edit Ship Classes', modalType: 'list', modal: 'list-ship-classes'},
         {label: 'Edit Prefixes', modalType: 'list', modal: 'list-prefixes'},
         {label: 'Timeline', modalType: 'normal', modal: 'timeline-list'},
@@ -90,7 +90,7 @@ export default {
     currentModal () {
       return this.$store.state.currentModal
     },
-    // Modal Menu
+    // Chooses appropriate modal menu
     menuItems () {
       switch (this.currentModal) {
         case 'add-ship':
@@ -110,13 +110,6 @@ export default {
           return this.sectorMenu
         default:
           return []
-      }
-    },
-    menuType () {
-      if (this.currentModal === 'modal-list') {
-        return 'list'
-      } else {
-        return 'normal'
       }
     },
     header () {
@@ -147,15 +140,7 @@ export default {
           return ''
       }
     },
-    // List headers
-    listHeader () {
-      if (this.$store.state.shipData.currentSchema === 'shipClasses') {
-        return 'Editing Ship Classes'
-      } else if (this.$store.state.shipData.currentSchema === 'prefixes') {
-        return 'Editing Prefixes'
-      }
-    },
-    // Ship Info Title
+    // Ship modal title
     shipHeader () {
       let curr = this.$store.getters.shipObjects[this.$store.state.shipEditing.shipRegistry]
       let prefix = curr.prefix === 'No prefix' ? '' : `${curr.prefix} `

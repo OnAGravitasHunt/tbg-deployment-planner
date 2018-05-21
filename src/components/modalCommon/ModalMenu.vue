@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'ModalMenu',
-  props: ['menuItems', 'menuType'],
+  props: ['menuItems'],
   computed: {
     currentModal () {
       return this.$store.state.currentModal

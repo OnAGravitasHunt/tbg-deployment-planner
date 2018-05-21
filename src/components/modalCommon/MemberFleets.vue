@@ -3,24 +3,22 @@
     Here be <s>dragons</s> member ships.
     <table>
       <tr>
-        <th v-for="field of schemaFields" class='table-header' :class="field.display" :key="field.key">{{field.name}}</th>
+        <th
+          v-for="field of schemaFields"
+          class='table-header'
+          :class="field.display"
+          :key="field.key"
+        >{{field.name}}</th>
       </tr>
       <tbody v-for="member of members" :key="member.key">
         <tr>
           <th class='across' colspan='4'>{{member.name}}</th>
         </tr>
         <template v-if='memberFleets.hasOwnProperty(member.key)'>
-          <tr class='ship-row' v-for='ship of Object.values(memberFleets[member.key])' :key="ship.registry">
-            <!-- <td
-              v-for="field of schemaFields"
-              :class="field.display"
-              :key="field.key"
-            >{{field.cellPrefix}}{{ship[field.key]}}</td> -->
-            <td class="ship-name wide">{{ship.prefix}} <em>{{ship.name}}</em></td>
-            <td class="wide">NCC-{{ship.registry}}</td>
-            <td class="wide">{{ship.shipClass}}</td>
-            <td class="narrow"><input type='checkbox'></td>
-          </tr>
+          <MemberFleetRow
+            v-for='ship of Object.values(memberFleets[member.key])'
+            :ship="ship" :member="member.key" :key="ship.registry"
+          ></MemberFleetRow>
         </template>
       </tbody>
     </table>
@@ -28,9 +26,13 @@
 </template>
 
 <script>
+import MemberFleetRow from './MemberFleetRow'
+
 export default {
   name: 'MemberFleets',
-  components: {},
+  components: {
+    MemberFleetRow
+  },
   data () {
     return {}
   },
