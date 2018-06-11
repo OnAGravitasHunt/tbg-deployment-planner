@@ -13,6 +13,7 @@
     "Rigellian",
     "Risan",
     "STO",
+    "Ked Paddah",
     "Stations"
   ],
   "prefixes": [
@@ -34,6 +35,7 @@
     "(RIS)",
     "QSS",
     "SFS",
+    "KPS",
     "Starbase",
     "No prefix"
   ],
@@ -798,6 +800,30 @@
         "s": 4,
         "h": 3,
         "l": 3,
+        "p": 1,
+        "d": 2
+      }
+    ],
+    "ked paddah": [
+      {
+        "name": "Aggadah",
+        "abbr": "AGAD",
+        "scale": "explorer",
+        "c": 6,
+        "s": 6,
+        "h": 6,
+        "l": 6,
+        "p": 6,
+        "d": 6
+      },
+      {
+        "name": "Orah",
+        "abbr": "ORAH",
+        "scale": "frigate",
+        "c": 3,
+        "s": 2,
+        "h": 2,
+        "l": 4,
         "p": 1,
         "d": 2
       }
