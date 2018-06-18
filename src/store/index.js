@@ -27,7 +27,7 @@ export default new Vuex.Store({
   },
   state: {
     currentModal: 'none',
-    fullShipSize: true
+    fullShipSize: false
   },
   mutations: {
     setModal (state, value) {
@@ -35,24 +35,6 @@ export default new Vuex.Store({
     },
     setAllModalsHidden (state) {
       state.currentModal = 'none'
-    },
-    // Add modals
-    updateShowAddSector (state, value) { // show/hide ship info modal
-      state.currentModal = 'add-sector'
-    },
-    updateShowAddShip (state, value) { // show/hide ship info modal
-      state.currentModal = 'add-ship'
-    },
-    // Ship Modals
-    updateShowEditShip (state, value) { // show/hide ship info modal
-      state.currentModal = 'ship-edit'
-    },
-    updateShowShipInfo (state, value) { // show/hide ship info modal
-      state.currentModal = 'ship-info'
-    },
-    // Sector Modals
-    updateShowEditSector (state, value) { // show/hide ship info modal
-      state.currentModal = 'sector-edit'
     },
     toggleShipSummary (state) {
       state.fullShipSize = !state.fullShipSize
