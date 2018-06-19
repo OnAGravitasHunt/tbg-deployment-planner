@@ -108,6 +108,7 @@ export default {
     },
     copyForwards () {
       this.$store.commit('copyForwards')
+      this.tempLabel = this.dateLabel
     },
     insertNewTick () {
       this.$store.commit('insertNewTick')

@@ -109,7 +109,7 @@ const mutations = {
   //
   // Update ship objects
   updateShipObject (state, {registry, newShip}) {
-    state.timeline[state.currentTick].shipObjects[registry] = newShip
+    Vue.set(state.timeline[state.currentTick].shipObjects, registry, newShip)
   },
   updateAllShipObjects (state, newShips) {
     Object.assign(state.timeline[state.currentTick].shipObjects, newShips)
@@ -189,7 +189,7 @@ const mutations = {
       state.timeline.push(current)
     } else {
       current.dateLabel = state.timeline[state.currentTick + 1].dateLabel
-      state.timeline[state.currentTick + 1] = current
+      Vue.set(state.timeline, state.currentTick + 1, current)
     }
     state.currentTick++
   },
@@ -200,7 +200,6 @@ const mutations = {
       state.timeline.push(current)
     } else {
       state.timeline.splice(state.currentTick + 1, 0, current)
-      state.timeline[state.currentTick + 1] = current
     }
     state.currentTick++
   },

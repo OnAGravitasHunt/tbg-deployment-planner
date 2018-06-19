@@ -96,7 +96,6 @@ export default {
         case 'add-ship':
         case 'add-sector':
         case 'add-ship-class':
-        case 'member-fleets':
         case 'list-ship-classes':
         case 'list-prefixes':
         case 'timeline-list':

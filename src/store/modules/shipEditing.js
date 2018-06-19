@@ -26,6 +26,7 @@ const actions = {
   // commit changes to ship under edit
   commitShipChanges ({state, commit, rootState, rootGetters}) {
     commit('updateShipObject', {registry: state.newShip.registry, newShip: state.newShip})
+    commit('clearNewShip')
   }
 }
 
