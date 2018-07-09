@@ -23,8 +23,6 @@ export default {
     },
     criterionKey () {
       switch (this.criterion) {
-        case 'None/Other':
-          return 'other'
         case 'Task Force':
           return 'taskforce'
         case 'Theatre Fleet':

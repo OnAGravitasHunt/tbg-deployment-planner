@@ -68,7 +68,6 @@ export default {
         {label: 'New Ship', modalType: 'normal', modal: 'add-ship'},
         {label: 'New Sector', modalType: 'normal', modal: 'add-sector'},
         {label: 'New Ship Options', modalType: 'normal', modal: 'add-ship-class'},
-        {label: 'Member Fleets', modalType: 'normal', modal: 'member-fleets'},
         {label: 'Edit Ship Classes', modalType: 'list', modal: 'list-ship-classes'},
         {label: 'Edit Prefixes', modalType: 'list', modal: 'list-prefixes'},
         {label: 'Timeline', modalType: 'normal', modal: 'timeline-list'},

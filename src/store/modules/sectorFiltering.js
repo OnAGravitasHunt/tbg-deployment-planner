@@ -1,10 +1,10 @@
 const state = {
   filterCategories: {
     theatre: {
-      tailward: true,
-      central: true,
-      spinward: true,
-      other: true
+      'tailward': true,
+      'central': true,
+      'spinward': true,
+      'none/other': true
     },
     type: {
       core: true,

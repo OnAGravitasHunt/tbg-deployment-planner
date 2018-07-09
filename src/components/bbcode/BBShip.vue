@@ -14,7 +14,6 @@ export default {
   methods: {},
   computed: {
     isStation () {
-      console.log(this.ship.scale)
       return this.ship.scale === 'station'
     },
     showVet () {
