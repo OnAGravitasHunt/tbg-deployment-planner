@@ -12,7 +12,7 @@
           <AddShipClass v-show="currentModal === 'add-ship-class'"></AddShipClass>
           <EditShip v-show="currentModal === 'ship-edit'"></EditShip>
           <EditSector v-show="currentModal === 'sector-edit'"></EditSector>
-          <MemberFleets v-show="currentModal === 'member-fleets'"></MemberFleets>
+          <!-- <MemberFleets v-show="currentModal === 'member-fleets'"></MemberFleets> -->
           <ModalListShipClasses v-show="currentModal === 'list-ship-classes'"></ModalListShipClasses>
           <ModalListPrefixes v-show="currentModal === 'list-prefixes'"></ModalListPrefixes>
           <TimelineList v-show="currentModal === 'timeline-list'"></TimelineList>
@@ -37,7 +37,7 @@ import ShipInfo from './ShipInfo'
 import AddShipClass from './AddShipClass'
 import AddSector from './AddSector'
 import EditSector from './EditSector'
-import MemberFleets from './MemberFleets'
+// import MemberFleets from './MemberFleets'
 import ModalListShipClasses from './modalList/ModalListShipClasses'
 import ModalListPrefixes from './modalList/ModalListPrefixes'
 import TimelineList from './modalList/TimelineList'
@@ -56,7 +56,6 @@ export default {
     AddShipClass,
     AddSector,
     EditSector,
-    MemberFleets,
     ModalListShipClasses,
     ModalListPrefixes,
     TimelineList,

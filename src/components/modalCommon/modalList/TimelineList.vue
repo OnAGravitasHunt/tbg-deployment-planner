@@ -21,22 +21,33 @@
       </table>
     </div>
     <div class='message'>
-      Clipboard: {{displayClipboard}}
+      Currently copied tick: {{displayCopiedTick}}
     </div>
+    <div
+      class='button blue'
+      title='BBCode' @click="bbcode"
+    >Copy selected as BBCode</div>
+    <BBCode ref='bbcode-button'></BBCode>
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
 import TimelineRow from './TimelineRow'
+import BBCode from '../../bbcode/BBCode.vue'
 
 export default {
   name: 'TimelineList',
   components: {
     TimelineRow,
+    BBCode,
     draggable
   },
-  methods: {},
+  methods: {
+    bbcode () {
+      this.$refs['bbcode-button'].copyToClipboard()
+    }
+  },
   computed: {
     schemaFields () {
       return [
@@ -57,9 +68,9 @@ export default {
     operators () {
       return this.$store.state.shipData.operators
     },
-    displayClipboard () {
+    displayCopiedTick () {
       if (this.$store.state.deployment.copiedTick === null) {
-        return 'Empty'
+        return 'None'
       } else {
         return this.$store.state.deployment.copiedTick.dateLabel
       }
@@ -118,8 +129,30 @@ input, select {
   border: 1px solid #555;
   text-transform: capitalize;
 }
+.button {
+  /* margin-left: 20px; */
+  margin-top: 5px;
+  text-align: center;
+  vertical-align: top;
+  height: 20px;
+  width: 250px;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+.blue {
+  background-color: #06a;
+}
 #timeline-table {
-  height: 350px;
+  height: 310px;
   overflow-y: auto;
   padding-right: 10px;
   padding-bottom: 15px;

@@ -23,13 +23,15 @@ export default {
   },
   methods: {
     copyToClipboard () {
-      // let self = this
-      navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText).then(function () {
-        console.log('Copied to clipboard successfully!')
-        // console.log(self.refactoredTimeline)
-      }, function () {
-        console.error('Unable to write to clipboard.')
-      })
+      if (this.$refs['bbcode-root']) {
+        navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText).then(() => {
+          console.log('Copied to clipboard successfully!')
+        }).catch((e) => {
+          console.log(e)
+        })
+      } else {
+        alert('Select ticks to export')
+      }
     }
   },
   computed: {
