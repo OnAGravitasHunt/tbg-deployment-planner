@@ -5,7 +5,7 @@
       <BBTheatre
         v-for="theatre of theatres"
         :theatreName="theatre"
-        :timeline="refactoredTimeline"
+        :timeline="transposedTimeline"
         :key="theatre"
       ></BBTheatre>
       [/SPOILER]
@@ -24,13 +24,11 @@ export default {
   methods: {
     copyToClipboard () {
       if (this.$refs['bbcode-root']) {
-        navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText).then(() => {
-          console.log('Copied to clipboard successfully!')
-        }).catch((e) => {
-          console.log(e)
-        })
+        return navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText)
       } else {
-        alert('Select ticks to export')
+        return new Promise((resolve, reject) => {
+          reject(new Error('Error: select ticks to export'))
+        })
       }
     }
   },
@@ -38,25 +36,23 @@ export default {
     timeline () {
       return this.$store.state.deployment.timeline.filter(tick => tick.bbExport)
     },
-    refactoredTimeline () {
-      let refactor = JSON.parse(JSON.stringify(this.timeline[0]))
-      delete refactor.dateLabel
-      delete refactor.bbExport
-      for (let sectorName of Object.keys(refactor.sectors)) {
-        // console.log(sectorName, refactor.sectors[sectorName])
-        refactor.sectors[sectorName].ships = []
+    transposedTimeline () {
+      let transpose = JSON.parse(JSON.stringify(this.timeline[0]))
+      delete transpose.dateLabel
+      delete transpose.bbExport
+      for (let sectorName of Object.keys(transpose.sectors)) {
+        transpose.sectors[sectorName].ships = []
         for (let tick of this.timeline) {
-          refactor.sectors[sectorName].ships.push({
+          transpose.sectors[sectorName].ships.push({
             dateLabel: tick.dateLabel,
             ships: JSON.parse(JSON.stringify(tick.sectors[sectorName].ships))
           })
         }
-        // console.log(refactor.sectors[sectorName])
       }
-      return refactor
+      return transpose
     },
     theatres () {
-      return this.refactoredTimeline.theatreList
+      return this.transposedTimeline.theatreList
     }
   }
 }

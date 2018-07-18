@@ -24,7 +24,8 @@
       Currently copied tick: {{displayCopiedTick}}
     </div>
     <div
-      class='button blue'
+      class='button'
+      :class="[buttonColor]"
       title='BBCode' @click="bbcode"
     >{{message}}</div>
     <BBCode ref='bbcode-button'></BBCode>
@@ -45,16 +46,25 @@ export default {
   },
   data () {
     return {
-      message: 'Export selected as BBCode'
+      message: 'Export selected as BBCode',
+      buttonColor: 'blue'
     }
   },
   methods: {
     bbcode () {
-      this.$refs['bbcode-button'].copyToClipboard()
+      this.$refs['bbcode-button'].copyToClipboard().then(() => {
+        this.setBBCodeMessage('Copied to clipboard!', 'green')
+      }).catch((e) => {
+        this.setBBCodeMessage(e.message, 'red')
+      })
     },
-    setBBCodeMessage () {
-      // use promises here!
-      this.message = 'Copied to clipboard!'
+    setBBCodeMessage (message, color) {
+      this.message = message
+      this.buttonColor = color
+      setTimeout(() => {
+        this.message = 'Export selected as BBCode'
+        this.buttonColor = 'blue'
+      }, 2000)
     }
   },
   computed: {
@@ -159,6 +169,12 @@ input, select {
 }
 .blue {
   background-color: #06a;
+}
+.green {
+  background-color: #2c2;
+}
+.red {
+  background-color: #c34;
 }
 #timeline-table {
   height: 310px;
