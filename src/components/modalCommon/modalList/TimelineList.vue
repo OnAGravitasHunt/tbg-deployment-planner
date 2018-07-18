@@ -26,7 +26,7 @@
     <div
       class='button blue'
       title='BBCode' @click="bbcode"
-    >Copy selected as BBCode</div>
+    >{{message}}</div>
     <BBCode ref='bbcode-button'></BBCode>
   </div>
 </template>
@@ -43,9 +43,18 @@ export default {
     BBCode,
     draggable
   },
+  data () {
+    return {
+      message: 'Export selected as BBCode'
+    }
+  },
   methods: {
     bbcode () {
       this.$refs['bbcode-button'].copyToClipboard()
+    },
+    setBBCodeMessage () {
+      // use promises here!
+      this.message = 'Copied to clipboard!'
     }
   },
   computed: {
