@@ -23,12 +23,16 @@ export default {
   },
   methods: {
     copyToClipboard () {
-      if (this.$refs['bbcode-root']) {
-        return navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText)
-      } else {
+      if (!navigator.hasOwnProperty('clipboard')) {
+        return new Promise((resolve, reject) => {
+          reject(new Error('Error: not supported by browser'))
+        })
+      } else if (!this.$refs['bbcode-root']) {
         return new Promise((resolve, reject) => {
           reject(new Error('Error: select ticks to export'))
         })
+      } else {
+        return navigator.clipboard.writeText(this.$refs['bbcode-root'].innerText)
       }
     }
   },
