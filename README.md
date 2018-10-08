@@ -1,8 +1,10 @@
 # ship-deployment
 
-A deployment planner for To Boldly Go.
+A deployment planner for the web-forum quest To Boldly Go.
 
 On GitHub Pages [here](https://to-boldly-go.github.io/tbg-deployment-planner/).
+
+The main objective of this project was to both learn Vue.js, and through it implement an LCARS-like interface for the tool.
 
 ## Build Setup
 
